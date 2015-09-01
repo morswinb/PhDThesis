@@ -1,0 +1,909 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization and the respective tip boundary conditions 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Epsilon-regularization-and"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+One term condition 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:One-term-condition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider a spatial domain of the problem reduced in accordance with the
+ 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization technique to the interval 
+\begin_inset Formula $x\in[0,1-\varepsilon]$
+\end_inset
+
+, where 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is a small parameter.
+ This so-called 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization technique, was originally introduced in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+ for the system of spatial coordinates moving with the fracture front, and
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+, the authors efficiently adopted this approach for the normalized coordinate
+ system.
+ As the result a mesh, 
+\begin_inset Formula $\{x_{i}\}_{i=1}^{N}$
+\end_inset
+
+, will be composed of 
+\begin_inset Formula $N$
+\end_inset
+
+ points with 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ and the last point 
+\begin_inset Formula $x_{N}=1-\varepsilon$
+\end_inset
+
+, separated from the tip by 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+.
+ Example of such meshes are shown in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Grids"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization the Dirichlet boundary condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_boundary"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+ is replaced with an approximate one: 
+\begin_inset Formula 
+\begin{equation}
+U(t,1-\varepsilon)=3\varepsilon L(t)V(t,1),\label{L1}
+\end{equation}
+
+\end_inset
+
+ The value of the crack propagation speed 
+\begin_inset Formula $V(t,1)$
+\end_inset
+
+ (and simultaneously the particle velocity at a fracture tip) was suggested
+ to be computed from the speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed_U"
+
+\end_inset
+
+) in its approximated form: 
+\begin_inset Formula 
+\begin{equation}
+V(t,1)=-\frac{1}{3L(t)}\frac{\partial U}{\partial x}(t,1-\varepsilon).\label{L2}
+\end{equation}
+
+\end_inset
+
+The pair of conditions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L2"
+
+\end_inset
+
+ has shown an excellent performance in terms of solution accuracy and, as
+ has been proven in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+, reduced the stiffness of dynamic system in case of leak-off function vanishing
+ near the crack tip.
+ One can check that for such a leak-off model numerical error introduced
+ by using the approximate conditions, instead of the exact ones, is of the
+ order 
+\begin_inset Formula $O(\varepsilon^{2})$
+\end_inset
+
+, and the other improvements following usage of this method were shown in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4,MWL"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The above conditions can be written in an equivalent form.
+ Indeed, one can merge (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L1"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L2"
+
+\end_inset
+
+) into a single condition of the third type: 
+\begin_inset Formula 
+\begin{equation}
+U(t,1-\varepsilon)+\varepsilon\frac{\partial U}{\partial x}(t,1-\varepsilon)=0.\label{L3}
+\end{equation}
+
+\end_inset
+
+Interestingly, the latter condition is nothing but the consequence of a
+ direct utilization of the information about the leading term of asymptotics
+ of the solution near the crack tip (compare with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_asymp"
+
+\end_inset
+
+)).
+\end_layout
+
+\begin_layout Standard
+Analogously, one can define the respective pairs of boundary conditions
+ in the regularized formulations.
+ Considering the dependent variable 
+\begin_inset Formula $w$
+\end_inset
+
+ one should take (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed"
+
+\end_inset
+
+) together with the condition 
+\begin_inset Formula 
+\begin{equation}
+w(t,1-\varepsilon)+3\varepsilon\frac{\partial w}{\partial x}(t,1-\varepsilon)=0,\label{L4}
+\end{equation}
+
+\end_inset
+
+while analyzing the system based on the dependent variable 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, the speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_L2"
+
+\end_inset
+
+) should be accompanied by 
+\begin_inset Formula 
+\begin{equation}
+4\Omega(t,1-\varepsilon)+3\varepsilon\frac{\partial\Omega}{\partial x}(t,1-\varepsilon)=0.\label{L5}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+General two term condition 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:General-two-term"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each of the problem formulations a boundary condition for the crack
+ tip at 
+\begin_inset Formula $x=1-\varepsilon$
+\end_inset
+
+ must be specified.
+ These as follows from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L3"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L4"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L5"
+
+\end_inset
+
+ are in fact very similar and can be generalized, for the dependent variables
+ 
+\begin_inset Formula $w(t,x)$
+\end_inset
+
+, 
+\begin_inset Formula $U(t,x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega(t,x)$
+\end_inset
+
+ a common notation 
+\begin_inset Formula $f(t,x)$
+\end_inset
+
+ with convention 
+\begin_inset Formula $f_{k}=f(t,x_{k})$
+\end_inset
+
+ should now follow.
+ 
+\end_layout
+
+\begin_layout Standard
+So far the presented regularized boundary conditions following the proposition
+ of Linkov 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+ are based on the leading term of the asymptotic expansion.
+ But as shown in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-details-of"
+
+\end_inset
+
+ the Carter leak off 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+ introduced terms will introduce large disturbance to the problem, which
+ will dramatically affect the accuracy (as proven later in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Computation-Accuracy"
+
+\end_inset
+
+ ).
+ To properly account for the second term, that under likely circumstances
+ might be as significant as the first term [ref], a modification of this
+ approach which consists of two asymptotic terms will be proposed.
+\end_layout
+
+\begin_layout Standard
+According to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1n"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_asymp"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_asymp"
+
+\end_inset
+
+), the following asymptotics approximation is acceptable in the proximity
+ of the crack tip (
+\begin_inset Formula $x\in[x_{N-2},1]$
+\end_inset
+
+): 
+\begin_inset Formula 
+\begin{equation}
+f(t,x)=e_{1}^{(f)}(t)(1-x)^{\alpha_{1}}+e_{2}^{(f)}(t)(1-x)^{\alpha_{2}}.\label{expan_1}
+\end{equation}
+
+\end_inset
+
+The values of 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ are known and depend on the chosen variable and the behavior of the leak-off
+ function.
+ Assuming that the last two points of the discrete solution 
+\begin_inset Formula $(x_{N-1},f_{N-1})$
+\end_inset
+
+ and 
+\begin_inset Formula $(x_{N},f_{N})$
+\end_inset
+
+ lie on the solution graph 
+\begin_inset Formula $(x,f(t,x))$
+\end_inset
+
+, one can obtain 
+\begin_inset Formula $e_{1}^{(f)}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}^{(f)}$
+\end_inset
+
+ by solving the flowing system of two equations: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}e_{1}^{(f)}(t)(1-x_{N-1})^{\alpha_{1}}+e_{2}^{(f)}(t)(1-x_{N-1})^{\alpha_{2}} & =f_{N-1}\\
+e_{1}^{(f)}(t)(1-x_{N})^{\alpha_{1}}+e_{2}^{(f)}(t)(1-x_{N})^{\alpha_{2}} & =f_{N}
+\end{split}
+\label{BC_N}
+\end{equation}
+
+\end_inset
+
+The equations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "BC_N"
+
+\end_inset
+
+ when solved yield 
+\begin_inset Formula $f(t,x)$
+\end_inset
+
+ and consequently allow to obtain boundary condition at 
+\begin_inset Formula $x=1-\varepsilon$
+\end_inset
+
+.
+ Function 
+\begin_inset Formula $f(t,x)$
+\end_inset
+
+ can be used to extrapolate extra point 
+\begin_inset Formula $x_{N+1}$
+\end_inset
+
+, and then use that point in some three point discretization shame which
+ would essentially lead to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f_{N+1}+b_{N}^{(f)}f_{N}+b_{N-1}^{(f)}f_{N-1}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $b_{j}^{(f)}=b_{j}^{(f)}(x_{N-1},x_{N},x_{N+1})$
+\end_inset
+
+ .
+ (one can always use one less ODE, to match with indexing scheme and system
+ size presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moje_bzdury,MWL"
+
+\end_inset
+
+).
+ However it is also possible to use 
+\begin_inset Formula $f(t,x)$
+\end_inset
+
+ to obtain 
+\begin_inset Formula $\frac{\partial f}{\partial x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial^{2}f}{\partial x^{2}}$
+\end_inset
+
+ directly, and this approach will be preferred later.
+ [a detailed study of a number of different versions could be shown, but
+ I don't think it is necessary to show it].
+\end_layout
+
+\begin_layout Standard
+The presented approach is a direct generalization of that proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+.
+ Indeed, if one takes 
+\begin_inset Formula $e_{2}=0$
+\end_inset
+
+ in the representation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_1"
+
+\end_inset
+
+) then the pair of the equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L3"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L2"
+
+\end_inset
+
+) follows immediately.
+ If 
+\begin_inset Formula $\alpha_{2}^{(f)}-\alpha_{1}^{(f)}=1$
+\end_inset
+
+, which means that the leak-off function 
+\begin_inset Formula $q_{l}$
+\end_inset
+
+ is bounded near the crack tip, the second asymptotic term provides a small
+ correction.
+ However, in the case of the Carter law, when 
+\begin_inset Formula $\alpha_{2}^{(f)}-\alpha_{1}^{(f)}=1/6$
+\end_inset
+
+, it brings an important contribution.
+\end_layout
+
+\begin_layout Standard
+The obtained coefficient 
+\begin_inset Formula $e_{1}^{(f)}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "expan_1"
+
+\end_inset
+
+ is substituted into corresponding speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed_U"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_L2"
+
+\end_inset
+
+) to give the ordinary differential equations for the crack length: 
+\begin_inset Formula 
+\[
+\frac{d}{dt}L^{2}=\frac{2}{3}\left(e_{1}^{(w)}\right)^{3},\quad\frac{d}{dt}L^{2}=\frac{2}{3}e_{1}^{(U)},\quad
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}L^{2}(t)=\frac{128}{81}\left(e_{1}^{(\Omega)}\right)^{3}.\label{new_speed_common}
+\end{equation}
+
+\end_inset
+
+Note that the right-hand sides of the equations define the boundary operators
+ 
+\begin_inset Formula $\mathcal{B}_{w}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{B}_{U}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{\Omega}$
+\end_inset
+
+ from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+ or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout Standard
+One can observe that for all variable formulations the generalized form
+ of tip boundary condition is very similar.
+ 
+\end_layout
+
+\begin_layout Standard
+In the case of the dependent variable 
+\begin_inset Formula $U$
+\end_inset
+
+, apart from the representations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_1"
+
+\end_inset
+
+) of the boundary condition near the crack tip in the linear form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}e_{1}^{(U)}(t)(1-x_{N-1})^{\alpha_{1}^{(U)}}+e_{2}^{(U)}(t)(1-x_{N-1})^{\alpha_{2}^{(U)}} & =U_{N-1}\\
+e_{1}^{(U)}(t)(1-x_{N})^{\alpha_{1}^{(U)}}+e_{2}^{(U)}(t)(1-x_{N-})^{\alpha_{1}^{(U)}} & =U_{N}
+\end{split}
+\label{expan_3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+one can use a nonlinear one, adopting the relationship between this dependent
+ variable and the crack opening 
+\begin_inset Formula $w$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}e_{1}^{(w)}(t)(1-x_{N-1})^{\alpha_{1}^{(w)}}+e_{2}^{(w)}(t)(1-x_{N-1})^{\alpha_{2}^{(w)}} & =\sqrt[3]{U_{N-1}}\\
+e_{1}^{(w)}(t)(1-x_{N})^{\alpha_{1}^{(w)}}+e_{2}^{(w)}(t)(1-x_{N})^{\alpha_{1}^{(w)}} & =\sqrt[3]{U_{N}}
+\end{split}
+\label{expan_4}
+\end{equation}
+
+\end_inset
+
+Similar exchange of underlying 
+\begin_inset Formula $e_{1}^{(f)}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}^{(f)}$
+\end_inset
+
+ could be also done with 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ variable, but would be less intuitive to write (
+\begin_inset Formula $\frac{\partial}{\partial x}$
+\end_inset
+
+ vs 
+\begin_inset Formula $\sqrt[3]{}$
+\end_inset
+
+ ) .Note that the two terms representation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_3"
+
+\end_inset
+
+) of the function 
+\begin_inset Formula $U$
+\end_inset
+
+ is less informative than the same representation for the functions 
+\begin_inset Formula $w$
+\end_inset
+
+ (or 
+\begin_inset Formula $\Omega$
+\end_inset
+
+).
+ The Carter type term is cleared by the second term of expansion 
+\begin_inset Formula $\alpha_{2}^{(w)}-1$
+\end_inset
+
+=
+\begin_inset Formula $-\frac{1}{2}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-details-of"
+
+\end_inset
+
+), while in case of 
+\begin_inset Formula $U$
+\end_inset
+
+ the two term expansion of 
+\begin_inset Formula $w$
+\end_inset
+
+, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1n"
+
+\end_inset
+
+) after cubing produces:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{l}
+U(t,x)=w_{0}^{3}\big(1-x\big)+w_{0}^{2}w_{1}\big(1-x\big)^{)^{\frac{2}{3}+\alpha_{2}^{(w)}}}+w_{0}w_{1}^{2}\big(1-x\big)^{\frac{1}{3}+2\alpha_{2}^{(w)}}\\
++w_{1}^{3}\big(1-x\big)^{3\alpha_{2}^{(w)}}+\, o\big((1-x)^{min(\frac{2}{3}+\alpha_{3}^{(w)},\frac{1}{3}+2\alpha_{2}^{(w)})}\big)
+\end{array}\label{U_asym_1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus taking two terms of 
+\begin_inset Formula $U$
+\end_inset
+
+ only accounts for 
+\begin_inset Formula $w_{0}^{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{0}^{2}w_{1}$
+\end_inset
+
+, while two components 
+\begin_inset Formula $w_{0}^{2}w_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $w_{1}^{3}$
+\end_inset
+
+ are lost.
+\end_layout
+
+\begin_layout Standard
+Therefore, using the modified condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_3"
+
+\end_inset
+
+), one can expect a better solver performance.
+\end_layout
+
+\end_body
+\end_document

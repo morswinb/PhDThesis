@@ -1,0 +1,1332 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Implementation 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Implementation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Java and OO design 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Java-and-OO"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far the formulation of the multifracturing problem was made with Object
+ Oriented approach in mind.
+ This programing paradigm is not much newer than the more conventional procedura
+l style used by C and FORTRAN languages.
+ In fact the first appearance of OO can be traced back to 1960s 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oo_orgins_1"
+
+\end_inset
+
+.
+ The widespread of OO as the dominant paradigm took place in the mid 1990s
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wiki_oo"
+
+\end_inset
+
+ , as languages supporting this paradigm, C++ and Java become available.
+ Interestingly, as observed by the author, quite a large number of academics,
+ who were educated before OO became dominant, do not use, nor attempt to
+ use any of OO features in their work.
+ On the other hand a number of courses form top universities, or researchers
+ form recognized institutions, do mix OO methods with numerical models 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oo_slides_1,oo_slides_2,oo_slides_3"
+
+\end_inset
+
+, not to mention numerous other sources (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "oo_book"
+
+\end_inset
+
+ is a good book on this topic).
+ The multifracturing problem in its very roots does call for usage of some
+ objects to represent abstract data.
+ All mentioned cracks, pipes, injection points and other abstract structures
+ are well addressed if treated as objects, and the multitude of other applicable
+ functionalities: rendering, collisions, data operations can be well handled
+ with this paradigm.
+ 
+\end_layout
+
+\begin_layout Standard
+It appears as the most practical choice to use at least a few features of
+ OO design, but the other remaining question is to what programing language
+ this work should be implemented in.
+ There are two main challenges in this problem, maintaining sufficient performan
+ce and obtaining accurate and reliable solution.
+ The single fracture formulation was done in MATLAB, which although performed
+ good enough for the single fracture case, has significant drawbacks when
+ facing more complex problems.
+ A good practical discussion on usefulness of MATLAB for any larger project
+ can be found on stack overflow 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "matlab_stack"
+
+\end_inset
+
+.
+ The dominant opinion stated there is that, although MATLAB is good for
+ small quick tasks, it is a bad choice as a general purpose programing language
+ and offers slow performance.
+ Additional, MATLAB is not freely available, which would mean releasing
+ any results as open source would mean additional complications.
+ 
+\end_layout
+
+\begin_layout Standard
+Having crossed out MATLAB as a feasible language for multifracturing problems
+ the other choices of languages should be outlined.
+ Traditionally the heaviest numerical projects have been developed in C/C++
+ or FORTRAN 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In fact FORTRAN is probably the oldest programing language one can still
+ expect to find in usage.
+ 
+\end_layout
+
+\end_inset
+
+.
+ However over the past decade the most popular language was Java 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "TIOBE_Index"
+
+\end_inset
+
+, which has only recently given up the lead due to appearance of other similar
+ competing languages (Python, C#, D).
+ Despite many myths about Java performance, there is a large number of publicati
+ons that prove that in numerical application,
+\emph on
+ including matrix operations
+\emph default
+, Java performs at the same levels, 
+\emph on
+or even better
+\emph default
+ than C/C++ and FORTRAN based libraries 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "java_speed_2,java_speed_3,java_speed_4,java_vs_c_fortran"
+
+\end_inset
+
+.
+ A very well written study of this phenomena was done by Lewis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "java_vs_c"
+
+\end_inset
+
+, which highlights, pointers garbage collection and run-time compilation
+ as some technical explanation why Java can perform better than C/C++.
+ Nevertheless the performance gap between these languages should not be
+ the main factor affecting the decision.
+ 
+\end_layout
+
+\begin_layout Standard
+Writing well written and maintainable code is at least as important as its
+ numerical performance 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Basic Computer Science principle.
+\end_layout
+
+\end_inset
+
+.
+ Some languages are naturally better at this task than others.
+ One cannot however expect someone with experience in one language to produce
+ quality code from day one after switch to another language.
+ If most of the experience is Java related, than sticking with this language
+ would be the most consistent choice.
+ Furthermore Java has unquestionably superior capabilities (stack trace,
+ portability, exceptions) when it comes to code stability and reliability.
+ Thous the final choice was to solve the main part of this multifracturing
+ problem in Java.
+ This decision was outlined here as a brief overview, and could be in fact
+ carried further into much more detail, but the general reasoning should
+ be made clear at this point.
+ There are some drawbacks of this choice, but none of them appeared to be
+ significant enough to get mentioned here.
+\end_layout
+
+\begin_layout Standard
+The constructed object orientated structure should also be mentioned.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "UML"
+
+\end_inset
+
+ represents, somehow simplified UML diagram.
+ The design principles flowed here are:
+\end_layout
+
+\begin_layout Itemize
+The ODE Interface states methods that would be expected from a set of ODEs
+ to be operated by an arbitrary ODE solver.
+ These include getting initial value (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_ic"
+
+\end_inset
+
+), the integrated derivative (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+) and setting solution (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_solution"
+
+\end_inset
+
+).
+ It is implemented by Edge that ultimately handles a single fracture, and
+ Model that combines all fractures outputs 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "algo_ode"
+
+\end_inset
+
+.
+ The Result is feed to Solver, turning this part into Builder pattern.
+ 
+\end_layout
+
+\begin_layout Itemize
+Abstract Solver is used by Multifracturing, which is the main class that
+ logically advances the whole model in time 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "algo_multi"
+
+\end_inset
+
+.
+ The numerical work of integration is however done by extensions of Solver,
+ which serve as Bridges.
+ Multiple versions of ODEs solvers can be used here, as shown in the next
+ section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Comparison-of-ODE"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Model acts as a Facade, that decouples most of the detail away from main
+ Multifracturing class.
+ A separate instance of Model for each State corresponding to multiple 
+\begin_inset Formula $t=\{t_{0},...,t_{end}\}$
+\end_inset
+
+ is held.
+ (or at least an attempt to compute these is made).
+\end_layout
+
+\begin_layout Itemize
+There are 
+\begin_inset Formula $\mathcal{V}$
+\end_inset
+
+ number of Vertexes and 
+\begin_inset Formula $\mathcal{E}$
+\end_inset
+
+ number of Edges held by Model.
+ Each Edge has two Vertexes, while each Vertex can have many, or none Edges.
+ This represents a graph.
+\end_layout
+
+\begin_layout Itemize
+Edge is extended by multiple classes, that represent the actual physical
+ objects.
+ These eventually properly implement Interface ODE methods.
+ These can ultimately rely on different implementation of operator 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+) , and combinations of derivative approximation techniques (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "central_FD"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FD_quad_poly"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FD_asymptotics"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "central_FD"
+
+\end_inset
+
+).
+ The assignment of these could be done by a Factory, but for keep some simplicit
+y this pattern is omitted on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "UML"
+
+\end_inset
+
+ and only a few possibilities are shown.
+ An important advantage of this solution here is that further implementations
+ of Edge can be integrated with the rest of this structure.
+ Other fracturing geometries, especially KGD model that can abstracted as
+ line connection between two points, if made compatible with junction strategy
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ and described as a system of ODEs, should fit without the need to alert
+ any other of the code.
+\end_layout
+
+\begin_layout Itemize
+Additional Classes used by Multifracturing hold specific functionality for
+ collisions, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fracture-collisions"
+
+\end_inset
+
+, global and configuration variables, and do other tasks such as data handling
+ and rendering.
+\end_layout
+
+\begin_layout Itemize
+The Utility Matrices specified in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Jacobian-and-utility"
+
+\end_inset
+
+ are also decoupled from the Model, to spread out the functionality over
+ even more classes.
+\end_layout
+
+\begin_layout Standard
+The code for some of the classes presented here is available in Appendix
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Java-multifracturing-code"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/_V_Multifracture numerical testing and implementation/object design.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "UML"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simplified UML design diagram, general class structure of multifracturing
+ code
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Comparison of ODE solvers 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Comparison-of-ODE"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Having formulated the design in such a manner that the underlying solver
+ is in fact just an abstraction, it is possible to switch utilized integration
+ code with a single switch.
+ A separate bridge is prepared to deal with each method.
+ Most of these rely on JNI to access native C code.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+GLS (GNU Scientific Library ) ODE Solver
+\end_layout
+
+\begin_layout Standard
+GNU Scientific Library 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GSL_ode"
+
+\end_inset
+
+ is a collection of numerous numerical libraries available under GNU public
+ license.
+ These libraries cover all major numerical problems, which include solving
+ initial value problems.
+ The particular function used here is gsl_odeiv2, which can make a choice
+ of type of method used.
+ These include a range of Runge-Kutta, Adams and BDF (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BDF_first_order"
+
+\end_inset
+
+) (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BDF26"
+
+\end_inset
+
+) methods.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+LSODE
+\end_layout
+
+\begin_layout Standard
+LSODE was developed by NASA 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ls_ode"
+
+\end_inset
+
+ and released as a publicly available ODE solver based on BDF (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BDF_first_order"
+
+\end_inset
+
+) (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BDF26"
+
+\end_inset
+
+) methods.
+ The solver has a long history and is available in different versions.
+ The particular variation used here is borrowed from 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stiff_ode"
+
+\end_inset
+
+, as this particular C based implementation is very well packed into one
+ file, containing all needed additional BLAS functions.
+\end_layout
+
+\begin_layout Subsubsection
+Intel ODE Solver Library
+\end_layout
+
+\begin_layout Standard
+The newest solver among considered in this work.
+ Developed by Laevsky 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "intel_ode"
+
+\end_inset
+
+ at Intel.
+ Although the project is discontinued, the solver is still available for
+ usage.
+ This solver combines both explicit method for non-stiff problems, and implicit
+ method for stiff solver, and can switch between each method depending on
+ the difficulty of given problem.
+\end_layout
+
+\begin_layout Subsubsection
+ODE15s
+\end_layout
+
+\begin_layout Standard
+At the earlier state of development of this software, a successful attempt
+ to use MATLAB ODE15s solver was made.
+ Unfortunately the process calling MATLAB from Java is not straightforward.
+ Despite the reverse type of call, accessing Java code from MATLAB is made
+ extremely easy with build in features, the only to access ODE15s found,
+ was through some open source bindings 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "matlabcontrol"
+
+\end_inset
+
+.
+ This did worked, but exposed several flaws in MATLAB.
+ The biggest is the reliance on its own internal JVM, which in case of used
+ bindings meant all send objects needed to be serialized and transferred
+ between two running JVMs.
+ This alone would not be a huge issue, if the MATLAB R2013a version of Java
+ was 1.6, but the developed code already relied on Java 1.8 functionality.
+ This means keeping backward compatibility with ODE15s was not feasible
+ at later stages.
+ The accuracy and performance of ODE15s, when the code was still compatible
+ with Java 1.6, was at the same levels to what was obtained LSODE or GLS
+ solvers.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Test on zero leak off self similar solution.
+\end_layout
+
+\begin_layout Standard
+Now a comparison of several available solvers can be made.
+ These solvers were tested on the same test based on zero leak off self
+ similar solution [ref], with all parameters set the same.
+ The test was done with 
+\begin_inset Formula $N_{c}=11$
+\end_inset
+
+, which is 
+\emph on
+a very
+\emph default
+ 
+\emph on
+small
+\emph default
+ number of grid points, 
+\begin_inset Formula $w$
+\end_inset
+
+ system formulation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+) with improved spatial discretization scheme (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FD_asymptotics"
+
+\end_inset
+
+) and Junction strategy BC 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ was supplied to the solvers.
+ Double power grid 
+\begin_inset Formula $x_{m}^{(4)}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "double_power_mesh"
+
+\end_inset
+
+) with 
+\begin_inset Formula $\delta_{a}=\delta_{b}=2.5$
+\end_inset
+
+ was used.
+ The test proved that abstraction of solver implementation works, and allows
+ to easily interchange integrating algorithm.
+ This opens future possibility of switching solvers on the fly, depending
+ on their performance or even to try another algorithm if one fails at some
+ stage of multifracturing simulation.
+ Comparing results (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solvers_L"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solvers_w"
+
+\end_inset
+
+) one can conclude that Intel ODE solver and LSODE obtained nearly identical
+ results in terms of accuracy for crack opening 
+\begin_inset Formula $w$
+\end_inset
+
+, and Intel ODE performed about and order off accuracy better when computing
+ fracture length 
+\begin_inset Formula $L$
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Yet these accuracies are about two orders better than these presented in
+ Mishuris at 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "gena_apm"
+
+\end_inset
+
+ for dynamic systems and can compete with integral solver and straightforward
+ algorithm
+\end_layout
+
+\end_inset
+
+.
+ However the time needed to obtain the solution was about 5 times longer
+ for Intel ODE solver, when compared to LSODE.
+ The third shown solver GSL ODE did performed worse by and up to two orders
+ of magnitude, which can be associated with visible struggle (sharp edge
+ on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "solvers_w"
+
+\end_inset
+
+ (a) ) to keep up near the crack tip.
+ The time needed by GLS was about 30 times longer compared to the time used
+ by LSODE in this test.
+ This is a very significant difference, but similar discrepancy, 10-30 times
+ more iterations, was observed in comparison made in
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stiff_ode"
+
+\end_inset
+
+ between LSODE and GSL solver methods.
+ This results suggest LSODE should be the default solver for most of the
+ scenarios, as it offers the best performance, but the other solvers can
+ still be used if any difficulties were encountered.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/_V_Multifracture numerical testing and implementation/L_ODE.eps
+	scale 40
+
+\end_inset
+
+assignend
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "solvers_L"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative crack length error 
+\begin_inset Formula $\partial L$
+\end_inset
+
+ for zero leak off solution obtained with various ODE solvers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/_V_Multifracture numerical testing and implementation/GSL_ODE.eps
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+GNU Scientific Library ODE solver
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/_V_Multifracture numerical testing and implementation/LSODE.eps
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+LSODE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/_V_Multifracture numerical testing and implementation/intel_ODE.eps
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Intel ODE Solver Library
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "solvers_w"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative crack opening error 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ for zero leak off solution obtained with various ODE solvers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Code optimization and parallelization 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Code-optimization-and"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets recall from the definition of an initial value problem (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:IVP"
+
+\end_inset
+
+), the 
+\begin_inset Formula $y'$
+\end_inset
+
+ used in multifracturing problem (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "derevative_large_ds"
+
+\end_inset
+
+) is :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y'_{1..E}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{E}(t,\mathcal{M})\}\label{parall_1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since all 
+\begin_inset Formula $\mathcal{F}'_{i}$
+\end_inset
+
+ here are independent of each other, the function 
+\begin_inset Formula $y'$
+\end_inset
+
+ is data parallel, and can be trivially split into any number of threads,
+ each working a piece of the whole 
+\begin_inset Formula $y'$
+\end_inset
+
+.
+ A convenient approach is to allow for each edge 
+\begin_inset Formula $\mathcal{F}'_{i}$
+\end_inset
+
+ to be assigned to one thread.
+ Hence a problem with 
+\begin_inset Formula $E$
+\end_inset
+
+ edges would be effectively split into 
+\begin_inset Formula $E$
+\end_inset
+
+ threads: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y'_{1..E}(t,y)=\left\{ \underset{thread\ 1}{\underbrace{\mathcal{F}'_{1}(t,\mathcal{M})}},\underset{thread\ 2}{\underbrace{\mathcal{F}'_{2}(t,\mathcal{M})}},...,\underset{thread\ E}{\underbrace{\mathcal{F}'_{E}(t,\mathcal{M})}}\right\} \label{parall_1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the current implementation is Java based, and executes commands on
+ the local CPU, a simple for each loop that assigns edge index 
+\begin_inset Formula $i$
+\end_inset
+
+ to each newly created local worker is used.
+ With Lambda expressions introduced in Java 1.8, the task very easy to perform,
+ see source code in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Java-multifracturing-code"
+
+\end_inset
+
+).
+ A multifracturing problem is likely to have tens, if not a few hundreds
+ of edges involved, which should be grater than available hardware threads,
+ so this simple work division is likely to achieve fair balance without
+ adding too much parallel overhead.
+ 
+\end_layout
+
+\begin_layout Standard
+But the above simple parallelization of 
+\begin_inset Formula $y'$
+\end_inset
+
+does not solve the problem of optimizing Jacobian pattern.
+ Previously in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Jacobian-and-utility"
+
+\end_inset
+
+ it was shown how a matrix of Jacobian pattern can be constructed, which
+ should be used in a proper custom Jacobian function.
+ First lets make another version of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "derevative_large_ds"
+
+\end_inset
+
+) that operates on grid point index 
+\begin_inset Formula $j$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y'_{1..N_{ODE}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{N_{ODE}}(t,\mathcal{M})\}\label{parall_1-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\mathcal{F}'_{j}$
+\end_inset
+
+ translates to 
+\begin_inset Formula $\mathcal{F}'_{i}$
+\end_inset
+
+ by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:index_convert"
+
+\end_inset
+
+).
+ So now 
+\begin_inset Formula $\mathcal{F}'_{j}$
+\end_inset
+
+ returns a single point, as opposed to vector value in 
+\begin_inset Formula $\mathcal{F}'_{i}$
+\end_inset
+
+.
+ So now when calculating the Jacobian it is possible to make the approximation
+ for only the non zero values:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J_{m,n}=\begin{cases}
+\frac{\mathcal{F}'_{m}(t,\mathcal{M}),-\mathcal{F}'_{m}(t,\mathcal{M}+\Delta_{n})}{\Delta_{n}}, & if\ J_{pattern\ m,n}=1\\
+\ \ \ \ \ \ \ \ \ \ 0 & if\ J_{pattern\ m,n}=0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above is also a data parallel operation that can split into a number
+ of threads.
+ The term 
+\begin_inset Formula $\Delta_{n}$
+\end_inset
+
+ refers to a small change to a single element in vector, so vector 
+\begin_inset Formula $\mathcal{M}+\Delta_{n}$
+\end_inset
+
+ is different from 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ by a small change in one element.
+ This change can be done in a single thread, so 
+\begin_inset Formula $J_{m,n}$
+\end_inset
+
+ is split into 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+ number of streams, one for each column 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "perf"
+
+\end_inset
+
+ shows the computation time gains on a sample multifracturing system achieved
+ with code parallelization 
+\end_layout
+
+\begin_layout Standard
+Also junction and sigma calculatiom make paraller CPU usage +80% on a quad
+ core i7 (8 threads)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/_V_Multifracture numerical testing and implementation/performance_gains.png
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "perf"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

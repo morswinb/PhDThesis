@@ -1,0 +1,82 @@
+
+Consider the transformation of the Carter law described by (\ref{carter}) when applying the normalization (\ref{dimensionless}). Assume that:
+\begin{equation}
+\label{f_D}
+\frac{1}{\sqrt{t-\tau(x)}}=\frac{D(t)}{\sqrt{1-\tilde x}}+R(t,\tilde x),
+\end{equation}
+where function $D(t)$ is defined in (\ref{function_D}) while the remainder $R$ is estimated
+later in (\ref{subs_2}).
+
+To find function $D(t)$, and thus to obtain an exact form of equation (\ref{function_D}),
+it is enough to compute the limit
+\begin{equation}
+D^2(t)=\lim_{\tilde{x}\rightarrow1}\frac{1-\tilde{x}}{t-\tau(x)}.
+\label{d_t_intro}
+\end{equation}
+This can be done by utilising L'Hopital's rule with taking into account that $x\to L(t)$ as $\tilde{x}\rightarrow1$,
+\begin{equation}
+\tau(x)=\tau\left(L(t)\tilde{x}\right)=L^{-1}(L(t)\tilde{x})\label{tau_2},
+\end{equation}
+and that the crack length is a smooth function of time ($L\in C^1$ at least). The last fact immediately follows from the problem formulation in terms of evolution system (\ref{w_DS}).
+
+Having the value of  $D(t)$ we can estimate the remainder $R(t,\tilde x)$
+when $\tilde x\to1$, or, what it is equivalent to when $x\to l(t)$ (or $t\to \tau(x)$).
+For this reason, we search for a parameter $\xi\ne0$ which guarantees that the limit
+\[
+A=\lim_{\tilde{x}\rightarrow1}\frac{R(t,\tilde{x})}{(1-\tilde{x})^{\xi}}=
+\]
+\[
+\lim_{\tilde{x}\rightarrow1}
+\frac{1}{2\xi(1-\tilde{x})^{\xi-1}}
+\left(\frac{D(t)}{(1-\tilde{x})^{3/2}}-\frac{L(t)\tau'(x)}{(t-\tau(x))^{3/2}}
+\right)
+\]
+does not turn to zero or infinity. Due to this assumption, we can write
+\begin{equation}
+\frac{1}{\sqrt{t-\tau(x)}}= \frac{D(t)}{\sqrt{1-\tilde{x}}}+A (1-\tilde{x})^{\xi}+o\left((1-\tilde{x})^{\xi}\right),
+\label{subs_2}
+\end{equation}
+when $\tilde x \rightarrow 1$, or equivalently $x \rightarrow l(t)$.
+Taking the last estimate into account $A$ can be expressed as:
+\[
+A=\lim_{\tilde{x}\rightarrow1}\frac{1}{2\xi(1-\tilde{x})^{\xi-1}}
+\left(\frac{D(t)}{(1-\tilde{x})^{3/2}}-\frac{L(t)\tau'(x)}{t-\tau(x)}
+\frac{D(t)}{\sqrt{1-\tilde{x}}}
+\right)-
+\]
+\[
+\frac{AL(t)}{2\xi}\lim_{\tilde{x}\rightarrow1}\frac{(1-\tilde{x})\tau'(x)}{t-\tau(x)}\big(1+o(1)\big).
+\]
+Now, on substitution of $\tau'(x)=1/L'(t)$ at $x=L(t)$ and (\ref{d_t_intro}) into the limit one has:
+\[
+A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{2\xi(1-\tilde{x})^{\xi-1/2}}
+\left(\frac{1}{1-\tilde{x}}-\frac{L(t)\tau'(x)}{t-\tau(x)}
+\right)-\frac{AL(t)D^2(t)}{2\xi L'(t)}.
+\]
+Applying (\ref{d_t_intro}) and (\ref{function_D}) here gives:
+\[
+\frac{1+2\xi}{2\xi}A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{2\xi(1-\tilde{x})^{\xi-1/2}}
+\left(\frac{1}{1-\tilde{x}}-\frac{L(t)\tau'(x)}{\sqrt{t-\tau(x)}}
+\frac{D(t)}{\sqrt{1-\tilde{x}}}
+\right)
+\]
+\[
+-
+\frac{AD(t)L(t)}{2\xi}\lim_{\tilde{x}\rightarrow1}\frac{\tau'(x)\sqrt{1-\tilde{x}}}{\sqrt{t-\tau(x)}}.
+\]
+By repeating the same process one more time we have:
+\[
+(2+2\xi)A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{(1-\tilde{x})^{\xi}}
+\left(\frac{1}{\sqrt{1-\tilde{x}}}-\frac{L(t)\tau'(x)D(t)}{\sqrt{t-\tau(x)}}
+\right).
+\]
+Finally by eliminating the square root with use of (\ref{subs_2}) we obtain (after some algebra)
+\[
+(3+2\xi)A=D(t)\lim_{\tilde{x}\rightarrow1}
+\frac{1-L(t)\tau'(x)D^2(t)}{(1-\tilde{x})^{\xi+1/2}}.
+\]
+This relationship gives a finite value of $A$ if and only if $\xi=1/2$ and, as a result, we find:
+\[
+A=\frac{1}{4}D^3(t)L^2(t)\tau''(L(t))=
+-\frac{1}{4}\frac{L''(t)}{L'(t)}\sqrt{\frac{L(t)}{L'(t)}}.
+\]

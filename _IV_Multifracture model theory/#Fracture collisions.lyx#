@@ -1,0 +1,1518 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Fracture collisions
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Fracture-collisions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/crack_to_nf.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Propagating fracture approaches closed fracture
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/crack_to_nf_after.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Closed fracture is opened
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/crack_to_crack_bef.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang american
+Propagating fracture approaches existing opening
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{1em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/crack_to_crack.png
+	lyxscale 20
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Openings are joined together.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Interpretation of some possible fracture collision scenarios.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far the presented formulation offered no restrictions on geometry of
+ the model .
+ Each edge representing fracture object could be placed anywhere in 2D plane,
+ without any particular rules about its position with respect to other objects.
+ This should be changed in order to obtain more physical meaning.
+ The most urgent restriction to the placement of fractures should be accounting
+ for possible edge intersections.
+ As a general rule there 
+\emph on
+should be no fracture grid intersection,
+\emph default
+ if two edges intersect that indicates a junction should rather be placed
+ instead at the intersection point, and the grid points should be relocated.
+ Otherwise two separate flow channels would overlap, resulting in obviously
+ highly unrealistic formulation.
+ While this still might have some reason behind it, if one of the edges
+ in question is an 
+\emph on
+concrete pipe
+\emph default
+ object this intersection should be ignored, for intersections of other
+ type of edges a possibility of fluid flowing in and out of intersecting
+ edges must be taken into account.
+ There are two ways intersection of edges might be introduced in the model:
+\end_layout
+
+\begin_layout Itemize
+The initial placement of edges contains intersections.
+ Such initial condition for the model would be considered invalid, one should
+ provide proper initial problem geometry or fix the initial condition such
+ so junctions replace the intersection points..
+\end_layout
+
+\begin_layout Itemize
+When the solution is computed, propagating fracture fronts run into other
+ edge.
+ This event could have its consequences in creation of new fractures, propagatin
+g in new directions, thus rapidly increase complexity of the model geometry.
+\end_layout
+
+\begin_layout Standard
+While the first type is a trivial problem that should be resolved before
+ computation is started, the collisions of propagating fractures must be
+ detected during computation, as well as their outcome must be decided.
+ 
+\end_layout
+
+\begin_layout Standard
+To detect these collisions any simple line intersection algorithm can be
+ used, when each edge is treated as a line segment between the two vertexes
+ it connects.
+ This requires a number of edges squared intersection tests to be performed,
+ but compared to the complexity of the whole problem is not a significant
+ number.
+ 
+\end_layout
+
+\begin_layout Standard
+When collisions are detected, they can be of one of this types:
+\end_layout
+
+\begin_layout Itemize
+crack to closed fracture, interaction with natural fracture
+\end_layout
+
+\begin_layout Itemize
+crack to other crack or pipe, interaction with another hydraulic fracture
+\end_layout
+
+\begin_layout Itemize
+crack to other junction of crack tip 
+\end_layout
+
+\begin_layout Standard
+The third type is a rare scenario since vertexes considered here are of
+ point size, nevertheless one can assume that some collisions are of this
+ type by assuming some proximity threshold.
+ Similar specification of collision types, but for a different multifracturing
+ model, was done by Kresse 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kresse2"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The strategy used here is to pause if these collisions are detected, apply
+ changes to the model to transform intersecting edges into some new meaningful
+ structures and then continue computation.
+ For all the changes made, there are two practical criteria that arise if
+ this model is to be consistent.
+ 
+\end_layout
+
+\begin_layout Standard
+The total amount of fluid in the system before and after collision must
+ remain constant:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Vol{}_{before}=Vol{}_{after}\label{eq:colision_constant_volume}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which can be calculated by integrating all openings of all affected edges
+ 
+\begin_inset Formula $\sum L\int_{0}^{1}w(x)dx$
+\end_inset
+
+.
+ This will allow for fluid balance 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fluid_balance"
+
+\end_inset
+
+ to remain unaffected by the collision.
+ 
+\end_layout
+
+\begin_layout Standard
+The second criteria comes from junction condition 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "constant_pressure"
+
+\end_inset
+
+.
+ The strategy used to compute fluid pressure at junctions ensures the same
+ value across connected edges, but does not guarantee valid nor relatively
+ smooth transition in this value.
+ To maintain relatively smooth and continuous 
+\begin_inset Formula $p_{f}$
+\end_inset
+
+ (reasonable differences over discretized grid), lets assume the value at
+ next closest grid points (
+\begin_inset Formula $x_{2}>0$
+\end_inset
+
+ or 
+\begin_inset Formula $x_{N-1}<1$
+\end_inset
+
+) is similar:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p_{fluid}^{(1)}|_{x_{2}\ or\ x_{N-1}}\approx p_{fluid}^{(2)}|_{x_{2}\ or\ x_{N-1}}\approx...\approx p_{fluid}^{(j)}|_{x_{2}\ or\ x_{N-1}}\label{smooth_pressure}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As collisions in this work are expected to force some fluid transfer to
+ achieve 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:colision_constant_volume"
+
+\end_inset
+
+, balancing out pressure at the same time 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "smooth_pressure"
+
+\end_inset
+
+ provides a reasonable way of managing this transfer.
+\end_layout
+
+\begin_layout Subsection
+Crack to Natural Fracture (closed crack)
+\end_layout
+
+\begin_layout Standard
+A good study of interaction between propagating fracture and natural closed
+ fracture was presented by Chuprakov in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chuprakov"
+
+\end_inset
+
+ and Kresse in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kresse2"
+
+\end_inset
+
+.
+ Both formulations show well the complexity of the problem, the involved
+ parameters include toughness and natural fracture permeability, that are
+ not considered in this model.
+ Hence developing an extensive model for this type of interactions would
+ be a inferior redoing of work that was already done, and the result could
+ be easily invalidated by introduction of some new variable or physical
+ phenomena.
+ A very simplified model should be presented here, that is not meant to
+ properly describe the entire physical process, but to rather acts a reliable
+ solution for the whole multifracturing model, that produces a meaningful
+ result.
+\end_layout
+
+\begin_layout Standard
+As it is well shown in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chuprakov"
+
+\end_inset
+
+, there is a finite number of possible outcomes of fracture to natural fracture
+ collision.
+ The propagating fracture might open natural closed fractures or continue
+ propagating, or both.
+ The approach presented here should allow for all of these theoretical outcomes,
+ thous add new fracture segments depending of the choice of action.
+\end_layout
+
+\begin_layout Standard
+First lets define when an intersection of fracture and closed fracture triggers
+ this strategy.
+ The collision is considered 
+\emph on
+if intersection of line segment representation of fracture and closed fracture
+ exist and the distance 
+\begin_inset Formula $d$
+\end_inset
+
+ between the point of intersection and crack tip is 
+\begin_inset Formula $T_{C}<d<2T_{C}$
+\end_inset
+
+.
+ 
+\emph default
+The parameter 
+\begin_inset Formula $T_{C}$
+\end_inset
+
+ will represent here some small collision distance detection threshold.
+ Under this definition the collision is in fact accepted after propagating
+ fracture crosses the natural fracture.
+ If this cross distance is grater than 
+\begin_inset Formula $2T_{C}$
+\end_inset
+
+ the computation proceeded to far, and should revert to previous time step.
+ Consequently it can be predicted when a fracture will hit some NF:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+time\ to\ collision\approx\frac{distance\ to\ intersection\ +\frac{3}{2}T_{C}}{V_{0}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which gives yet another usage for speed equation 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ term 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed_2"
+
+\end_inset
+
+.
+ This criteria for prediction and detection, should be used to adjust time
+ steps.
+ Once the tip reaches right position, the amount of 
+\begin_inset Formula $d$
+\end_inset
+
+ that makes over HF should be cut of and removed.
+ This removed amount counts as before volume in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:colision_constant_volume"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Vol{}_{before}=L_{crack}\int_{1-\frac{d}{L}}^{1}w_{crack}dx\label{eq:v_bef_NF}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now the reminder of initial crack should be translated into a pipe segment.
+ The new width of this new pipe would be:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w_{pipe}(x)=w_{crack}\left(x\frac{L_{crack}-d}{L_{pipe}}\right)\ x\in(0,1)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since new pipe segment will be shorter by 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ This translation will require some extrapolation, as 
+\begin_inset Formula $w$
+\end_inset
+
+ comes as discretized over some points.
+ The process of finding intermittent data points in described in Appendix
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Interpolating-and-Integrating"
+
+\end_inset
+
+ .
+ Then the old crack segment is removed form the model and three new segments
+ originating from new junction are considered.
+ (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "crack_to_nf"
+
+\end_inset
+
+) These have respective lengths 
+\begin_inset Formula $L_{1},L_{2},L_{3}$
+\end_inset
+
+and are under influence of stresses 
+\begin_inset Formula $\sigma_{1},\sigma_{2},\sigma_{3}$
+\end_inset
+
+.
+ For a fracture to remain opened net fluid pressure must be grater than
+ experienced stress, thou the condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "opening_condition"
+
+\end_inset
+
+) is used to verify that for each considered fracture:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+p_{net}>0\ \rightarrow\ p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}>0,\ i=1,2,3.\label{NF_condition}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the value of 
+\begin_inset Formula $p_{fluild}$
+\end_inset
+
+ is determinate by the value of old fracture at intersection.
+ Since for each considered new fractures 
+\begin_inset Formula $\sigma_{o}^{(i)},\ \sigma_{l}^{(i)}$
+\end_inset
+
+ will have different values, it is possible that all considered new fractures
+ can remain, or the fluid pressure might not be enough to open any of these
+ new segments, and all of them should be discarded.
+ It is possible that a fracture with negative net pressure 
+\begin_inset Formula $p_{net}$
+\end_inset
+
+ might shield other considered fracture, therefore the condition must be
+ checked again if one of the new fractures was discarded.
+ Once the number of allowed new segments is found, the width at 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ is set
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w^{(i)}(x_{2})=\frac{p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}}{k},\ i=1,2,3.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename NF_detect.eps
+	scale 90
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Detection criteria and possible outcome of crack to NF collision.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "crack_pipe_resizing"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each remaining new fracture.
+ Therefore the initial width of these segments might be different, while
+ 
+\begin_inset Formula $p_{fluid}$
+\end_inset
+
+ remains at relatively the same levels.
+ Finally the remaining data points 
+\begin_inset Formula $w(x_{3}...x_{N})$
+\end_inset
+
+ can be delivered form self similar solution (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+), as argued in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Initial-condition"
+
+\end_inset
+
+, scaled by a constant factor to obtain the same value at 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+.
+ The remaining values of 
+\begin_inset Formula $L_{1},L_{2},L_{3}$
+\end_inset
+
+ can be found such so
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}Vol{}_{after}=L_{1}\int_{0}^{1}w_{new\ crack}^{(1)}dx & +L_{2}\int_{0}^{1}w_{new\ crack}^{(2)}dx\\
+ & +L_{3}\int_{0}^{1}w_{new\ crack}^{(3)}dx
+\end{split}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+has the same volume as originally removed part (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:v_bef_NF"
+
+\end_inset
+
+).
+ This can be achieved by assuming some simple proportion of volume split
+ among opened fractures, say proportional to their relative width 
+\begin_inset Formula $\frac{w^{(i)}}{w^{(1)}+w^{(2)}+w^{(3)}}$
+\end_inset
+
+, and bisection method used on function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(L_{(i)})=L_{(i)}\int_{0}^{1}w_{new\ crack}^{(i)}dx-\frac{w^{(i)}}{w^{(1)}+w^{(2)}+w^{(3)}}Vol{}_{before}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The procedure described here will produce an outcome that can be then further
+ integrated in time by the model described in this work.
+ The only guaranteed property is that it aligns with all the other assumptions
+ already made, and does not significantly influences stability or accuracy
+ of computation.
+ In fact this strategy is designed to fit the best with the rest of the
+ model.
+ Alternatively it is possible to arbitrary force removal, or addition of
+ other segments, as long as non negative net fluid pressure is maintained
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "NF_condition"
+
+\end_inset
+
+).
+ The method could potentially be replaced by other, more sophisticated solution
+ (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chuprakov"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kresse2"
+
+\end_inset
+
+) however the outcome should still have to agree with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:colision_constant_volume"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "smooth_pressure"
+
+\end_inset
+
+).
+ Regardless of strategy used, the process of interaction with natural closed
+ fractures is considered as an instant time event, and as long as all possible
+ outcomes can theoretically by handled by this model, this method for collisions
+ can be used at least as a simplified test procedure.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename NF_detect.eps
+	scale 90
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename NF_outcome.eps
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Detection criteria and possible outcome of crack to NF collision.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "crack_to_nf"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Crack to Hydraulic Fracture (crack or pipe crack)
+\end_layout
+
+\begin_layout Standard
+The second probable type of collisions are intersections of propagating
+ fracture with another fracture or PKN pipe segment.
+ At this moment, despite extensive attempts to find any explanation of this
+ phenomena in the literature were failed.
+ (definitely nothing as descriptive as sources for hydraulic fracture to
+ NF interaction).
+ Here again some simplified method that does the task for the purpose of
+ simulating the whole model is used.
+ The detection of this intersections will be based again on some collision
+ acceptance threshold 
+\begin_inset Formula $T_{C}$
+\end_inset
+
+.
+ If the distance form fracture tip, to the intersection with opened hydraulic
+ fracture 
+\begin_inset Formula $d$
+\end_inset
+
+ is less than threshold 
+\begin_inset Formula $|d|<T_{C}$
+\end_inset
+
+ the collision is detected (extended projection of crack is used).
+ If the fracture collides but, the 
+\begin_inset Formula $d>T_{C}$
+\end_inset
+
+, overshoot happens, and smaller time step should be used.
+ The time to intersection can, again, be predicted using fluid velocity
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+time\ to\ collision\approx\frac{distance\ to\ intersection}{V_{0}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When intersection is detected, new junction is created in its place.
+ The old crack, and hit pipe or crack is removed form the model, and replaced
+ with two new pipe segments and a new crack segment (if hit crack), or three
+ new pipe segments (if hit pipe).
+ The procedure is the same, regardless of what type of object was hit, it
+ is being treated as generic edge.
+ The crack will be transformed into new edge 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+, and the hit edge will be split in two new edges 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{3}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The volume before is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Vol{}_{before}=L_{old_{\ }crack}\int_{0}^{1}w_{old_{\ }crack}dx+L_{hit_{\ }edge}\int_{0}^{1}w_{hit\ edge}dx\label{eq:v_bef_HF}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+While the volume after would be 
+\begin_inset Formula 
+\begin{equation}
+Vol{}_{before}=L_{e_{1}}\int_{0}^{1}w_{e_{1}}dx+L_{e_{2}}\int_{0}^{1}w_{e_{2}}dx+L_{e_{3}}\int_{0}^{1}w_{e_{3}}dx\label{eq:v_aff_HF}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The openings 
+\begin_inset Formula $w_{e}$
+\end_inset
+
+ of new edges are given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w_{e_{1}}(x)=w_{old_{\ }crack}\left(x\right)\ x\in(0,1)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w_{e_{2}}(x)=w_{hit\ edge}\left(s_{1}x\right)\ x\in(0,1)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w_{e_{3}}(x)=w_{hit\ edge}\left(s_{2}x+s_{1}\right)\ x\in(0,1)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where parameters 
+\begin_inset Formula $s_{1}=\frac{L_{e_{1}}}{L_{e_{1}}+L_{e_{2}}}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}=\frac{L_{e_{2}}}{L_{e_{1}}+L_{e_{2}}}$
+\end_inset
+
+ are proportional to new edges lengths share in old hit edge 
+\begin_inset Formula $s_{1}+s_{2}=1$
+\end_inset
+
+.
+ This assignment of crack opening will require some extrapolation of values,
+ similarly as needed in NF case.
+ This is done with techniques shown in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Interpolating-and-Integrating"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+So far the volume was changed, as 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+is a result of snapping old crack to attach it at the new intersection.
+ Moreover the inherited value of 
+\begin_inset Formula $p_{net\ e_{1}}(x_{N-1})\approx0$
+\end_inset
+
+, as this is the proximity of old crack tip, does not match with 
+\begin_inset Formula $p_{net_{\ }e_{2}}(x_{N-1})\approx p_{net_{\ }e_{3}}(x_{2})>0$
+\end_inset
+
+.
+ This creates a jump in fluid pressure value that is likely to destabilize
+ either junction strategy (via disturbing newton iterations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "newton root junction"
+
+\end_inset
+
+) or significantly increase problem stiffness.
+ To fix this problem, while maintaining same fluid volume a scheme is constructe
+d that attempts to transfer some of the volume to meet both conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:colision_constant_volume"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "smooth_pressure"
+
+\end_inset
+
+).
+ First lets define 
+\begin_inset Formula $\varpi$
+\end_inset
+
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+weights
+\begin_inset Quotes erd
+\end_inset
+
+ for each of the grid points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varpi_{i}^{(e_{1})}=x_{i}^{p}\label{eq:weigth1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varpi_{i}^{(e_{2})}=s_{2}x_{i}^{p}\label{eq:weigth2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varpi_{i}^{(e_{3})}=s_{1}(1-x_{i})^{p}\label{eq:weigth3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These are chosen such so most of the fluid volume is transferred near the
+ junction.
+ Now lets seek values of 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ used in:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{w_{e_{1}}}(x)=w_{e_{1}}(1+b\varpi_{i}^{(e_{1})})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{w_{e_{2}}}(x)=w_{e_{2}}(1+a\varpi_{i}^{(e_{2})})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{w_{e_{3}}}(x)=w_{e_{2}}(1+a\varpi_{i}^{(e_{3})})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Such so (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:colision_constant_volume"
+
+\end_inset
+
+) (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "smooth_pressure"
+
+\end_inset
+
+) are satisfied by finding zeros of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f_{1}(a,b)=Vol{}_{before}-L_{e_{1}}\int_{0}^{1}\hat{w_{e_{1}}}dx-L_{e_{2}}\int_{0}^{1}\hat{w_{e_{2}}}dx-L_{e_{3}}\int_{0}^{1}\hat{w_{e_{3}}}dx\label{eq:HF_bisection_1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f_{2}(a,b)=p_{fluid}^{(e_{1})}(x_{N-2})-\frac{p_{fluid}^{(e_{2})}(x_{N-1})+p_{fluid}^{(e_{3})}(x_{2})}{2}\label{eq:v_aff_HF_bisection_2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Chained bisection method, one bisection algorithm inscribed into the other,
+ can be used to first find the value of 
+\begin_inset Formula $b$
+\end_inset
+
+ that matches 
+\begin_inset Formula $a$
+\end_inset
+
+ for volume 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+, and then check for solution of pressure 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The following scheme handles a relatively small volume transfer, compared
+ to the volume of involved edges.
+ With 
+\begin_inset Formula $p>1$
+\end_inset
+
+ used for weights (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:weigth1"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:weigth2"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:weigth3"
+
+\end_inset
+
+) , the majority of volume is displaced locally, near the junction.
+ It can have a physical interpretation of pressure jump in system resolving
+ relatively fast, compared to the other processes.
+ However, this modification does not resolve entire pressure drop problem.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename HF_detect.eps
+	scale 90
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HF_outcome.eps
+	scale 90
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Detection criteria and outcome of crack to HF collision.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "crack_to_nf-1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

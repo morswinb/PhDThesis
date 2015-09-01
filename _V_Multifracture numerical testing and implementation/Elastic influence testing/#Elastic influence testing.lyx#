@@ -1,0 +1,2261 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Elastic influence testing and implementation
+\end_layout
+
+\begin_layout Subsection
+Two nearby parallel fractures 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Two-nearby-parallel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename two_close_fractures.png
+	lyxscale 30
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Placeholder graphic.
+ Two close parallel fractures.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "two_close_paraller"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As the first test for pseudo elastic influence procedure, lets consider
+ a relatively simple case where two fractures are placed parallel to each
+ other, and aligned as if there were mirror images of each other.
+ This is similar to the case described by Bunger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+, except for the fact that only two fractures are presents, hence
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ value should be half of the expected value form relation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sigma_close"
+
+\end_inset
+
+.
+ Given that the both fracture height and spacing are set to 
+\begin_inset Formula $1$
+\end_inset
+
+, one should expect to for our elastic scheme to produce a result that follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{l}(x)=\frac{3}{16}p_{net}(x)\label{eq:expected_two_fracures_elasticity}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the above one can work out the value of 
+\begin_inset Formula $g$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sigma_formula"
+
+\end_inset
+
+, as this is the only unknown parameter.
+ The approximate value proposed here is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g=0.1413\label{eq:g_value}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This value of 
+\begin_inset Formula $g$
+\end_inset
+
+ allows the pseudo elastic influence used here to match the value one would
+ expect form Bunger scheme 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+, at the crack inlet 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ The comparison of the two schemes is shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "two_close_paraller_graph"
+
+\end_inset
+
+.
+ However, Bungers method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+ was derived for very long fractures, thous the effect of tip region where
+ width rapidly detergents to zero, and consequently the region with no opened
+ fracture that follows, was not included, the whole fracture aperture was
+ essential treated as flat surface.
+ Therefore to find matching value of 
+\begin_inset Formula $g$
+\end_inset
+
+, approximation was made for a case where fracture half length 
+\begin_inset Formula $L=100$
+\end_inset
+
+.
+ This produces a nearly perfect match as 
+\begin_inset Formula $L$
+\end_inset
+
+ is indeed much larger than the spacing (accuracy grater than internal relative
+ tolerance set to 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+, see Section below 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Approximation-tolerances,-and"
+
+\end_inset
+
+).
+ In cases when shorter fractures are considered, namely 
+\begin_inset Formula $L=10$
+\end_inset
+
+ and 
+\begin_inset Formula $L=1$
+\end_inset
+
+, greater discrepancy can be observed especially for 
+\begin_inset Formula $x>0.9$
+\end_inset
+
+ where a switch form underestimation to overestimation of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ value can be observed.
+ When fracture length is lesser than the distance, as for example 
+\begin_inset Formula $L=\frac{1}{4}$
+\end_inset
+
+, shape of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ changes to a constant line, which represents switch to the far field approximat
+ion (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_far"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename elasticity_two_fracures.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Values of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ for different half fracture lengths.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename elasticity_two_fracures_reltol.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative discrepancies of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ from close approximation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:expected_two_fracures_elasticity"
+
+\end_inset
+
+ for different half fracture lengths.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Elasticity effect of two close parallel fractures.
+ Values of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ depending on the half fracture length.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "two_close_paraller_graph"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Two fractures from common junction 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Two-fractures-from"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here the calculation of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ for two connected fractures will be tested.
+ Suppose that there are two fractures originating form the same point (wellbore)
+, that for this particular test scenario are placed at some angle 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ between them, as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sigma_on_connected_fractures"
+
+\end_inset
+
+.
+ This setting gives a good opportunity to test the effect of distance term
+ 
+\begin_inset Formula $\frac{1}{min(d^{3},1)}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+).
+ If strict 
+\begin_inset Formula $\frac{1}{d^{3}}$
+\end_inset
+
+ was to be used a singularity would appear when 
+\begin_inset Formula $x\rightarrow0$
+\end_inset
+
+.
+ This would be disastrous.
+ Furthermore note that the single fracture formulation already effectively
+ normalized 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity"
+
+\end_inset
+
+ fracture height to 
+\begin_inset Formula $1$
+\end_inset
+
+, hence when 
+\begin_inset Formula $d=1$
+\end_inset
+
+ the term 
+\begin_inset Formula $\frac{1}{d^{3}}$
+\end_inset
+
+, which is valid in three dimensions, could be switched to 
+\begin_inset Formula $\frac{1}{d^{2}}$
+\end_inset
+
+, as the problem now is closer to describing two parallel planes.
+\end_layout
+
+\begin_layout Standard
+Furthermore there is a much more significant problem with distance calculation
+ for two connected fractures.
+ Lets remind ourselves that vector 
+\begin_inset Formula $\hat{\sigma}$
+\end_inset
+
+ is computed 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sigma_formula"
+
+\end_inset
+
+ from the fracture propagation axis 
+\begin_inset Formula $x$
+\end_inset
+
+, that is in the middle of the fracture, but not from the fracture surface.
+ Under most conditions 
+\begin_inset Formula $w<<L$
+\end_inset
+
+, thous the slight deviation form location on crack surface and middle should
+ not matter, but here as these fractures are interconnected a small overlapping
+ region appears near the connecting junction.
+ Properly modeling this region is beyond the current problem formulation,
+ thous 
+\begin_inset Formula $\frac{1}{max(d^{3},1)}$
+\end_inset
+
+ is used here again as a convenient approximation.
+ 
+\end_layout
+
+\begin_layout Standard
+The effects of using 
+\begin_inset Formula $\frac{1}{min(d^{3},1)}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) as opposed to 
+\begin_inset Formula $\frac{1}{d^{3}}$
+\end_inset
+
+ are shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_on_connected_fracturesa"
+
+\end_inset
+
+.
+ It is expected that under most circumstances the over all difference in
+ the value of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ should be indistinguishable, for both of these strategies.
+ Here it can be observed for all considered angles, the singularity at 
+\begin_inset Formula $x\rightarrow0$
+\end_inset
+
+ is removed, but the whole influence 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is mostly affected at shallow angles.
+ This particular example uses 
+\begin_inset Formula $L=10$
+\end_inset
+
+, thus with much longer fractures less difference should be observed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ang_1.eps
+	scale 150
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Fractures are orientated by an angle 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in relation to each other.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename angle1.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sigma_on_connected_fracturesa"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Value of 
+\begin_inset Formula $\sigma_{l}(x)$
+\end_inset
+
+ for different 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, compares 
+\begin_inset Formula $\frac{1}{min(d^{3},1)}$
+\end_inset
+
+ to 
+\begin_inset Formula $\frac{1}{d^{3}}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two connected fractures from common junction.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sigma_on_connected_fractures"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approximation tolerances, and fast square root 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Approximation-tolerances,-and"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The recursive method for approximation of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Method-for-elasticity"
+
+\end_inset
+
+ uses tolerance thresholds 
+\begin_inset Formula $\sigma_{l}^{reltol}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{abstol}$
+\end_inset
+
+ to decide when to stop recursion (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:elasticity_recursive_condition"
+
+\end_inset
+
+).
+ The previously considered case of two close parallel fractures, as shown
+ on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "two_close_paraller"
+
+\end_inset
+
+ can be used to measure the effects of different tolerances on the final
+ value of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+.
+ The spacing is set to
+\begin_inset Formula $1$
+\end_inset
+
+ while 
+\begin_inset Formula $L=100$
+\end_inset
+
+ to increase number the divisions needed to achieve desired accuracies.
+ .Results of such measurements for three pairs of tolerance values are shown
+ on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_tols"
+
+\end_inset
+
+.
+ The baseline comparison is a result obtained with 
+\begin_inset Formula $\sigma_{l}^{reltol}=\sigma_{l}^{abstol}=10^{-12}$
+\end_inset
+
+.
+ Increasing the tolerances to 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-4},\sigma_{l}^{reltol}=10^{-8}$
+\end_inset
+
+ reduces the accuracy but to a level comparable with 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-3},\sigma_{l}^{reltol}=10^{-6}$
+\end_inset
+
+ when considering the proximity of end interval points 
+\begin_inset Formula $x=0$
+\end_inset
+
+ and 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ However further increase to 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-2},\sigma_{l}^{reltol}=10^{-4}$
+\end_inset
+
+ results in unsafe relative values of 
+\begin_inset Formula $\delta\sigma_{l}$
+\end_inset
+
+, that exceed 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+, thous less strict tolerances should not be used.
+\end_layout
+
+\begin_layout Standard
+The reason for seeking optimal values 
+\begin_inset Formula $\sigma_{l}^{reltol}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{abstol}$
+\end_inset
+
+, is that the lower the tolerances are, the more recursive steps are needed
+ to find (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+), and thous more time is consumed.
+ Since the general accuracies of this multifracturing model are unlikely
+ to be greater than 
+\begin_inset Formula $10^{-5}$
+\end_inset
+
+ (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Comparison-of-ODE"
+
+\end_inset
+
+ ), using methods of higher accuracies will be somehow a waste of resources.
+ Meanwhile finding other means off speeding up this elasticity calculation
+ may prove to be very beneficial for overall performance.
+\end_layout
+
+\begin_layout Standard
+An additional improvement can be achieved by tweaking the inverse square
+ root present in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+): 
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{d^{3}}\xrightarrow{requires}\frac{1}{\sqrt{x}^{3}}\label{eq:inverse_sqrt_is_neede}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Interestingly so far the majority of this work could be implemented only
+ as numerical additions, subtractions, multiplications and divisions.
+ The whole pseudo-elasticity scheme 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Method-for-elasticity"
+
+\end_inset
+
+ does not require any more complex mathematical functions, except for 
+\begin_inset Formula $\sqrt{x}$
+\end_inset
+
+ required to calculate the distance 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ The simplest approach is to use the existing native sqrt() function, available
+ in all programing languages.
+ This function however has one significant disadvantage: its accuracy is
+ extremely high, while the time cost can be in hundreds of CPU cycles.
+ Unfortunately, 
+\begin_inset Formula $\sqrt{x}$
+\end_inset
+
+ will be used a lot of times in this multifracturing problem, but there
+ are other great works where the issue of native sqrt() performance was
+ fixed.
+ 
+\end_layout
+
+\begin_layout Standard
+A number of 3D graphics problems requires massive repeated calculations
+ of surface normals, which can be speedup by the fast approximation of inverse
+ square root, a method which is very well described in blog by Hansen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "0x5f3759df"
+
+\end_inset
+
+.
+ The most influential code implementation of this algorithm would be the
+ one attributed to Cormack found in Quake III source code 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "quake_source"
+
+\end_inset
+
+, but unfortunately the original source appears to be unknown.
+ Nevertheless the fast inverse square root, is of interest here as it can
+ be used in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) to replace the native sqrt() function.
+ The endlessly repeated calculation of inverse distance 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:inverse_sqrt_is_neede"
+
+\end_inset
+
+, makes this problem somehow similar to 3D graphics engine.
+ 
+\end_layout
+
+\begin_layout Standard
+This fast inverse square root approximation is based on bitwise operations
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+magic constant
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $0x5f3759df$
+\end_inset
+
+ followed by one or two newton iterations.
+ In Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "quake_root_speedup"
+
+\end_inset
+
+ the relative time differences resulting form different tolerances, and
+ square root methods are shown.
+ With one newton iteration fast 
+\begin_inset Formula $\frac{1}{\sqrt{x}}$
+\end_inset
+
+ the approximation of whole 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ needs about 
+\begin_inset Formula $20\%$
+\end_inset
+
+ less time, than less accurate native sqrt() with 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-2},\sigma_{l}^{reltol}=10^{-4}$
+\end_inset
+
+.
+ Furthermore two newton iterations in the fast square root, are enough to
+ achieve the same results as native sqrt() function, but still save about
+\begin_inset Formula $10\%$
+\end_inset
+
+ of time.
+ Although these improvements are not large performance gains, these are
+ given for 
+\emph on
+free
+\emph default
+ and offer straightforward improvement for the whole scheme.
+ Naturally many similar numerical tweaks exist, but this one was chosen
+ in particular as it adds an interesting transferable flavor.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-2},\sigma_{l}^{reltol}=10^{-4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.00$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-3},\sigma_{l}^{reltol}=10^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.09$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-4},\sigma_{l}^{reltol}=10^{-8}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.31$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+one iteration fast 
+\begin_inset Formula $\frac{1}{\sqrt{x}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.82$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+two iterations fast 
+\begin_inset Formula $\frac{1}{\sqrt{x}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.01$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative time consumed when computing 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+.
+ The alternative calculations with fast 
+\begin_inset Formula $\frac{1}{\sqrt{x}}$
+\end_inset
+
+ uses 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{abstol}=10^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "quake_root_speedup"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sigma_accs.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative discrepancies in 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+, depending on the desired accuracies.
+ The alternative calculations with fast 
+\begin_inset Formula $\frac{1}{\sqrt{x}}$
+\end_inset
+
+ uses 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{abstol}=10^{-6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sigma_tols"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pseudo elastic influence 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+, in some sample geometries
+\end_layout
+
+\begin_layout Standard
+The method for resolving fracture visibility 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "visibility_algorithm"
+
+\end_inset
+
+, is rather complex and deserves a few extra tests to verify if the produced
+ results agree with expectations.
+ On Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sample_visibility1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sample_visibility2"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sample_visibility3"
+
+\end_inset
+
+ some relatively simple to analyze structures are presented.
+ One can have a look on the arrangements of edges, and deduce what the pattern
+ of corresponding visibility matrix would be.
+ Consequently the output of algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "visibility_algorithm"
+
+\end_inset
+
+ can be check against these empirical expectations.
+\end_layout
+
+\begin_layout Standard
+First lets have a look at Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sample_visibility1"
+
+\end_inset
+
+.
+ Here six cracks are placed in such a way that 
+\begin_inset Formula $e_{3},e_{4}$
+\end_inset
+
+ are in the center, and 
+\begin_inset Formula $e_{1},e_{2},e_{5},e_{6}$
+\end_inset
+
+ are on the outer edges of a short array of fractures.
+ This placement makes 
+\begin_inset Formula $e_{3},e_{4}$
+\end_inset
+
+ visible to all 
+\begin_inset Formula $e_{1},e_{2},e_{5},e_{6}$
+\end_inset
+
+, which can be confirmed by the presented visibility pattern.
+ Furthermore the end tips of 
+\begin_inset Formula $e_{1},e_{2}$
+\end_inset
+
+ are long enough to extend beyond the shadow of center fractures, and are
+ visible to end tips of 
+\begin_inset Formula $e_{5},e_{6}$
+\end_inset
+
+ respectively.
+ The value of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ for the middle 
+\begin_inset Formula $e_{3},e_{4}$
+\end_inset
+
+ at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ is double of that for outer 
+\begin_inset Formula $e_{1},e_{2},e_{5},e_{6}$
+\end_inset
+
+, as the middle is influenced by the two outer fractures, while outer segments
+ only by the single middle fracture.
+ As the pair 
+\begin_inset Formula $e_{1},e_{2}$
+\end_inset
+
+ is the longest, the end tips 
+\begin_inset Formula $x=1$
+\end_inset
+
+ are furthermost away form the rest of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ sources, thous the value of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is the lowest at these points.
+ However having a closer look at 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ for 
+\begin_inset Formula $e_{1},e_{2}$
+\end_inset
+
+ one can notice that the rate of change slightly decreases near the tip,
+ which should be associated with these tips being also exposed to influence
+ from parts of 
+\begin_inset Formula $e_{5},e_{6}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On the next Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sample_visibility2"
+
+\end_inset
+
+, a number of PKN segments are connected to each other directly.
+ The visibility matrix shows only full squares, as all the fractures are
+ fully visible to each other, or not visible at all.
+ The effect of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $min(d^{3},1)$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) on 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ can be well observed here.
+ For the relatively long 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+, the reduction of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ occurs at relatively close proximity of the crack tip 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ The distribution of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is most affected for the shortest 
+\begin_inset Formula $e_{4}$
+\end_inset
+
+.
+ Whether this is a serious issue or not, is a hard question to answer.
+\end_layout
+
+\begin_layout Standard
+Finally Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sample_visibility3"
+
+\end_inset
+
+ consist of a mixture of partially and fully visible interconnected PKN
+ cracks and pipes.
+ Pipe segment 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+, as expected is seen by all the other edges, with the exception of 
+\begin_inset Formula $e_{5}$
+\end_inset
+
+ and parts of 
+\begin_inset Formula $e_{7}$
+\end_inset
+
+, which is well reflected in the visibility matrix .
+ The presence of 
+\begin_inset Formula $e_{4},e_{5}$
+\end_inset
+
+ affects 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ for 
+\begin_inset Formula $e_{7}$
+\end_inset
+
+ as a local maxima near 
+\begin_inset Formula $x\approx0.5$
+\end_inset
+
+ can be observed.
+ Even in such a case of relatively small test scenario, much more observations
+ could be made.
+ However as complex as the pattern of visibility matrix and distribution
+ of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ might be, the generic formulation for obtaining 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ presented in this work produces valid and consistent results, which is
+ an achievement in its own.
+ Having verified the procedure for this examples, it is reasonable to assume
+ that other possible arrangements of fractures will also be properly handled.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename vis1.eps
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename vis1_mat.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename vis1_sig.eps
+	scale 65
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example visibility matrix and 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+, array of PKN fractures connected by solid pipes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sample_visibility1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename vis2.eps
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename vis2_mat.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename vis2_sig.eps
+	scale 65
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "sample_visibility2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example visibility matrix and 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+, a set of connected PKN cracks and pipes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename vis3.eps
+	scale 50
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename vis3_mat.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename vis3_sig.eps
+	scale 65
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example visibility matrix and 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+, a set of connected PKN cracks and pipes with some partial visibilities.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sample_visibility3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Power input in an array of fractures
+\end_layout
+
+\begin_layout Subsubsection
+Uncoupled array
+\end_layout
+
+\begin_layout Standard
+In the work by Bunger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+ as mentioned before in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Two-nearby-parallel"
+
+\end_inset
+
+, a specific scenario was considered.
+ A number 
+\begin_inset Formula $N_{fracture}$
+\end_inset
+
+ of double wing fractures are placed in a parallel array at some interval
+ with fixed width 
+\begin_inset Formula $Z$
+\end_inset
+
+ .
+ The work was conducted on Radial, KGD and PKN geometry, and one of its
+ goals was to approximate the number of placed fractures that minimizes
+ power input required to maintain constant pump in rate over time.
+ That analytical work test can be reproduced for PKN model using numerical
+ methods introduced in this work.
+ First lets write the spacing of fractures 
+\begin_inset Formula $H$
+\end_inset
+
+ , and 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ the individual pumping rate for each half fracture wing:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+H=\frac{Z}{N_{fracture}},\quad q_{i}=\frac{q_{0}}{N_{fracture}}\label{bunger_test}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which follow the test scenario proposed by Bunger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+.
+ Thous in this case flow is amused to disperse evenly to each fracture resulting
+ in the same value of pumping 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ for each fracture.
+ The total array power input in watts 
+\begin_inset Formula $P(t)$
+\end_inset
+
+ is approximated by: 
+\begin_inset Formula 
+\begin{equation}
+P(t)=\sum_{1}^{N_{fracture}}q_{i}p_{fluid}(t,0)\label{power_input}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The other parameters used in this scenario are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\nu= & 0.25\\
+E= & 10^{10}\\
+h= & 20\\
+\mu= & 1\\
+q_{0}= & 0.1\\
+\sigma_{x}= & 7*10^{7}
+\end{split}
+\label{eq:power_params}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where all these values are taken form the original paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+ , except for Poisson's ratio which was set to a reasonable value.
+ 
+\end_layout
+
+\begin_layout Standard
+Naturally one should expect slight variance in the obtained results, as
+ Bunger's tests have the same L and sigma for all fractures
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../Comparision with other works/power_arr_1.eps
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Power 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../Comparision with other works/bunger_result.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The original analytical result by Bunger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "testvsbunger-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Power input in parallel array of fractures, vs number of fractures.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Coupled array (to be done later when after some bugs in the code are fixed)
+\end_layout
+
+\begin_layout Standard
+Now lets make a more sophisticated test where 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ is not fixed as the same for all connected fractures, but instead a 
+\emph on
+solid pipe segment
+\emph default
+ is used to connect all fractures in this array.
+ Fractures now will receive different proportional share of 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ depending on their placement in relation to each other, and the actual
+ wellbore.
+\end_layout
+
+\begin_layout Standard
+...tbc...
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

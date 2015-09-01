@@ -1,0 +1,517 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Reformulation of the problem in proper dependent variables.
+ Second approach 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Reformulation-of-the-1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The aforementioned formulation of the problem in terms of the dependent
+ variable 
+\begin_inset Formula $U$
+\end_inset
+
+ has one considerable drawback.
+ It is well known that for different elasticity models and different hydrofractu
+ring regimes one has various asymptotic behaviors of the solution near the
+ crack tip 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Adachi_2002"
+
+\end_inset
+
+.
+ For example, for exact equations of elasticity theory and the zero toughness
+ condition (
+\begin_inset Formula $K_{IC}=0$
+\end_inset
+
+), the exponent of the leading term of 
+\begin_inset Formula $w$
+\end_inset
+
+ varies from 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+, for the Newtonian fluid, to 
+\begin_inset Formula $1$
+\end_inset
+
+, for the ideally plastic fluid.
+ Thus, the same reformulation to the type of the proper variable might be
+ inconvenient, or even impossible.
+\end_layout
+
+\begin_layout Standard
+For this reasons, another dependent variable will be introduced.
+ Although it does not transform the asymptotic behavior of the solution
+ in such a smooth manner as it has been done previously when adopting 
+\begin_inset Formula $U$
+\end_inset
+
+, this variable has its own advantages.
+ Namely, lets consider a new dependent variable 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ defined as follows: 
+\begin_inset Formula 
+\begin{equation}
+\Omega(t,x)=\int_{x}^{1}w(t,\xi)d\xi.\label{omega}
+\end{equation}
+
+\end_inset
+
+
+\emph on
+This variable is not directly related to any particular asymptotic representatio
+n of 
+\begin_inset Formula $w(x,t)$
+\end_inset
+
+, however it assumes that 
+\begin_inset Formula $w\to0$
+\end_inset
+
+ for 
+\begin_inset Formula $x\to1$
+\end_inset
+
+.
+ As a result the form of governing equations for 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ remain the same regardless of 
+\begin_inset Formula $w(x,t)$
+\end_inset
+
+ asymptotics, i.e.
+ this formulation has a general (universal) character.
+ Note, that in case of 
+\begin_inset Formula $U$
+\end_inset
+
+ the optimal way of transformation for the lubrication equation essentially
+ depends on the exact form of asymptotic expansion (the leading term) for
+ 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+ Another advantage of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ comes from the fact that it has clear physical and technological interpretation.
+ Namely, it reflects the crack volume measured from the crack tip.
+\end_layout
+
+\begin_layout Standard
+Asymptotics of the function 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ near the crack tip takes the following form: 
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\Omega(t,x)=\Omega_{0}(t)(1-x)^{\frac{4}{3}}+\Omega_{1}(t)(1-x)^{\alpha+1}\\
++o((1-x)^{\alpha+1}),\quad x\rightarrow1,
+\end{split}
+\label{omega_asymp}
+\end{equation}
+
+\end_inset
+
+where the coefficients 
+\begin_inset Formula $\Omega_{0}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega_{1}(t)$
+\end_inset
+
+ are related to those in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1n"
+
+\end_inset
+
+): 
+\begin_inset Formula 
+\begin{equation}
+\Omega_{0}(t)=\frac{3}{4}w_{0}(t),\quad\Omega_{1}(t)=\frac{1}{\alpha+1}w_{1}(t).\label{omega_coefs}
+\end{equation}
+
+\end_inset
+
+
+\emph on
+Thus, similarly to 
+\begin_inset Formula $U$
+\end_inset
+
+, the new variable is smoother than the crack opening, 
+\begin_inset Formula $w$
+\end_inset
+
+, and the first singular derivative of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is that of the second order.
+\end_layout
+
+\begin_layout Standard
+By spatial integration of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_continuity"
+
+\end_inset
+
+ from 
+\begin_inset Formula $x$
+\end_inset
+
+ to 1 and substitution of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega"
+
+\end_inset
+
+ one obtains: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\Omega}{\partial t}=-\frac{1}{L(t)}\left[\big(V(t,x)-xV(t,1)\big)\frac{\partial\Omega}{\partial x}+V(t,1)\Omega\right]-Q_{l},\label{omega_continuity}
+\end{equation}
+
+\end_inset
+
+where the monotonicity of 
+\begin_inset Formula $L'(t)>0$
+\end_inset
+
+ has been taken into account and 
+\begin_inset Formula 
+\[
+Q_{l}(t,x)=\int_{x}^{1}q_{l}(t,\xi)d\xi.
+\]
+
+\end_inset
+
+Here, the particle velocity 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed"
+
+\end_inset
+
+ is computed in the manner: 
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=\frac{1}{3L(t)}\frac{\partial}{\partial x}\left(\frac{\partial\Omega}{\partial x}\right)^{3}\quad.\label{omega_speed}
+\end{equation}
+
+\end_inset
+
+By eliminating 
+\begin_inset Formula $V(x,t)$
+\end_inset
+
+ from the equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_continuity"
+
+\end_inset
+
+ we derive a new formula for the lubrication equation: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\Omega}{\partial t}=-\frac{1}{L^{2}(t)}\left[\left(\frac{\partial\Omega}{\partial x}\right)^{3}\frac{\partial^{2}\Omega}{\partial x^{2}}+\frac{64}{81}\Omega_{0}^{3}\left(\Omega-x\frac{\partial\Omega}{\partial x}\right)\right]-Q_{l}.\label{omega_system}
+\end{equation}
+
+\end_inset
+
+The boundary conditions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_boundary"
+
+\end_inset
+
+ are expressed in the following way: 
+\begin_inset Formula 
+\begin{equation}
+-\frac{1}{L(t)}\left(\frac{\partial\Omega}{\partial x}\right)^{3}\frac{\partial^{2}\Omega}{\partial x^{2}}(t,0)=q_{0},\quad\frac{\partial\Omega}{\partial x}(t,1)=0.\label{omega_boundary}
+\end{equation}
+
+\end_inset
+
+Interestingly, the first boundary condition, directly substituted into the
+ lubrication equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_continuity"
+
+\end_inset
+
+ can be equivalently rewritten in the form 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\Omega}{\partial t}(t,0)=-\frac{64}{81^{2}L(t)}\Omega(t,0)\Omega_{0}^{3}(t)+\frac{q_{0}(t)}{L(t)}-Q_{l}(t,0),\label{omega_boundary_1}
+\end{equation}
+
+\end_inset
+
+This condition, in turn, represents nothing but the local (in time) flux
+ balance condition.
+ To verify this, it is enough to apply the time derivative to the equation
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "balance_2"
+
+\end_inset
+
+).
+ Furthermore it appears much easier for implementation into a numerical
+ procedure than (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_boundary"
+
+\end_inset
+
+)
+\begin_inset Formula $_{1}$
+\end_inset
+
+ itself, but may lead to some increase of the problem stiffness, as shown
+ later in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Stiffness-analysis"
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+It is easy to check, by using the governing equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_continuity"
+
+\end_inset
+
+ and limiting values of all its terms for 
+\begin_inset Formula $x\to1$
+\end_inset
+
+ , that a weaker boundary condition 
+\begin_inset Formula 
+\begin{equation}
+\Omega(t,1)=0\label{omega_boundary_2}
+\end{equation}
+
+\end_inset
+
+is equivalent to the original one 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary"
+
+\end_inset
+
+
+\begin_inset Formula $_{2}$
+\end_inset
+
+.
+ Finally, the speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed"
+
+\end_inset
+
+) in the 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ formulation assumes the following form: 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}L^{2}(t)=\frac{128}{81}\Omega_{0}^{3}(t).\label{omega_L2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This way another system of PDEs is obtained, that is composed of two operator
+ relations: 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\Omega=\mathcal{A}_{\Omega}(\Omega,L^{2}),\quad\frac{d}{dt}L^{2}(t)=\mathcal{B}_{\Omega}(\Omega),\label{Omega_DS}
+\end{equation}
+
+\end_inset
+
+where, as previously, 
+\begin_inset Formula $\mathcal{A}_{\Omega}$
+\end_inset
+
+ is defined by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system"
+
+\end_inset
+
+ with boundary conditions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary"
+
+\end_inset
+
+
+\begin_inset Formula $_{1,2}$
+\end_inset
+
+ or 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary_1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary_2"
+
+\end_inset
+
+.
+ The second operator, 
+\begin_inset Formula $\mathcal{B}_{\Omega}$
+\end_inset
+
+, is given by equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_L2"
+
+\end_inset
+
+.
+ Here the initial conditions are obtained from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_initial"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+L(0)=1,\quad\Omega(0,x)=\Omega_{*}(x)\equiv\int_{x}^{1}w_{*}(\xi)d\xi.\label{Omega_initial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

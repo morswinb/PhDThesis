@@ -1,0 +1,1095 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Formulation of 2D multifracturing problem 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Formulation-of-2D"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Graph like structure
+\end_layout
+
+\begin_layout Standard
+Lets assume that the multifracturing model is a collection of some smaller
+ constructs.
+ It exists in some horizontal rock layer, that when viewed form the top
+ can be interpreted as a two dimensional plane.
+ Consequently a number 2D points, 
+\emph on
+vertices
+\emph default
+, can be specified.
+ Each two 
+\emph on
+vertices 
+\emph default
+can be connected by an 
+\emph on
+edge
+\emph default
+, consequently making the entire structure a graph.
+ Edges and vertices are abstractions to various physical structures.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Edge
+\emph default
+ can be interpreted as:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+PKN crack
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+PKN pipe
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+solid pipe
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+closed crack
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Vertex
+\emph default
+ can be thought as:
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+junction
+\shape default
+ connection points, distributes fluid among connected edges, can act as
+ a pump in location (wellbore),
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+propagating cracks tip 
+\emph default
+a movable 
+\shape italic
+crack
+\shape default
+ tip location
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+closed cracks tip, 
+\emph default
+indicates 
+\shape italic
+crack closed 
+\emph on
+start or end location
+\end_layout
+
+\begin_layout Standard
+With this abstraction it follows that :
+\end_layout
+
+\begin_layout Itemize
+each vertex can be located by its unique 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinates (not to be confused with normalized 
+\begin_inset Formula $\tilde{x}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+every vertex is connected to at least one edge
+\end_layout
+
+\begin_layout Itemize
+every edge must connect two vertices
+\end_layout
+
+\begin_layout Itemize
+normal vector 
+\begin_inset Formula $\hat{n}$
+\end_inset
+
+ to each edge can be obtained.
+\end_layout
+
+\begin_layout Itemize
+length 
+\begin_inset Formula $L$
+\end_inset
+
+ for edge is the distance between these two connected vertices
+\end_layout
+
+\begin_layout Itemize
+each edge has different orientation, which results in different net backstress
+ 
+\begin_inset Formula $\sigma_{o}$
+\end_inset
+
+ value
+\end_layout
+
+\begin_layout Itemize
+
+\shape italic
+crack 
+\emph on
+and 
+\emph default
+crack pipe 
+\emph on
+store additional information about the distribution of fluid, and spatial
+ discretization (grid type and 
+\begin_inset Formula $N$
+\end_inset
+
+), while 
+\emph default
+crack pipe 
+\emph on
+and 
+\emph default
+crack closed 
+\emph on
+have no such data.
+\end_layout
+
+\begin_layout Itemize
+locations of each edge local 1D grid point 
+\begin_inset Formula $i$
+\end_inset
+
+ in global 2D coordinate system can be then consequently derived as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(x_{i},y_{i})=(x_{1}+L_{x}L,\ y_{1}+L_{y}L)\label{point_location}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where unit vector 
+\begin_inset Formula $\hat{L}=(L_{x},L_{y})$
+\end_inset
+
+ shows propagation direction and is perpendicular to edge normal 
+\begin_inset Formula $\hat{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Representing model as a graph structure is not necessary from mathematical,
+ but highly beneficial form practical computational point of view.
+ This representation allows to couple 1D formulation, into 2D problem, while
+ still effectively using 1D to describe each fracture.
+ The added dimension is dealt with at higher level, while large amounts
+ of single fracture solution can be reused.
+ Additionally several issues, such as fracture interactions, rendering or
+ actual code quality, will be shown later to be elegantly addressed with
+ such structure representation.
+ Note that if only one 
+\shape italic
+junction
+\shape default
+ and 
+\emph on
+propagating crack tip 
+\emph default
+are connected by a
+\shape italic
+ crack 
+\emph on
+edge this formulation is equivalent to standard half wing PKN model fracture.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename geometry_sample1.png
+	display false
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\emph on
+placeholder
+\emph default
+ A sample 2D multifracturing geometry visualized and its interpretation
+ as a graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Backstress 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The backstress experienced by each fracture should be based on that fracture
+ orientation relative to horizontal stresses in the underground formation.
+ It is a common assumption in hydrofracturing problems, as showed by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kresse1,BungerPeirce,Wong"
+
+\end_inset
+
+ and , to simply split this experienced stress into two parallel components,
+ this should be denoted in this work as 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+.
+ The third component 
+\begin_inset Formula $\sigma_{z}$
+\end_inset
+
+ , acting in vertical direction, is ignored as has little influence on existing
+ fractures.
+ This assumes uniform stress experienced by the underground formation.
+\end_layout
+
+\begin_layout Standard
+The following relation will be used to find 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ for each edge:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{0}=|\hat{n}\cdot\sigma_{x}|+|\hat{n}\cdot\sigma_{y}|\label{sigma_0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\hat{n}$
+\end_inset
+
+ is unit normal to that edge.
+ As it can be observed form 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "poiseulle_multi-1"
+
+\end_inset
+
+, if
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ is constant along fracture length this term would eventually vanish in
+ computations.
+ However if 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ is different for interconnected fractures, then this term must be taken
+ into account if the fluid pressure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity_multi-1"
+
+\end_inset
+
+ is to be properly compared between these fractures.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simga.png
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Edge normal 
+\begin_inset Formula $\hat{n}$
+\end_inset
+
+ in relation to 
+\begin_inset Formula $\sigma_{x}$
+\end_inset
+
+and 
+\begin_inset Formula $\sigma_{y}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PKN crack 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:PKN-crack"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The conventional PKN like fracture, as described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:PKN-crack"
+
+\end_inset
+
+, is used with a number of changes.
+ Such a crack is attached to a 
+\shape italic
+junction
+\shape default
+ by its inlet and has a
+\emph on
+ propagating tip
+\emph default
+, that moves away form its the inlet.
+ The computation for PKN crack needs to be slightly updated.
+ The old governing equation for PKN model (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system"
+
+\end_inset
+
+) is replaced by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}=\frac{k}{ML^{2}}\left[\frac{1}{3}w_{0}^{3}x\frac{\partial w}{\partial x}+3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]\label{w_system_elast}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\frac{1}{ML^{2}}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+To add the stress influence from nearby fractures 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+.
+ Furthermore the boundary at the inlet (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_boundary"
+
+\end_inset
+
+) should be modified to
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+w(0,t)=\frac{1}{k}\left[p_{fluid}^{(x=0)}-\sigma_{0}-\sigma_{l}(0,t)\right],\label{pkn_elasticity_crack_bound}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $p_{fluid}$
+\end_inset
+
+ is the fluid pressure the 
+\emph on
+junction
+\emph default
+ this 
+\emph on
+crack
+\emph default
+ propagates from.
+ This formulation does not affect 
+\begin_inset Formula $L$
+\end_inset
+
+ computation, defined by operator 
+\begin_inset Formula $\mathcal{B}_{w}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+).
+ The change applied to operator 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ still allows to use previously defined proper variable 
+\begin_inset Formula $U$
+\end_inset
+
+ with relative ease:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\frac{\partial U}{\partial t}= & \frac{k}{ML^{2}}\left[xU_{0}\frac{\partial U}{\partial x}+\left(\frac{\partial U}{\partial x}\right)^{2}+3U\frac{\partial^{2}U}{\partial x^{2}}\right]\end{split}
+\label{U_system_elast}
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++3U^{\frac{2}{3}}\left\{ \frac{1}{ML^{2}}\left[\frac{\partial U}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+U\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore formulation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+) is still available.
+ The 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ formulation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+) although could also used, carries an inherited problem with conversion
+ form the width integral to actual width of the fracture.
+ While this could be managed, it would considerably increase the time needed
+ to develop the whole model, thous it should be left for future development.
+ 
+\end_layout
+
+\begin_layout Subsection
+PKN pipe 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:PKN-pipe"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Within the boundaries of PKN model, described in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:PKN-crack"
+
+\end_inset
+
+, it is possible to consider some fixed length of fracture as a separate
+ flow channel.
+ Consequently this would results in a new system where we seek to find pipe
+ width 
+\begin_inset Formula $w(x,t)$
+\end_inset
+
+ with initial conditions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w(0,x)=w_{*}(x),\quad x\in(0,1),\label{pipe_initial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and boundary conditions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+w(0,t) & = & \frac{1}{k}\left[p_{fulid}^{(x=0)}-\sigma_{0}-\sigma_{l}(0,t)\right]\label{pipe_boundary}\\
+w(1,t) & = & \frac{1}{k}\left[p_{fulid}^{(x=1)}-\sigma_{0}-\sigma_{l}(1,t)\right]
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+where 
+\begin_inset Formula $p_{fulid}^{(x=0)}$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{fulid}^{(x=1)}$
+\end_inset
+
+ refers to fluid pressure at connected
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ junctions
+\emph default
+ .
+ The governing equation is similar to result obtained in normal PKN pipe
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system"
+
+\end_inset
+
+) with one significant difference; the propagation related terms are removed:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}=\frac{k}{ML^{2}}\left[3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]-q_{l}\label{pipe_reynolds}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Now 
+\begin_inset Formula $L=constant$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is the length of this channel
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, and the distance between two connected 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+junctions
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ This governing equation has much smoother behavior than the previous for
+ crack segment (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system_elast"
+
+\end_inset
+
+) , as the fracture tip and its singularity is no longer exist.
+ Just like in previous case the proper dependent variable 
+\begin_inset Formula $U$
+\end_inset
+
+ can be introduced:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial U}{\partial t}=\frac{k}{3ML^{2}}\left[\left(\frac{\partial U}{\partial x}\right)^{2}+3U\frac{\partial^{2}U}{\partial x^{2}}\right]-3U^{\frac{2}{3}}q_{l}\label{pipe_reynolds_U}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally when the effect of neighboring fractures 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is included the governing equation becomes:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}=\frac{k}{ML^{2}(t)}\left[3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]\label{w_system_elast_pipe}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
++\frac{1}{ML^{2}(t)}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solid pipe and Closed Crack
+\end_layout
+
+\begin_layout Standard
+It is reasonable to assume that there might be some fixed flow channels,
+ such as man made horizontal concrete pipes.
+ These 
+\shape italic
+solid pipe
+\shape default
+ segments are assumed to have circular cross-section, direct application
+ of Poiseuille's Law in the simplest form can be made:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q=\frac{\Delta p_{fluid}\pi R^{4}}{8\mu L}\label{poiseuille law}
+\end{equation}
+
+\end_inset
+
+Where variable 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the flow rate, and length 
+\begin_inset Formula $L$
+\end_inset
+
+ and radios 
+\begin_inset Formula $R$
+\end_inset
+
+ are constant.
+ The term
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $\Delta p_{fluid}$
+\end_inset
+
+ is the difference between fluid pressure at two junctions this 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+solid pipe 
+\emph default
+connects.
+ Thous the flow rate might take negative or positive values, depending on
+ the direction of the flow.
+ This assumes laminar flow in these solid pipe connections, but the PKN
+ model itself is based on a non turbulent flow assumption.
+\end_layout
+
+\begin_layout Standard
+Closed cracks are preexisting fractures.
+ This type of fractures is assumed to be closed by the confining pressure,
+ but might be opened by the fracturing fluid.
+ These have zero width, and exist as "markers" that may change the path
+ of propagation of existing fractures.
+ Each closed crack spams between two 
+\emph on
+closed cracks tips, 
+\emph default
+or if it was reached, but not opened by the fracturing fluid, , between
+ a 
+\emph on
+closed tip
+\emph default
+ and a 
+\emph on
+junction.
+ 
+\end_layout
+
+\begin_layout Standard
+It can be assumed, as it follows from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity_multi-1"
+
+\end_inset
+
+, that this fracture will remain closed as long as:
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\begin{equation}
+p_{fluid}\leqq\sigma_{o}+\sigma_{l}\label{opening_condition}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Thou there can be a number of other factors that should be taken into account.
+ However ensuring that 
+\begin_inset Formula $p_{net}>0$
+\end_inset
+
+ for a fracture to open is necessary for the computations, as well as can
+ be logically explained.
+ 
+\end_layout
+
+\end_body
+\end_document

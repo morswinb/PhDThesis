@@ -1,0 +1,62 @@
+\documentclass[10pt]{article}
+ \usepackage{latexsym,amsmath,amssymb,amsbsy,amstext,amscd,amsfonts}
+ \usepackage{graphics,graphicx}
+ \usepackage{color}
+ \usepackage{epstopdf}
+ \usepackage{algorithm2e}
+
+
+
+\begin{document}
+
+
+\IncMargin{1em}
+
+\begin{algorithm}
+
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{a collection of edges, and a collection of vertexes}
+\Output{resolved grid point to grid point visibility}
+
+\BlankLine
+
+\For{each grid point in ever edge}{
+	\BlankLine
+	pick one random vertex and cast a ray to that vertex\;
+	\BlankLine
+	cast rays to all the other vertexes\;
+	\BlankLine
+	sort other vertexes by the angle between that one vertex ray, and other vertexes rays\;
+	\BlankLine
+	prepare an array to hold a slice of an edge, same size as number of vertexes\;
+	\BlankLine
+	\For{each non transparent edge, but the one the grid point belongs to}{
+		\BlankLine		
+		find its end vertexes positions in the sorted array, loop around if necessary (the two vertexes this edge connects)\;
+		\BlankLine
+		divide the edge into edge slices using rays between this edge end vertexes, as determined by vertexes index in sorted array\;
+		\BlankLine
+		\For{for each sliced edge piece}{
+		\BlankLine
+			\If{ array is empty at slicing ray vertex index or this edge slice is closer to grid point than the one already occupying the array}{
+				\BlankLine
+				put edge slice in the structure at slicing ray vertex index\;
+			}
+		}
+	}
+	\BlankLine
+	\For{each edge slice in the array}{
+		\BlankLine
+		mark all coressponding points as visible by the grid point considered in outer loop\;
+	}
+
+}
+
+
+\end{algorithm}\DecMargin{1em}
+
+
+\end{document}

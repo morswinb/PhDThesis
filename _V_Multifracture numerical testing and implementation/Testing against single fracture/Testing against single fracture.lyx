@@ -1,0 +1,1289 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Testing multifracture vs single fracture.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Testing-junction-BC,"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here the implementation and some basic testing of the junction strategy
+ proposed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ will be described.
+ If multifracturing formulation consists of a straight chain of pipe segments,
+ ended by a crack piece, this is in fact equivalent to having a single fracture.
+ Thus the effect of dividing a single pipe with junction boundary condition
+ can be measured against known results.
+\end_layout
+
+\begin_layout Subsection
+Numerical details for junction boundary condition 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Split-strategy-numerical"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+First the numerical details for obtaining polynomial approximation of pressure
+ value at junction should be outlined.
+ These approximations are used in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "newton root junction"
+
+\end_inset
+
+) to obtain flow value 
+\begin_inset Formula $q$
+\end_inset
+
+ and its derivative as outlined in 
+\begin_inset Formula $\frac{dq}{d\mathcal{J}}$
+\end_inset
+
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Flow-components-for_PKN"
+
+\end_inset
+
+.
+ Two types of approximation are considered, linear and quadratic.
+ These approximations are valid for both PKN like crack and pipe edges.
+ The 
+\begin_inset Formula $Left$
+\end_inset
+
+ version refers to application at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ boundary, which is the only case for all crack segments.
+ Pipe segments have two junctions attached, hence 
+\begin_inset Formula $Right$
+\end_inset
+
+ version will refer to boundary at 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Linear 
+\end_layout
+
+\begin_layout Standard
+Simpler version, that is derived from linear function, based on two points
+ is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+Right\ x=1 &  & Left\ x=0\nonumber \\
+x^{(1)}=x_{N-1} &  & x^{(1)}=x_{2}\nonumber \\
+p_{fluid}^{(1)}=p_{fluid}(x_{N-1}) &  & p_{fluid}^{(1)}=p_{fluid}(x_{2})\nonumber \\
+\lambda=-1 &  & \lambda=1\nonumber \\
+\alpha & = & -\frac{1}{x^{(1)}}\label{eq:Linear split1}\\
+\beta & = & \frac{p_{fluid}^{(1)}}{x^{(2)}}\label{eq:Linear split2}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Quadratic
+\end_layout
+
+\begin_layout Standard
+Another approach is to use quadratic polynomial that interpolates the three
+ edge points:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+Right\ x=1 &  & Left\ x=0\nonumber \\
+x^{(1)}=x_{N-1} &  & x^{(1)}=x_{2}\nonumber \\
+x^{(2)}=x_{N-2} &  & x^{(2)}=x_{3}\nonumber \\
+p_{fluid}^{(1)}=p_{fluid}(x_{N-1}) &  & p_{fluid}^{(1)}=p_{fluid}(x_{2})\nonumber \\
+p_{fluid}^{(2)}=p_{fluid}(x_{N-2}) &  & p_{fluid}^{(2)}=p_{fluid}(x_{3})\nonumber \\
+\lambda=-1 &  & \lambda=1\nonumber \\
+\Gamma & = & x^{(2)}\left(x^{(2)}-x^{(1)}\right)\nonumber \\
+\alpha & = & -\frac{1}{x^{(1)}}-\frac{x^{(2)}-x^{(1)}}{\Gamma}\label{eq:quad split1}\\
+\beta & = & p_{fluid}^{(1)}\left(\frac{1}{x^{(1)}}+\frac{x^{(2)}}{\Gamma}\right)+p_{fluid}^{(2)}\frac{x^{(1)}}{\Gamma}\label{eq:quad split2}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Testing simple split of PKN fracture
+\end_layout
+
+\begin_layout Standard
+A simple way to test if the split mechanism proposed in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ produces adequate results is to split a single fracture into one pipe and
+ crack segment, as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simple_split"
+
+\end_inset
+
+.
+ As previously single fracture would be compared against some analytical
+ benchmark 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Benchmark-Solution"
+
+\end_inset
+
+ , new pipe and crack segments will be compared against the subsection of
+ fracture they represent.
+ Initially lets assume some split ratio, between 0 and 1, named 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ that divides original crack length 
+\begin_inset Formula $l_{*}$
+\end_inset
+
+ into crack and pipe length 
+\begin_inset Formula $L_{crack}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{pipe}$
+\end_inset
+
+ such so:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{crack}=(1-L_{split})l_{*}\label{eq:L_split_1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{pipe}=L_{split}l_{*}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+l_{*}=L_{crack}+L_{pipe}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Naturally as the fracture propagates this will be valid only at initial
+ time.
+\end_layout
+
+\begin_layout Standard
+In the first test lets use 
+\begin_inset Formula $L_{split}=0.9$
+\end_inset
+
+, so the resulting crack pipe will have the constant length of 
+\begin_inset Formula $0.9l_{*}$
+\end_inset
+
+, and the initial length of propagating crack segment will be of 
+\begin_inset Formula $0.1l_{*}$
+\end_inset
+
+.
+ Both crack pipe and pipe should be given grid of 
+\begin_inset Formula $N=100$
+\end_inset
+
+ points, however crack should grid that gets denser at the crack tip 
+\begin_inset Formula $x^{(ii)}$
+\end_inset
+
+ while crack pipe will use uniform grid 
+\begin_inset Formula $x^{(i)}$
+\end_inset
+
+.
+ The outcomes of this tests are shown on Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simple_split_analy"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "simple_test_num"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As one can observe the linear fracture split condition works, but adds significa
+nt numerical error, with magnitude of twice the value compared to original
+ single fracture computation.
+ The quadratic polynomial approach is however very close to producing identical
+ error as the undivided solution.
+ In fact the difference in 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ is so close that it should be solely attributed to solver introduced error
+ .
+ Conclusion: junction BC strategy 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ with quadratic flow components approximation allows to split fracture into
+ two segments without affecting noticeably computation accuracy.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename crack_pipe_split.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Single fracture can be split into pipe and crack segment, without alternating
+ the solution.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "simple_split"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename standard_crack_sol.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Single fracture opening.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pipe_sol.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Left pipe segment.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename crack_sol.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Right crack segment.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An explanation of single fracture spiting, left pipe and right crack segments
+ add up to whole fracture.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "simple_split_analy"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lin_pipe_err.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipe segment under linear split 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename lin_crack_err.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Crack segment under linear split 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename quad_pipe_err.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipe segment under quadratic split
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename quad_crack_err.eps
+	lyxscale 20
+	scale 38
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Crack segment under quadratic split
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of crack opening relative error 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ on connected pipe and crack segments, using linear 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Linear split1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Linear split2"
+
+\end_inset
+
+ and quadratic 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:quad split1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:quad split2"
+
+\end_inset
+
+ split methods.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "simple_test_num"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Finding acceptable split proportions
+\end_layout
+
+\begin_layout Standard
+Lets make a test to find out what values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ are acceptable.
+ Consider all values of 
+\begin_inset Formula $L_{split}\in(0,1)$
+\end_inset
+
+.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L_split_large1"
+
+\end_inset
+
+ shows the maximum relative errors obtained when computing connected pipe
+ and crack segment.
+ For the majority of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ values, up to 
+\begin_inset Formula $0.8$
+\end_inset
+
+ the difference in accuracy is relay negligible.
+ This indicated that long crack segments attached to shorter pipe segments
+ are not a challenge to compute.
+ For the values of 
+\begin_inset Formula $L_{split}>0.8$
+\end_inset
+
+, when initial crack segments are much shorter than connected pipe significant
+ relative accuracy discrepancies can be observed, that may appear as an
+ singularity at 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ This issue is shown in more detail on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L_split_large2"
+
+\end_inset
+
+ where much smaller values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ are presented.
+ Here it can be observed that although initially introduced error is quite
+ high, it does eventually vanishes at larger times.
+ Even for 
+\begin_inset Formula $L_{split}=10^{-9}$
+\end_inset
+
+, which indicates initial pipe segment 
+\begin_inset Formula $10$
+\end_inset
+
+ orders of magnitude longer than the crack segment the computation eventual
+ produces accurate result.
+ However for real fracturing applications such difference in lengths might
+ be a gross exaggeration, the 
+\begin_inset Formula $L_{split}=10^{-5}$
+\end_inset
+
+ factor which is probably already over the upper limit of possible disproportion
+s takes relatively short time to converge to acceptable accuracies.
+ As shown previously in Sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Initial-condition"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fracture-collisions"
+
+\end_inset
+
+ the initial condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "initial"
+
+\end_inset
+
+) could have 
+\begin_inset Formula $l_{*}$
+\end_inset
+
+a few orders lower than attached fractures, which in related to the test
+ done here, is a plausible combination.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename L_split.eps
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testing how the different values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ affects maximum relative error, in terms of fracture length, and pipe and
+ crack segments widths.
+ Close to 
+\begin_inset Formula $1$
+\end_inset
+
+ values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ generate large maximum error, however these values might be deceptive.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "L_split_large1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename L_split_small_crack.eps
+	scale 55
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Testing how the different values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ affects computational accuracy, in terms of fracture length, and with in
+ pipe and crack segments.
+ Close to 
+\begin_inset Formula $1$
+\end_inset
+
+ values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ generate large maximum error, however these values might be deceptive.
+ Even with 
+\begin_inset Formula $L_{split}=1-10^{-9}$
+\end_inset
+
+ solver eventually returns to normal accuracy at larger times, as showed
+ by relative error in fracture length.
+ 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ values close to zero were however not possible to compute in feasible run
+ time
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "L_split_large2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Testing multiply divided PKN fracture.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename crack_N_pipe_split.png
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "split_pipe_chain"
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A single crack can be modeled as a chain of connected pipe segments with
+ short crack segment at the tip.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far testing was done to determinate numerical details of joining pipe
+ and crack segments, and how these affect two connected segments.
+ But this test can be extended to an arbitrary number of pipe segments connected
+ in a each other, in one sequence, ended with a crack segment at the tip
+ (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "split_pipe_chain"
+
+\end_inset
+
+).
+ Interestingly, while doing such, this multifracturing formulation begins
+ to reassembly FV formulation used by Kovalyshen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen_phd"
+
+\end_inset
+
+, and others whose problem formulations do not include speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "velocity_2"
+
+\end_inset
+
+).
+ Each pipe segment controls its in and out flow by junction BC 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+, as FV formulation of the problem requires, while crack segment at the
+ tip acts as a special element.
+ Naturally this similarity is just an outcome if different assumptions and
+ techniques in just this particular test scenario.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L_segments"
+
+\end_inset
+
+ presents outcomes of combining various numbers of pipe segments, with different
+ number of grid points used, per each of these segments.
+ Introduction of additional pipe segments 
+\emph on
+improves
+\emph default
+ the accuracy.
+ This agrees with previous result, that quadratic split (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quad split1"
+
+\end_inset
+
+) (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:quad split2"
+
+\end_inset
+
+) does not affects the accuracy.
+ The improvement should be attributed to a higher number of overall grid
+ points used.
+ The first result 
+\begin_inset Formula $N_{c}=100$
+\end_inset
+
+ is nearly identical to 
+\begin_inset Formula $N_{p}+N_{c}=100$
+\end_inset
+
+, yet worse than 
+\begin_inset Formula $N_{p}+N_{c}=200$
+\end_inset
+
+, but more grid points make no more difference.
+ This is consistent saturation at around 
+\begin_inset Formula $N\approx200$
+\end_inset
+
+ observed on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:err_N_plots"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The most important conclusion form this observation is that the number of
+ pipe segments can be can be increased freely without any negative impact,
+ at least if dividing one fracture.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename segment_test.eps
+	scale 65
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative crack length error
+\begin_inset Formula $\delta L$
+\end_inset
+
+ for various numbers off segments splits with different points 
+\begin_inset Formula $N_{p}$
+\end_inset
+
+ for pipe and 
+\begin_inset Formula $N_{c}$
+\end_inset
+
+ for crack.
+ Up to 
+\begin_inset Formula $100$
+\end_inset
+
+ pipe segments are used.
+ Extra segments increase the accuracy.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "L_segments"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

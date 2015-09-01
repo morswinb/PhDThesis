@@ -1,0 +1,2420 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Stiffness analysis 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Stiffness-analysis"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stiff_example.eps
+	lyxscale 80
+	scale 65
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "van_der_pol_solution"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two solutions to a van der Pol Equation problem 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van_der_pol"
+
+\end_inset
+
+.
+ Nonstiff method results in oscillations that fall out of sync, compared
+ to the more accurate stiff method 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Before attempting to solve the single fracture formulation presented in
+ previous Chapter 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "chap:PKN-model-reformulation"
+
+\end_inset
+
+, lets perform a stiffness analysis of the problem.
+ Stiffens is a phenomena that is rather hard to define.
+ Certain models may result in systems of equations that are not numerical
+ stable (
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Unsolvable due to technical reasons.
+ 
+\end_layout
+
+\end_inset
+
+) when attempted to solve with nonstiff numerical methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "stiff_wiki"
+
+\end_inset
+
+.
+ A commonly used example of such systems are based on the van der Pol Equation
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "van_der_pol"
+
+\end_inset
+
+.
+ Solutions to these are osculations,with very sharp turning points.
+ When a nonstiff method is used it is much harder for the method to correctly
+ detect turning points and properly adjust step size.
+ As a result the method fails to detect these important turning points at
+ the right times, which results in misrepresented oscillation period after
+ a few cycles, as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "van_der_pol_solution"
+
+\end_inset
+
+.
+ Note that this mistimed oscillation means that if someone was to measure
+ a value at some specific time the answer could be off by multiple orders
+ of magnitude.
+ Nevertheless the nonstiff method can be used to find some (inaccurate)
+ solution to a stiff problem, thous a more convenient casual definition
+ of stiffens would be how hard a given problem is to solve using numerically
+ in terms solution accuracy, stability and time requirement
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Stiff method will need much less time steps on a stiff problem when compared
+ a nonstiff method, which should result in faster computation time.
+\end_layout
+
+\end_inset
+
+.
+ Similarly in the case of hydrofracturing problems there is a strong coupling
+ between the tip region, and the rest of the solution which means that a
+ small misrepresentation of this tip region behavior will have significant
+ effect on the whole solution.
+\end_layout
+
+\begin_layout Standard
+The stiffens of this problem problem will be measured as condition ratio
+ 
+\begin_inset Formula $\kappa_{A}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Aiken"
+
+\end_inset
+
+.
+ This ratio in fact shows the disproportion between the effect on change
+ in value of all solution components.
+ High 
+\begin_inset Formula $\kappa_{A}$
+\end_inset
+
+ indicates that some solution components has much grater effect on the overall
+ solution than the others.
+ The Reynolds equations written in different dependent variables (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+) can be treated by spatial derivatives (using three point central finite
+ difference (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:central-FD"
+
+\end_inset
+
+)) as a system of equation .
+ This system can be written in the following form: 
+\begin_inset Formula 
+\begin{equation}
+{\bf F}'={\bf A}^{(f)}{\bf F}+{\bf G}^{(f)},\label{governing_dis-1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula ${\bf F}={\bf F}(t)$
+\end_inset
+
+ is a vector of unknown solution:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+{\bf F}=[f(t,x_{1}),f(t,x_{2}),\ldots,f(t,x_{N}),L^{2}(t)]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+of dimension 
+\begin_inset Formula $N+1$
+\end_inset
+
+.
+ The system is non-linear, therefore matrix 
+\begin_inset Formula ${\bf A}^{(f)}$
+\end_inset
+
+ is a linearized representation (
+\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
+\end_inset
+
+ ).
+ while the vector 
+\begin_inset Formula ${\bf G}^{(f)}$
+\end_inset
+
+ would generally be leak off dependent.
+ Now the condition ratio 
+\begin_inset Formula $\kappa_{A}$
+\end_inset
+
+ can be calculated of the linearized matrix 
+\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\kappa_{A}^{(f)}=\frac{|\lambda_{max}|}{|\lambda_{min}|}\sim\varpi^{(f)}N^{2},\quad N\to\infty.\label{kappa}
+\end{equation}
+
+\end_inset
+
+Here 
+\begin_inset Formula $|\lambda_{max}|$
+\end_inset
+
+, and 
+\begin_inset Formula $|\lambda_{min}|$
+\end_inset
+
+ are the largest and smallest eigenvalues of linearized matrix 
+\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\bf A}^{(f)}$
+\end_inset
+
+ is in fact the Jacobian explored later on in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Jacobian-Matrix-patter"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Jacobian-and-utility"
+
+\end_inset
+
+.
+ Some methods of for solving systems use the linearized version directly,
+ making this a relevant method for measuring stiffens
+\end_layout
+
+\end_inset
+
+.
+ For a discretized system that contains second derivative the quadratic
+ stiffens behavior 
+\begin_inset Formula $N^{2}$
+\end_inset
+
+ is an obvious result, however the parameter 
+\begin_inset Formula $\varpi^{(f)}$
+\end_inset
+
+, which will be approximated numerically can be used as quantitative measure
+ to select the less stiff variant of dynamic system.
+\end_layout
+
+\begin_layout Standard
+The analysis should begin with approximation of 
+\begin_inset Formula $\varpi^{(f)}$
+\end_inset
+
+ for all of the considered variants of dynamic systems.
+ In case of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ variable, alternative condition based on fluid balance can be used for
+ 
+\begin_inset Formula $x=0$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_boundary_1"
+
+\end_inset
+
+), additionally to Neumann type boundary condition based on 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_boundary"
+
+\end_inset
+
+).
+ These two strategies should be referred as 
+\begin_inset Formula $\Omega_{(1)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega_{(2)}$
+\end_inset
+
+ respectively, and stiffness is measured for both of them.
+ Since 
+\begin_inset Formula $\Omega_{(1)}$
+\end_inset
+
+ leads to a slightly different form of 
+\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
+\end_inset
+
+, different value of 
+\begin_inset Formula $\varpi^{(f)}$
+\end_inset
+
+ should be expected, while 
+\begin_inset Formula $\Omega_{(2)}$
+\end_inset
+
+ relies on a three point approximation similar to the used for 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $U$
+\end_inset
+
+ system.
+\end_layout
+
+\begin_layout Standard
+It is obvious that for all six variants of benchmark solutions under considerati
+on (see Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Benchmark-Solution"
+
+\end_inset
+
+) one has different values of 
+\begin_inset Formula ${\bf A}^{(f)}$
+\end_inset
+
+.
+ Computations were carried out for two types of meshes (uniform 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_uniform"
+
+\end_inset
+
+ and non-uniform 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_power"
+
+\end_inset
+
+ ).
+ For each of the benchmark solutions, a constant condition ratio, independent
+ of time, was obtained, despite the fact that 
+\begin_inset Formula ${\bf A}^{(f)}$
+\end_inset
+
+ depends on time.
+ Those values of condition ratio 
+\begin_inset Formula $\kappa_{A}$
+\end_inset
+
+ vary for different benchmarks and meshes.
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:stiffness_a"
+
+\end_inset
+
+ shows values of 
+\begin_inset Formula $\kappa_{A}$
+\end_inset
+
+ for different values of 
+\begin_inset Formula $N$
+\end_inset
+
+ and three benchmarks and mesh choices.
+ The least stiff formulation is 
+\begin_inset Formula $U$
+\end_inset
+
+, and that result persist for all other possible test scenarios.
+ However if 
+\begin_inset Formula $w$
+\end_inset
+
+ should be considered stiffer than 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ formulation depends on the benchmark type.
+ The change of ratio from 
+\begin_inset Formula $1:1$
+\end_inset
+
+ seems to have negative effect on 
+\begin_inset Formula $w$
+\end_inset
+
+ system in relation to effect on 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ The boundary condition 
+\begin_inset Formula $\Omega_{(1)}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary_1"
+
+\end_inset
+
+ also has a negative effect on stiffness of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and should be replaced with 
+\begin_inset Formula $\Omega_{(2)}$
+\end_inset
+
+ (and that change will have no impact on the accuracy of solutions).
+ 
+\end_layout
+
+\begin_layout Standard
+As anticipated, the estimation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "kappa"
+
+\end_inset
+
+ holds true only for sufficiently large 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ The threshold value of 
+\begin_inset Formula $N$
+\end_inset
+
+ depends on the chosen 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, and the transition takes place at approximately 
+\begin_inset Formula $\varepsilon\approx\frac{1}{N^{2}}$
+\end_inset
+
+ .
+ The Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "s_plot5"
+
+\end_inset
+
+ shows two regimes, 
+\begin_inset Formula $N^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $\varepsilon>\frac{1}{N^{2}}$
+\end_inset
+
+, and another one, for 
+\begin_inset Formula $\varepsilon<\frac{1}{N^{2}}$
+\end_inset
+
+.
+ Thus for a fixed number of grid points 
+\begin_inset Formula $N$
+\end_inset
+
+, there is a critical value of the regularization parameter 
+\begin_inset Formula $\varepsilon_{s}(N)$
+\end_inset
+
+ for which the stiffness characteristics changes its behavior.
+ By taking 
+\begin_inset Formula $\varepsilon<\varepsilon_{s}(N)$
+\end_inset
+
+ one increases appreciably the system stiffness.
+\end_layout
+
+\begin_layout Standard
+The choice of spacial discretization between uniform 
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ mesh 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_uniform"
+
+\end_inset
+
+ and 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ mesh 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_power"
+
+\end_inset
+
+ has an effect of stiffness.
+ As  predicted in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+ the 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ mesh improves system stiffness for about an order of magnitude compared
+ to uniform mesh, when the optimal value of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is chosen.
+ On Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "s_plot6"
+
+\end_inset
+
+ it is shown that indeed for 
+\begin_inset Formula $N\approx10$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon=10^{-3}$
+\end_inset
+
+ the 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ mesh has lowest stiffness for the optimal value of 
+\begin_inset Formula $\delta=2$
+\end_inset
+
+.
+ However for 
+\begin_inset Formula $N>10$
+\end_inset
+
+ the optimal value of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ changes, and the optimal value of 
+\begin_inset Formula $\delta\approx2.5$
+\end_inset
+
+ was experimentally obtained.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stiff_carter3.eps
+	width 55text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ratio 
+\begin_inset Formula $Q_{l}/q_{0}=0.9$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ mesh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "s_plot3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stiff_carter1.eps
+	width 55text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ratio 
+\begin_inset Formula $Q_{l}/q_{0}=0.9$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ mesh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "s_plot1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stiff_carter2.eps
+	width 55text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ratio 
+\begin_inset Formula $Q_{l}/q_{0}=0.5$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ mesh 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "s_plot2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Stiffness in logarithmic scale defined as the ratio of smallest and largest
+ eigenvalue in linearized matrix 
+\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
+\end_inset
+
+ (
+\begin_inset Formula $\epsilon=10^{-3},$
+\end_inset
+
+
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+).
+ Higher 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+ ratio, indicating majority of the pumped in fluid leaks off, results in
+ stiffer problems.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:stiffness_a"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h*
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="none" valignment="top" special="@{}c|">
+<column alignment="none" valignment="top" special="@{}c|">
+<column alignment="none" valignment="top" special="@{}c|">
+<column alignment="none" valignment="top" special="@{}c|">
+<column alignment="none" valignment="top" special="@{}c|@{}">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{l}/q_{0}=0.9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{l}/q_{0}=0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(3)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(3)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varpi$
+\end_inset
+
+ estimated for the system based on variable 
+\begin_inset Formula $w$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.5e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.6e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.8e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.8e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.8e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.8e+1 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.6e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.7e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.7e+0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varpi$
+\end_inset
+
+ estimated for the system based on variable 
+\begin_inset Formula $U$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.0e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.0e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.2e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.0e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.1e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.2e+0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.5e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.7e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.1e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.5e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.5e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.6e+0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varpi$
+\end_inset
+
+ estimated for 
+\begin_inset Formula $\Omega_{(1)}$
+\end_inset
+
+ based on condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_boundary_1"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x^{(I)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.8e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.8e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.9e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7e+1 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.3e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.3e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.3e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.3e+0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varpi$
+\end_inset
+
+ estimated for 
+\begin_inset Formula $\Omega_{(2)}$
+\end_inset
+
+ based on condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_boundary"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.2e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.9e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.6e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0e+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.3e+1 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.8e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.7e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.7e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.5e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.6e+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.5e+0 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Values of 
+\begin_inset Formula $\varpi^{(f)}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "kappa"
+
+\end_inset
+
+) for different variable formulations and benchmarks.
+ (
+\begin_inset Formula $\varepsilon=10^{-3}$
+\end_inset
+
+ was used with grids 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_uniform"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_power"
+
+\end_inset
+
+ 
+\begin_inset Formula $N=1000$
+\end_inset
+
+, the ratio 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+ ratio, indicates how much )
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table_A"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_A"
+
+\end_inset
+
+ shows values of 
+\begin_inset Formula $\varpi^{(f)}$
+\end_inset
+
+, with a fairly large 
+\begin_inset Formula $N=1000$
+\end_inset
+
+ for Carter leak off type benchmarks (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Benchmark-Solution"
+
+\end_inset
+
+).
+ The values shown there prove that 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ offers up to five times lower stiffness, for considered scenarios.
+ 
+\end_layout
+
+\begin_layout Standard
+The results of the stiffness investigation are collected in the Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_A"
+
+\end_inset
+
+ and Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:stiffness_b"
+
+\end_inset
+
+ The following conclusions can be drawn from this data:
+\end_layout
+
+\begin_layout Enumerate
+The nonuniform mesh reduces the stiffness approximately up to five times
+ regardless of the solution type (Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_A"
+
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Enumerate
+The most important parameter affecting the stiffness properties is the relation
+ between the injection flux rate and the leak-off to the formation 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+ as can be clearly seen in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_A"
+
+\end_inset
+
+.
+ The value of this parameter is more important than a particular distribution
+ of the leak-off function (and its behavior near the crack tip);
+\end_layout
+
+\begin_layout Enumerate
+When comparing systems for various dependent variables, the lowest condition
+ ratio is obtained via 
+\begin_inset Formula $U$
+\end_inset
+
+ formulation (one order of magnitude lower than the others).
+ The worst stiffness performance takes place for the system corresponding
+ to the 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ variable.
+ However, in some cases 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ may produce lower stiffness than 
+\begin_inset Formula $w$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+A value of the regularization parameter 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ significantly affects the stiffness of a dynamic system.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The estimate (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "kappa"
+
+\end_inset
+
+) is valid for most values of 
+\begin_inset Formula $N$
+\end_inset
+
+, if 
+\begin_inset Formula $\varepsilon>\frac{1}{N^{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename stiff_epsilons_1.eps
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Condition ratio 
+\begin_inset Formula $\kappa=\kappa^{(w)}(N)$
+\end_inset
+
+ for 
+\begin_inset Formula $w$
+\end_inset
+
+ variable dynamic system and different values of the regularization parameter
+ 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, with 
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ mesh.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "s_plot5"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename y_vs_uniform.eps
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "s_plot6"
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Stiffness for 
+\begin_inset Formula $w$
+\end_inset
+
+ system with 
+\begin_inset Formula $x_{m}^{(2)}$
+\end_inset
+
+ mesh 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_power"
+
+\end_inset
+
+ for various 
+\begin_inset Formula $\delta$
+\end_inset
+
+ values, result obtained on uniform mesh 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "mesh_uniform"
+
+\end_inset
+
+ on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "s_plot3"
+
+\end_inset
+
+ overlap with 
+\begin_inset Formula $\delta=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effects of different values of 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ on the problem stiffness 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:stiffness_b"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,1283 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Benchmark Solutions 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Benchmark-Solution"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are several benchmarks available in the literature that can be used
+ in investigation of numerical algorithms.
+ Benchmark solutions for impermeable rock have been constructed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kemp,Linkov_4"
+
+\end_inset
+
+, while whose corresponding to the non-zero leak-off model with 
+\begin_inset Formula $q_{l}$
+\end_inset
+
+ vanishing at a crack tip has been analyzed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+.
+ The large time asymptote for Carter problem was given by Nordgren in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+.
+ This work is tested against three types of solutions.
+\end_layout
+
+\begin_layout Subsection
+General benchmark 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:General-benchmark"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To simulate three types of leak off a procedure for obtaining analytical
+ benchmarks solutions representing each one of the behaviors 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_leak_off_1"
+
+\end_inset
+
+ was obtained.
+ Moreover, for each of the leak-off functions two different proportion of
+ injection flux rate 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ and leak-off to formation 
+\begin_inset Formula $q_{l}$
+\end_inset
+
+ was considered.
+ This added up to a total of six distinct analytical benchmarks.
+\end_layout
+
+\begin_layout Standard
+The procedure for obtaining these starts by assuming the following form
+ of crack opening function: 
+\begin_inset Formula 
+\begin{equation}
+w(t,x)=W_{0}(1+t)^{\gamma}h(x),\quad W_{0}=\sqrt[3]{\frac{3}{2}(3\gamma+1)},\label{w_bench}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is an arbitrary parameter, and the function 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ (
+\begin_inset Formula $0<x<1$
+\end_inset
+
+) is given by: 
+\begin_inset Formula 
+\begin{equation}
+h(x)=(1-x)^{\frac{1}{3}}+b_{1}(1-x)^{\lambda_{1}}+b_{2}(1-x)^{\lambda_{2}}.\label{w_0_bench}
+\end{equation}
+
+\end_inset
+
+The choice of the next powers 
+\begin_inset Formula $1/3<\lambda_{1}<\lambda_{2}$
+\end_inset
+
+ will depend on the leak-off variant from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "carter"
+
+\end_inset
+
+.
+ On consecutive substitutions of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_bench"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_0_bench"
+
+\end_inset
+
+ into the relations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_boundary"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "new_speed"
+
+\end_inset
+
+ one obtains the remaining benchmark quantities: 
+\begin_inset Formula 
+\begin{equation}
+L(t)=(1+t)^{\frac{3\gamma+1}{2}},\quad V(t,x)=-W_{0}^{3}(1+t)^{\frac{3\gamma-1}{2}}h^{2}(x)\frac{\partial h}{\partial x}.\label{v_bench}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+q_{0}(t)=-W_{0}^{4}(1+t)^{\frac{5\gamma-1}{2}}\left(h^{3}\frac{\partial h}{\partial x}\right)|_{x=0}.\label{q_0_bench}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+q_{l}(t,x)=W_{0}(1+t)^{\gamma-1}\times\label{q_l_bench}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Big(\frac{3}{2}(3\gamma+1)\Big[\frac{1}{3}x\frac{\partial h}{\partial x}+3h^{2}\left(\frac{\partial h}{\partial x}\right)^{2}+h^{3}\frac{\partial^{2}h}{\partial x^{2}}\Big]-\gamma h\Big).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It can be easily checked that for 
+\begin_inset Formula $\lambda_{1}=1/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=4/3$
+\end_inset
+
+ the leak-off function incorporates a square root singular term of type
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_leak_off_1"
+
+\end_inset
+
+
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+.
+ By setting 
+\begin_inset Formula $\lambda_{1}=5/6$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=4/3$
+\end_inset
+
+ it complies with representation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_leak_off_1"
+
+\end_inset
+
+
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+ Although in both cases 
+\begin_inset Formula $q_{(1,2)}^{*}$
+\end_inset
+
+ exhibits a singular behavior at the crack tip, it does not affect the applicabi
+lity of this benchmarks.
+ Finally, when using 
+\begin_inset Formula $\lambda_{1}=4/3$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{2}=7/3$
+\end_inset
+
+, this benchmark gives a non-singular leak-off function 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_leak_off_1"
+
+\end_inset
+
+
+\begin_inset Formula $^{(3)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename leak11.eps
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename leak12.eps
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VVg.eps
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "leak_offs_fig"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Distributions of the leak-off functions 
+\begin_inset Formula $q_{l}(t,x)$
+\end_inset
+
+ and the respective particle velocity 
+\begin_inset Formula $V(t,x)$
+\end_inset
+
+ over 
+\begin_inset Formula $x\in(0,1)$
+\end_inset
+
+ at initial time 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note , that by manipulating the value of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ one can simulate different crack propagation regimes.
+ For example 
+\begin_inset Formula $\gamma=1/5$
+\end_inset
+
+ corresponds to constant injection rate, while 
+\begin_inset Formula $\gamma=1/3$
+\end_inset
+
+ results in constant crack propagation speed.
+ For this work
+\begin_inset Formula $\gamma=1/5$
+\end_inset
+
+ should be used.
+\end_layout
+
+\begin_layout Standard
+Choosing appropriate values 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+ affects proportion between fluid loss and injection rate.
+ This ratio is be defined by 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+, where 
+\begin_inset Formula $Q_{l}$
+\end_inset
+
+ is the total volume of leak-off 
+\begin_inset Formula $\int_{0}^{1}q_{l}dx$
+\end_inset
+
+.
+ This measure decreases in time, from its maximum value to zero, for all
+ chosen benchmarks.
+ Thus, taking the maximum value and tracing the solution accuracy in time,
+ one can analyze the algorithms performance for all probable values of this
+ ratio.
+ The first considered value of 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+ corresponds to fluid injection double the size of total fluid loss, the
+ second to total fluid loss being close to injection rate.
+ The values of corresponding parameters 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+ are presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_last"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{l}/q_{0}=0.9$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{l}/q_{0}=0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(3)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $q_{l}^{(3)}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.19$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.74$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.02$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.03$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.15$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.41$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.13$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.08$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.02$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ 
+\begin_inset Formula $\gamma_{v}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.69$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.70$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.65$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.55$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.56$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.55$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The values of parameters 
+\begin_inset Formula $b_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $b_{2}$
+\end_inset
+
+ for different benchmark solutions corresponding to desired leak-off to
+ fluid injection ratios.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_last"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Additionally an additional parameter 
+\begin_inset Formula $\gamma_{v}$
+\end_inset
+
+, defined in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+, which measures uniformity of fluid velocity distribution, can be computed
+ as:
+\begin_inset Formula 
+\begin{equation}
+\gamma_{v}=\left[\max(V(t,x))-\min(V(t,x))\right]\left[\int_{0}^{1}V(t,\xi)d\xi\right]^{-1}.\label{gamma_v}
+\end{equation}
+
+\end_inset
+
+Interestingly, this measure is directly related to leak-off ratio 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "leak_offs_fig"
+
+\end_inset
+
+ the distributions of leak-off functions and corresponding particle velocities
+ for respective benchmarks are presented.
+ Velocities near the crack tip differ depending on the benchmark variant.
+ To highlight this phenomena a close up view is shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "leak_offs_fig"
+
+\end_inset
+
+ (c).
+\end_layout
+
+\begin_layout Standard
+Note that the benchmark 
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+ appears to be more difficult, than the original Carter's model as it contains
+ additional singular terms of the leak-off function.
+ These terms are absent in the normalized Carter's law as it follows from
+ Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Carter-type-leak"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Zero leak off Self Similar solution 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Zero-leak-off benchnchmark"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the paper by Linkov 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+ the following self similar solution is presented: 
+\begin_inset Formula 
+\begin{equation}
+w(t,x)=w_{n}h(x)^{1/3}(a+t)^{1/5},\quad l(t)=\xi_{*}x_{n}(a+t)^{4/5}.\label{self_similar_linkov}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where function 
+\begin_inset Formula $h(x)$
+\end_inset
+
+ is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+h(x)=0.6\xi_{*}^{2}\sum_{j=1}^{j=\infty}\frac{b_{j-1}}{j}(1-x)^{j},\label{self_similar_linkov2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This expansion converges rapidly, thus only first five terms shall be considered
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+b_{0} & = & 1\nonumber \\
+b_{1} & = & -\frac{1}{16}\nonumber \\
+b_{2} & = & -\frac{15}{224}b_{1}\\
+b_{3} & = & -\frac{3}{80}b_{2}\nonumber \\
+b_{4} & = & -\frac{11}{5824}b_{3}\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The remaining parameters are given values:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\xi_{*} & = & 1.3208446(q_{0}/q_{n})^{0.6}\\
+w_{n} & = & 1\\
+x_{n} & = & 1\\
+q_{n} & = & 1
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which corresponds to 
+\begin_inset Formula $k=4$
+\end_inset
+
+ and 
+\begin_inset Formula $M=1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+This benchmark is particularly useful if testing without leak off function
+ properly implemented.
+ Since five terms are used it is in fact not necessary easier to compute
+ than the three term general benchmark shown in the previous section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sub:General-benchmark"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Large Time asymptotes
+\end_layout
+
+\begin_layout Standard
+The large time asymptote for Carter Law 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+ was given by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L(t)\approx\frac{2q_{0}}{\pi}\sqrt{t},\quad t\rightarrow\infty\label{eq:carter_law_large_time}
+\end{equation}
+
+\end_inset
+
+By assuming variable separable form, the large time asymptote for pressure
+ proportional Carter Law 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+, can be numerically approximated, by correctly guessing that exponential
+ functions are involved.
+ The apparently exact approximation is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L(t)\approx\frac{q_{0}^{0.6}}{2}t^{0.4},\quad t\rightarrow\infty\label{eq:pressure_carter_large_time}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

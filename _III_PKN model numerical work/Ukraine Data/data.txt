@@ -1,0 +1,62 @@
+well 1
+
+t=0:56*60;      
+h=5.2;          
+E=5.0*10^6;     
+E=E*6894.7572;  
+v=0.25;         
+u=.3;           
+tq0=66;         
+C_L=5.533*10^-3;  
+M=12*u;           
+k=2/pi/h*E/(1-v^2)
+        
+uf=0.00001;  
+ur=0.0002;  
+        
+Or=0.0848;          
+ct=6.492*10^-4;    
+kr=3.8606*10^-9;    
+
+well 2
+
+t=0:46*60;      %time scale in seconds
+h=7.2;          %fracture height m
+E=5.87*10^6;    %Young's modulus in psi
+E=E*6894.7572;  %Young's modulus in N/m^2
+v=0.295;        %Poisson's ratio
+u=.3;           %fracturing fluid viscosity Pa.s
+tq0=139;        %total pumped in volume  (fluid + proppant)
+C_L=5.533*10^-3;    %Leak off constant as given in m/(s^1/2)
+q0=tq0/t(end)/2;  
+        
+uf=0.00001;  %reservoir fluid viscosity in the porous media Pa.s
+        % lets assume that the fracturing fluid has 100 centipids in the fracture
+ur=0.0002;  %filtrate fluid viscosity
+        
+Or=0.0848;          %reservoir porosity
+ct=6.492*10^-4;     %total compressibility of reservoir, Pa^-1
+kr=3.8606*10^-9;    %permeability of rock matrix m^2
+
+well 3
+
+t=0:53*60;      %time scale in seconds
+h=6.0;          %fracture height m
+E=5.69*10^6;    %Young's modulus in psi
+E=E*6894.7572;  %Young's modulus in N/m^2
+v=0.26;         %Poisson's ratio
+u=.3;           %fracturing fluid viscosity Pa.s
+tq0=95.1;       %total pumped in volume  (fluid + proppant)
+C_L=9.158*10^-4;    %Leak off constant as given in m/(s^1/2)
+
+q0=tq0/t(end)/2;  %pump in rate in m^3/s 
+M=12*u;            %our 1st computational constant
+k=2/pi/h*E/(1-v^2); %our 2nd computational constant
+        
+uf=0.00001;  %reservoir fluid viscosity in the porous media Pa.s
+        % lets assume that the fracturing fluid has 100 centipids in the fracture
+ur=0.0002;  %filtrate fluid viscosity
+
+Or=0.07241;             %reservoir porosity
+ct=6.492*10^-4;          %total compressibility of reservoir, Pa^-1
+kr=1.1143*10^-9;        %permeability of rock matrix m^2

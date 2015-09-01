@@ -1,0 +1,1227 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Formulation of 2D multifracturing problem
+\end_layout
+
+\begin_layout Subsection
+Motivation
+\end_layout
+
+\begin_layout Standard
+Lets start by assuming that we can represent the whole complex physical
+ underground process of manufacturing to be simulated by some 
+\emph on
+good enough 
+\emph default
+model.
+ By saying so it is ment that the goal is not to make the most accurate
+ possible abstraction, but rather one that is simple and reliable, yet produces
+ in resoanable time results of acceptable accuracy.
+\end_layout
+
+\begin_layout Standard
+Having developed methods for single fracure, the knowledge can be now applied
+ to simulate complex structures composed of multiple fractures simulated
+ in the same manner.
+ One could make an argument about applicability of PKN model for this idea,
+ as it was designed specificly for handling just one fracture scenario.
+ This indeed means violation of some underlying assumptions.
+ However with the revelant updates to the orginal formulation the outcome
+ of such an experimnet will be proved to be quite 
+\emph on
+good enough.
+\end_layout
+
+\begin_layout Standard
+(I suppose my supervisor can suport this concept much better, it was not
+ my idea to make PKN based hydrofracturing)
+\end_layout
+
+\begin_layout Standard
+The main modification is replacment of simple linnear elasticity relation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity"
+
+\end_inset
+
+ with:
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\begin{equation}
+kw=p_{net}=p_{fluid}-\sigma_{o}-\sigma_{l}\label{elasticity_multi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+This was used by Bunger
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+, and is identical to original Nordgren 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+ formulation exept for the term 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ with refers to the influence of other neighbouring fractures, therfore
+ presends additonal chalenge in these problem.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Substitution of Poiseulle equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "poiseulle"
+
+\end_inset
+
+ with these modified elasticity
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "elasticity_multi"
+
+\end_inset
+
+ into the continuity equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "continuity"
+
+\end_inset
+
+, yelds new updated Reynolds equation: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}-\frac{1}{M}\frac{\partial}{\partial x}\left(w^{3}\frac{\partial(kw-\sigma_{l})}{\partial x}\right)+q_{l}=0.\label{reynold_multi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the old governing equation for PKN model 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system"
+
+\end_inset
+
+ is replaced by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}=\frac{k}{ML^{2}(t)}\left[\frac{1}{3}w_{0}^{3}x\frac{\partial w}{\partial x}+3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]\label{w_system_elast}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\frac{1}{ML^{2}(t)}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}.
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+The backstress term 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ as significant when dealing with multiple non paraller fracures, experiencing
+ diffrent rock formation stress, but disapears form 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "reynold_multi"
+
+\end_inset
+
+ when spitial derevative is applied.
+\end_layout
+
+\begin_layout Subsection
+Geometry
+\end_layout
+
+\begin_layout Standard
+Lets call our model 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+ It exists in two dimensional plane with Cartesian coordinate system and
+ consequently a number of special points 
+\begin_inset Formula $(x,y)\in\mathcal{M}$
+\end_inset
+
+ can be specified.
+ This points should have physical interpretation as eighter:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+ 
+\shape italic
+junction
+\shape default
+ connection points, can act as a pump in point.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{C}^{pT}$
+\end_inset
+
+ 
+\emph on
+propagating cracks tip
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{C}^{cT}$
+\end_inset
+
+ - 
+\emph on
+closed cracks tip
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+These point of special interest can be connected by the following constructs:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ 
+\shape italic
+crack
+\shape default
+, or more precisely a propagating Crack, similar in its formulation to PKN
+ model hydraulic fracture, and therefore exists under the same laws including
+ elasticity and Poiseuille law.
+ Such a crack is attached to a 
+\begin_inset Formula $\mathcal{J}_{i}$
+\end_inset
+
+ by its inlet and has a tip 
+\begin_inset Formula $\mathcal{C}_{i}^{pT}$
+\end_inset
+
+, that moves away form its the inlet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+
+\shape italic
+ solid pipe
+\shape default
+.
+ A solid pipe that spans form some 
+\begin_inset Formula $\mathcal{J}_{i}$
+\end_inset
+
+ to another, and acts as a path for fluid flow.
+ Due to its "solid " nature (say steel or concrete walls), elasticity is
+ ignored and only Poiseuille law applies to the flow inside it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{C^{P}}$
+\end_inset
+
+ 
+\shape italic
+crack pipe
+\shape default
+.
+ Also spans form one 
+\begin_inset Formula $\mathcal{J}_{i}$
+\end_inset
+
+ to another, but this "Pipe" is a reminder of what once was 
+\shape italic
+Crack
+\shape default
+ defined by PKN model, but after some events was split into a pathway for
+ fluid to travel between two 
+\begin_inset Formula $\mathcal{J}_{i}$
+\end_inset
+
+ junctions that obeys elasticity equation rules as well as Poiseuille law.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathcal{C^{C}}$
+\end_inset
+
+
+\shape italic
+crack closed
+\shape default
+.
+ A crack that has zero width, and exist as a "marker" that may change the
+ path of propagation for existing cracks.
+ It lies however between some two 
+\begin_inset Formula $\mathcal{C}_{i}^{cT}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Therefore 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ consist of a collection of the above objects.
+ It exists in some horizontal rock layer of fixed 
+\begin_inset Formula $h$
+\end_inset
+
+, therfore if only one 
+\shape italic
+junction
+\shape default
+ and two 
+\emph on
+propagating cracks tip 
+\emph default
+are connected by two 
+\shape italic
+crack 
+\emph on
+this formulation is equvalent to standard PKN model.
+
+\shape default
+\emph default
+ One could interpret this structure as a graph where 
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+,
+\begin_inset Formula $\mathcal{C}^{pT}$
+\end_inset
+
+,
+\begin_inset Formula $\mathcal{C}^{cT}$
+\end_inset
+
+ are vertecis, and 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+,
+\begin_inset Formula $\mathcal{P}$
+\end_inset
+
+,
+\begin_inset Formula $\mathcal{C^{P}}$
+\end_inset
+
+,
+\begin_inset Formula $\mathcal{C^{C}}$
+\end_inset
+
+ serve as edges.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename geometry_sample1.png
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\emph on
+placeholder
+\emph default
+ A sample 2D multifracturing geometry vizualized and its interpretation
+ as a graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PKN pipe segments
+\end_layout
+
+\begin_layout Standard
+Within PKN model it is possible to consider some fixed length of fracture
+ as a separate flow channel.
+ Consequently this results in a new system where we seek to find pipe width
+ 
+\begin_inset Formula $w(x,t)$
+\end_inset
+
+ with initial conditions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w(0,x)=w_{*}(x),\quad x\in(0,1),\label{pipe_initial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and boundary conditions:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w(0,t)=\frac{1}{k}\mathcal{J}_{1}(t),\quad w(1,t)=\frac{1}{k}\mathcal{J}_{2}(t)\label{pipe_boundary}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\mathcal{J}_{1}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{J}_{2}(t)$
+\end_inset
+
+ refers to pressure at connected 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+junctions
+\emph default
+.
+ The governing equation is simlar to result obtained in normal PKN pipe
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system"
+
+\end_inset
+
+ with the only significant difference the propagation related term is removed:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}=\frac{k}{ML^{2}}\left[3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]-q_{l}\label{pipe_reynolds}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $L=>constant$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ length of this chanell, that is the distance between 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{J}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{J}_{2}$
+\end_inset
+
+ .
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ This equation has much better behaviour than the previous crack problem,
+ as the fracture tip and its singularity is no longer exist.
+ Just like in previous case proper dependent variables can be introduced:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial U}{\partial t}=\frac{k}{3ML^{2}}\left[\left(\frac{\partial U}{\partial x}\right)^{2}+3U\frac{\partial^{2}U}{\partial x^{2}}\right]-3U^{\frac{2}{3}}q_{l}\label{pipe_reynolds_U}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\Omega}{\partial t}=-\frac{k}{ML^{2}}\left[\left(\frac{\partial\Omega}{\partial x}\right)^{3}\frac{\partial^{2}\Omega}{\partial x^{2}}\right]-Q_{l}\label{pipe_reynolds_Omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thous it is worth saying that 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pipe_reynolds_U"
+
+\end_inset
+
+ will be much more practical in implementation than
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "pipe_reynolds_Omega"
+
+\end_inset
+
+ for some reasons to be shown later on.
+\end_layout
+
+\begin_layout Subsection
+
+\shape italic
+Junction
+\shape default
+ strategy and simplified approach to 
+\shape italic
+solid pipes
+\end_layout
+
+\begin_layout Standard
+Each jun
+\emph on
+c
+\emph default
+tion 
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+ connects together by a number 
+\begin_inset Formula $k$
+\end_inset
+
+ fo multiple eadges: 
+\shape italic
+crack
+\shape default
+s, 
+\shape italic
+pipes
+\shape default
+ or 
+\shape italic
+crack pipes.
+ 
+\shape default
+At least one eadge should be connected, but there should be no restriction
+ made on the maximum number (or at least there is no need to impose limits
+ at this stage).
+ If we assume that the size of a 
+\shape italic
+junction
+\shape default
+ itself is small enough, compared to the dimensions of connected eadges,
+ and that these width is relatively small compered to length, it is plausable
+ to be modeled 
+\emph on
+junctions
+\emph default
+ point connections.
+ For such a point we would expect a single value of pressure 
+\begin_inset Formula $p=\mathcal{J}(t)$
+\end_inset
+
+, and fluid balance of flow through that point to be zero.
+ Therefore within one 
+\shape italic
+junction
+\shape default
+ it is assumed that:
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Pressure is exactly the same across all connected eadges at the point of
+ connection
+\shape default
+ 
+\begin_inset Formula 
+\begin{equation}
+p_{1}=p_{2}=...=p_{k}=\mathcal{J}(t)\label{constant_pressure}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Zero flux sum, all the flow from and into adds up to zero,
+\shape default
+ 
+\begin_inset Formula 
+\begin{equation}
+q_{1}+q_{2}+...+q_{k}=0\label{zero flow}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename junction_vectors.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Junction condition visualized
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above in similar form one used by Kresse 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kresse2"
+
+\end_inset
+
+, but the idea can be traced back to simple pipe network problems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WhiteFluidMechanics"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These relations should be used to derive boundary condition for all atatched
+ eadges.
+ In contradiction to previously used Neumann type boundary condition in
+ PKN model 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_boundary"
+
+\end_inset
+
+, where fluid injection rate 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ was related to the first derivative at the crack inlet, the junction formulatio
+n results in Dirichlet boundary condition.
+ The volumetric flow rate given by 
+\lang american
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "poiseulle"
+
+\end_inset
+
+ can be rewriten in just the terms of pressure 
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "constant_pressure"
+
+\end_inset
+
+ refers to net pressure related to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "elasticity"
+
+\end_inset
+
+ allows to interchange pressure 
+\begin_inset Formula $p$
+\end_inset
+
+ with crack width 
+\begin_inset Formula $w$
+\end_inset
+
+, we can down flow rate as related to pressure, for cracks and pipe cracks
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q=-\frac{k}{ML}w^{3}\frac{\partial w}{\partial x}=\frac{1}{MLk^{3}}p^{3}\frac{\partial p}{\partial x}\label{flow to pressure}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is possible to play around with the following, say use other known data
+ points of adjected objects to make some numerical approximation of 
+\begin_inset Formula $\frac{\partial p}{\partial x}$
+\end_inset
+
+ depending on the value of 
+\begin_inset Formula $p$
+\end_inset
+
+ at the junction.
+ Using some finite differences, polynomial interpolation or other linear
+ transformation to approximate the 
+\begin_inset Formula $\frac{\partial p}{\partial x}$
+\end_inset
+
+ term with such values of constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ that 
+\begin_inset Formula $q$
+\end_inset
+
+ can be written as the following nonlinear relationship:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q=\frac{1}{MLk^{3}}p^{3}\left(\alpha p+\beta\right)\label{flow to pressure}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Furthermore if we multiply constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ by constant term 
+\begin_inset Formula $\frac{1}{MLk^{2}}$
+\end_inset
+
+ we can see that one of the components of the sums of flows 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "zero flow"
+
+\end_inset
+
+ is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q_{i}=\alpha p^{4}+\beta p^{3}\label{flow sum component}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Solid Pipe
+\shape default
+ could be simply taken account for by direct application of Poiseuille's
+ Law in the simplest form of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Q=\frac{\Delta p\pi R^{4}}{8\mu L}\label{poiseuille law}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let use the following parameter 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ to replace fixed length 
+\begin_inset Formula $L$
+\end_inset
+
+ and radius 
+\begin_inset Formula $R$
+\end_inset
+
+ of such a pipe: 
+\begin_inset Formula 
+\begin{equation}
+\gamma=\frac{3\pi R^{4}}{2ML}\label{pipe gamma}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Solid Pipe
+\shape default
+ has to be connected to two distinct 
+\shape italic
+Junction
+\shape default
+, and the difference in pressure between these is given by 
+\begin_inset Formula $\Delta p=(p-p_{other})$
+\end_inset
+
+ , where the pressure given by the other junction connected by a solid pipe
+ is given by 
+\begin_inset Formula $p_{other}$
+\end_inset
+
+.
+ Therefore a solid pipe attached to a junction would result in the following
+ component of for flow sum:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q_{i}=\gamma p-\gamma p_{other}\label{flow sum component pipe}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now lets say there is some 
+\shape italic
+Junction
+\shape default
+ with a 
+\begin_inset Formula $n$
+\end_inset
+
+ number of connected 
+\shape italic
+Cracks
+\shape default
+, 
+\shape italic
+Crack Pipes
+\shape default
+ or 
+\shape italic
+Solid Pipes
+\shape default
+.
+ To find the pressure in such a junction one would need to find the root
+ of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(p,p_{other})=\sum_{i}^{n}q_{i}=\sum_{i}^{n}\alpha_{i}p^{4}+\sum_{i}^{n}\beta_{i}p^{3}+\sum_{i}^{n}\gamma_{i}p-\sum_{i}^{n}p_{other}^{(i)}+q_{0}\label{pressure root function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ would be obtained form each adjected object (zero value of 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ for 
+\shape italic
+Cracks
+\shape default
+ and 
+\shape italic
+Crack Pipes
+\shape default
+, zero 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ for 
+\shape italic
+Solid Pipe
+\shape default
+).
+ Some extra fluid pumping can be added to the balance by 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+.
+ This expression assumes that the flow can be in fact expressed as a polynomial
+ function of pressure.
+ Such function obviously has a derivative:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f'(p)=4\sum_{i}^{n}\alpha_{i}p^{3}+3\sum_{i}^{n}\beta_{i}p^{2}+\sum_{i}^{n}\gamma_{i}\label{pressure root function der}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And can be solved by the Newton method.
+ The pressure form other 
+\shape italic
+Junctions
+\shape default
+ 
+\begin_inset Formula $p_{other}^{(i)}$
+\end_inset
+
+ has to be taken form previous iteration step, therefore all the pressures
+ in would need to be computed together.
+ Note that 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ might need to be changed sign, in order to indicate if the flow form objects
+ is in negative direction relative to the 
+\shape italic
+Junctions
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+(NOTE 
+\begin_inset Formula $-\sigma_{l}$
+\end_inset
+
+ might be needed to be inplemented here)
+\end_layout
+
+\end_body
+\end_document

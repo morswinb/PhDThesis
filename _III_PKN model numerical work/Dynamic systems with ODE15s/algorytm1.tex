@@ -1,0 +1,40 @@
+\documentclass[10pt]{article}
+ \usepackage{latexsym,amsmath,amssymb,amsbsy,amstext,amscd,amsfonts}
+ \usepackage{graphics,graphicx}
+ \usepackage{color}
+ \usepackage{epstopdf}
+ \usepackage{algorithm2e}
+
+
+
+\begin{document}
+
+
+\IncMargin{1em}
+
+\begin{algorithm}
+
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{$y(t)$ as a vector $\{w_1,w_2,...,w_N,L^2\}$ }
+\Output{$y'(t)$  as a vector $\{\mathcal{A}_1,\mathcal{A}_2,...,\mathcal{A}_N,\mathcal{B}\}$ }
+
+\BlankLine
+
+$\frac{\partial y_1}{\partial x_1},\frac{\partial^2 y_1}{\partial x_1^2}\longleftarrow $ left BC $\left(y(t)\right)$ \;
+$w_0,\ \frac{\partial y_N}{\partial x_N},\frac{\partial^2 y_N}{\partial x_N^2}\longleftarrow $ right BC $\left(y(t)\right)$\;
+\For{$i\leftarrow 2$ \KwTo $N-1$}{
+$\frac{\partial y_i}{\partial x_i},\frac{\partial^2 y_i}{\partial x_i^2}\longleftarrow $ derivative\ approximation\ scheme $\left(y(t)\right)$ \;
+}
+
+\For{$i\leftarrow 1$ \KwTo $N$}{
+	$y'_i \leftarrow \mathcal{A}_i\left(y(t),w_0,\frac{\partial y_i}{\partial x_i},\frac{\partial^2 y_i}{\partial x_i^2},q_l(t,x_i)\right)$\;
+}
+
+$y'_{N+1} \leftarrow \mathcal{B}\left(w_0\right)$\;
+
+\end{algorithm}\DecMargin{1em}
+
+\end{document}

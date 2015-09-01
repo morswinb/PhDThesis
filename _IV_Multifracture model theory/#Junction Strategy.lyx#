@@ -1,0 +1,689 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Junction Strategy
+\end_layout
+
+\begin_layout Subsection
+General concept
+\end_layout
+
+\begin_layout Standard
+Each 
+\emph on
+jun
+\emph default
+c
+\emph on
+tion
+\emph default
+ connects together a number 
+\begin_inset Formula $j$
+\end_inset
+
+ of edges: 
+\shape italic
+crack
+\shape default
+s, 
+\shape italic
+pipes,
+\shape default
+ 
+\shape italic
+concreate pipes 
+\emph on
+or 
+\emph default
+closed cracks.
+ 
+\shape default
+At least one edge should be connected, but there should be no restriction
+ made on the maximum number (or at least there is no need to impose limits
+ at this stage).
+ If we assume that the size of a 
+\shape italic
+junction
+\shape default
+ itself is small enough, compared to the dimensions of connected edges,
+ and that these opening is relatively small compered to length, so it is
+ plausible to modeled 
+\emph on
+junctions
+\emph default
+ as point connections.
+ For such a point we would expect a single value of fluid pressure 
+\begin_inset Formula $p_{fluid}$
+\end_inset
+
+, and fluid balance of flow through that point to be zero.
+ Therefore within one 
+\shape italic
+junction
+\shape default
+ it is assumed that:
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Fluid pressure is exactly the same across all connected edges at the point
+ of connection
+\shape default
+ 
+\begin_inset Formula 
+\begin{equation}
+p_{fluid}^{(1)}=p_{fluid}^{(2)}=...=p_{fluid}^{(j)}\label{constant_pressure}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Zero flux sum, all the flow from and into adds up to zero,
+\shape default
+ 
+\begin_inset Formula 
+\begin{equation}
+q_{1}+q_{2}+...+q_{j}=0\label{zero flow}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename junction_vectors.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Junction condition visualized
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above is similar to the one used by Kresse 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kresse2"
+
+\end_inset
+
+, but the idea can be traced back to simple pipe network problems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "WhiteFluidMechanics"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Newton method for 
+\emph on
+junction
+\emph default
+ fluid pressure
+\end_layout
+
+\begin_layout Standard
+Now lets say there is some 
+\shape italic
+junction
+\shape default
+ with a 
+\begin_inset Formula $m$
+\end_inset
+
+ 
+\shape italic
+cracks, crack pipes
+\shape default
+ and 
+\shape italic
+solid pipes
+\shape default
+ connected to it.
+ Flow components 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "flow sum component"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "flow sum component pipe"
+
+\end_inset
+
+ should be added up as zero flux 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "zero flow"
+
+\end_inset
+
+ implies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{i}^{m}q_{i}+q_{0}=0\label{components sum}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where additional 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ can be added to account for fluid pumping at that 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+junction, 
+\emph default
+essentially turning it into wellbore.
+\end_layout
+
+\begin_layout Standard
+To find the pressure 
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+, in a 
+\emph on
+junction
+\emph default
+ one would need to find the root of:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F_{\mathcal{J}}(\mathcal{J},\mathcal{J}_{other})=\sum_{i}^{m}q_{i}+q_{0}\label{pressure root function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Root of the above an be found using newton method.
+ Note that the iterations must be performed together for all clusters of
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ connected by solid pipe segments, to pass the value of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathcal{J}_{other}$
+\end_inset
+
+ from concurrent iteration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{J}_{n+1}=\mathcal{J}_{n}-\frac{F_{\mathcal{J}}(\mathcal{J}_{n},\mathcal{J}_{other\; n})}{F_{\mathcal{\mathcal{J}}}'(\mathcal{J})}\label{newton root-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The derevative 
+\begin_inset Formula $F_{\mathcal{\mathcal{J}}}'(\mathcal{J})$
+\end_inset
+
+ is simply:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+F'_{\mathcal{J}}(\mathcal{J},\mathcal{J}_{other})=\sum_{i}^{m}\frac{dq_{i}}{d\mathcal{J}}\label{pressure root derevative}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thous to implement this scheeme we must define a way to obtain flow rates
+ form each connected 
+\shape italic
+cracks, crack pipes
+\shape default
+ and 
+\shape italic
+solid pipes
+\shape default
+, the functrion 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $q(\mathcal{J},\mathcal{J}_{other})$
+\end_inset
+
+, and it derevative 
+\begin_inset Formula $\frac{dq}{d\mathcal{J}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Flow component for 
+\emph on
+cracks
+\emph default
+ and 
+\emph on
+crack pipes
+\end_layout
+
+\begin_layout Standard
+In contradiction to the previously used Neumann type boundary condition
+ in PKN model 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_boundary"
+
+\end_inset
+
+, where fluid injection rate 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ was related to the first derivative at the crack inlet, the junction formulatio
+n results in Dirichlet boundary condition.
+ The volumetric flow rate given by 
+\lang american
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "poiseulle"
+
+\end_inset
+
+ can be rewritten in just the terms of fluid pressure using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "elasticity_multi"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q=-\frac{1}{ML}w^{3}\frac{\partial p_{fluid}}{\partial x}=\frac{1}{MLk^{3}}(p_{fluid}-\sigma_{o}-\sigma_{l})^{3}\frac{\partial p_{fluid}}{\partial x}\label{flow_rate_junciton}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If there are 
+\emph on
+cracks
+\emph default
+ or 
+\emph on
+pipe cracks
+\emph default
+ attached to a 
+\emph on
+junction
+\emph default
+ some numerical approximation of 
+\begin_inset Formula $\frac{\partial p_{fluid}}{\partial x}$
+\end_inset
+
+ as experienced by these can be derived.
+ If this approximation is based on a polynomial, then we can then find some
+ parameters 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ to replace 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\frac{\partial p_{fluid}}{\partial x}$
+\end_inset
+
+, thous find 
+\begin_inset Formula $q(0,t)$
+\end_inset
+
+, and write 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+junction component flow 
+\begin_inset Formula $q(\mathcal{J},\mathcal{J}_{other})$
+\end_inset
+
+ as the following nonlinear relationship:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q(\mathcal{J},\mathcal{J}_{other})=\frac{1}{MLk^{3}}(\mathcal{J}-\sigma_{o}-\sigma_{l})^{3}\left(\alpha\mathcal{J}+\beta\right)\label{flow component crack}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And consequently:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{dq}{d\mathcal{J}}=\frac{1}{MLk^{3}}\left[3(\mathcal{J}-\sigma_{o}-\sigma_{l})^{2}\left(\alpha\mathcal{J}+\beta\right)+(\mathcal{J}-\sigma_{o}-\sigma_{l})^{3}\alpha\right]\label{flow component crack der}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The parameters
+\begin_inset Formula $\alpha$
+\end_inset
+
+and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are dependent on 
+\begin_inset Formula $w(x,t),\ \sigma_{0},\ \sigma_{l}$
+\end_inset
+
+, the discretization of 
+\begin_inset Formula $x$
+\end_inset
+
+ and type of polynomial
+\end_layout
+
+\begin_layout Subsection
+Flow component 
+\emph on
+solid pipes
+\end_layout
+
+\begin_layout Standard
+Let use the following parameter 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ to replace fixed length 
+\begin_inset Formula $L$
+\end_inset
+
+ and radius 
+\begin_inset Formula $R$
+\end_inset
+
+ of such a pipe: 
+\begin_inset Formula 
+\begin{equation}
+\gamma=\frac{3\pi R^{4}}{2ML}\label{pipe gamma}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Solid pipe
+\shape default
+ has to be connected to two distinct 
+\shape italic
+junction
+\shape default
+, and the difference in pressure between these is given by 
+\begin_inset Formula $\Delta p=(\mathcal{J}-\mathcal{J}_{other})$
+\end_inset
+
+ , where the fluid pressure given by the other junction connected by a solid
+ pipe is given by 
+\begin_inset Formula $\mathcal{J}_{other}$
+\end_inset
+
+.
+ Therefore a solid pipe attached to a junction would result in the following
+ component of for flow sum:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q_{i}^{(2)}=\gamma\mathcal{J}-\gamma\mathcal{J}_{other}\label{flow sum component pipe}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,527 @@
+\subsection{Solving for $\alpha_0$}
+
+We start by writing just the first term form the asymptotic expansion \eqref{w_asym}:
+\begin{equation}
+\tilde{w}(t,\tilde{x})=w_0(t)(1-\tilde x)^{\alpha_0}+O\left((1-\tilde{x})^{\beta}\right),\quad\tilde{x}\to1\label{w_norm_a1-1}
+\end{equation}
+By speed equation \eqref{norm_speed} we deduce that the first term asymptotic expansion  of of speed function expansion \eqref{v_asym} is given by:
+
+\begin{equation}
+\tilde{V}(t,\tilde{x})=\frac{\alpha_0k}{ML(t)}w_0^3(t)(1-\tilde x)^{3\alpha_{0}-1}+O\left((1-\tilde{x})^{\beta+2\alpha_{0}-1}\right),\quad\tilde{x}\to1\label{eq:-20}
+\end{equation}
+Or alternatively it can be written as:
+
+\begin{equation}
+\tilde{V}(t,\tilde{x})=v_{0}(t)(1-\tilde{x})^{\gamma_{0}}+O\left((1-\tilde x)^{\beta+2\alpha_{0}-1}\right) ,\quad\tilde{x}\to1\label{v_one_term}
+\end{equation}
+Where $v_{0}=\frac{\alpha_0k}{ML(t)}w_0^3(t)$ and $\gamma_{0}=3\alpha_{0}-1$.
+
+We are interested in the value of $\tilde{V}(t,1)$ witch can however take three values depending on the value of $\gamma_{0}$ that is:
+
+\begin{equation}
+\tilde{V}(t,1)=\begin{cases}
+v_{0}(t) & if\;\gamma_{0}=0\\
+0 & if\;\gamma_{0}>0\\
+\infty & if\;\gamma_{0}<0
+\end{cases}\label{eq:-25}
+\end{equation}
+We conclude that if we want $\tilde{V}(t,1)$ to have
+a meaningful value at $\tilde{x}=1$ we must choose such $a_{0}$
+that $\gamma_{0}=3\alpha_{0}-1=0$ hence $\alpha_{0}=\frac{1}{3}$.
+We are considering a case when crack should be propagating. At $\tilde{x}=1$, which is the tip of the crack, fluid velocity function $\tilde{V}(t,1)$ is assumed to take a value of crack tip speed propagation. If
+$\tilde{V}(t,1)$ was zero then there would be no fluid movement at
+crack tip indicating that all fluid is lost before it reaches the
+tip. Since it is the fluid pressure that moves the tip, no fluid velocity would mean no crack propagation. Infinite speed of fluid at crack tip does not carry any straightforward physical meaning for such problem formulation. Therefore the only sensible choice is to have $\gamma_{0}=0$ so for asymptotics of speed function\eqref{v_asymp} we have $\tilde{V}(t,1)=v_{0}(t)(1-1)^{0}=v_{0}(t)$ hence we can say that the crack tip propagates with speed $v_{0}(t)$. Additionally we can read out the value of $v_{0}(t)$ form \ref{v_one_term} therefore we obtain: 
+\begin{equation}
+v_{0}(t)=\frac{k}{3ML(t)}w_{0}^{3}(t)\label{v_0}
+\end{equation}
+Now having found the value of $\alpha_{0}=\frac{1}{3}$ we can move
+on to try to solve \eqref{problem}, by substituting in our problem we would obtain:
+
+\begin{equation}
+w_{0}'(t)(1-\tilde{x})^{\frac{1}{3}}=\frac{1}{3L(t)}\left(w_{0}(t)v_{0}(t)(1-\tilde{x})^{\frac{1}{3}}\right)-DC(t)(1-\tilde{x})^{-\frac{1}{2}}+O\left(L(t)-x\right)^{\beta-1},\quad\tilde{x}\to1\label{eq:-10}
+\end{equation}
+If next power was such so $\beta>\frac{4}{3}$, then this expansion
+would be niceley solvable. However there is a leak off function that complicates the problem. Due to the term $(1-\tilde{x})^{-\frac{1}{2}}$ in leak off function and $O\left(\left(L(t)-x\right)^{\beta-1}\right)$ we can notice that addition of some next terms is needed to match leak off function. A guess could be that next term in expansion of power $\alpha_{1}=\frac{1}{2}$ could match leak off function, however to prove such we need to repeat our calculations with more terms of asymptotic expansion of $\tilde{w}(t,\tilde{x})$ present. So we at this step we concluded that $\alpha_{0}=\frac{1}{3}$, $\gamma_{0}=0$, and we continue by adding next terms of expansion.
+
+\subsection{Finding $\alpha_1$}
+
+We obtained that the first power $\alpha_{0}=\frac{1}{3}$ and that
+the second power $\alpha_{1}$ is unknown. We expect to find a relation
+between second asymptotic term and $C(t)$ therefore we use a two
+term asymptotic expansion of $\tilde{w}(t,\tilde{x})$ which is:
+
+\begin{equation}
+\tilde{w}(t,\tilde{x})=w_{0}(t)(1-\tilde{x})^{\frac{1}{3}}+w_{1}(t)(1-\tilde{x})^{\alpha_{1}}+O\left((1-\tilde{x})^{\beta}\right),\quad\tilde{x}\to1\label{w_two_term}
+\end{equation}
+
+So the by \eqref{norm_speed} the speed function in for two term width function expansion is given by:
+
+\begin{equation}
+\begin{split}\tilde{V}(t,\tilde{x})=& v_0(t)+\frac{k}{ML(t)}\left(\alpha_{1}+\frac{2}{3}\right)w_{0}^{2}(t)w_{1}(t)\left(1-\tilde{x}\right)^{\alpha_{1}-\frac{1}{3}}\\
+ & +\frac{k}{ML(t)}\left(2\alpha_{1}+\frac{1}{3}\right)w_{0}(t)w_{1}^{2}(t)\left(1-\tilde{x}\right)^{2\alpha_{1}-\frac{2}{3}}+\frac{k}{ML(t)}\alpha_{1}w_{1}^{3}(t)\left(1-\tilde{x}\right)^{3\alpha_{1}-1}\\
+ & +O\big(\left(1-\tilde{x}\right)^{\beta-\frac{1}{3}}\big),\quad\tilde{x}\to1
+\end{split}
+\label{v_two_term}
+\end{equation}
+
+The order of second term will be dependent on the value of $\alpha_{1}$,to more precise next 3 terms will be given by $\alpha_{1}-\frac{1}{3},2\alpha_{1}-\frac{2}{3},3\alpha_{1}-1$. Since $\alpha_{1}>\frac{1}{3}$ then second term will be given by $\alpha_{1}-\frac{1}{3}$ and third by $2\alpha_{1}-\frac{2}{3}$. Therefore asymptotics of speed function $\tilde{V}(t,\tilde{x})$ can be written with two terms as:  
+\begin{equation}
+\tilde{V}(t,\tilde{x})=v_{0}(t)+v_{1}(t)(1-\tilde{x})^{\gamma_{1}}+O\left((1-\tilde{x})^{\min[2\alpha_{1}-\frac{2}{3},\beta-\frac{1}{3}]}\right),\quad\tilde{x}\to1
+\end{equation}
+Where: 
+\begin{equation}
+v_{1}(t)=\frac{k}{ML(t)}\left(\alpha+\frac{2}{3}\right)w_{0}^{2}(t)w_{1}(t)\label{v_1}
+\end{equation}
+
+And $\gamma_{1}=\alpha_{1}-\frac{1}{3}$ and $\beta>\alpha_{1}$. 
+
+Now we can find the relevant derivatives to fill in the equation \eqref{problem} so
+we arrive at: 
+\begin{equation}
+\begin{split}w_{0}'(t)(1-\tilde{x})^{\frac{1}{3}}+w_{1}'(t)(1-\tilde{x})^{\alpha_{1}}= & \frac{1}{L(t)}\Big(\frac{1}{3}w_{0}(t)v_{0}(t)(1-\tilde{x})^{\frac{1}{3}}+\alpha_{1}w_{1}(t)v_{0}(t)(1-\tilde{x})^{\alpha_{1}}\\
+ & +\alpha_{1}w_{0}(t)v_{1}(t)(1-\tilde{x})^{\alpha_{1}-1}+\left(2\alpha_{1}-\frac{1}{3}\right)w_{1}(t)v_{1}(t)(1-\tilde{x})^{2\alpha_{1}-\frac{4}{3}}\Big)\\
+ & -DC(t)(1-\tilde{x})^{-\frac{1}{2}}+O\left(\left(L(t)-x\right)^{\beta-1}\right),\quad\tilde{x}\to1
+\end{split}
+\label{asymp_a1_1}
+\end{equation}
+Where the second smallest power is given by $a_{1}-1$, Therfore we
+can rewrite above as:
+
+\begin{equation}
+0=\frac{1}{L(t)}\Big(\alpha_{1}w_{0}(t)v_{1}(t)(1-\tilde{x})^{\alpha_{1}-1}\Big)-DC(t)(1-\tilde{x})^{-\frac{1}{2}}+O\left(\left(L(t)-x\right)^{\beta-1}\right),\quad\tilde{x}\to1\label{step_one}
+\end{equation}
+From such we can see that the term $DC(t)(1-\tilde{x})^{-\frac{1}{2}}$
+is needed to be matched with $\alpha_{2}-1$ so we conclude that that
+$\alpha_{1}=\frac{1}{2}$ substituted to equation \eqref{problem}
+gives:
+
+\begin{equation}
+\begin{split}w_{0}'(t)(1-\tilde{x})^{\frac{1}{3}}+w_{1}'(t)(1-\tilde{x})^{\frac{1}{2}}= & \frac{1}{L(t)}\Big(\frac{1}{3}w_{0}(t)v_{0}(t)(1-\tilde{x})^{\frac{1}{3}}+\frac{1}{2}w_{1}(t)v_{0}(t)(1-\tilde{x})^{\frac{1}{2}}\\
+ & +\frac{1}{2}w_{0}(t)v_{1}(t)(1-\tilde{x})^{-\frac{1}{2}}+\frac{2}{3}w_{1}(t)v_{1}(t)(1-\tilde{x})^{-\frac{1}{3}}\Big)\\
+ & -DC(t)(1-\tilde{x})^{-\frac{1}{2}}+O\left(\left(L(t)-x\right)^{\beta-1}\right)
+\end{split}
+\label{asymp_a1_1-1-1}
+\end{equation}
+
+However right side such contains term $(1-\tilde{x})^{-\frac{1}{3}}$ witch does not cancel out with any other term and is lesser than the term $(1-\tilde{x})^{\frac{1}{3}}$ on the left side. We want to obtain equation for $w_{0}'$ . To solve this issue we will add next term of expansion $\alpha_{2}$ at the next step and continue with this procedure until the $O\left(\left(L(t)-x\right)^{\beta-1}\right)$ will correspond to a term grater than $(1-\tilde{x})^{\frac{1}{3}}$ . 
+
+
+To sum up this step we obtained $\alpha_{1}=\frac{1}{2}$ and $\gamma_{1}=\frac{1}{6}$. By combining term with $(1-x)^{-\frac{1}{2}}$ on both side we can write out an equation 
+\begin{equation}
+\frac{1}{2L(t)}w_{0}(t)v_{1}(t)=DC(t)\label{r_1}
+\end{equation}
+
+Which we can later use to build a system of equations. Combining it with \eqref{v_0} and \eqref{v_1} we can write out $v_1$ and $w_1$ in terms of $w_0$ Therefore:
+
+\begin{equation}
+w_{1}(t)=\frac{12}{7}\frac{MDC(t)L^2(t)}{k}\frac{1}{w_{0}^{3}(t)}\label{w_1}
+\end{equation}
+
+\begin{equation}
+v_1(t)=2DC(t)L(t)\frac{1}{w_0(t)}\label{v_1}
+\end{equation}
+
+Note that we obtained a relation between $C(t)$ and $w_{1}$ just like we expected.
+
+\subsection{Finding $\alpha_{2}$}
+
+We continue our procedure by adding next term of expansion $\alpha_{2}$, then we obtain such a normalized problem with $\tilde{w}(t,\tilde{x})$ asymptotics given by three terms: 
+\begin{equation}
+\tilde{w}(t,\tilde{x})=w_{0}(t)(1-\tilde{x})^{\frac{1}{3}}+w_{1}(t)(1-\tilde{x})^{\frac{1}{2}}+w_{2}(t)(1-\tilde{x})^{\alpha_{2}}+O\left((1-\tilde{x})^{\beta}\right),\quad\tilde{x}\to1\label{w_2}
+\end{equation}
+And with speed function asymptotics by \eqref{norm_speed} are given as:
+
+\begin{align}
+\tilde V(t,\tilde x)=
+&v_0(t)+v_1(t)(1-\tilde{x})^{\frac{1}{6}}+\frac{4k}{3ML(t)}w_{0}(t)w_{1}^{2}(t)(1-\tilde{x})^{\frac{1}{3}}
+\\
+&+\frac{k}{ML(t)}\left(\alpha_{2}+\frac{2}{3}\right)w_{0}^{2}(t)w_{2}(t)(1-\tilde{x})^{\alpha_{2}-\frac{1}{3}}+O\left((1-\tilde{x})^{\min[\frac{1}{2},\alpha_{2}-\frac{1}{6},\beta-\frac{1}{3}]}\right),\quad\tilde x \rightarrow 1 \label{v_3_asym}
+\end{align}
+
+As at this point the calculations would grow in size we used Mapple software to aid our computations. Substituting these into our problem \eqref{problem} we obtained:
+
+\begin{equation}
+\begin{split}0= & \left(\frac{1}{2L(t)}v_{1}(t)w_{0}(t)-DC(t)\right)(1-\tilde{x})^{-\frac{1}{2}}\\
+ & +\frac{2}{3L(t)}\left(v_{1}(t)w_{1}(t)+\frac{4k}{3M}w_{0}^{2}(t)w_{1}^{2}(t)\right)(1-\tilde{x})^{-\frac{1}{3}}\\
+ & +\frac{\alpha_{2}k}{ML(t)}\left(\alpha_{2}+\frac{2}{3}\right)w_{0}^{3}(t)w_{2}(t)(1-\tilde{x})^{\alpha_{2}-1}\\
+ & +O\left((1-\tilde{x})^{\min{[-\frac{1}{6},\alpha_{2}-\frac{5}{6},\beta-1]}}\right)
+\end{split}
+\label{asymp_a2_1}
+\end{equation}
+
+Equation (\ref{asymp_a2_1}) has, again,  the lowest unknown term $(1-\tilde{x})^{\alpha_{2}-1}$ and the lowest known term it can be matched with is $(1-\tilde{x})^{-\frac{1}{3}}$, so to match these we choose $\alpha_{2}=\frac{2}{3}$. Note that
+such a choice also match together terms in asymptotics for speed function \eqref{v_asym} which can be now rewritten introducing $v_{2}(t)$
+given by: 
+
+\begin{equation}
+v_{2}(t)=\frac{4k}{3ML(t)}\left(w_{0}^{2}(t)w_{2}(t)+w_{0}(t)w_{1}^{2}(t)\right)\label{v_2}
+\end{equation}
+
+And so we obtain that $\gamma_{2}=\frac{1}{3}$. Now result \eqref{asymp_a2_1} would simplify such we can take the following relation out from it so:
+
+\begin{equation}
+v_{2}(t)w_{0}(t)+v_{1}(t)w_{1}(t)=0\label{relation_2}
+\end{equation}
+And form such so we can obtain $w_2$ and $v_2$ in terms of $w_0$ as:
+
+\begin{equation}
+w_{2}(t)=-\frac{270}{49}\frac{M^2D^2C(t)^2L(t)^4}{k^2}\frac{1}{w_{0}^{7}(t)}\label{w_2}
+\end{equation}
+
+\begin{equation}
+v_{2}(t)=-\frac{24}{7}\frac{MD^{2}C^{2}(t)L^3(t)}{k}\frac{1}{w_{0}^{5}}\label{v_2}
+\end{equation}
+
+So at this step we arrive at $\alpha_{2}=\frac{2}{3}$ and $\gamma_{2}=\frac{1}{3}$. We should however continue by adding next element of expansion of order $\alpha_{3}$,
+since in the worst unknown term given by $O\left((1-\tilde{x})^{\min{[-\frac{1}{6},\beta-1]}}\right)$
+which is lesser than $(1-\tilde{x})^{\frac{1}{3}}$ needed for the
+solution.
+
+\subsection{Finding $\alpha_{3}$}
+
+Having previously found $\alpha_{2}=\frac{2}{3}$ we continue previous procedure by adding next term of expansion $\alpha_{3}$. Doing such obtain following expansion for speed function asymptotics \eqref{v_norm}
+
+\begin{align}
+\tilde{V}(t,\tilde{x})= & v_{0}(t)+v_{1}(t)(1-\tilde{x})^{\frac{1}{6}}+v_{2}(t)(1-\tilde{x})^{\frac{1}{3}}+\frac{k}{ML(t)}\left(3w_{0}(t)w_{1}(t)w_{2}(t)+\frac{1}{2}w_{1}^{3}(t)\right)(1-\tilde{x})^{\frac{1}{2}}\nonumber \\
+ & +\frac{k}{ML(t)}\left(\alpha_{3}+\frac{2}{3}\right)w_{0}(t)^{2}w_{3}(t)(1-\tilde{x})^{\alpha_{3}-\frac{1}{3}}+O\left((1-\tilde{x})^{\min[\frac{2}{3},\alpha_{3}-\frac{1}{6},\beta-\frac{1}{3}]}\right),\quad\tilde{x}\to1\label{eq:-28}
+\end{align}
+Substituting that into \eqref{problem} with a maple aided calculation would give:
+
+\begin{equation}
+\begin{split}0= & \left(\frac{1}{2L(t)}v_{1}(t)w_{0}(t)-DC(t)\right)(1-\tilde{x})^{-\frac{1}{2}}\\
+ & +\frac{2}{3L(t)}\left(v_{1}(t)w_{1}(t)+v_{2}(t)w_{0}(t)\right)(1-\tilde{x})^{-\frac{1}{3}}\\
+ & +\frac{5}{6L(t)}\left(v_{1}(t)w_{2}(t)+v_{2}(t)w_{1}(t)+\frac{k}{ML(t)}\left(3w_{0}^{2}(t)w_{1}(t)w_{2}(t)+\frac{1}{2}w_{0}(t)w_{1}^{3}(t)\right)\right)(1-\tilde{x})^{-\frac{1}{6}}\\
+ & +\frac{\alpha_{3}k}{ML^2(t)}\left(\alpha_{3}+\frac{2}{3}\right)w_{0}(t)^{2}w_{3}(t)(1-\tilde{x})^{\alpha_{3}-1}\\
+ & +O\left((1-\tilde{x})^{\min{[0,\alpha_{3}-\frac{5}{6},\beta-1]}}\right)
+\end{split}
+\label{asymp_a3_1}
+\end{equation}
+Just like before we can see that equation (\ref{asymp_a3_1}) has the lowest unknown term $(1-\tilde{x})^{\alpha_{3}-1}$ and the lowest known term it can be matched with is$(1-\tilde{x})^{-\frac{1}{6}}$, so to match these we choose $\alpha_{3}=\frac{5}{6}$. Now we get $\gamma_{3}=\frac{1}{2}$ and can introduce $v_{3}(t)$ given by
+for speed equation \eqref{eq:-28} as: 
+\begin{equation}
+v_{3}(t)=\frac{k}{ML(t)}\left(3w_{0}(t)w_{1}(t)w_{2}(t)+\frac{1}{2}w_{1}^{3}(t)+\frac{3}{2}w_{0}(t)^{2}w_{3}(t)\right)\label{v_3}
+\end{equation}
+And previous results \eqref{asymp_a3_1} would be simplified to give an relations:
+
+\begin{equation}
+v_{1}(t)w_{2}(t)+v_{2}(t)w_{1}(t)+v_{3}(t)w_{0}(t)=0\label{relation_3}
+\end{equation}
+From such we obtain $w_3$ and $v_3$ in terms of $w_0$
+\begin{equation}
+w_{3}(t)=\frac{9768}{343}\frac{M^3D^3C^3(t)L^6(t)}{k^3}\frac{1}{w_{0}^{11}(t)}\label{w_3}
+\end{equation}
+\begin{equation}
+v_{3}(t)=\frac{828}{49}\frac{M^{2}D^{3}C^{3}(t)L^{5}(t)}{k^{2}}\frac{1}{w_{0}^{9}}\label{v_3}
+\end{equation}
+Hence for this step we obtain $\alpha_{3}=\frac{5}{6}$ and $\gamma_{3}=\frac{1}{2}$. We continue by adding next power to expansion $\alpha_{4}$, since in the worst unknown term given by $O\left((1-\tilde{x})^{\min{[0,\beta-1]}}\right)$ which is lesser than $(1-\tilde{x})^{\frac{1}{3}}$ needed for the solution.
+
+\subsection{Finding $\alpha_{4}$}
+
+Having previously found $\alpha_{3}=\frac{5}{6}$ we continue previous procedure by adding next term of expansion $\alpha_{4}$. Doing such we obtain that speed function asymptotics take form of:
+
+
+
+\begin{equation}
+\begin{split}
+\tilde{V}(t,\tilde{x})=&v_0(t)+v_1(t)(1- \tilde x)^{\frac{1}{6}}+v_2(t)(1- \tilde x)^{\frac{1}{3}}+v_3(t)(1- \tilde x)^{\frac{1}{3}}\\
+&+\frac{5k}{3ML(t)}\left(w_0(t)w_2^2(t)+w_1^2(t)w_2(t)+2w_0(t)w_1(t)w_3(t)\right)(1- \tilde x)^{\frac{2}{3}}\\
+&\frac{k}{ML(t)}\left(\alpha_4 +\frac{2}{3}\right)(1- \tilde x)^{\alpha_4-\frac{1}{3}}+O\left((1-\tilde{x})^{\min{[\frac{5}{6},\alpha_{4}-\frac{1}{6},\beta-\frac{1}{3}}}\right)
+\end{split}
+\label{v_4_asymp}
+\end{equation}
+
+
+Substituting that into \eqref{norm_problem} with a maple aided calculation would give:
+
+\begin{equation}
+\begin{split}0= & \big(\frac{1}{2L(t)}v_{1}(t)w_{0}(t)-C(t)\big)(1-\tilde{x})^{-\frac{1}{2}}\\
+ & +\frac{2}{3L(t)}\big(v_{1}(t)w_{1}(t)+v_{2}(t)w_{0}(t)\big)(1-\tilde{x})^{-\frac{1}{3}}\\
+ & +\frac{5}{6L(t)}\big(v_{1}(t)w_{2}(t)+v_{2}(t)w_{1}(t)+v_{3}(t)w_{0}(t)\big)(1-\tilde{x})^{-\frac{1}{6}}\\
+ & +\frac{1}{L(t)}\big(v_{1}(t)w_{3}(t)+v_{2}(t)w_{2}(t)+v_{3}(t)w_{1}(t)\big)(1-\tilde{x})^{0}\\
+ & +\frac{5k}{3ML^2(t)}\left(w_{0}^{2}(t)w_{2}^{2}(t)+w_{0}(t)w_{1}^{2}(t)w_{2}(t)+2w_{0}^{2}(t)w_{1}(t)w_{3}(t)\right)(1-\tilde{x})^{0}\\
+ & +\frac{\alpha_{4}k}{ML^2(t)}\left(\alpha_{4}+\frac{2}{3}\right)w_{0}(t)^{3}w_{4}(t)(1-\tilde{x})^{\alpha_{4}-1}\\
+ & +O\left((1-\tilde{x})^{\min{[\frac{1}{6},\alpha_{4}-\frac{5}{6},\beta-1]}}\right)
+\end{split}
+\label{asymp_a4_1}
+\end{equation}
+Equation \eqref{asymp_a4_1} has the lowest unknown term $(1-\tilde{x})^{\alpha_{4}-1}$ and the lowest known term it can be matched with is $(1-\tilde{x})^{0}$, so to match these we choose $\alpha_{4}=1$ and $\gamma_{4}=\frac{2}{3}$. This would allow to simplify speed function asymptotics \eqref{v_4_asymp} with $v_4$ given by:
+
+\begin{equation}
+v_{4}(t)=\frac{k}{ML(t)}\left(\frac{5}{3}w_{0}(t)w_{2}^{2}(t)+\frac{5}{3}w_{1}^{2}(t)w_{2}(t)+\frac{10}{3}w_{0}(t)w_{1}(t)w_{3}(t)+\frac{5}{3}w_{0}(t)^{2}w_{4}(t)\right)\label{v_4}
+\end{equation}
+Now substituting that into previous result \eqref{asymp_a4_1} we would obtain a new relation:
+
+\begin{equation}
+v_{1}(t)w_{3}(t)+v_{2}(t)w_{2}(t)+v_{3}(t)w_{1}(t)+v_{4}(t)w_{0}(t)=0\label{relation_4}
+\end{equation}
+Hence we obtain $v_4$ and $w_4$ in terms of $w_0$:
+
+\begin{equation}
+w_{4}(t)=-\frac{2097252}{12005}\frac{M^4D^4C^4(t)L^8(t)}{k^4}\frac{1}{w_{0}^{15}(t)}\label{w_4}
+\end{equation}
+
+\begin{equation}
+v_{4}(t)=-\frac{5136}{49}\frac{M^{3}D^{4}C^{4}(t)L^{7}(t)}{k^{3}}\frac{1}{w_{0}^{13}}\label{v_4}
+\end{equation}
+
+Hence for this step we obtain $\alpha_{4}=1$ and $\gamma_{4}=\frac{2}{3}$ We continue by adding next power to expansion $\alpha_{5}$, since
+in the worst unknown term given by $O\left((1-\tilde{x})^{\min{[\frac{1}{6},\beta-1]}}\right)$
+which is lesser than $(1-\tilde{x})^{\frac{1}{3}}$ needed for the
+solution.
+
+\subsection{Finding $\alpha_{5}$}
+
+Setting $\alpha_{4}=1$ allows us to add $\alpha_{5}$ so we obtain asymptotics for speed function:
+\begin{align}
+\tilde{V}(t,\tilde{x})= & v_{0}(t)+v_{1}(t)(1-\tilde{x})^{\frac{1}{6}}+v_{2}(t)(1-\tilde{x})^{\frac{1}{3}}+v_{3}(t)(1-\tilde{x})^{\frac{1}{2}}+v_{4}(t)(1-\tilde{x})^{\frac{2}{3}}\nonumber \\
+ & +\frac{k}{ML(t)}\big(\frac{11}{3}w_{0}(t)w_{1}(t)w_{4}(t)+\frac{11}{6}w_{1}^{2}(t)w_{3}(t)+\frac{11}{3}w_{0}(t)w_{2}(t)w_{3}(t)+\frac{11}{6}w_{1}(t)w_{2}^{2}(t)\big)(1-\tilde{x})^{\frac{5}{6}}\nonumber\\
+ & +\frac{\alpha_{5}k}{ML(t)}(\alpha_{5}+\frac{2}{3})w_{0}(t)^{2}w_{5}(t)(1-\tilde{x})^{\alpha_{5}-\frac{1}{3}}+O\left((1-\tilde{x})^{\min[1,\alpha_{5}-\frac{1}{6},\beta-\frac{1}{3}]}\right),\quad\tilde{x}\to1\label{v_5_asymp}
+\end{align}
+
+Substituting that into (\ref{norm_problem}) with a maple aided calculation would give 
+
+\begin{equation}
+\begin{split}0= & \big(\frac{1}{2L(t)}v_{1}(t)w_{0}(t)-DC(t)\big)(1-\tilde{x})^{-\frac{1}{2}}\\
+ & +\frac{2}{3L(t)}\big(v_{1}(t)w_{1}(t)+v_{2}(t)w_{0}(t)\big)(1-\tilde{x})^{-\frac{1}{3}}\\
+ & +\frac{5}{6L(t)}\big(v_{1}(t)w_{2}(t)+v_{2}(t)w_{1}(t)+v_{3}(t)w_{0}(t)\big)(1-\tilde{x})^{-\frac{1}{6}}\\
+ & +\frac{1}{L(t)}(v_{1}(t)w_{3}(t)+v_{2}(t)w_{2}(t)+v_{3}(t)w_{1}(t)+v_{4}(t)w_{0}(t))(1-\tilde{x})^{0}\\
+ & +\frac{7}{6L(t)}\big(v_{1}(t)w_{4}(t)+v_{2}(t)w_{3}(t)+v_{3}(t)w_{2}(t)+v_{4}(t)w_{1}(t)\big)(1-\tilde{x})^{\frac{1}{6}}\\
+ & +\frac{7k}{6ML^2(t)}\big(\frac{11}{3}w_{0}(t)w_{1}(t)w_{4}(t)+\frac{11}{6}w_{1}^{2}(t)w_{3}(t)+\frac{11}{3}w_{0}(t)w_{2}(t)w_{3}(t)+\frac{11}{6}w_{1}(t)w_{2}^{2}(t)\big)\big)(1-\tilde{x})^{\frac{1}{6}}\\
+ & +\frac{\alpha_{5}k}{ML^2(t)}(\alpha_{5}+\frac{2}{3})w_{0}(t)^{3}w_{5}(t)(1-\tilde{x})^{\alpha_{5}-1}\\
+ & +O\left((1-\tilde{x})^{\min{[\frac{1}{3},\alpha_{5}-\frac{5}{6},\beta-1]}}\right)
+\end{split}
+\label{asymp_a4_1-1}
+\end{equation}
+
+Equation (\ref{asymp_a4_1-1}) has the lowest unknown term $(1-\tilde{x})^{\alpha_{5}-1}$ and the lowest known term it can be matched with is $(1-\tilde{x})^{\frac{1}{6}}$ , so to match these we choose $\alpha_{5}=\frac{7}{6}$. This would again simplify the asymptotics of speed function \eqref{v_5_asymp} so we can use $v_5$ given by:
+\begin{equation}
+v_{5}=\frac{11k}{6ML^2(t)}\left(2w_{0}(t)w_{1}(t)w_{4}(t)+w_{1}^{2}(t)w_{3}(t)+2w_{0}(t)w_{2}(t)w_{3}(t)+w_{1}(t)w_{2}^{2}(t)+w_{0}(t)^{2}w_{5}(t)\right)
+\label{v_5}
+\end{equation}
+And $\gamma_{5}=\frac{5}{6}$. Now substituting this into previous
+result \ref{asymp_a4_1-1} gives a new relation:
+
+\begin{equation}
+v_{1}(t)w_{4}(t)+v_{2}(t)w_{3}(t)+v_{3}(t)w_{2}(t)+v_{4}(t)w_{1}(t)+v_{5}(t)w_{0}(t)=0\label{relation_5}
+\end{equation}
+
+And therefore obtain:
+
+\begin{equation}
+w_{5}(t)=\frac{1081254096}{924385}\frac{M^5D^5C^5(t)L^10(t)}{k^5}\frac{1}{w_{0}^{19}(t)}\label{w_5}
+\end{equation}
+
+\begin{equation}
+v_5(t)=\frac{1234512}{1715}\frac{M^{4}D^{5}C^{5}(t)L^{9}(t)}{k^{4}}\frac{1}{w_{0}^{17}(t)}\label{v_5}
+\end{equation}
+
+Hence for this step we obtain $\alpha_{5}=\frac{7}{6}$ and $\gamma_{5}=\frac{5}{6}$ We continue by adding next power to expansion $\alpha_{6}$, since in the worst unknown term given by $O\left((1-\tilde{x})^{\min{[\frac{1}{3},\beta-1]}}\right)$ which is lesser than $(1-\tilde{x})^{\frac{1}{3}}$ needed for the
+solution.
+
+\subsection{Finding $\alpha_{6}$}
+
+Setting $\alpha_{5}=\frac{7}{6}$. allows us to add $\alpha_{6}$
+so we obtain asymptotics of speed function:
+
+\begin{equation}
+\begin{split}
+\tilde V(t,\tilde x)=&v_0(t)+v_1(t)(1-\tilde x)^{\frac{1}{6}}+v_{2}(t)(1-\tilde{x})^{\frac{1}{3}}+v_{3}(t)(1-\tilde{x})^{\frac{1}{2}}+v_{4}(t)(1-\tilde{x})^{\frac{2}{3}}
+\\&
++v_{5}(t)(1-\tilde{x})^{\frac{5}{6}}+\frac{4k}{3ML(t)}\big(4w_{0}(t)w_{1}(t)w_{5}(t)+4w_{0}(t)w_{2}(t)w_{4}(t)\big)(1-\tilde{x})
+\\&
++\frac{\alpha_{6}k}{ML(t)}(\alpha_{6}+\frac{2}{3})w_{0}(t)^{2}w_{6}(t)(1-\tilde{x})^{\alpha_{6}-\frac{1}{3}}+O\left((1-\tilde{x})^{\min[\frac{7}{6},\alpha_{6}-\frac{1}{6},\beta-\frac{1}{3}]}\right),\quad\tilde{x}\to1
+\end{split}\label{v_6_asym}
+\end{equation}
+
+Substituting that into (\ref{norm_problem}) with a maple aided calculation
+would give 
+
+\begin{equation}
+\begin{split}w_{0}'(t)(1-\tilde{x})^{\frac{1}{3}}= & \big(\frac{1}{2L(t)}v_{1}(t)w_{0}(t)-DC(t)\big)(1-\tilde{x})^{-\frac{1}{2}}\\
+ & +\frac{2}{3L(t)}\big(v_{1}(t)w_{1}(t)+v_{2}(t)w_{0}(t)\big)(1-\tilde{x})^{-\frac{1}{3}}\\
+ & +\frac{5}{6L(t)}\big(v_{1}(t)w_{2}(t)+v_{2}(t)w_{1}(t)+v_{3}(t)w_{0}(t)\big)(1-\tilde{x})^{-\frac{1}{6}}\\
+ & +\frac{1}{L(t)}(v_{1}(t)w_{3}(t)+v_{2}(t)w_{2}(t)+v_{3}(t)w_{1}(t)+v_{4}(t)w_{0}(t))(1-\tilde{x})^{0}\\
+ & +\frac{7}{6L(t)}\big(v_{1}(t)w_{4}(t)+v_{2}(t)w_{3}(t)+v_{3}(t)w_{2}(t)+v_{4}(t)w_{1}(t)+v_{5}(t)w_{0}(t)\big)(1-\tilde{x})^{\frac{1}{6}}\\
+ & +\frac{4}{3L(t)}(v_{1}(t)w_{5}(t)+v_{2}(t)w_{4}(t)+v_{3}(t)w_{3}(t)+v_{4}(t)w_{2}(t)+v_{5}(t)w_{1}(t))(1-\tilde{x})^{\frac{1}{3}}\\
+ & +\frac{4k}{3ML^2(t)}\big(4w_{0}^{2}(t)w_{1}(t)w_{5}(t)+4w_{0}^{2}(t)w_{2}(t)w_{4}(t)+2w_{0}^{2}(t)w_{3}^{2}(t)\big)(1-\tilde{x})^{\frac{1}{3}}\\
+ & +\frac{4k}{3ML^2(t)}\big(2w_{0}(t)w_{1}^{2}(t)w_{4}(t)+4w_{0}(t)w_{1}(t)w_{2}(t)w_{3}(t)+\frac{2}{3}w_{0}(t)w_{2}^{3}(t)\big)(1-\tilde{x})^{\frac{1}{3}}\\
+ & +\frac{1}{3L(t)}v_{0}(t)w_{0}(t)(1-\tilde{x})^{\frac{1}{3}}\\
+ & +\frac{\alpha_{6}k}{ML^2(t)}(\alpha_{6}+\frac{2}{3})w_{0}(t)^{2}w_{6}(t)(1-\tilde{x})^{\alpha_{6}-1}\\
+ & +O\left((1-\tilde{x})^{\min{[\frac{1}{2},\alpha_{6}-\frac{5}{6},\beta-1]}}\right)
+\end{split}
+\label{asymp_a4_1-1-1}
+\end{equation}
+
+Equation (\ref{asymp_a4_1-1-1}) has the lowest unknown term $(1-\tilde{x})^{\alpha_{6}-1}$ and the lowest known term it can be matched with is $(1-\tilde{x})^{\frac{1}{3}}$, so to match these we choose $\alpha_{6}=\frac{4}{3}$. This would allow us to simplify speed function asymptotics \ref{v_6_asym} by introducing $v_{6}(t)$ given by:
+
+\begin{align}
+v_{6}(t)= & \frac{2k}{ML}\big(w_{0}(t)^{2}w_{6}(t)+2w_{0}(t)w_{1}(t)w_{5}(t)+2w_{0}(t)w_{2}(t)w_{4}(t)\nonumber \\
+ & +w_{0}(t)w_{3}^{2}(t)+w_{1}^{2}(t)w_{4}(t)+2w_{1}(t)w_{2}(t)w_{3}(t)+\frac{1}{3}w_{2}^{3}(t)\big)\label{v_6}
+\end{align}
+And $\gamma_{6}=1$. Now substituting in to previous result \eqref{asymp_a4_1-1-1} we can obtain a new relation:
+
+\begin{equation}
+\begin{split}
+w_{0}'(t)= & \frac{4}{3L(t)}\left(v_{1}(t)w_{5}(t)+v_{2}(t)w_{4}(t)+v_{3}(t)w_{3}(t)+v_{4}(t)w_{2}(t)+v_{5}(t)w_{1}(t)+v_{6}(t)w_{0}(t)\right)\\
+ & +\frac{1}{3L(t)}v_{0}(t)w_{0}(t)\label{relation_6}
+\end{split}
+\end{equation}
+
+Hence at this step we obtain $\alpha_{6}=\frac{4}{3}$ ,$\gamma_{6}=1$. At this stage we finally arrive at relation that contains cleared terms up to $w_{0}'(t)$, since in the worst unknown term given by $O\left((1-\tilde{x})^{\min{[\frac{1}{2},\beta-1]}}\right)$ which is grater than $(1-\tilde{x})^{\frac{1}{3}}$ needed for the solution to have relation containing $w_{0}'(t)$. Hence we don't need to add any more powers of $\alpha_{n}$ to proceed.
+
+\subsection{more more more}
+
+also note that we can write out equations for $v_1,v_2,v_3,v_4,v_5,w_0,w_1,w_2,w_3,w_4,w_5$ in terms of $v_0$ which would be:
+
+\begin{align}
+w_0(t)&=3^{\frac{1}{3}}\left(\frac{M}{k}\right)^{\frac{1}{3}}L^{\frac{1}{3}}(t)v_0^{\frac{1}{3}}(t)\\
+w_1(t)&=\frac{12}{7}3^{-1}DC(t)L(t)v_0^{-1}(t)\\
+w_2(t)&=-\frac{270}{49}3^{-\frac{7}{3}}\left(\frac{M}{k}\right)^{-\frac{1}{3}}D^2C^2(t)L^{\frac{5}{3}}(t)v_0^{-\frac{7}{3}}(t)\\
+w_3(t)&=\frac{9768}{343}3^{-\frac{11}{3}}\left(\frac{M}{k}\right)^{-\frac{2}{3}}D^3C^3(t)L^{\frac{7}{3}}(t)v_0^{-\frac{11}{3}}(t)\\
+w_4(t)&=-\frac{2097250}{12005}3^{-\frac{15}{3}}\left(\frac{M}{k}\right)^{-1}D^4C^4(t)L^{\frac{9}{3}}(t)v_0^{-\frac{15}{3}}(t)\\
+w_5(t)&=\frac{1081254096}{924385}3^{-\frac{19}{3}}\left(\frac{M}{k}\right)^{-\frac{4}{3}}D^5C^5(t)L^{\frac{11}{3}}(t)v_0^{-\frac{19}{3}}(t)
+\end{align}
+
+\begin{align}
+v_1(t)&=2\cdot3^{-\frac{1}{3}}\left(\frac{M}{k}\right)^{-\frac{1}{3}}DC(t)L^{\frac{2}{3}}(t)v_0^{-\frac{1}{3}}(t)\\
+v_2(t)&=-\frac{24}{7}3^{-\frac{5}{3}}\left(\frac{M}{k}\right)^{-\frac{2}{3}}D^2C^2(t)L^{\frac{4}{3}}(t)v_0^{-\frac{5}{3}}(t)\\
+v_3(t)&=\frac{280}{49}3^{-\frac{9}{3}}\left(\frac{M}{k}\right)^{-1}D^3C^3(t)L^{\frac{6}{3}}(t)v_0^{-\frac{9}{3}}(t)\\
+v_4(t)&=-\frac{5136}{49}3^{-\frac{13}{3}}\left(\frac{M}{k}\right)^{-\frac{4}{3}}D^4C^4(t)L^{\frac{8}{3}}(t)v_0^{-\frac{13}{3}}(t)\\
+v_5(t)&=\frac{1234512}{1715}3^{-\frac{17}{3}}\left(\frac{M}{k}\right)^{-\frac{5}{3}}D^5C^5(t)L^{\frac{10}{3}}(t)v_0^{-\frac{17}{3}}(t)\\
+\end{align}
+
+
+
+Asymptotic expansion for the crack opening and the fluid velocity near the crack tip in the normalised variables (\ref{dimensionless}) can be written in the following general forms:
+\begin{equation}\label{w_asym}
+w(t, x)=\sum_{j=0}^Nw_j(t)(1-x)^{\alpha_j}+O((1- x)^{\varrho_w}), \quad x\rightarrow 1,
+\end{equation}
+and
+\begin{equation}\label{v_asym}
+V(t, x)=\sum_{j=0}^NV_j(t)(1-x)^{\beta_j}+O((1- x)^{\varrho_V}),\quad  x\rightarrow 1,
+\end{equation}
+with $\varrho_w>\alpha_n$, $\varrho_V>\beta_n$, $\alpha_0=1/3$, $\beta_0=0$ and some increasing sequences $\alpha_0,\alpha_1,\ldots,\alpha_n$ and $\beta_0,\beta_1,\ldots,\beta_n$. Note that the asymptotics are related to each other by the speed equation \eqref{norm_speed} and thus, regardless of the chosen leak-off function, we can write
+\begin{equation}\label{v_asym_1}
+\sum_{j=0}^NV_j(t)(1-x)^{\beta_j}+\ldots=
+\end{equation}
+\[
+\frac{1}{3L(t)}\sum_{k=0}^N\sum_{m=0}^N\sum_{j=0}^N\alpha_jw_j(t)
+w_m(t)w_k(t)(1-x)^{\alpha_j+\alpha_m+\alpha_k-1}.
+\]
+In line with the discussion after equation (\ref{V_asym_0}),
+we are interested only in the terms such that $\beta_j\le1$, restricting ourselves to the smallest $\varrho_V>1$,
+since the values of $\beta_j$ are combinations of a sum of three consequent components of the exponents $\alpha_j$.
+However, since $\alpha_0$ is known ($\alpha_0=1/3$), one can write (compare with (\ref{V_asym_0_coefs})):
+\begin{align}
+& V_{0}(t)=\frac{1}{3L(t)}w_{0}^{3}(t)\label{v_0}, \\
+& V_{1}(t)=\frac{1}{L(t)}\left(\alpha_1+\frac{2}{3}\right) w_{0}^{2}(t) w_{1}(t),\quad \beta_1=\alpha_1-\frac{1}{3}.\label{v_1}
+\end{align}
+
+To continue the process one now needs to compute the value of the exponent $\alpha_1$ as it is not clear
+a priori which value determining the next exponent $\beta_2=\min\{2/3+\alpha_2,1/3+2\alpha_1\}$ is larger. To do so
+let us rewrite the continuity equation (\ref{norm_continuity}) in the form:
+\begin{equation}
+\label{norm_continuity_as}
+\frac{\partial w}{\partial t}+\frac{V_0(t)}{L( t)}(1-x)\frac{\partial w}{\partial x}=\frac{1}{L( t)}\frac{\partial \big(w(V_0-V)\big)}{\partial x}-q_l(t,x).
+\end{equation}
+Here, the terms on the left-hand side of the equation are always bounded near the crack tip, while those on the right-hand side can behave differently depending on the chosen leak-off function.
+
+
+\noindent Consider the following three cases of $q_l$ behaviour.
+
+(\emph{i}) Assume first that
+\[
+q_l(t,x)=o\big(w(t,x)\big),\quad x\to1.
+\]
+This case naturally includes the impermeable rock formation. Analysing the leading order terms in the equation (\ref{norm_continuity_as}), it is clear that $w(V_0-V)=O((1-x)^{4/3})$, as $x\to1$. This, in turn, is only possible for $\beta_1=1$ and, therefore, $\alpha_1=4/3$. Finally, comparing the left-hand side and the right-hand side of the equation we obtain:
+\begin{equation}
+w_{0}'(t)= \frac{w_{0}(t)}{3L(t)} \big(V_0(t)+4V_1(t)\big),\quad V_{1}(t)=\frac{2}{L(t)}w_{0}^{2}(t) w_{1}(t).
+\label{sp_1}
+\end{equation}
+This case has been considered in \cite{Linkov_4} and \cite{MWL}.
+
+\vspace{2mm}
+
+
+(\emph{ii})
+If we assume that the leak-off function is estimated by the solution as  $O\big(w(t,x)\big)$, or equivalently;
+\[
+q_l(t,x)\sim\Upsilon(t)w_0(t)(1-x)^{1/3},\quad x\to1,
+\]
+then the previous results related to the values of $\alpha_1$ and $\beta_1$ and, therefore, the equation (\ref{sp_1})$_2$ remain the same, while the first one changes to
+\begin{equation}
+w_{0}'(t)= \frac{1}{3L(t)} w_{0}(t)\big(V_0(t)+4V_1(t)\big)-\Upsilon(t)w_0(t).
+\label{sp_2}
+\end{equation}
+This case corresponds to (\ref{norm_leak_off_1})$_3$ when $C_{32}=0$ and $\Upsilon(t)=kC_{31}(t)$.
+
+\vspace{2mm}
+
+
+(\emph{iii})
+The leak-off function in a general form:
+\[
+q_l(t,x)=\Phi(t)(1-x)^{\theta}+o((1-x)^{1/3}),\quad x\to1,
+\]
+where $-1/2\le \theta<1/3$. Here, one can conclude that $w(V_0-V)=O((1-x)^{1+\theta})$, as $x\to1$ or equivalently, $\beta_1=\theta+2/3$, and $\alpha_1=1+\theta$. Moreover, in this case:
+\begin{equation}
+(1+\theta)w_0V_1=L(t)\Phi(t), \quad V_{1}(t)=\frac{1}{L(t)}\left(\theta+\frac{4}{3}\right) w_{0}^{2}(t) w_{1}(t),
+\label{sp_3}
+\end{equation}
+and, thus
+\begin{equation}
+w_{1}(t)=\frac{3L^2(t)\Phi(t)}{(4+3\theta)(1+\theta)w_{0}^{3}(t)}.
+\label{sp_3a}
+\end{equation}
+
+Note, that as one would expect, the particle velocity function is not smooth in this case near the crack tip, its derivative is unbounded and exhibits the following behaviour:
+\[
+\frac{\partial V}{\partial x}=O\big((1-x)^{\theta-1/3}\big), \quad x\to1.
+\]
+To formulate the equation similar to (\ref{sp_1})$_1$ or (\ref{sp_2}), one needs to continue asymptotic analysis of the equation (\ref{norm_continuity_as}) incorporating the available information.
+Apart from the fact that the analysis can be done in the general case, we restrict ourselves only to three variants used from the beginning (compare (\ref{carter})), respectively:
+$\theta=0$, $\theta=1/3-1/2=-1/6$ and $\theta=-1/2$.
+
+
+
+
+
+When $\theta=0$, $\alpha_1=1$ and $\beta_1=2/3$, returning to the equation (\ref{v_asym_1}), one concludes that $\beta_2>1$ and, therefore,
+\begin{equation}
+w_{0}'(t)= \frac{1}{3L(t)} w_0(t)V_0(t).
+\label{sp_4}
+\end{equation}
+This case corresponds to (\ref{norm_leak_off_1})$_3$ when $\Phi(t)=C_3^{(2)}(t)w_0(t)$ and $C_3^{(1)}=0$.
+
+
+
+
+
+
+If $\theta=-1/6$, then $\alpha_1=5/6$ and $\beta_1=1/2$. In this case the function $\Phi(t)$ can be written as $\Phi(t)=C_2 D(t)w_0(t)$ (compare to (\ref{norm_leak_off_1})$_2$)
+and again equation (\ref{v_asym_1}) gives $\beta_2>1$, while equation (\ref{norm_continuity_as}) leads to
+\begin{equation}
+w_{0}'(t)= \frac{1}{3L(t)} \big(w_0(t)V_0(t)+4w_1(t)V_1(t)\big).
+\label{sp_5}
+\end{equation}
+Summarizing, in both mentioned above cases, there exists a single term in asymptotics of the particle velocity which has singular derivative near the crack tip. Moreover, those terms ($w_1$ and $V_1$, respectively) are fully defined by the leak-off function $\Phi(t)$ and the coefficient $w_0$ in front of the leading term for the crack opening in (\ref{sp_3a}) and (\ref{sp_3})$_1$.
+
+The situation changes dramatically when $\theta=-1/2$ (Carter law). We now have $\alpha_1=1/2$ and $\beta_1=1/6$ and $\Phi(t)=C_1D(t)$. In this case, however, $\beta_2<1$ and we need to continue the asymptotic analysis further to evaluate all terms of the particle velocity which exhibit non-smooth  behaviour near the crack tip. We omit the details of the derivation, presenting only the final result in a compact form.
+The first six exponents in the asymptotic expansions (\ref{w_asym}) and (\ref{v_asym}), that introduce the singularity of $w_x$, are:
+\[
+\alpha_j=\frac{1}{2}+\frac{j}{6},\quad \beta_j=\frac{j}{6},\quad j=1,2,\ldots,6.
+\]
+\[
+w_j(t)=\kappa_j\frac{\Phi^j(t)L^{2j}(t)}{w_0^{4j-1}(t)},\quad V_j(t)=\psi_j\frac{\Phi^j(t)L^{2j-1}(t)}{w_0^{4j-3}(t)},
+\]
+where $j=1,2,\ldots,5$ and
+\[
+\begin{array}{l}
+\kappa_1=\frac{12}{7},\quad \psi_1=2,\quad \kappa_2=-\frac{270}{49},\quad \psi_2=-\frac{24}{7},
+\\[4mm]
+\kappa_3=\frac{9768}{343}, \,\, \psi_3=\frac{828}{49},\,\, \kappa_4=-\frac{2097252}{12005},\,\, \psi_4=-\frac{5136}{49},
+\\[4mm]
+\kappa_5=\frac{1081254096}{924385},\quad \psi_5=\frac{1234512}{1715}.
+\end{array}
+\]

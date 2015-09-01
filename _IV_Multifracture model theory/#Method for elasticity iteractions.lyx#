@@ -1,0 +1,2605 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Method for elasticity interactions 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Method-for-elasticity"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Calculating 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ value
+\end_layout
+
+\begin_layout Standard
+This section will describe a method for approximation of neighboring fracture
+ influence 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Some previous work by Bunger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+ presented analytical methods for far field influence witch can be interpreted
+ as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{l}^{(1)}=\frac{3}{8}p\frac{h^{2}}{H^{2}},\label{sigma_close}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{l}^{(2)}=\frac{kLh\int_{0}^{1}wdx}{H^{3}},\label{sigma_far}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $H$
+\end_inset
+
+ is fracture spacing in an array of parallel PKN fractures, thus the distance
+ between two fractures.
+ The approximations 
+\begin_inset Formula $\sigma_{l}^{(1)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{(2)}$
+\end_inset
+
+ were derived from the full theoretical formulation for elastic response
+ in an uniform isotropic medium.
+ The new method proposed here should be constructed such so it obtains comparabl
+e results, yet allows for calculation of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ for any placement of edges (fractures) in the model.
+ The assumption is that for every point 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ on target fracture the influence projected by point 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+, and the region near the point 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+, on the influencing neighboring edge is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{l}^{(j)}=\frac{gkhw_{j}\Delta x_{j}L}{min(d^{3},1)}|(\hat{n_{j}}\cdot\hat{\sigma})(\hat{n_{i}}\cdot\hat{\sigma})|\label{sigma_formula}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where:
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{n_{j}}$
+\end_inset
+
+- normal unit vector to source edge
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{n_{i}}$
+\end_inset
+
+- normal unit vector to destination edge
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\hat{\sigma}$
+\end_inset
+
+- unit vector in the direction of calculated 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+, the direction from 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+ on a two dimensional plane 
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $w_{j}$
+\end_inset
+
+- width of edge at 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula $x_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Delta x_{j}$
+\end_inset
+
+ - half the distances to next and previous points on source edge grid
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $d_{j}$
+\end_inset
+
+ - the distance between 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $L$
+\end_inset
+
+ - length of influencing edge
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $h$
+\end_inset
+
+ - height of the influencing edge
+\end_layout
+
+\begin_layout Itemize
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $g$
+\end_inset
+
+ - an elasticity constant (value approximated in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Two-nearby-parallel"
+
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity_vectors"
+
+\end_inset
+
+ provides a graphical description of this formulation.
+ The term 
+\begin_inset Formula $min(d^{3},1)$
+\end_inset
+
+ is not present in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_far"
+
+\end_inset
+
+), but is added here to make simulations possible, as explained further
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Two-fractures-from"
+
+\end_inset
+
+.
+ Furthermore the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) is in fact very similar to the far field approximation, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_far"
+
+\end_inset
+
+) both compute the integral, but (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) does take the orientation of fractures into account.
+ Adding up (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) for each point, in a case of two close parallel fractures will add up
+ to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_close"
+
+\end_inset
+
+), as shown in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Two-nearby-parallel"
+
+\end_inset
+
+.
+ Therefore the presented approximation is close to the one suggested by
+ Bunger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+, however some details for computation of this method must be provided.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename elasticity_vectors2.png
+	lyxscale 40
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Graphical reference to calculation of pseudoelastic influence between two
+ edges
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "elasticity_vectors"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although 
+\begin_inset Formula $\Delta x_{j}$
+\end_inset
+
+ value could be fixed on already existing grid discretization, doing so
+ could result in significant inaccuracy if 
+\begin_inset Formula $d_{j}<<\Delta x_{j}$
+\end_inset
+
+.
+ Therefore additional subdivision of source grid will be needed until relative
+ and absolute change in
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $\sigma_{l}^{(j)}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ between each subsequent subdivisions is less than some tolerance values
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $\sigma_{l}^{abstol}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{reltol}$
+\end_inset
+
+, which will be found later.
+\end_layout
+
+\begin_layout Standard
+For edge with 
+\begin_inset Formula $N$
+\end_inset
+
+ points lets define:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta x_{j-1/4}=\frac{x_{j}-x_{j-1}}{2},\quad\frac{3}{2}\leq j-1/4\leq N\label{delta_x_elasticity}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta x_{j+1/4}=\frac{x_{j+1}-x_{j}}{2},\quad1\leq j+1/4\leq N-\frac{3}{2}\label{delta_x_elasticity-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta x_{1+1/4}=0,\quad,\Delta x_{N-1/4}=0\label{delta_x_elasticity-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta x_{2-1/4}=x_{2},\quad\Delta x_{N-1+1/4}=1-x_{N-1}\label{delta_x_elasticity-1-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This includes connected 
+\emph on
+vertexes
+\emph default
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Junctions or crack tips.
+ Again abstracting the whole structure to a graph simplifies the calculation.
+\end_layout
+
+\end_inset
+
+ at 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N}=1$
+\end_inset
+
+, therefore initially for 
+\shape italic
+crack pipes 
+\begin_inset Formula $N:=N$
+\end_inset
+
+,
+\emph on
+ but for 
+\emph default
+cracks
+\emph on
+ 
+\begin_inset Formula $N:=N+1$
+\end_inset
+
+.
+ The subdivision of this interval is done such each point is assigned two
+ segments 
+\begin_inset Formula $j-1/4$
+\end_inset
+
+ and 
+\begin_inset Formula $j+1/4$
+\end_inset
+
+, which are halves of the distance to each other neighboring points.
+ The most outer points are given zero 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ value, as it is chosen that 
+\shape default
+vertexes 
+\emph default
+are point size and therefore should project no 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ value.
+ The crack opening at these outer points would either be zero value (if
+ crack tip), hence no projected influence, or tied to pressure at the junction.
+ As the value of pressure at the junction is already depends on 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ this would create recursive dependence between 
+\emph on
+junction
+\emph default
+ fluid pressure and 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ perceived by connected edges.
+ To avoid this zero values at 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+points 
+\begin_inset Formula $x_{1+1/4}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N-1/4}$
+\end_inset
+
+ are set.
+ 
+\end_layout
+
+\begin_layout Standard
+This process should then recursively continue dividing the original 
+\emph on
+
+\begin_inset Formula $\Delta x_{j}$
+\end_inset
+
+
+\emph default
+ interval:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\sigma_{l}^{(j)} & = & \sigma_{l}^{(j-1/4)}+\sigma_{l}^{(j+1/4)}\label{sigma_formula_recursive}\\
+ & = & \sigma_{l}^{(j-3/8)}+\sigma_{l}^{(j-1/8)}+\sigma_{l}^{(j+1/8)}+\sigma_{l}^{(j+3/8)}\nonumber \\
+ & = & ...\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\sigma_{l}^{(j)} & = & \sigma_{l}^{(j-c)}+\sigma_{l}^{(j+c)}\label{sigma_formula_recursive-1}\\
+ & = & \sigma_{l}^{(j-c-c/2)}+\sigma_{l}^{(j-c+c/2)}+\sigma_{l}^{(j+c-c/2)}+\sigma_{l}^{(j+c+c/2)}\nonumber \\
+ & = & ...\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $c$
+\end_inset
+
+
+\begin_inset Formula $=\big\{\frac{1}{4},\frac{1}{8},\frac{1}{16},...\big\}$
+\end_inset
+
+ is a fraction that depends on the depth of recursion.
+ This process is repeated until tolerances 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\sigma_{l}^{abstol}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{reltol}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ are met:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\sigma_{l}^{abstol} & >|\sigma_{l}^{(j\pm c)}-\sigma_{l}^{(j\pm c-c/2)}-\sigma_{l}^{(j\pm c+c/2)}|\\
+\sigma_{l}^{reltol} & >\frac{|\sigma_{l}^{(j\pm c)}-\sigma_{l}^{(j\pm c-c/2)}-\sigma_{l}^{(j\pm c+c/2)}|}{\sigma_{l}^{(j\pm c)}}
+\end{split}
+\label{eq:elasticity_recursive_condition}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each new point 
+\begin_inset Formula $x_{j\pm c}$
+\end_inset
+
+ resulting from this interval division extra values of 
+\begin_inset Formula $w_{j\pm c}$
+\end_inset
+
+ must be extrapolated.
+ This can be achieved by linear extrapolation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w_{j\pm c}=a_{j\pm1/4}x_{j\pm c}+w_{j-1/4}\label{eq:w_j+-c}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the value of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $a_{j\pm1/4}$
+\end_inset
+
+ is calculated initially and carried over to each further recursive step:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a_{j-1/4}=\frac{x_{j}-x_{j-1}}{2},\quad a_{j+1/4}=\frac{x_{j+1}-x_{j}}{2}\label{eq:a_j+-1/4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The length for each subdivision of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Delta x_{j\pm c}$
+\end_inset
+
+ is also defined recursively by dividing in half:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta x_{j\pm c}=\frac{\Delta x_{j\pm4c}}{2}\label{delta_x_k+-c}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And finally to find the distance 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $d_{j\pm c}$
+\end_inset
+
+ one must find 
+\begin_inset Formula $x_{j\pm c}$
+\end_inset
+
+, this is preferably also done recursively with each step:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{j\pm c/2}=x_{j\pm c}+\Delta x_{j\pm c/2}\label{x_j+-c}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So then 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $d_{j\pm c}$
+\end_inset
+
+ can be found by distance between two points (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "point_location"
+
+\end_inset
+
+), 
+\begin_inset Formula $x_{j\pm c}=\tilde{x}$
+\end_inset
+
+ to find their coordinates in 2D plane.
+ A graphical explanation of this subdivision is shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity_subdivision"
+
+\end_inset
+
+.
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ This method could be replaced by some integral, as this recursive integration
+ does essentially do numerical integration, where distance function 
+\begin_inset Formula $d$
+\end_inset
+
+ is rewritten in terms of one variable 
+\begin_inset Formula $\tilde{x}$
+\end_inset
+
+.
+ Unfortunately such integral, although exists, does not considerably reduces
+ the amount of operations that must be performed, and the complexity of
+ 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ computation does not change significantly.
+ Furthermore this method does allow to change 
+\begin_inset Formula $min(d^{3},1)$
+\end_inset
+
+ term to any other function, without the need to again evaluate the integral,
+ thus this method is much better for initial prototyping.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename elasticity_vectors_subdivide.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Recursive subdivision of 
+\begin_inset Formula $\Delta x_{j}$
+\end_inset
+
+.
+ The vector 
+\begin_inset Formula $\hat{\sigma}_{l}$
+\end_inset
+
+ is changed with every division, thus the process is repeated until desired
+ accuracy is obtained
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "elasticity_subdivision"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resolving edge visibility 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Resolving-edge-visibility"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Further question arises from finding which fractures are visible to each
+ other, and therefore project stress influence
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ on to each other.
+ The approximations of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ were derived for uniform continuous medium.
+ Fractures effectively split this medium making it much harder to for formulatin
+g sensible interpretation.
+ Here it is assumed that the force of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is projected in straight lines from the source.
+ If this straight lines meet another fracture, the medium ends and the force
+ is projected no further, but applied to the flow inside that fracture.
+ In this simplified approach there must be a 
+\emph on
+straight line of sight
+\emph default
+, the calculation requires to know which edges are visible, and which are
+ obstructed.
+\end_layout
+
+\begin_layout Standard
+This is trivial if only parallel fractures of equal length are considered
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+, yet if some more advanced geometries are to be allowed it is required
+ to implement some generic algorithm.
+ Existing solution for 2D visibility problem is adopted 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "redblob"
+
+\end_inset
+
+.
+ This is a combination of ray casting and wall tracking techniques, common
+ in 2D graphics applications.
+ PKN crack and pipe edges are treated as impermeable walls for coasted visibilit
+y rays, and these rays are treated as projections of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\sigma_{l}^{(j)}$
+\end_inset
+
+ force.
+ If a grid point on 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+crack pipe
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ or 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+crack 
+\emph default
+can see a grid point on the other edge then a ray can be cast, and calculation
+ of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ follows.
+ (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "visibility_det"
+
+\end_inset
+
+).
+ This algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "visibility_algorithm"
+
+\end_inset
+
+ needs to be effectively performed on each grid point on each edge, in order
+ to determinate its visibility to the other points.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+This
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+this
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Input
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+a collection of edges, and a collection of vertexes
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Output
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+resolved grid point to grid point visibility
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+each grid point in ever edge
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ pick one random vertex and cast a ray to that vertex
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ cast rays to all the other vertexes
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ sort other vertexes by the angle between that one vertex ray, and other
+ vertexes rays
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ prepare an array to hold a slice of an edge, same size as number of vertexes
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+each non transparent edge, but the one the grid point belongs to
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ find its end vertexes positions in the sorted array, loop around if necessary
+ (the two vertexes this edge connects)
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ divide the edge into edge slices using rays between this edge end vertexes,
+ as determined by vertexes index in sorted array
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+for each sliced edge piece
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+If
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ array is empty at slicing ray vertex index or this edge slice is closer
+ to grid point than the one already occupying the array
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ put edge slice in the structure at slicing ray vertex index
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+each edge slice in the array
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+ mark all corresponding points as visible by the grid point considered in
+ outer loop
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "visibility_algorithm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simplified visibility determining algorithm (informal pseudocode)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+DecMargin
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+1em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement t
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename visibility_algo.eps
+	scale 125
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Details of visibility resolving algorithm.
+ First rays 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ are projected form source point to all vertexes 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ Then edges 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ are sliced by these rays and stored in a structure, sorted by 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Closest slice on each interval is marked as visible.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "visibility_det"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "visibility_algorithm"
+
+\end_inset
+
+ results in an representation of 360 degrees view around each grid point
+ as an interval from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ with marked visible slices of edges (check Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "visibility_det"
+
+\end_inset
+
+).
+ These slices are created by intersections of cast rays and edges, and only
+ the one closest to the projection source are kept.
+ Slices have their start and end positions specified relative to parent
+ edges , and so the specific range of all grid points in that edge can be
+ determined.
+ This means that situations when entire edge or just a part of it are visible
+ can be handled.
+ 
+\end_layout
+
+\begin_layout Standard
+The detailed code can be found in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Java-multifracturing-code"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally having dealt with finding collection of all visible grid points
+ with respect to one grid point the formula (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula"
+
+\end_inset
+
+) should be carried over all of those to get the total neighboring fracture
+ influence on that grid point.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{l}=\sum_{k=1}^{all\; visible}\sigma_{l}^{(k)}\label{sigma_formula_total}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then it is possible to numerically approximate 
+\begin_inset Formula $\frac{\partial\sigma_{l}}{\partial x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}$
+\end_inset
+
+ witch appeared in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system_elast"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system_elast_pipe"
+
+\end_inset
+
+), preferably with central finite difference scheme (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "central_FD"
+
+\end_inset
+
+).
+ These approximation can then at next steps be used in Reynolds equations
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system_elast"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_system_elast"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system_elast_pipe"
+
+\end_inset
+
+), or in junction strategy 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

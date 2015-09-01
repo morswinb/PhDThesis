@@ -1,0 +1,1589 @@
+#LyX file created by tex2lyx 2.0.7
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\paperfontsize default
+\spacing single
+\use_hyperref 0
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+
+Here some the implementation and basics testing of the junction sheme proposed in section (??) will be described.
+\end_layout
+
+\begin_layout Subsubsection
+
+Split strategy numerical details
+\end_layout
+
+\begin_layout Standard
+
+First lets note that in the absence of Solid Pipe connections between Junctions the flow balance function 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "pressure root function"
+
+\end_inset
+
+ can be found directly as the only non zero root of:
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{equation}
+	\label{pressure root simple}
+	f(p)=\sum_i^n q_i=p^3 \left( \sum_i^n \alpha_i p+ \sum_i^n \beta_i  \right) => p=-\frac{ \sum_i^n \beta_i }{\sum_i^n \alpha_i}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Suppose we are going to compare two ways of to obtain values of 
+\begin_inset Formula $\alpha_i$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_i$
+\end_inset
+
+ the first one based on just two point finite difference sheme (linear aproximatioon). As it might be applied to both ends of a "crack pipe" it necessery to obtain two versions, 
+\begin_inset Formula $Right$
+\end_inset
+
+ and 
+\begin_inset Formula $Left$
+\end_inset
+
+ end one, depending on the choosen end of pipe. 
+\begin_inset Formula \begin{align}
+	\label{junction linear}
+		Right  \quad & \quad Left
+		\\
+		x_1=x_{n-1} \quad & \quad x_1=x_1
+\\
+		w_1=w_{n-1} \quad & \quad w_1=w_1
+\\
+		\Gamma=&-\frac{1}{MLk^2}
+\\
+		\alpha=-\frac{\Gamma}{k(1-x_1)} \quad & \quad \alpha=-\frac{\Gamma}{kx_1}
+\\
+		\beta=\frac{\Gamma w_1}{1-x_1} \quad & \quad \beta=\frac{\Gamma w_1}{x_1}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Another approach is to use quadratic polynomial that interpolates the three edge points, and the derivative is approximated differentiation of that polynomial.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{align}
+	\label{junction quadratic}
+		Right  \quad & \quad Left
+		\\
+		x_1=x_{n-1}-1 \quad & \quad x_1=x_1
+\\
+		x_2=x_{n-1}-1 \quad & \quad x_2=x_2
+\\
+		w_1=w_{n-1} \quad & \quad w_1=w_1
+\\
+		w_2=w_{n-2} \quad & \quad w_2=w_2
+\\
+		\Gamma=&-\frac{1}{MLk^2}
+\\
+		\alpha=&-\Gamma \frac{x1}{k}\left(\frac{1}{x_1^2}-\frac{1}{x_2^2}\right)\left(1-\frac{x_1}{x_2}\right)^{-1}
+\\
+		\beta=&\Gamma\left (\frac{w_1}{x_1}-w_2\frac{x_1}{x_2}\right) \left(1-\frac{x_1}{x_2}\right)^{-1}
+\end{align}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+The quadratic approach is more effective as proven in the section bellow.
+\end_layout
+
+\begin_layout Standard
+
+Now to accommodate for solid pipes and some additional flow rate 
+\begin_inset Formula $q_0$
+\end_inset
+
+ simplified approach 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "pressure root simple"
+
+\end_inset
+
+ can not be used anymore. Instead Newton method with 
+\begin_inset Formula $f(p,p_{other})$
+\end_inset
+
+ and 
+\begin_inset Formula $f'(p)$
+\end_inset
+
+ as proposed by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "pressure root function"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "pressure root function der"
+
+\end_inset
+
+ with the initial step guess 
+\begin_inset Formula $p_0=-\frac{ \sum_i^n \beta_i }{\sum_i^n \alpha_i}$
+\end_inset
+
+ is used:
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Formula \begin{equation}
+	\label{newton root}
+	p_{n+1}=p_n-\frac{f(p_n,p_{n other})}{f'(p_n)}
+\end{equation}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Since 
+\begin_inset Formula $p_{other}$
+\end_inset
+
+ depends on the value of pressure at other junctions, the above newton iteration must be done together for all of the junctions. This newton iteration was tested in the section below, and was proved to converge.... (co wiÄcej ???)
+\end_layout
+
+\begin_layout Subsubsection
+
+Split PKN fracure junction testing
+\end_layout
+
+\begin_layout Paragraph
+
+Simple basic test.
+\end_layout
+
+\begin_layout Standard
+
+A way to test these schemes is to make a small modification to previous tests a single fracture in PKN model. As previously a single fracture would be compared against an analytical benchmark, it is possible to artificially split such a fracture into some number chained Crack Pipe segments finished with one simple crack segments:
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/crack_pipe
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Tu obrazek z podzieleniem szczeliny
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+For now lets consider such a fracture split with one crack pipe segment and one crack segment. It is going to be make by taking the zero leak off solution 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference ""
+
+\end_inset
+
+. The point of split has to be obviously between 0 and 1, it will be named 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ and for the first tests it will be set to 0.9, that is the resulting crack pipe will have the constant length of 
+\begin_inset Formula $0.9 L_0$
+\end_inset
+
+, and the initial length of propagating crack segment will be of 
+\begin_inset Formula $0.1 L_0$
+\end_inset
+
+. Both crack pipe and pipe should be given grid of 
+\begin_inset Formula $N=100$
+\end_inset
+
+ points, however crack should grid that gets denser at the crack tip 
+\begin_inset Formula $x^{(ii)}$
+\end_inset
+
+ while crack pipe will use uniform grid 
+\begin_inset Formula $x^{(i)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/standard_crack.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/standard_crack_sol.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Relative error for for solving fracture with standard approach 
+\begin_inset Formula $\delta w_{max}=0.003120759916772$
+\end_inset
+
+, and the actual fracture shape
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/pipe_sol.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/crack_sol.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+The solutions split pipe and crack with 
+\begin_inset Formula $L_{split}=0.9$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/lin_pipe_err.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/lin_crack_err.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Linear split 
+\begin_inset Formula $\delta w_{max}=0.007063202429168$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/quad_pipe_err.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/quad_crack_err.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Quadratic split 
+\begin_inset Formula $\delta w_{max}=0.003120504349734$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+As we can see the linear fracture split condition works but adds some extra error, with magnitude twice the value when compared to standard computation. Both approaches however retain acceptable accuracy of the solution of order 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+. The quadratic polynomial approach is however very close to producing identical error as the standard undivided solution. In fact the 
+\begin_inset Formula $\delta w_{max}$
+\end_inset
+
+ is close that to the difference between these two is probably a result of the solver tolerance values. Conclusion, quadratic approximation allows to split fracture into segments without affecting computation accuracy.
+\end_layout
+
+\begin_layout Paragraph
+
+finding accetable values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ factor
+\end_layout
+
+\begin_layout Standard
+
+Lets make a test to find out what values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ are acceptable. Figure
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L_split_large"
+
+\end_inset
+
+ shows that although the choice of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ has effect on accuracy, the fact that beginning crack can be of orders of magnitude shorter than pipe, indicates that attaching a small fracture to existing pipe should not cause significant lose in accuracy. Attaching a long fracture to some existing short pipe is on the other hand improbable scenario.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/L_split.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+begin{subfigure}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+0.45
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/L_split_small_crack.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+end{subfigure}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Testing how the different values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ affects computational accuracy, in terms of fracture length, and with in pipe and crack segments. Close to 
+\begin_inset Formula $1$
+\end_inset
+
+ values of 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ generate large maximum error, however these values might be deceptive. Even with 
+\begin_inset Formula $L_split=1-10^{-9}$
+\end_inset
+
+ solver eventually returns to normal accuracy in larger times, as showed by relative error in fracture length. 
+\begin_inset Formula $L_{split}$
+\end_inset
+
+ values close to zero were however not possible to compute in feasible run time
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L_split_large"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+
+test with multiple segments in PKN fracture
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/p_p_p_crack
+	width 50text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Tu obrazek z podzieleniem szczeliny na wiele segmentow z rura
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Since quadratic split is obviously better than the linear split lets test it against more pipe segments crated in a single fracture. Again the precise benchmark was choosen, but this time more segments were allowed. The results are presented in the figure below 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L_segments"
+
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename 5_Multifracture_numerical/junction_test/segment_test.png
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+Error in 
+\begin_inset Formula $\delta L$
+\end_inset
+
+ for various numbers off segments splits with different 
+\begin_inset Formula $N$
+\end_inset
+
+ points for pipe and crack segments. Interestingly accuracy is only relay by the number of grid points in new crack segment. The number of pipe segments can be as much one hundred with only 
+\begin_inset Formula $10$
+\end_inset
+
+ points per pipe, but the accuracy remains unchanged.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "L_segments"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

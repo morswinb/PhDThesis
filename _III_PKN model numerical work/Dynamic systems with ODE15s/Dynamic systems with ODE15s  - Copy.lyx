@@ -1,0 +1,897 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+BC implementations
+\end_layout
+
+\begin_layout Standard
+In this section, three alternative systems of PDEs (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+) describing the problem of hydrofracruing are transformed into the correspondin
+g non-linear dynamic systems of the first order.
+ Then, on the basis of respective analytical benchmarks, we analyze their
+ stiffness properties, the accuracy and efficiency of computations.
+ The benchmark solutions in question are described in Appendix C.
+\end_layout
+
+\begin_layout Standard
+Consider a spatial domain of the problem reduced in accordance with the
+ 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization technique to the interval 
+\begin_inset Formula $x\in[0,1-\varepsilon]$
+\end_inset
+
+, where 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is a small parameter.
+ Let the mesh, 
+\begin_inset Formula $\{x_{j}\}_{j=1}^{N}$
+\end_inset
+
+, be composed of 
+\begin_inset Formula $N$
+\end_inset
+
+ nodes with 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N}=1-\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For each of the problem formulations, two boundary conditions should be
+ accounted for: one specified at the crack inlet and a regularized boundary
+ condition at 
+\begin_inset Formula $x=1-\varepsilon$
+\end_inset
+
+.
+ In the following we present a brief description of how these conditions
+ are introduced to the numerical scheme.
+\end_layout
+
+\begin_layout Standard
+From now on, for the dependent variables discussed above (
+\begin_inset Formula $w(t,x)$
+\end_inset
+
+, 
+\begin_inset Formula $U(t,x)$
+\end_inset
+
+, 
+\begin_inset Formula $\Omega(t,x)$
+\end_inset
+
+), we use common notation 
+\begin_inset Formula $f(t,x)$
+\end_inset
+
+ together with a convention 
+\begin_inset Formula $f_{k}=f(t,x_{k})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To discretize the first boundary condition (depending on the formulation:
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_boundary"
+
+\end_inset
+
+)
+\begin_inset Formula $_{1}$
+\end_inset
+
+, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_boundary"
+
+\end_inset
+
+)
+\begin_inset Formula $_{1}$
+\end_inset
+
+ or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_boundary"
+
+\end_inset
+
+)
+\begin_inset Formula $_{1}$
+\end_inset
+
+) we exploit the smooth character of the solution near the point 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Thus, accepting a polynomial approximation of 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ on the interval 
+\begin_inset Formula $x\in[x_{1},x_{3}]$
+\end_inset
+
+, the respective nonlinear relation between 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $f_{3}$
+\end_inset
+
+ may be derived: 
+\begin_inset Formula 
+\begin{equation}
+A_{1}(f_{1},t)f_{1}+A_{2}(f_{1},t)f_{2}+A_{3}(f_{1},t)f_{3}=q_{0}.\label{BC_0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As mentioned in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "e_reg"
+
+\end_inset
+
+, the regularized boundary condition in the 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization technique proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+ is equivalent to a mixed boundary condition based on the leading term of
+ the asymptotic expansion (see 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L3"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L4"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L5"
+
+\end_inset
+
+).
+ Below we propose a modification of this approach which consists in employing
+ two terms of the asymptotics.
+ We will show that such a strategy prevents the deterioration of accuracy
+ when the solution is not so smooth as in the cases originally considered
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+According to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1n"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_asymp"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_asymp"
+
+\end_inset
+
+), the following asymptotics approximation is acceptable in the proximity
+ of the crack tip (
+\begin_inset Formula $x\in[x_{N-2},1]$
+\end_inset
+
+): 
+\begin_inset Formula 
+\begin{equation}
+f(t,x)=e_{1}^{(f)}(t)(1-x)^{\alpha_{1}}+e_{2}^{(f)}(t)(1-x)^{\alpha_{2}}.\label{expan_1}
+\end{equation}
+
+\end_inset
+
+The values of 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ are known in advance and depend, as has been discussed above, on the chosen
+ variable and the behavior of the leak-off function.
+ Assuming that the last three points of the discrete solution 
+\begin_inset Formula $(x_{N-2},f_{N-2})$
+\end_inset
+
+, 
+\begin_inset Formula $(x_{N-1},f_{N-1})$
+\end_inset
+
+ and 
+\begin_inset Formula $(x_{N},f_{N})$
+\end_inset
+
+ lie on the solution graph 
+\begin_inset Formula $(x,f(t,x))$
+\end_inset
+
+, one can derive a formula combining all these values in one equation: 
+\begin_inset Formula 
+\begin{equation}
+f_{N}+b_{N-1}^{(f)}f_{N-1}+b_{N-2}^{(f)}f_{N-2}=0,\label{BC_N}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $b_{j}^{(f)}=b_{j}^{(f)}(x_{N-2},x_{N-1},x_{N})$
+\end_inset
+
+.
+ Relation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "BC_N"
+
+\end_inset
+
+ is consequently used to represent the regularised boundary condition at
+ 
+\begin_inset Formula $x=1-\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\shape smallcaps
+Remark 1
+\shape default
+.
+ In the authors opinion, the presented approach is a direct generalization
+ of that proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+.
+ Indeed, if one takes 
+\begin_inset Formula $e_{2}=0$
+\end_inset
+
+ in the representation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_1"
+
+\end_inset
+
+) then the pair of the equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L3"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "L2"
+
+\end_inset
+
+) follows immediately.
+ If 
+\begin_inset Formula $\alpha_{2}^{(f)}-\alpha_{1}^{(f)}=1$
+\end_inset
+
+, which means that the leak-off function 
+\begin_inset Formula $q_{l}$
+\end_inset
+
+ is bounded near the crack tip, the second asymptotic term provides a small
+ correction.
+ However, in the case of the Carter law, when 
+\begin_inset Formula $\alpha_{2}^{(f)}-\alpha_{1}^{(f)}=1/6$
+\end_inset
+
+, it brings an important contribution and improves the accuracy of the computati
+ons, as will be shown later.
+\end_layout
+
+\begin_layout Standard
+Finally, coefficient 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "expan_1"
+
+\end_inset
+
+ is substituted into the pertinent form of the speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed_U"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "omega_L2"
+
+\end_inset
+
+) to give the ordinary differential equations for the crack length: 
+\begin_inset Formula 
+\[
+\frac{d}{dt}L^{2}=\frac{2}{3}\left(e_{1}^{(w)}\right)^{3},\quad\frac{d}{dt}L^{2}=\frac{2}{3}e_{1}^{(U)},\quad
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}L^{2}(t)=\frac{128}{81}\left(e_{1}^{(\Omega)}\right)^{3}.\label{new_speed_common}
+\end{equation}
+
+\end_inset
+
+Note that the right-hand sides of the equations define the boundary operators
+ 
+\begin_inset Formula $\mathcal{B}_{w}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathcal{B}_{U}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{\Omega}$
+\end_inset
+
+ from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+ or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout Standard
+
+\shape smallcaps
+Remark 2
+\shape default
+.
+ As it follows from this analysis, the 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization is, in a sense, equivalent to the introduction of a special
+ tip element in the discrete solution.
+ Thus, one can see a complementarity with the approach utilised in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+.
+ However, and this is crucial for the analysis, only the speed equation
+ together with 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization allows to take into account both the local and global phenomena,
+ and to do this in the most efficient way from the numerical point of view.
+\end_layout
+
+\begin_layout Standard
+
+\shape smallcaps
+Remark 3
+\shape default
+.
+ In the case of the dependent variable 
+\begin_inset Formula $U$
+\end_inset
+
+, apart from the representations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_1"
+
+\end_inset
+
+) of the boundary condition near the crack tip in the linear form 
+\begin_inset Formula 
+\begin{equation}
+U_{N}=b_{1}^{(U)}U_{N-1}+b_{2}^{(U)}U_{N-2},\label{expan_3}
+\end{equation}
+
+\end_inset
+
+one can use a nonlinear one, adopting the relationship between this dependent
+ variable and the crack opening 
+\begin_inset Formula $w$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+U_{N}=\left(b_{1}^{(w)}\sqrt[3]{U_{N-1}}+b_{2}^{(w)}\sqrt[3]{U_{N-2}}\right)^{3}.\label{expan_4}
+\end{equation}
+
+\end_inset
+
+Note that the two terms representation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_3"
+
+\end_inset
+
+) of the function 
+\begin_inset Formula $U$
+\end_inset
+
+ is less informative than the same representation for the functions 
+\begin_inset Formula $w$
+\end_inset
+
+ (or 
+\begin_inset Formula $\Omega$
+\end_inset
+
+) and thus, using the modified condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_4"
+
+\end_inset
+
+), one can expect a better solver performance.
+\end_layout
+
+\begin_layout Standard
+Let us consider the Reynolds equations written in different dependent variables
+ ((
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+), respectively).
+ By representing the spatial derivatives in the right-hand sides of the
+ corresponding equation by central three point finite difference schemes,
+ we obtain a nonlinear system of 
+\begin_inset Formula $N-2$
+\end_inset
+
+ ordinary differential equations for the values 
+\begin_inset Formula $f_{i}(t)$
+\end_inset
+
+ at each internal point of the spatial domain (
+\begin_inset Formula $x_{2},...,x_{N-1}$
+\end_inset
+
+).
+ The respective boundary conditions are embedded into the system through
+ equations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "BC_0"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "BC_N"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Supplementing the system with the pertinent form of the speed equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "new_speed_common"
+
+\end_inset
+
+, we obtain a non-linear dynamic system of first order describing the process
+ of hydrofracturing which can be written in the form: 
+\begin_inset Formula 
+\begin{equation}
+{\bf F}'={\bf A}^{(f)}{\bf F}+{\bf G}^{(f)},\label{governing_dis}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula ${\bf F}={\bf F}(t)$
+\end_inset
+
+ is a vector of unknown solution 
+\begin_inset Formula $[f(t,x_{1}),$
+\end_inset
+
+ 
+\begin_inset Formula $f(t,x_{2}),\ldots,f(t,x_{N}),L^{2}(t)]$
+\end_inset
+
+ of dimension 
+\begin_inset Formula $N-1$
+\end_inset
+
+.
+ Note that matrix 
+\begin_inset Formula ${\bf A}^{(f)}$
+\end_inset
+
+ and vector 
+\begin_inset Formula ${\bf G}^{(f)}$
+\end_inset
+
+ depend, generally speaking, on the solution.
+ Matrix 
+\begin_inset Formula ${\bf A}$
+\end_inset
+
+ is the so-called mass matrix of the system, in the case of which a tri-diagonal
+ form prevails (however the boundary conditions and the last equation for
+ 
+\begin_inset Formula $L^{2}(t)$
+\end_inset
+
+ disturb the tri-diagonal structure).
+\end_layout
+
+\begin_layout Standard
+
+\shape smallcaps
+Remark 4
+\shape default
+ In the case when the boundary condition in formulation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary_1"
+
+\end_inset
+
+ is in use, the dimension of the dynamic system is 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Indeed, this condition has the form of an ODE, and thus can be substituted
+ directly into the system as an additional equation.
+\end_layout
+
+\begin_layout Standard
+In our numerical computations two different types of spatial meshes are
+ used.
+ The first one is a regular mesh with uniformly spaced nodes, while the
+ second one gives an increased nodes density when approaching the crack
+ tip.
+ Both types of meshes can be described by the formula: 
+\begin_inset Formula 
+\begin{equation}
+x_{m}(\delta)=1-\left(1-\left(1-\varepsilon^{\frac{1}{\delta}}\right)\frac{m}{N}\right)^{\delta},\quad m=1,...,N.\label{mesh_power}
+\end{equation}
+
+\end_inset
+
+In the foregoing, the parameter 
+\begin_inset Formula $\delta$
+\end_inset
+
+ defines the mesh type.
+ Namely, for 
+\begin_inset Formula $\delta=1$
+\end_inset
+
+ one has the uniform mesh (henceforth denoted as 
+\begin_inset Formula $x^{(I)}$
+\end_inset
+
+), since any 
+\begin_inset Formula $\delta>1$
+\end_inset
+
+ gives the nodes concentration near the crack tip (this mesh will be referred
+ to as 
+\begin_inset Formula $x^{(II)}(\delta)$
+\end_inset
+
+).
+ Mesh 
+\begin_inset Formula $x^{(II)}(\delta)$
+\end_inset
+
+ allows one to choose appropriate parameter 
+\begin_inset Formula $\delta$
+\end_inset
+
+ to suppress the stiffness of dynamic system or to increase the solution
+ accuracy.
+\end_layout
+
+\begin_layout Standard
+The stiffness of a dynamic system may be described by the condition number
+ or the condition ratio [ref ???] of a mass matrix 
+\begin_inset Formula ${\bf A}^{(f)}$
+\end_inset
+
+.
+ In general, the values given by various measures are different (see some
+ consequences in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+).
+ In this paper we use the condition ratio as the measure of the system stiffness.
+ Some rough estimation of this parameter may help to choose an optimal value
+ of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ from the stiffness point of view.
+ In the case under consideration, one can analyse the condition ratio of
+ a simplified variant of the system 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_system"
+
+\end_inset
+
+, where only the leading term (with the second order derivative) is preserved
+ and the nonlinear multiplier is substituted by the first term of the asymptotic
+ expansion for 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ It turns out that 
+\begin_inset Formula $\delta=2$
+\end_inset
+
+ gives the lowest possible stiffness (NIEPRAWDA I SCIEMA !!! 
+\begin_inset Formula $\delta=2.5$
+\end_inset
+
+ !!!).
+ Naturally, in the general case, the optimal value of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ can be different.
+ We have checked however that, for three alternative problem formulations,
+ there are three different optimal values of the parameter, but each of
+ them is very close to 2.
+ Thus, in the following section all results concerning nonuniform mesh are
+ presented for 
+\begin_inset Formula $\delta=2$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

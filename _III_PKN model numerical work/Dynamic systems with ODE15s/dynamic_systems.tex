@@ -1,0 +1,319 @@
+In this section, three alternative systems of PDEs (\ref{w_DS}), (\ref{U_DS}) and (\ref{Omega_DS}) describing
+the problem of hydrofracruing are transformed into the corresponding
+non-linear dynamic systems of the first order. Then, on the basis of
+respective analytical benchmarks, we analyze their stiffness
+properties, the accuracy and efficiency of computations. The
+benchmark solutions in question are described in Appendix C.
+
+Consider a spatial domain of the problem reduced in accordance with
+the $\varepsilon$-regularization technique to the interval $x
+\in[0,1-\varepsilon]$, where $\varepsilon$ is a small parameter. Let
+the mesh, $\{x_j\}_{j=1}^{N}$, be composed of $N $ nodes with
+$x_1=0$ and $x_N=1-\varepsilon$.
+
+
+
+For each of the problem formulations, two boundary conditions should
+be accounted for: one specified at the crack inlet and a regularized
+boundary condition at $x=1-\varepsilon$. In the following we present
+a brief description of how these conditions are introduced to the
+numerical scheme.
+
+From now on, for the dependent variables discussed above ($w(t,x)$, $U(t,x)$, $\Omega(t,x)$),
+we use common notation $f(t,x)$ together with a convention
+$f_k=f(t,x_k)$.
+
+
+To discretize the first boundary condition (depending on the
+formulation: (\ref{norm_boundary})$_1$, (\ref{U_boundary})$_1$ or
+(\ref{omega_boundary})$_1$) we exploit the smooth character of the
+solution near the point $x=0$. Thus, accepting a polynomial
+approximation of $f(x,t)$ on the interval $x \in [x_1,x_3]$, the
+respective nonlinear relation between $f_1$, $f_2$ and $f_3$ may be
+derived:
+\begin{equation}
+\label{BC_0} A_1(f_1,t)f_1+A_2(f_1,t)f_2+A_3(f_1,t)f_3=q_0.
+\end{equation}
+
+%Naturally, one can use a two-point FD representation of the
+%condition at $x=0$. However, for consistency and a better
+%numerical performance, formula \eqref{BC_0} is consequently used in
+%this paper. The only exception is made in the case where the
+%boundary condition in formulation (\ref{omega_boundary_1}) is
+%utilized. The latter shall be discussed later on.
+
+
+As mentioned in \ref{e_reg}, the regularized boundary condition in
+the $\varepsilon$-regularization technique proposed in
+\cite{Linkov_1} is equivalent to a mixed boundary condition based on
+the leading term of the asymptotic expansion (see \eqref{L3},
+\eqref{L4}, \eqref{L5}). Below we propose a modification of this
+approach which consists in employing two terms of the asymptotics.
+We will show that such a strategy prevents the  deterioration of accuracy
+when the solution is not so smooth as in the cases originally
+considered in \cite{Linkov_1}, \cite{MWL}.
+
+According to (\ref{w_asym_1n}), (\ref{U_asymp}) and
+(\ref{omega_asymp}), the following asymptotics approximation
+is
+acceptable in the proximity of the crack tip ($x\in[x_{N-2},1]$):
+\begin{equation}
+\label{expan_1}
+f(t,x)=e_1^{(f)}(t)(1-x)^{\alpha_1}+e_2^{(f)}(t)(1-x)^{\alpha_2}.
+\end{equation}
+The values of $\alpha_1$ and $\alpha_2$ are known in advance and
+depend, as has been discussed above, on the chosen variable and
+the behavior of the leak-off function. Assuming that the last three
+points of the discrete solution $(x_{N-2},f_{N-2})$,
+$(x_{N-1},f_{N-1})$ and $(x_{N},f_{N})$ lie on the solution graph
+$(x,f(t,x))$, one can derive a formula combining all these values in
+one equation:
+\begin{equation}
+\label{BC_N} f_N+
+b_{N-1}^{(f)}f_{N-1}+b_{N-2}^{(f)}f_{N-2}=0,
+\end{equation}
+where $b_j^{(f)}=b_j^{(f)}(x_{N-2},x_{N-1},x_{N})$. Relation
+\eqref{BC_N} is consequently used to represent the regularised
+boundary condition at $x=1-\varepsilon$.
+
+{\sc Remark 1}. In the authors opinion, the presented approach is a
+direct generalization of that proposed in \cite{Linkov_1}. Indeed,
+if one takes $e_2=0$ in the representation (\ref{expan_1}) then the
+pair of the equations (\ref{L3}) and (\ref{L2}) follows immediately.
+If $\alpha_2^{(f)}-\alpha_1^{(f)}=1$, which means that the leak-off
+function $q_l$ is bounded near the crack tip, the second asymptotic
+term provides a small correction. However, in the case of the Carter
+law, when $\alpha_2^{(f)}-\alpha_1^{(f)}=1/6$, it brings an
+important contribution and improves the accuracy of the computations,
+as will be shown later.
+
+Finally, coefficient $e_1$ from \eqref{expan_1} is substituted into
+the pertinent form of the speed equation (\ref{new_speed}),
+(\ref{new_speed_U}) or (\ref{omega_L2}) to give the ordinary
+differential equations for the crack length:
+\[
+\frac{d}{dt}L^2=\frac{2}{3}\left(e_1^{(w)}\right)^3,\quad \frac{d
+}{dt}L^2=\frac{2}{3} e_1^{(U)},\quad
+\]
+\begin{equation}
+\label{new_speed_common} \frac{d}{d t}L^2(t)=\frac{128}{81}
+\left(e_1^{(\Omega)}\right)^3.
+\end{equation}
+Note that the right-hand sides of the equations define the boundary
+operators $\mathcal{B}_w$, $\mathcal{B}_U$ and $\mathcal{B}_\Omega$
+from (\ref{w_DS})$_2$, (\ref{U_DS})$_2$ or (\ref{Omega_DS})$_2$,
+respectively.
+
+{\sc Remark 2}. As it follows from this analysis, the
+$\varepsilon$-regularization is, in a sense, equivalent to the
+introduction of a special tip element in the discrete solution.
+Thus, one can see a complementarity with the approach utilised in
+\citet{Kovalyshen_1}. However, and this is crucial for the analysis,
+only the speed equation together with $\varepsilon$-regularization
+allows to take into account both the local and global phenomena, and
+to do this in the most efficient way from the numerical point of
+view.
+
+{\sc Remark 3}. In the case of the dependent variable $U$, apart from the representations (\ref{expan_1}) of the boundary condition near the crack tip in the linear form
+\begin{equation}\label{expan_3}
+U_N=b_1^{(U)}U_{N-1}+b_2^{(U)}U_{N-2},
+\end{equation}
+one can use a nonlinear one, adopting the relationship between this dependent variable and the crack opening $w$:
+\begin{equation}\label{expan_4}
+U_N=\left(b_1^{(w)}\sqrt[3]{U_{N-1}}+b_2^{(w)}\sqrt[3]{U_{N-2}}\right)^3.
+\end{equation}
+Note that the two terms representation (\ref{expan_3}) of the function $U$ is less informative than
+the same representation for the functions $w$ (or $\Omega$) and thus,
+using the modified condition (\ref{expan_4}), one can expect a better solver performance.
+
+Let us consider the Reynolds equations written in different dependent
+variables ((\ref{w_DS}), (\ref{U_DS}) or (\ref{Omega_DS}),
+respectively). By representing the
+spatial derivatives in the right-hand sides of the corresponding
+equation by central three point finite difference schemes, we
+obtain a nonlinear system of $N-2$ ordinary differential equations
+for the values $f_i(t)$ at each internal point of the spatial domain
+($x_2,...,x_{N-1}$). The respective boundary conditions are embedded
+into the system  through equations \eqref{BC_0} and
+\eqref{BC_N}.
+
+Supplementing the system with the pertinent form of the speed
+equation \eqref{new_speed_common}, we obtain a non-linear dynamic
+system of first order describing the process of hydrofracturing which
+can be written in the form:
+\begin{equation}\label{governing_dis}
+{\bf F}' ={\bf A}^{(f)}{\bf F}+{\bf G}^{(f)},
+\end{equation}
+where ${\bf F}={\bf F}(t)$ is  a vector of unknown solution
+$[f(t,x_1),$ $f(t,x_2),\ldots,f(t,x_N),L^2(t)]$ of dimension $N-1$.
+Note that matrix ${\bf A}^{(f)}$ and vector ${\bf G}^{(f)}$ depend,
+generally speaking, on the solution. Matrix $\bf A$ is the so-called
+mass matrix of the system, in the case of which a tri-diagonal form
+prevails (however the boundary conditions and the last equation for
+$L^2(t)$ disturb the tri-diagonal structure).
+
+{\sc Remark 4} In the case when the
+boundary condition in formulation \eqref{omega_boundary_1} is in
+use, the dimension of the dynamic system is $N$. Indeed, this
+condition has
+the form of an ODE, and thus can be substituted directly
+into the system as an additional equation.
+
+In our numerical computations two different types of spatial meshes
+are used. The first one is a regular mesh with uniformly spaced
+nodes,  while the second one
+gives an increased nodes density when approaching
+the crack tip. Both types of meshes can be described by the formula:
+\begin{equation}\label{mesh_power}
+ x_m(\delta)
+ =1-\left(1-\left(1-\varepsilon^{\frac{1}{\delta}}\right)\frac{m}{N}\right)^{\delta}, \quad m=1,...,N.
+\end{equation}
+In the foregoing, the parameter $\delta$ defines the mesh type. Namely, for $\delta=1$ one has the uniform mesh (henceforth denoted as $x^{(I)}$),
+since any $\delta>1$ gives the nodes concentration near the crack tip (this mesh will be referred to as $x^{(II)}(\delta)$).
+Mesh $x^{(II)}(\delta)$ allows one to choose appropriate parameter
+$\delta$ to suppress the stiffness of dynamic system or to increase
+the solution accuracy.
+
+The stiffness of a dynamic system
+may be described by the condition number or the condition ratio
+\citep{stiff_ODE} of a mass matrix ${\bf A}^{(f)}$. In general, the values
+given by various measures are different (see some consequences in
+\cite{MWL}). In this paper we use the condition ratio as the measure
+of the system stiffness. Some rough estimation of this parameter may
+help to choose an optimal value of $\delta$ from the stiffness point
+of view. In the case under consideration, one can analyse the
+condition ratio of a simplified variant of the system
+\eqref{U_system}, where only the leading term (with the second order
+derivative) is preserved and the nonlinear multiplier is substituted
+by the first term of the asymptotic expansion for $U$. It turns out that
+ $\delta=2$ gives the lowest possible stiffness.
+Naturally, in the general case, the optimal value of $\delta$ can be
+different. We have checked however that, for three alternative
+problem formulations, there are three different optimal values of
+the parameter, but each of them is very close to 2. Thus, in the
+following section all results concerning nonuniform mesh are
+presented for $\delta=2$.
+
+In order to find the solution for the system we must compute both crack width and crack length.  Solver available in MATLAB environment, ODE15s was chosen as it is the appropriate solver for stiff problems [???].  As the base (jakas lepsza nazwa ?) equation we rewrite \eqref{norm_continuity_2nd} such so we eliminate the presence of speed function $V(t, \tilde x)$, replacing it with $w$ as it is possible:
+
+\begin{equation}\label{w_system}
+\frac{\partial \tilde w}{\partial t}=\frac{k}{ML^2(t)}\left(\frac{1}{3}w_0^3\tilde x\frac{\partial \tilde w}{\partial \tilde x}+3\tilde w^2\left(\frac{\partial \tilde w}{\partial  \tilde x}\right)^2+\tilde w^3\frac{\partial^2 \tilde w}{\partial \tilde x^2}\right)
+-\tilde q_l^{*(j)}, \quad \tilde x\in(0,1)
+\end{equation}
+Where $w_0$ corresponds to the first term in asymptotics \eqref{w_asym}
+
+MATLAB offers a range of Runge-Kutta solvers, which require to specify the function for the value derivative in time. Since this function can take and return a vector value we can use equation \eqref{w_system} and divide the interval $\tilde x \in (0 ,1)$ into a grid $N$ points. Then we can numerically approximate the derivative with respect to $\tilde x$, calculate the change of crack shape in each point and feed it back into the solver. A number of variations of differentiation schemes and grids were considered, for more details see {\color{blue} B Appendix: Grids and schemes for numerical differentiation}. Furthermore we decided to add one extra equation for solver to keep track off, the length of crack under computation. In other words we ask the solver to calculate crack opening shape on $N$ points and the crack length, therefore we give it $N+1$ values.
+
+The particular challenge arises form choosing appropriate boundary conditions as the $\tilde x$ derivatives are harder to approximate on the ends than in the middle of interval. We decided to use $q_0(t)$ to help us approximate $\frac{\partial }{\partial \tilde x}|_{\tilde x=0}$ and $\frac{\partial^2 }{\partial \tilde x^2}|_{\tilde x=0}$ using the boundary condition \eqref{norm_boundary}, as well as the asymptotic form \eqref{w_asym} to approximate $w_0$, $\frac{\partial }{\partial \tilde x}|_{\tilde x_N}$ and $\frac{\partial^2 }{\partial \tilde x^2}|_{\tilde x_N}$.
+
+Therefore we use the following boundary derivatives:
+ 
+\begin{align}
+\label{dwdx_left}
+\frac{\partial w}{\partial \tilde x}|_{\tilde x=0}&=-\frac{ML(t)}{k}q_0(t)\frac{1}{w^3(0)}
+\\
+\label{dwdx_right_1}
+\frac{\partial w}{\partial \tilde x}|_{\tilde x_N}&=-\frac{w_0}{3}(1-\tilde x_N)^{-\frac{2}{3}}-\frac{w_1}{2}(1-\tilde x_N)^{-\frac{1}{2}}
+\\
+\label{dwdx_right_2}
+\frac{\partial^2 w}{\partial \tilde x^2}|_{\tilde x_N}&=-\frac{2w_0}{9}(1-\tilde x_N)^{-\frac{5}{3}}-\frac{w_1}{4}(1-\tilde x_N)^{-\frac{3}{2}}
+\end{align}
+
+Where $w_0$ and $w_1$ are result form interpolating two first terms of asymptotic form \eqref{w_asym} on two last point grid points $\tilde x_{N-1}$ and $\tilde x_{N}$ such so:
+
+\begin{align}
+w_0=&A_1\tilde w(\tilde {x_N-1})+A_2\tilde w(\tilde {x_N})
+\\
+w_1=&B_1\tilde w(\tilde {x_N-1})+B_2\tilde w(\tilde {x_N})
+\\
+A_1=&\left((1-\tilde x_{N-1})^{\frac{1}{3}}-\frac{(1-\tilde x_{N-1})^\frac{1}{2}}{(1-\tilde x_N)^\frac{1}{6}}\right)^{-1}
+\\
+A_2=&-\left(\frac{1-\tilde x_{N-1}}{1-\tilde x_N}\right)^\frac{1}{2}A_1
+\\
+B_1=&-\frac{A_1}{(1-x_{N-1})^{\frac{1}{6}}}
+\\
+B_2=&\frac{1}{(1-x_{N-1})^{\frac{1}{2}}}-\frac{A_2}{(1-x_{N-1})^{\frac{1}{6}}}
+\end{align}
+
+(To jest najlepsze co mam co dziala na 2 czlonach, w sensie dokładne i mało skąplikowane)
+
+The missing $\frac{\partial^2 w}{\partial \tilde x^2}|_{\tilde x=0}$ derivative can be obtained by the usage of MATLAB build in function spline(), by calling it on the first 3 points, and adding condition \eqref{dwdx_left} for left derivative and central difference approximation for right derivative, see MATLAB documentation for more [??] (wyjasnic wiecej ? dokumentacja matlaba dobrze to opisuje)
+
+Finally crack length is dependent on fluid velocity as in \eqref{norm_speed_2}. Using asymptotic result \eqref{v_0_w_0_relation}, and the no fluid lag assumption, the rate of change of $L(t)$ is the same as $v_0$ we can write the that:
+
+\begin{equation}\label{dL1}
+\frac{\partial}{\partial t}L(t)=\frac{k}{3ML(t)}w_0^3
+\end{equation}
+
+Or by multiplying by $L(t)$ and integrating both sides we get the change of $L^2(t)$
+\begin{equation}\label{dL2}
+\frac{\partial}{\partial t}L^2(t)=\frac{2k}{3M}w_0^3
+\end{equation}
+
+Therefore we suggest a numerical strategy where we have a dynamic system with two operators:
+
+\begin{equation}\label{w_operator}
+w_t=\mathcal{A}(w,L^2)
+\end{equation}
+
+Where $\mathcal{A}$ is defined by \eqref{w_system} with boundary conditions \eqref{dwdx_left},\eqref{dwdx_right_1}, \eqref{dwdx_right_2}. And the second operator that can be chosen from:
+
+\begin{align}\label{L_operator_1}
+\frac{\partial}{\partial t}L(t)=\mathcal{B}_1(\tilde w,L)
+\\
+\label{L_operator_2}
+\frac{\partial}{\partial t}L^2(t)=\mathcal{B}_2(\tilde w)
+\end{align}
+
+This formulation allows us to carry on with computation in MATLAB...
+
+In order to find the solution for the system we must compute both crack width and crack length. We considered three possible approaches with different variables for crack $w$, $U $ and $\Omega$. Solver available in MATLAB environment, ODE15s was chosen as it is the appropriate solver for stiff problems [???]. 
+
+MATLAB offers a range of Runge-Kutta solvers, which require to specify the function for the value derivative in time. Since this function can take and return a vector value we can use the equation for the change of crack opening in time \eqref{} and divide the interval $\tilde x \in (0 ,1)$ into a grid $N$ points. Then we can numerically approximate the derivative with respect to $\tilde x$, calculate the change of crack shape in each point and feed it back into the solver. We considered various methods for spacing points in the grid as well as various numerical methods for approximating the derivative with respect to $\tilde x$. For more details see {\color{blue} C Appendix: Grids and schemes for numerical differentiation}. Furthermore we decided to add one extra equation for solver to keep track off, the length of crack under computation. In other words we ask the solver to calculate crack opening shape on $N$ points and the crack length, therefore we give it $N+1$ values.
+
+The particular challenge arises form choosing appropriate boundary conditions as the $\tilde x$ derivatives are harder to approximate on the ends than in the middle of interval. For all the dependent variables decided to use $q_0(t)$ to help us approximate $\frac{\partial }{\partial \tilde x}|_{\tilde x=0}$ and $\frac{\partial^2 }{\partial \tilde x^2}|_{\tilde x=0}$ as well as the asymptotic results to approximate $\frac{\partial }{\partial \tilde x}|_{\tilde x=1}$ and $\frac{\partial^2 }{\partial \tilde x^2}|_{\tilde x=1}$. 
+ 
+
+
+\subsubsection{Crack length $L(t)$}
+Crack length is dependent on fluid velocity as written in \eqref{norm_speed_2}. Using asymptotic result \eqref{v_0_w_0_relation}, and the no fluid lag assumption, the rate of change of L(t) is the same as $v_0$ we can write the that:
+
+\begin{equation}\label{dL1}
+\frac{\partial}{\partial t}L(t)=\frac{k}{3ML(t)}w_0^3
+\end{equation}
+
+Or by multiplying by $L(t)$ and integrating both sides we get the change of $L^2(t)$
+\begin{equation}\label{dL2}
+\frac{\partial}{\partial t}L^2(t)=\frac{2k}{3M}w_0^3
+\end{equation}
+
+Both of these can be used by ODE15s, however it might be more convenient to use $L^2(t)$ as ..... (?????)
+
+\subsubsection{w variable system}
+Equation \eqref{norm_continuity_2nd} can be rewritten without $V(t,\tilde x)$ as:
+\begin{equation}\label{w_uklad}
+\frac{\partial \tilde w}{\partial t}=\frac{k}{ML^2(t)}\left(\frac{1}{3}w_0^3\tilde x\frac{\partial \tilde w}{\partial \tilde x}+3\tilde w^2\left(\frac{\partial \tilde w}{\partial  \tilde x}\right)^2+\tilde w^3\frac{\partial^2 \tilde w}{\partial \tilde x^2}\right)
+-\frac{DC(t)}{\sqrt{1-\tilde{x}}}-f(t,\tilde{x})-\tilde q_l^*, \quad \tilde x\in(0,1)
+\end{equation}
+
+For finding the value of $L(t)$ we can use \eqref{dL1} or \eqref{dL2}. The initial condition should be obtained by \eqref{norm_initial}. We should be provided with the value of leak off. By numerical approximation of 
+
+We find the left boundary condition form \eqref{norm_boundary} by substituting normalized speed equation \eqref{norm_speed} to obtain the following first derivative for the left side:
+\begin{equation}\label{dwdx_left}
+\frac{\partial w}{\partial \tilde x}|_{\tilde x=0}=-\frac{ML(t)}{k}q_0(t)\frac{1}{w^3(0)}
+\end{equation}
+
+To optain the second derevative
+
+However we still need to obtain the value of $w_0$ and $\frac{\partial^2 \tilde w}{\partial \tilde x^2}|_{\tilde x=0}$,$\frac{\partial \tilde w}{\partial \tilde x}|_{\tilde x=1},$$\frac{\partial^2 \tilde w}{\partial \tilde x^2}|_{\tilde x=1}$.
+
+The value of $\frac{\partial^2 \tilde w}{\partial \tilde x^2}|_{\tilde x=0}$ can be approximated using cubic polynomial interpolation over the first 3 points $\tilde x_1,\tilde x_2,\tilde x_3$ that are closest to 0. Polynomial should be obtained such so its derivative at $\tilde x_1$ is set to match \eqref{dwdx_left} and the derivative at the $\tilde x_3$ should match result form discretisation scheme. By differentiating that cubic and finding the value of second derivative at $\tilde x=0$ we obtain approximation of $\frac{\partial^2\tilde w}{\partial \tilde x^2}|_{\tilde x=0}$.
+
+The remaining $\frac{\partial \tilde w}{\partial \tilde x}|_{\tilde x=1},$$\frac{\partial^2 \tilde w}{\partial \tilde x^2}|_{\tilde x=1}$ should be found by finding the value of $w_0$ first.
+\dotfill
+....I tutaj sie rozpisca jak znalesc $w_0$  \dotfill
+
+c
+\subsubsection{$\Omega$ system}
+
+

@@ -1,0 +1,1357 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Preliminary Results 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Preliminary-Results"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+PKN Model original formulation 
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Graphics
+	filename C:/Users/Morswin/Documents/THESIS.0.1/nice_PKN_crack_updated.png
+	lyxscale 20
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PKN model geometry.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "PKN_model_layout"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+PKN model is essentially a 1D model, with a single horizontal axis of propagatio
+n
+\begin_inset Formula $x$
+\end_inset
+
+ as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "PKN_model_layout"
+
+\end_inset
+
+.
+ Numerous descriptions of this model are already available 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "moje_bzdury,MWL,Nordgren,Kovalyshen_phd"
+
+\end_inset
+
+, thous the one provided here should outline the most important aspects
+ in context of this thesis.
+ Consider a symmetrical crack of the length 
+\begin_inset Formula $2l$
+\end_inset
+
+ situated in the plane 
+\begin_inset Formula $x\in(-l,l)$
+\end_inset
+
+, where the length 
+\begin_inset Formula $l=l(t)$
+\end_inset
+
+ is one of the solution components changing as a result of fluid flow inside
+ the crack.
+ The initial crack length is assumed to be nonzero: 
+\begin_inset Formula $l(0)=l_{*}>0$
+\end_inset
+
+.
+ By convention, the crack is fully filled by a Newtonian liquid injected
+ at some known rate 
+\begin_inset Formula $q_{0}(t)$
+\end_inset
+
+ at the crack mouth 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The Poiseulle equation for the Newtonian liquid flow in a narrow channel
+ is written in the form: 
+\begin_inset Formula 
+\begin{equation}
+q=-\frac{1}{M}w^{3}\frac{\partial p_{net}}{\partial x},\label{poiseulle}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $q=q(t,x)$
+\end_inset
+
+ is the fluid flow rate and 
+\begin_inset Formula $w=w(t,x)$
+\end_inset
+
+ is the crack opening, while 
+\begin_inset Formula $p_{net}=p_{net}(t,x)$
+\end_inset
+
+ is the net fluid pressure, that is, the difference between the fluid pressure
+ 
+\begin_inset Formula $p_{fluid}$
+\end_inset
+
+ inside the fracture and the confining stress 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+\begin_inset Formula $p_{net}=p_{fluid}-\sigma_{0}$
+\end_inset
+
+, where constant background stress 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+ is assumed to be uniform over the entire fracture length, but this assumption
+ will challenged in the following Chapters
+\end_layout
+
+\end_inset
+
+.
+ The constant 
+\begin_inset Formula $M$
+\end_inset
+
+ involved in the equation is defined as 
+\begin_inset Formula $M=12\mu$
+\end_inset
+
+, where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ stands for the dynamic viscosity ( for example see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+ ).
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The continuity equation, accounting for the crack expansion and the leak-off
+ of the fluid is: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}+\frac{\partial q}{\partial x}+q_{l}=0,\quad t>0,\quad0<x<l(t),\label{continuity}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $q_{l}=q_{l}(t,x)$
+\end_inset
+
+ is the volume rate of fluid loss to formation in the direction perpendicular
+ to the crack propagation direction (
+\begin_inset Formula $x$
+\end_inset
+
+-axis).
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Although the definition of leak-off as the volume of fluid lost to the surroundi
+ng medium is well defined, the choice of function that describes this quantity
+ is subject to further interpretation.
+ Indeed various works choose to use different functions to represent this
+ physical phenomena 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen_phd,Nordgren,Kresse2,MWL"
+
+\end_inset
+
+, so a sensible choice is to consider multiple possible representations
+ and be able to switch these in the model.
+ In this work the following leak-off versions are be considered: 
+\begin_inset Formula 
+\begin{equation}
+q_{l}(t,x)=q_{l}^{(j)}(t,x)+q_{j}^{*}(t,x),\quad j=1,2,3,\label{leak-off}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+where
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{l}
+{\displaystyle q_{l}^{(1)}=\frac{C_{1}(t)}{\sqrt{t-\tau(x)}},\quad q_{l}^{(2)}=\frac{C_{2}(t)p_{net}}{\sqrt{t-\tau(x)}},\quad{\displaystyle q_{l}^{(3)}=C_{31}(t)p_{net}+C_{32}(t)}},\\
+{\displaystyle \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad0<x<l(t).}
+\end{array}\label{carter}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Here 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+, sometimes denoted as 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $C_{L}$
+\end_inset
+
+,
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang american
+ is assumed to be a known constant defined experimentally
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{L}$
+\end_inset
+
+ is given in 
+\begin_inset Formula $\frac{m}{\sqrt{s}}$
+\end_inset
+
+ as an experimental 1D measure of how fast fluid soaks into the rock medium.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Carter"
+
+\end_inset
+
+ .
+ Recently 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $C_{L}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang american
+ was estimated analytically for a poro-elastic material by Kovalyshen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen_phd"
+
+\end_inset
+
+.
+ The pressure proportional 
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ refers to modified law given by Clifton 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Clifton"
+
+\end_inset
+
+, which is a more accurate version of Carter Law which takes pressure difference
+ in to account.
+ The function 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ contains information on the history of the process (it is explored in greater
+ detain in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extra-computational-challenges"
+
+\end_inset
+
+).
+ It defines the time at which the fracture tip reaches the point 
+\begin_inset Formula $x$
+\end_inset
+
+ and can be computed as the inverse of the crack length: 
+\begin_inset Formula 
+\begin{equation}
+\tau(x)=l^{-1}(x),\quad x>l_{*}.\label{tau}
+\end{equation}
+
+\end_inset
+
+Other constants in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "carter"
+
+\end_inset
+
+, 
+\begin_inset Formula $C_{j}(t)=C_{j}(t,w,p)$
+\end_inset
+
+, (
+\begin_inset Formula $j=2,3$
+\end_inset
+
+) may depend on the solution itself but are bounded functions in time.
+ Finally, the terms 
+\begin_inset Formula $q_{j}^{*}$
+\end_inset
+
+, (
+\begin_inset Formula $j=1,2,3$
+\end_inset
+
+) in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "carter"
+
+\end_inset
+
+ are assumed to be negligible in comparison with 
+\begin_inset Formula $q_{l}^{(j)}$
+\end_inset
+
+ near the crack tip.
+ Note that application of the Carter leak-off law 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Carter"
+
+\end_inset
+
+ which is a simplified model of established fluid diffusion through the
+ fracture walls, is rather questionable at the initial stage of the crack
+ propagation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren,Lenoach,Mathias"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+As the first task of this work is to build formulation for a general numerical
+ scheme, the collection of possible leak-off representations given in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "carter"
+
+\end_inset
+
+ covers the main spectrum of possible behaviors used in the hydrofracturing
+ simulations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen_phd"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The system of equations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "poiseulle"
+
+\end_inset
+
+ - 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "continuity"
+
+\end_inset
+
+ should be supplemented by the elasticity equation.
+ The simplest relationship used in the PKN formulation is used: 
+\begin_inset Formula 
+\begin{equation}
+p_{net}=kw,\label{elasticity}
+\end{equation}
+
+\end_inset
+
+with a known proportionality coefficient 
+\begin_inset Formula $k=\frac{2}{\pi h}\frac{E}{1-\nu^{2}}$
+\end_inset
+
+ found from the solution of a plane strain elasticity problem for an elliptical
+ crack of height 
+\begin_inset Formula $h$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+.
+ For this model to valid it is required that 
+\begin_inset Formula $h>>w$
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+.
+ Constants 
+\begin_inset Formula $E$
+\end_inset
+
+ and 
+\begin_inset Formula $\nu$
+\end_inset
+
+ are the Young modulus and the Poisson ratio, respectively.
+ In fact, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "elasticity"
+
+\end_inset
+
+ implies that the so-called zero toughness condition is satisfied in this
+ model
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+fracture toughness 
+\begin_inset Formula $K_{IC}=0$
+\end_inset
+
+, no force is required to overcome material strength to initially open the
+ fracture, but force is rather required to make it wider.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+On substitution of the Poiseulle equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "poiseulle"
+
+\end_inset
+
+ and elasticity relationship 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "elasticity"
+
+\end_inset
+
+ into the continuity equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "continuity"
+
+\end_inset
+
+, one obtains a well known lubrication (Reynolds) equation defined in the
+ trapezoidal domain (
+\begin_inset Formula $t>0,\ 0<x<l(t)$
+\end_inset
+
+): 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}-\frac{k}{M}\frac{\partial}{\partial x}\left(w^{3}\frac{\partial p_{net}}{\partial x}\right)+q_{l}=0.\label{reynold}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Since the system has its natural symmetry with respect to variable 
+\begin_inset Formula $x$
+\end_inset
+
+ and the equations are local, it is convenient to consider only half (symmetrica
+l part) of the interval 
+\begin_inset Formula $[0,l(t)]$
+\end_inset
+
+ instead of the full crack length 
+\begin_inset Formula $[-l(t),l(t)]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The initial conditions for the problem are: 
+\begin_inset Formula 
+\begin{equation}
+l(0)=l_{*},\quad w(0,x)=w_{*}(x),\quad x\in(0,l_{*}).\label{initial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+The boundary conditions consist of: known fluid injection rate at the crack
+ mouth, 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+, zero crack opening and zero fluid flux rate at the crack tip: 
+\begin_inset Formula 
+\begin{equation}
+q(t,0)=q_{0}(t),\quad w(t,l(t))=0,\quad q(t,l(t))=0.\label{boundary_conditions}
+\end{equation}
+
+\end_inset
+
+Note that this formulation looks overdetermined 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+The order system, here second 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "reynold"
+
+\end_inset
+
+ with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+, should match the number of boundary conditions, where there are three
+ conditions in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "boundary_conditions"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ as the governing equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "reynold"
+
+\end_inset
+
+ is of the second order with respect to spatial variable.
+ This issue shall be discussed later in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Normalized-formulation"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Finally, by consecutive integration of equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "reynold"
+
+\end_inset
+
+ over time and then space, one can also derive the standard formula for
+ the global fluid balance in the form: 
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{l}
+{\displaystyle \int_{0}^{l(t)}[w(t,x)-w_{*}(x)]dx-\int_{0}^{t}q_{0}(t)dt+\int_{0}^{l(t)}\int_{0}^{t}q_{l}(t,x)dtdx=0,}\end{array}\label{fluid_balance_full}
+\end{equation}
+
+\end_inset
+
+where it is accepted that 
+\begin_inset Formula $w_{*}(x)=0$
+\end_inset
+
+ when 
+\begin_inset Formula $x>l_{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $l'(t)\ge0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+It has been shown in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+, the crucial role in the analysis of the problem plays the particle velocity
+ defined in the following manner: 
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=\frac{q}{w},\quad t>0,\quad0\le x\le l(t),\label{velocity_1}
+\end{equation}
+
+\end_inset
+
+which indicates the average velocity of fluid flow through the cross-sections
+ of the fracture.
+\end_layout
+
+\begin_layout Standard
+
+\lang american
+Under the assumption that 
+\emph on
+the crack is fully filled by the fluid and sucking, ejection or discharge
+ through the front can be neglected, the fluid velocity defines the crack
+ propagation speed and the following speed equation is valid
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kemp,Linkov_1,Linkov_2"
+
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+In fact, the speed equation in this form is valid only under the assumption
+ of zero spurt loss at the crack tip 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+l'(t)=V\left(t,l(t)\right),\quad t>0.\label{velocity_2}
+\end{equation}
+
+\end_inset
+
+Moreover, for physical reasons, one can deduce that the fluid velocity at
+ the crack tip is finite 
+\begin_inset Formula 
+\begin{equation}
+0\le V\left(t,x\right)<\infty,\quad t>0,\quad x\le l(t)\label{velocity_b}
+\end{equation}
+
+\end_inset
+
+Note that, allowing the crack propagation speed to be infinite, one has
+ to simultaneously include the inertia term in the equations 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\lang american
+There is no mass involved, hence no inertia term 
+\begin_inset Formula $F=ma=m\dot{V}$
+\end_inset
+
+ is present to cancel out infinite velocity.
+ In fact it is known that fracturing processes take hours and are rather
+ slow by nature.
+\end_layout
+
+\end_inset
+
+.
+ Thus, the estimate (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "velocity_b"
+
+\end_inset
+
+) is a direct consequence of neglecting the acceleration terms.
+\end_layout
+
+\begin_layout Subsection
+Asymptotics behavior of the solution and its consequences 
+\end_layout
+
+\begin_layout Standard
+As was mentioned in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "SS"
+
+\end_inset
+
+, the fact that both 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $q$
+\end_inset
+
+ are present in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "velocity_1"
+
+\end_inset
+
+, creates serious difficulties when trying to use the fluid velocity as
+ a variable.
+ However, as shown in 
+\emph on
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1,Linkov_2,Linkov_4,Linkov_3,gena_apm"
+
+\end_inset
+
+
+\emph default
+ , proper usage of fluid velocity may be extremely beneficial.
+ First, it allows one to replace two boundary conditions at the crack tip
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "boundary_conditions"
+
+\end_inset
+
+) with a single one additionally incorporating information from the speed
+ equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "velocity_2"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "velocity_b"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Indeed, the boundary conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "boundary_conditions"
+
+\end_inset
+
+) in view of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "poiseulle"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity"
+
+\end_inset
+
+) lead to the estimate 
+\begin_inset Formula 
+\begin{equation}
+w(t,x)=o\left((l(t)-x)^{\frac{1}{4}}\right),\quad x\rightarrow l(t),\label{w_asym_0}
+\end{equation}
+
+\end_inset
+
+which does not necessarily guarantee (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "velocity_b"
+
+\end_inset
+
+).
+ However, further analysis of the problem, for different leak-off functions
+ (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen,Kemp"
+
+\end_inset
+
+ and Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-details-of"
+
+\end_inset
+
+), shows that the particle velocity is bounded near the crack tip and the
+ crack opening exhibits the following asymptotic behavior:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}w(t,x)=w_{0}(t)\big(l(t)-x\big)^{\frac{1}{3}}+w_{1}(t)\big(l(t)-x\big)^{\alpha}+\, o\big((l(t)-x)^{\alpha}\big),\\
+ & x\rightarrow l(t),
+\end{split}
+\label{w_asym_1}
+\end{equation}
+
+\end_inset
+
+with some 
+\begin_inset Formula $\alpha>1/3$
+\end_inset
+
+.
+ For the classical PKN model for an impermeable solid (or when leak-off
+ vanishes near the crack tip at least as fast as the crack opening) the
+ exponent 
+\begin_inset Formula $\alpha=4/3$
+\end_inset
+
+ was found in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kemp"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+.
+ For the case of the singular Carter's type leak-off, the exponent 
+\begin_inset Formula $\alpha=1/2$
+\end_inset
+
+ was determined in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Note that the asymptotics 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1"
+
+\end_inset
+
+ shows that fluid velocity is indeed bounded near the crack tip.
+ Moreover, 
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=V_{0}(t)+V_{1}(t)\big(l(t)-x\big)^{\beta}+o\big((l(t)-x)^{\beta}\big),\label{V_asym_0}
+\end{equation}
+
+\end_inset
+
+as 
+\begin_inset Formula $x\to l(t)$
+\end_inset
+
+, where 
+\begin_inset Formula $\beta=\alpha-1/3$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{equation}
+V_{0}=\frac{k}{3M}w_{0}^{3}(t),\quad V_{1}=\frac{k}{M}\left(\alpha+\frac{2}{3}\right)w_{0}^{2}(t)w_{1}(t).\label{V_asym_0_coefs}
+\end{equation}
+
+\end_inset
+
+As follows from Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-details-of"
+
+\end_inset
+
+, 
+\begin_inset Formula $V(t,x)$
+\end_inset
+
+ may not be so smooth near the crack tip as one could expect and the exponent
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "V_asym_0"
+
+\end_inset
+
+) plays an important role for this.
+ Indeed, if 
+\begin_inset Formula $\beta\ge1$
+\end_inset
+
+ then 
+\begin_inset Formula $V(t,\cdot)\in C^{1}[0,l(t)]$
+\end_inset
+
+ and the particle velocity function is smooth enough near the crack tip.
+ However, this happens only in the special case of 
+\begin_inset Formula $\alpha=4/3$
+\end_inset
+
+ when 
+\begin_inset Formula $V_{x}(t,x)$
+\end_inset
+
+ is bounded near the crack tip.
+ In case of singular leak-off (
+\begin_inset Formula $0<\beta<1$
+\end_inset
+
+), the particle velocity near the crack tip is only of the Hölder type 
+\begin_inset Formula $V(t,\cdot)\in C^{1}[0,l(t))\bigcap H^{\beta}[0,l(t)]$
+\end_inset
+
+.
+ In Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-details-of"
+
+\end_inset
+
+ the exact form of the asymptotic expansion 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1"
+
+\end_inset
+
+ is presented, which yields the aforementioned smoothness deterioration
+ of 
+\begin_inset Formula $V$
+\end_inset
+
+ near the crack tip for the singular leak-off models.
+\end_layout
+
+\begin_layout Standard
+Note that estimate 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1"
+
+\end_inset
+
+ (or equivalently 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "V_asym_0"
+
+\end_inset
+
+) enforces the condition 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "velocity_b"
+
+\end_inset
+
+.
+ Thus, in view of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "velocity_1"
+
+\end_inset
+
+, the pair of conditions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "boundary_conditions"
+
+\end_inset
+
+
+\begin_inset Formula $_{2}$
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "boundary_conditions"
+
+\end_inset
+
+
+\begin_inset Formula $_{3}$
+\end_inset
+
+ is equivalent to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "boundary_conditions"
+
+\end_inset
+
+
+\begin_inset Formula $_{2}$
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1"
+
+\end_inset
+
+.
+ This discussion clearly illustrates why accounting for asymptotic behavior
+ of the solution in form 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1"
+
+\end_inset
+
+ is of crucial importance for effective numerical realization of any algorithm
+ utilized in hydrofracturing 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Adachi_2007b,Garagashetal"
+
+\end_inset
+
+.
+ On the other hand, the fact that the particle velocity function is smooth
+ enough near the crack tip has been one of the important arguments to use
+ 
+\emph on
+the speed equation and proper variable approach
+\emph default
+ as the basis for improvement of the existing numerical algorithms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+.
+ It should be emphasized that behavior of 
+\begin_inset Formula $V(t,x)$
+\end_inset
+
+ near the crack tip may have serious implications when using 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization technique (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Epsilon-regularization-and"
+
+\end_inset
+
+).
+ Therefore, the one of the aims of this work is show that, regardless of
+ possible smoothness of the particle velocity near the crack tip, the approach
+ proposed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1,Linkov_2,Linkov_4,Linkov_3"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+ is still efficient 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Since now singular Carter leak-off 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "carter"
+
+\end_inset
+
+ is allowed , the behavior of particle velocity at the crack tip be altered.
+ 
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

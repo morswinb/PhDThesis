@@ -1,0 +1,471 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Large test scenarios 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Large-test-scenarios"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tree like fracture structure
+\end_layout
+
+\begin_layout Standard
+Consider the following example geometry organized in a binary tree shape
+ as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tree_fracture_structure"
+
+\end_inset
+
+.
+ The top node is a junction (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+) with pump in rate 
+\begin_inset Formula $q_{0}=1$
+\end_inset
+
+.
+ Then there are four consequent depth levels.
+ The first three levels split the flow through connected PKN pipe segments
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:PKN-pipe"
+
+\end_inset
+
+, and the deepest level represents an array of PKN cracks 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:PKN-crack"
+
+\end_inset
+
+.
+ For the purpose of this test the crack stress influence is ignored, 
+\begin_inset Formula $\sigma_{l}=0$
+\end_inset
+
+, and back stress components are set equal 
+\begin_inset Formula $\sigma_{x}=\sigma_{y}$
+\end_inset
+
+, so there should be no preference in flow direction introduced by stress
+ differences.
+ Therefore the structure is constructed in such a manner that the flow should
+ be equally distributed to all end PKN crack segments.
+ The initial opening 
+\begin_inset Formula $w_{*}$
+\end_inset
+
+and length 
+\begin_inset Formula $l_{*}$
+\end_inset
+
+ for each of used crack segments is set to match zero leak off benchmark
+ solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Benchmark-Self-Similar"
+
+\end_inset
+
+, and to have 
+\begin_inset Formula $w_{*}=1$
+\end_inset
+
+ at 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ The pipe segments are set up such so 
+\begin_inset Formula $w_{*}(x)=1$
+\end_inset
+
+ for all values of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ This distribution of initial 
+\begin_inset Formula $w_{*}$
+\end_inset
+
+is not chosen as natural, and should introduce some extra initial error,
+ however the multifracturing scheme should be able to deal with it, which
+ adds additional challenge to this problem.
+ This test should be run with zero leak off 
+\begin_inset Formula $q_{l}=0$
+\end_inset
+
+, and grid settings.
+\end_layout
+
+\begin_layout Standard
+The result of running computation on this structure is also shown on Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tree_fracture_structure"
+
+\end_inset
+
+.
+ Here two effects can be observed.
+ 
+\end_layout
+
+\begin_layout Standard
+First, the behavior of end crack segments, at large times, can be characterized
+ by the large time asymptote for zero leak off solution.
+ This is a trivial result by itself, but it verifies that the pump rate
+ 
+\begin_inset Formula $q_{0}=1$
+\end_inset
+
+ at the first junction is distributed evenly to all end cracks segments,
+ so each effectively receives 
+\begin_inset Formula $q_{0}=\frac{1}{8}$
+\end_inset
+
+, as there are eight end crack segments it this scenario.
+ This proper distribution of fluid is achieved once length of end fracture
+ segments is much grater than combined length of distributing pipe segments.
+\end_layout
+
+\begin_layout Standard
+The accuracy is most significantly affected by the choice of grid type (Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Grids"
+
+\end_inset
+
+) and number of grid points 
+\begin_inset Formula $N$
+\end_inset
+
+ per crack and pipe segments.
+ In this scenario four combinations of grid points per crack segments 
+\begin_inset Formula $N_{c}$
+\end_inset
+
+, pipe segments 
+\begin_inset Formula $N_{p}$
+\end_inset
+
+and the density parameter 
+\begin_inset Formula $\gamma$
+\end_inset
+
+.
+ The double power grid 
+\begin_inset Formula $x_{m}^{(4)}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "double_power_mesh"
+
+\end_inset
+
+) is used, which has two values of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+, the value which is refereed here affects the density of points near junction
+ segments, not in the proximity of crack tip.
+ Therefore the test with 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+ refers to actually using uniform grid 
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ over majority of the structure, while other three tests with 
+\begin_inset Formula $\gamma=\frac{3}{2}$
+\end_inset
+
+ have denser mesh near junctions.
+ The number of crack grid points is set to 
+\begin_inset Formula $N_{c}=11$
+\end_inset
+
+, as it does not appear to have most effect on the accuracy (as observed
+ for fractures in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Comparison-of-ODE"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+...
+ The effect of 
+\begin_inset Formula $N_{p}$
+\end_inset
+
+ needs to be checked later as there might be some integration related bug
+ in the code....
+\emph default
+Thou the general observation proves that using 
+\begin_inset Formula $x_{m}^{(4)}$
+\end_inset
+
+ with 
+\begin_inset Formula $\gamma>1$
+\end_inset
+
+ allows better accuracies, than when uniform mesh 
+\begin_inset Formula $x_{m}^{(1)}$
+\end_inset
+
+ is used for pipe segments.
+ The number of pipe grid points 
+\begin_inset Formula $N_{p}$
+\end_inset
+
+ can be decreased after time, when the length of pipe segment becomes insignific
+ant.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename tree_structure.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pipe segments arranged in a binary tree pattern, equally dividing flow to
+ end Crack segments.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename tree_eps.eps
+	scale 70
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Length of end cracks segments converges to the large time asymptote.
+ Fluid balance accuracies for various combinations of pipe grid type and
+ point number 
+\begin_inset Formula $N_{p}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Test on a tree like structure, 
+\begin_inset Formula $q{}_{0}=1,\ q_{l}=0,\ \sigma_{x}=\sigma_{y},\ \sigma_{l}=0,\ k=4,\ M=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tree_fracture_structure"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

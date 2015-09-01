@@ -1,0 +1,1821 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Normalized formulation 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Normalized-formulation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets normalize the problem by introducing the following dimensionless variables:
+ 
+\begin_inset Formula 
+\[
+\tilde{x}=\frac{x}{l(t)},\quad\tilde{t}=\frac{t}{t_{n}},\quad t_{n}=\frac{M}{kl_{*}},\quad\tilde{w}_{*}(\tilde{x})=w_{*}\left(\frac{x}{l_{*}}\right),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\tilde{w}(\tilde{t},\tilde{x})=\frac{w(t,x)}{l_{*}},\quad\tilde{V}(\tilde{t},\tilde{x})=\frac{t_{n}}{l_{*}}V(t,x),\quad L(\tilde{t})=\frac{l(t)}{l_{*}},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+l_{*}^{2}\tilde{q}_{0}(\tilde{t})=t_{n}q_{0}(t),\quad l_{*}\tilde{q}_{l}(\tilde{t},\tilde{x})=t_{n}q_{l}(t,x),\label{dimensionless}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{x}\in(0,1)$
+\end_inset
+
+ and 
+\begin_inset Formula $L(0)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using this notation, one defines the normalized particle velocity as: 
+\begin_inset Formula 
+\begin{equation}
+\tilde{V}(\tilde{t},\tilde{x})=-\frac{\tilde{w}^{2}}{L(\tilde{t})}\frac{\partial\tilde{w}}{\partial\tilde{x}}.\label{norm_speed}
+\end{equation}
+
+\end_inset
+
+The conservation law 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "continuity"
+
+\end_inset
+
+ in the normalized domain is rewritten in the following manner: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial\tilde{w}}{\partial\tilde{t}}=\frac{1}{L(\tilde{t})}\left[\left(\tilde{x}\tilde{V}(\tilde{t},1)-\tilde{V}(\tilde{t},\tilde{x})\right)\frac{\partial\tilde{w}}{\partial\tilde{x}}-\tilde{w}\frac{\partial\tilde{V}}{\partial\tilde{x}}\right]-\tilde{q}_{l}(\tilde{t},\tilde{x}),\label{norm_continuity}
+\end{equation}
+
+\end_inset
+
+The leading terms of the asymptotic estimate of the leak-off function from
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+) are now: 
+\begin_inset Formula 
+\[
+\tilde{q}_{l}^{(1)}(\tilde{t},\tilde{x})=\frac{\tilde{C}_{1}(\tilde{t})D\left(\tilde{t}\right)}{\sqrt{1-\tilde{x}}},\,\,\,\tilde{q}_{l}^{(2)}(\tilde{t},\tilde{x})=\frac{\tilde{C}_{2}(\tilde{t})D\left(\tilde{t}\right)}{\sqrt{1-\tilde{x}}}\tilde{w}(\tilde{t},\tilde{x}),\quad
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\tilde{q}_{l}^{(3)}(\tilde{t},\tilde{x})=\tilde{C}_{31}(\tilde{t})\tilde{w}(\tilde{t},\tilde{x})+\tilde{C}_{32}(\tilde{t}).\label{norm_leak_off_1}
+\end{equation}
+
+\end_inset
+
+Here, the function 
+\begin_inset Formula 
+\begin{equation}
+D\left(\tilde{t}\right)=\sqrt{\frac{L'\left(\tilde{t}\right)}{L\left(\tilde{t}\right)}},\label{function_D}
+\end{equation}
+
+\end_inset
+
+was introduced in the Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Carter-type-leak"
+
+\end_inset
+
+, where the remainder between the normalized total flux and the leading
+ term (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_leak_off_1"
+
+\end_inset
+
+) has been estimated.
+ Thus the normalized term 
+\begin_inset Formula $\tilde{q}_{j}^{*}(\tilde{t},\tilde{x})$
+\end_inset
+
+ vanishes near the crack tip faster than the solution itself.
+\end_layout
+
+\begin_layout Standard
+Finally, normalized initial conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "initial"
+
+\end_inset
+
+) and boundary conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "boundary_conditions"
+
+\end_inset
+
+) are: 
+\begin_inset Formula 
+\begin{equation}
+L(0)=1,\quad\tilde{w}(0,\tilde{x})=\tilde{w}_{*}(\tilde{x}),\quad x\in(0,1),\label{norm_initial}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{equation}
+-\frac{1}{L(\tilde{t})}\tilde{w}^{3}\frac{\partial\tilde{w}}{\partial\tilde{x}}(\tilde{t},0)=\tilde{q}_{0}(\tilde{t}),\quad\tilde{w}(\tilde{t},1)=0.\label{norm_boundary}
+\end{equation}
+
+\end_inset
+
+The global fluid balance (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fluid_balance_full"
+
+\end_inset
+
+) can be written in the form: 
+\begin_inset Formula 
+\begin{equation}
+\begin{split}L(\tilde{t})\int_{0}^{1}\tilde{w}(\tilde{t},x)dx-\int_{0}^{1}\tilde{w}(x,0)dx- & \int_{0}^{\tilde{t}}\tilde{q}_{0}(t)dt\\
++\int_{0}^{\tilde{t}}L(t)\int_{0}^{1}\tilde{q}_{l}(t,x)dxdt=0
+\end{split}
+\label{balance_2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For convenience, from now on the "
+\begin_inset Formula $\sim$
+\end_inset
+
+" symbol should be omitted, and all dependent and independent variables
+ and will only consider the respective dimensionless values.
+\end_layout
+
+\begin_layout Standard
+Note that the particular representation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity"
+
+\end_inset
+
+) of the Rey\SpecialChar \-
+nolds equation highlights an essential feature of the problem
+ - it is singularly perturbed near the crack tip.
+ Indeed, both coefficients in front of the spatial derivatives on the right-hand
+ side of the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity"
+
+\end_inset
+
+) tend to zero at 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+ Thus, the asymptotic behavior of the solution near the crack tip (
+\begin_inset Formula $x\to1$
+\end_inset
+
+) 
+\begin_inset Formula 
+\begin{equation}
+w=w_{0}(t)\left(1-x\right)^{\frac{1}{3}}+w_{1}(t)\left(1-x\right)^{\alpha}+o\left((1-x)^{\alpha}\right),\label{w_asym_1n}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+V=V_{0}(t)+V_{1}(t)\left(1-x\right)^{\alpha-\frac{1}{3}}+o\left((1-x)^{\alpha-\frac{1}{3}}\right),\label{V_asym_1n}
+\end{equation}
+
+\end_inset
+
+represents nothing but the boundary layer 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+the boundary layer concept was introduced by Ludwig Prandtl at 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Boundary_Layer"
+
+\end_inset
+
+, refers to the fluid in immediate vicinity of a bounding surface, here
+ the crack tip 
+\end_layout
+
+\end_inset
+
+.
+ Moreover, normalizing 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "V_asym_0_coefs"
+
+\end_inset
+
+ one obtains: 
+\begin_inset Formula 
+\begin{equation}
+V_{0}(t)=\frac{1}{3L(t)}w_{0}^{3}(t).\label{v_0_w_0_relation}
+\end{equation}
+
+\end_inset
+
+The terms 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1n"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "V_asym_1n"
+
+\end_inset
+
+) are different from those in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "V_asym_0"
+
+\end_inset
+
+).
+ In fact, the former should be written with "
+\begin_inset Formula $\sim$
+\end_inset
+
+" symbol.
+\end_layout
+
+\begin_layout Standard
+On substitution of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_continuity"
+
+\end_inset
+
+, one eliminates the particle velocity function from Reynolds equation:
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}=\frac{1}{L^{2}(t)}\left[\frac{1}{3}w_{0}^{3}x\frac{\partial w}{\partial x}+3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]-q_{l}.\label{w_system}
+\end{equation}
+
+\end_inset
+
+Here 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ is the multiplier of the first term of the asymptotic expansion 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1"
+
+\end_inset
+
+.
+ This form of lubrication equation exhibits the same degenerative properties
+ as (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity"
+
+\end_inset
+
+).
+ Also the coefficients appearing in front of the leading terms tend to zero
+ near the crack tip.
+\end_layout
+
+\begin_layout Standard
+The speed equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "velocity_2"
+
+\end_inset
+
+) defining the crack propagation speed is given in the normalized variables
+ as: 
+\begin_inset Formula 
+\begin{equation}
+L'(t)=V_{0}(t),\quad t>0.\label{norm_speed_2}
+\end{equation}
+
+\end_inset
+
+Taking into account (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "v_0_w_0_relation"
+
+\end_inset
+
+), the latter can be rewritten in the following form 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}L^{2}=\frac{2}{3}w_{0}^{3}(t),\quad\quad t>0.\label{new_speed}
+\end{equation}
+
+\end_inset
+
+This equation serves to determine the unknown value of the crack length
+ 
+\begin_inset Formula $L(t)$
+\end_inset
+
+.
+ It has been shown in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "new_speed"
+
+\end_inset
+
+ offers advantages over the standard approaches based on the global fluid
+ balance equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "balance_2"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+As a result of the foregoing transformations, one can formulate a system
+ of PDEs describing the hydrofracturing process.
+ The system is composed of two operators: 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}w=\mathcal{A}_{w}(w,L^{2}),\quad\frac{d}{dt}L^{2}(t)=\mathcal{B}_{w}(w),\label{w_DS}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{A}_{w}$
+\end_inset
+
+ is defined by the right-hand side of equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system"
+
+\end_inset
+
+ with the boundary conditions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_boundary"
+
+\end_inset
+
+, while the second operator 
+\begin_inset Formula $\mathcal{B}_{w}$
+\end_inset
+
+ is given by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "new_speed"
+
+\end_inset
+
+.
+ The system is equipped with the initial conditions: 
+\begin_inset Formula 
+\begin{equation}
+L(0)=1,\quad w(0,x)=w_{*}(x),\quad x\in(0,1).\label{norm_initial_DS}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Carter type leak off simplification 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Carter-type-leak"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the transformation of the Carter law described by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+) when applying the normalization (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dimensionless"
+
+\end_inset
+
+).
+ Assume that: 
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{\sqrt{t-\tau(x)}}=\frac{D(t)}{\sqrt{1-\tilde{x}}}+R(t,\tilde{x}),\label{f_D}
+\end{equation}
+
+\end_inset
+
+where function 
+\begin_inset Formula $D(t)$
+\end_inset
+
+ is defined in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "function_D"
+
+\end_inset
+
+) while the remainder 
+\begin_inset Formula $R$
+\end_inset
+
+ is estimated later in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subs_2"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+To find function 
+\begin_inset Formula $D(t)$
+\end_inset
+
+, and thus to obtain an exact form of equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "function_D"
+
+\end_inset
+
+), it is enough to compute the limit 
+\begin_inset Formula 
+\begin{equation}
+D^{2}(t)=\lim_{\tilde{x}\rightarrow1}\frac{1-\tilde{x}}{t-\tau(x)}<\infty.\label{d_t_intro}
+\end{equation}
+
+\end_inset
+
+This can be done by utilising L'Hopital's rule with taking into account
+ that 
+\begin_inset Formula $x\to L(t)$
+\end_inset
+
+ as 
+\begin_inset Formula $\tilde{x}\rightarrow1$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{equation}
+\tau(x)=\tau\left(L(t)\tilde{x}\right)=L^{-1}(L(t)\tilde{x}),\label{tau_2}
+\end{equation}
+
+\end_inset
+
+and that the crack length is a smooth function of time (
+\begin_inset Formula $L\in C^{1}$
+\end_inset
+
+ at least).
+ The last fact immediately follows from the problem formulation in terms
+ of evolution system (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Having the value of 
+\begin_inset Formula $D(t)$
+\end_inset
+
+ we can estimate the remainder 
+\begin_inset Formula $R(t,\tilde{x})$
+\end_inset
+
+ when 
+\begin_inset Formula $\tilde{x}\to1$
+\end_inset
+
+, or, what it is equivalent to when 
+\begin_inset Formula $x\to l(t)$
+\end_inset
+
+ (or 
+\begin_inset Formula $t\to\tau(x)$
+\end_inset
+
+).
+ For this reason, we search for a parameter 
+\begin_inset Formula $\xi\ne0$
+\end_inset
+
+ which guarantees that the limit 
+\begin_inset Formula 
+\[
+A=\lim_{\tilde{x}\rightarrow1}\frac{R(t,\tilde{x})}{(1-\tilde{x})^{\xi}}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{\tilde{x}\rightarrow1}\frac{1}{2\xi(1-\tilde{x})^{\xi-1}}\left(\frac{D(t)}{(1-\tilde{x})^{3/2}}-\frac{L(t)\tau'(x)}{(t-\tau(x))^{3/2}}\right)
+\]
+
+\end_inset
+
+does not turn to zero or infinity.
+ Due to this assumption, we can write 
+\begin_inset Formula 
+\begin{equation}
+\frac{1}{\sqrt{t-\tau(x)}}=\frac{D(t)}{\sqrt{1-\tilde{x}}}+A(1-\tilde{x})^{\xi}+o\left((1-\tilde{x})^{\xi}\right),\label{subs_2}
+\end{equation}
+
+\end_inset
+
+when 
+\begin_inset Formula $\tilde{x}\rightarrow1$
+\end_inset
+
+, or equivalently 
+\begin_inset Formula $x\rightarrow l(t)$
+\end_inset
+
+.
+ Taking the last estimate into account 
+\begin_inset Formula $A$
+\end_inset
+
+ can be expressed as: 
+\begin_inset Formula 
+\[
+A=\lim_{\tilde{x}\rightarrow1}\frac{1}{2\xi(1-\tilde{x})^{\xi-1}}\left(\frac{D(t)}{(1-\tilde{x})^{3/2}}-\frac{L(t)\tau'(x)}{t-\tau(x)}\frac{D(t)}{\sqrt{1-\tilde{x}}}\right)-
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{AL(t)}{2\xi}\lim_{\tilde{x}\rightarrow1}\frac{(1-\tilde{x})\tau'(x)}{t-\tau(x)}\big(1+o(1)\big).
+\]
+
+\end_inset
+
+Now, on substitution of 
+\begin_inset Formula $\tau'(x)=1/L'(t)$
+\end_inset
+
+ at 
+\begin_inset Formula $x=L(t)$
+\end_inset
+
+ and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "d_t_intro"
+
+\end_inset
+
+) into the limit one has: 
+\begin_inset Formula 
+\[
+A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{2\xi(1-\tilde{x})^{\xi-1/2}}\left(\frac{1}{1-\tilde{x}}-\frac{L(t)\tau'(x)}{t-\tau(x)}\right)-\frac{AL(t)D^{2}(t)}{2\xi L'(t)}.
+\]
+
+\end_inset
+
+Applying (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "d_t_intro"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "function_D"
+
+\end_inset
+
+) here gives: 
+\begin_inset Formula 
+\[
+\frac{1+2\xi}{2\xi}A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{2\xi(1-\tilde{x})^{\xi-1/2}}\left(\frac{1}{1-\tilde{x}}-\frac{L(t)\tau'(x)}{\sqrt{t-\tau(x)}}\frac{D(t)}{\sqrt{1-\tilde{x}}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\frac{AD(t)L(t)}{2\xi}\lim_{\tilde{x}\rightarrow1}\frac{\tau'(x)\sqrt{1-\tilde{x}}}{\sqrt{t-\tau(x)}}.
+\]
+
+\end_inset
+
+By repeating the same process one more time we have: 
+\begin_inset Formula 
+\[
+(2+2\xi)A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{(1-\tilde{x})^{\xi}}\left(\frac{1}{\sqrt{1-\tilde{x}}}-\frac{L(t)\tau'(x)D(t)}{\sqrt{t-\tau(x)}}\right).
+\]
+
+\end_inset
+
+Finally by eliminating the square root with use of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subs_2"
+
+\end_inset
+
+) we obtain (after some algebra) 
+\begin_inset Formula 
+\[
+(3+2\xi)A=D(t)\lim_{\tilde{x}\rightarrow1}\frac{1-L(t)\tau'(x)D^{2}(t)}{(1-\tilde{x})^{\xi+1/2}}.
+\]
+
+\end_inset
+
+This relationship gives a finite value of 
+\begin_inset Formula $A$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\xi=1/2$
+\end_inset
+
+ and, as a result, we find: 
+\begin_inset Formula 
+\[
+A=\frac{1}{4}D^{3}(t)L^{2}(t)\tau''(L(t))=-\frac{1}{4}\frac{L''(t)}{L'(t)}\sqrt{\frac{L(t)}{L'(t)}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The details of crack tip asymptotics 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-details-of"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Solving for 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets start by writing just the first term of the asymptotic expansion 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+w(t,x)=w_{0}(t)(1-x)^{\alpha_{0}}+O\left((1-x)^{\alpha_{1}}\right),\quad x\to1\label{w_first_term}
+\end{equation}
+
+\end_inset
+
+By speed equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed"
+
+\end_inset
+
+ it can be deduced that the first term of asymptotic expansion for speed
+ function 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "v_asym"
+
+\end_inset
+
+ is given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=\frac{\alpha_{0}k}{ML(t)}w_{0}^{3}(t)(1-x)^{3\alpha_{0}-1}+O\left((1-x)^{\alpha_{1}+2\alpha_{0}-1}\right),\quad x\to1\label{eq:-20}
+\end{equation}
+
+\end_inset
+
+Or alternatively it can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=v_{0}(t)(1-x)^{\beta_{0}}+O\left((1-x)^{\beta_{1}}\right),\quad x\to1\label{v_first_term}
+\end{equation}
+
+\end_inset
+
+Where 
+\begin_inset Formula $v_{0}=\frac{\alpha_{0}k}{ML(t)}w_{0}^{3}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{0}=3\alpha_{0}-1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Interestingly the value of 
+\begin_inset Formula $V(t,1)$
+\end_inset
+
+ can take three values depending on the value of 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V(t,1)=\begin{cases}
+v_{0}(t) & if\;\beta_{0}=0\\
+0 & if\;\beta_{0}>0\\
+\infty & if\;\beta_{0}<0
+\end{cases}\label{eq:-25}
+\end{equation}
+
+\end_inset
+
+It can be concluded that if 
+\begin_inset Formula $V(t,1)$
+\end_inset
+
+ is to have a meaningful value at 
+\begin_inset Formula $x=1$
+\end_inset
+
+ the power 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ must be chosen such that 
+\begin_inset Formula $\beta_{0}=3\alpha_{0}-1=0$
+\end_inset
+
+ hence 
+\begin_inset Formula $\alpha_{0}=\frac{1}{3}$
+\end_inset
+
+.
+ This will make sure the fracture tip can be propagating with some finite
+ speed, following the
+\emph on
+ zero fluid lag
+\emph default
+ assumption.
+ 
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $V(t,1)$
+\end_inset
+
+ was zero and
+\begin_inset Formula $\alpha_{0}>\frac{1}{3}$
+\end_inset
+
+ then there would be no fluid movement at crack tip and no crack propagation.
+ If 
+\begin_inset Formula $\alpha_{0}<\frac{1}{3}$
+\end_inset
+
+ then 
+\begin_inset Formula $V(t,1)$
+\end_inset
+
+ would be infinite and no straightforward physical interpretation can follow.
+ Therefore the only sensible choice is to set 
+\begin_inset Formula $\beta_{0}=0$
+\end_inset
+
+ so for asymptotics of speed function it is obtained: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V(t,1)=v_{0}(t)(1-1)^{0}=v_{0}(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+hence it can said that the crack tip propagates with speed 
+\begin_inset Formula $v_{0}(t)$
+\end_inset
+
+.
+ Additionally the value of 
+\begin_inset Formula $v_{0}(t)$
+\end_inset
+
+ can be associated with 
+\begin_inset Formula $w_{0}^{3}(t)$
+\end_inset
+
+ to obtain: 
+\begin_inset Formula 
+\begin{equation}
+v_{0}(t)=\frac{k}{3ML(t)}w_{0}^{3}(t)\label{v_0}
+\end{equation}
+
+\end_inset
+
+Now having found the value of 
+\begin_inset Formula $\alpha_{0}=\frac{1}{3}$
+\end_inset
+
+ one term expansions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_first_term"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "v_first_term"
+
+\end_inset
+
+ can be substituted into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_continuity"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}w_{0}'(t)(1-x)^{\frac{1}{3}}= & \frac{1}{3L(t)}\left(w_{0}(t)v_{0}(t)(1-x)^{\frac{1}{3}}\right)\\
+ & -DC(t)(1-x)^{-\frac{1}{2}}+O\left(\left(1-x\right)^{\alpha_{1}-1}\right)
+\end{split}
+x\to1\label{one_term}
+\end{equation}
+
+\end_inset
+
+If next power was such so 
+\begin_inset Formula $\alpha_{1}>\frac{4}{3}$
+\end_inset
+
+, then this expansion would be complete, that is further terms would be
+ grater significance than 
+\begin_inset Formula $O\left(1-x\right)^{\frac{1}{3}}$
+\end_inset
+
+.
+ However introduction of leak off function might complicate this problem.
+ The term 
+\begin_inset Formula $(1-x)^{-\frac{1}{2}}$
+\end_inset
+
+ originating from leak off function 
+\begin_inset Formula $q_{l}^{(1)}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+) (or 
+\begin_inset Formula $(1-x)^{-\frac{1}{6}}$
+\end_inset
+
+ if pressure proportional Carter type leak version 
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+) ) is the most significant in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "one_term"
+
+\end_inset
+
+) and must be matched with 
+\begin_inset Formula $O\left(\left(1-x\right)^{\alpha_{1}-1}\right)$
+\end_inset
+
+ .
+ This means more terms must be found to clear this expansion.
+ For this first step the values 
+\begin_inset Formula $\alpha_{0}=\frac{1}{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{0}=0$
+\end_inset
+
+ are concluded.
+\end_layout
+
+\begin_layout Subsubsection
+Finding further asymptotic terms
+\end_layout
+
+\begin_layout Standard
+Asymptotic expansion for the crack opening and the fluid velocity near the
+ crack tip in the normalized variables (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dimensionless"
+
+\end_inset
+
+) can be written in the following general forms: 
+\begin_inset Formula 
+\begin{equation}
+w(t,x)=\sum_{j=0}^{N}w_{j}(t)(1-x)^{\alpha_{j}}+O((1-x)^{\varrho_{w}}),\quad x\rightarrow1,\label{w_asym}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=\sum_{j=0}^{N}V_{j}(t)(1-x)^{\beta_{j}}+O((1-x)^{\varrho_{V}}),\quad x\rightarrow1,\label{v_asym}
+\end{equation}
+
+\end_inset
+
+with 
+\begin_inset Formula $\varrho_{w}>\alpha_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\varrho_{V}>\beta_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{0}=1/3$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{0}=0$
+\end_inset
+
+ and some increasing sequences 
+\begin_inset Formula $\alpha_{0},\alpha_{1},\ldots,\alpha_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{0},\beta_{1},\ldots,\beta_{n}$
+\end_inset
+
+.
+ Note that the asymptotics are related to each other by the speed equation
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed"
+
+\end_inset
+
+ and thus, regardless of the chosen leak-off function, we can write 
+\begin_inset Formula 
+\begin{equation}
+\sum_{j=0}^{N}V_{j}(t)(1-x)^{\beta_{j}}+\ldots=\label{v_asym_1}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{1}{3L(t)}\sum_{k=0}^{N}\sum_{m=0}^{N}\sum_{j=0}^{N}\alpha_{j}w_{j}(t)w_{m}(t)w_{k}(t)(1-x)^{\alpha_{j}+\alpha_{m}+\alpha_{k}-1}.
+\]
+
+\end_inset
+
+In line with the discussion after equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "V_asym_0"
+
+\end_inset
+
+), only terms such that 
+\begin_inset Formula $\beta_{j}\le1$
+\end_inset
+
+ are of interest, restricting to the smallest 
+\begin_inset Formula $\varrho_{V}>1$
+\end_inset
+
+, since the values of 
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+ are combinations of a sum of three consequent components of the exponents
+ 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+.
+ However, since 
+\begin_inset Formula $\alpha_{0}=1/3_{0}$
+\end_inset
+
+ is now known one can write (compare with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "V_asym_0_coefs"
+
+\end_inset
+
+)): 
+\begin_inset Formula 
+\begin{align}
+ & V_{0}(t)=\frac{1}{3L(t)}w_{0}^{3}(t),\label{v_0_norm}\\
+ & V_{1}(t)=\frac{1}{L(t)}\left(\alpha_{1}+\frac{2}{3}\right)w_{0}^{2}(t)w_{1}(t),\quad\beta_{1}=\alpha_{1}-\frac{1}{3}.\label{v_1}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To continue the process one now needs to compute the value of the exponent
+ 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ as it is not clear a priori which value determining the next exponent 
+\begin_inset Formula $\beta_{2}=\min\{2/3+\alpha_{2},1/3+2\alpha_{1}\}$
+\end_inset
+
+ is larger.
+ To do so lets rewrite the continuity equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity"
+
+\end_inset
+
+) in the form: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}+\frac{V_{0}(t)}{L(t)}(1-x)\frac{\partial w}{\partial x}=\frac{1}{L(t)}\frac{\partial\big(w(V_{0}-V)\big)}{\partial x}-q_{l}(t,x).\label{norm_continuity_as}
+\end{equation}
+
+\end_inset
+
+Here, the terms on the left-hand side of the equation are always bounded
+ near the crack tip, while those on the right-hand side can behave differently
+ depending on the chosen leak-off function 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\noindent
+Consider the following three cases of 
+\begin_inset Formula $q_{l}$
+\end_inset
+
+ behavior.
+\end_layout
+
+\begin_layout Enumerate
+Assume first that 
+\begin_inset Formula 
+\[
+q_{l}(t,x)=o\big(w(t,x)\big),\quad x\to1.
+\]
+
+\end_inset
+
+This case naturally includes the impermeable rock formation.
+ Analyzing the leading order terms in the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity_as"
+
+\end_inset
+
+), it is clear that 
+\begin_inset Formula $w(V_{0}-V)=O((1-x)^{4/3})$
+\end_inset
+
+, as 
+\begin_inset Formula $x\to1$
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Following 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_asym_1n"
+
+\end_inset
+
+ the right hand side of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_continuity_as"
+
+\end_inset
+
+ is 
+\begin_inset Formula $O((1-x)^{1/3})$
+\end_inset
+
+, on the left side 
+\begin_inset Formula $q_{l}(t,x)=0$
+\end_inset
+
+ for impermeable rock, so 
+\begin_inset Formula $\frac{\partial\big(w(V_{0}-V)\big)}{\partial x}=O((1-x)^{1/3})\Rightarrow w(V_{0}-V)=O((1-x)^{4/3})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ This, in turn, is only possible for 
+\begin_inset Formula $\beta_{1}=1$
+\end_inset
+
+ and, therefore, 
+\begin_inset Formula $\alpha_{1}=4/3$
+\end_inset
+
+.
+ Finally, comparing the left-hand side and the right-hand side of the equation
+ it is obtained: 
+\begin_inset Formula 
+\begin{equation}
+w_{0}'(t)=\frac{w_{0}(t)}{3L(t)}\big(V_{0}(t)+4V_{1}(t)\big),\quad V_{1}(t)=\frac{2}{L(t)}w_{0}^{2}(t)w_{1}(t).\label{sp_1}
+\end{equation}
+
+\end_inset
+
+This case has been considered in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Now assume that the leak-off function is estimated by the solution as 
+\begin_inset Formula $O\big(w(t,x)\big)$
+\end_inset
+
+, or equivalently; 
+\begin_inset Formula 
+\[
+q_{l}(t,x)\sim\Upsilon(t)w_{0}(t)(1-x)^{1/3},\quad x\to1,
+\]
+
+\end_inset
+
+then the previous results are related to the values of 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ and, therefore, the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sp_1"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+ remain unchanged, while the first one becomes: 
+\begin_inset Formula 
+\begin{equation}
+w_{0}'(t)=\frac{1}{3L(t)}w_{0}(t)\big(V_{0}(t)+4V_{1}(t)\big)-\Upsilon(t)w_{0}(t).\label{sp_2}
+\end{equation}
+
+\end_inset
+
+This case corresponds to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_leak_off_1"
+
+\end_inset
+
+)
+\begin_inset Formula $_{3}$
+\end_inset
+
+ when 
+\begin_inset Formula $C_{32}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\Upsilon(t)=kC_{31}(t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+General form of leak-off function: 
+\begin_inset Formula 
+\[
+q_{l}(t,x)=\Phi(t)(1-x)^{\theta}+o((1-x)^{1/3}),\quad x\to1,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $-1/2\le\theta<1/3$
+\end_inset
+
+.
+ Here, one can conclude that 
+\begin_inset Formula $w(V_{0}-V)=O((1-x)^{1+\theta})$
+\end_inset
+
+, as 
+\begin_inset Formula $x\to1$
+\end_inset
+
+ or equivalently, 
+\begin_inset Formula $\beta_{1}=\theta+2/3$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha_{1}=1+\theta$
+\end_inset
+
+.
+ Moreover, in this case: 
+\begin_inset Formula 
+\begin{equation}
+(1+\theta)w_{0}V_{1}=L(t)\Phi(t),\quad V_{1}(t)=\frac{1}{L(t)}\left(\theta+\frac{4}{3}\right)w_{0}^{2}(t)w_{1}(t),\label{sp_3}
+\end{equation}
+
+\end_inset
+
+and, thus 
+\begin_inset Formula 
+\begin{equation}
+w_{1}(t)=\frac{3L^{2}(t)\Phi(t)}{(4+3\theta)(1+\theta)w_{0}^{3}(t)}.\label{sp_3a}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the particle velocity function is not smooth in this case near
+ the crack tip, its derivative is unbounded and exhibits the following behavior:
+ 
+\begin_inset Formula 
+\[
+\frac{\partial V}{\partial x}=O\big((1-x)^{\theta-1/3}\big),\quad x\to1.
+\]
+
+\end_inset
+
+To formulate an expression similar to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sp_1"
+
+\end_inset
+
+)
+\begin_inset Formula $_{1}$
+\end_inset
+
+ or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sp_2"
+
+\end_inset
+
+), one needs to continue asymptotic analysis of the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity_as"
+
+\end_inset
+
+) incorporating the available information.
+ Although the analysis can be done for the general case, only three variants
+ should be considered (compare with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)), respectively: 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+, 
+\begin_inset Formula $\theta=1/3-1/2=-1/6$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta=-1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $\theta=0$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{1}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{1}=2/3$
+\end_inset
+
+, returning to the equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "v_asym_1"
+
+\end_inset
+
+), one concludes that 
+\begin_inset Formula $\beta_{2}>1$
+\end_inset
+
+ and, therefore, 
+\begin_inset Formula 
+\begin{equation}
+w_{0}'(t)=\frac{1}{3L(t)}w_{0}(t)V_{0}(t).\label{sp_4}
+\end{equation}
+
+\end_inset
+
+This case corresponds to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_leak_off_1"
+
+\end_inset
+
+)
+\begin_inset Formula $_{3}$
+\end_inset
+
+ when 
+\begin_inset Formula $\Phi(t)=C_{3}^{(2)}(t)w_{0}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{3}^{(1)}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\theta=-1/6$
+\end_inset
+
+, then 
+\begin_inset Formula $\alpha_{1}=5/6$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{1}=1/2$
+\end_inset
+
+.
+ In this case the function 
+\begin_inset Formula $\Phi(t)$
+\end_inset
+
+ can be written as 
+\begin_inset Formula $\Phi(t)=C_{2}D(t)w_{0}(t)$
+\end_inset
+
+ (compare to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_leak_off_1"
+
+\end_inset
+
+)
+\begin_inset Formula $_{2}$
+\end_inset
+
+) and again equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "v_asym_1"
+
+\end_inset
+
+) gives 
+\begin_inset Formula $\beta_{2}>1$
+\end_inset
+
+, while equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity_as"
+
+\end_inset
+
+) leads to 
+\begin_inset Formula 
+\begin{equation}
+w_{0}'(t)=\frac{1}{3L(t)}\big(w_{0}(t)V_{0}(t)+4w_{1}(t)V_{1}(t)\big).\label{sp_5}
+\end{equation}
+
+\end_inset
+
+Summarizing, in both mentioned above cases, there exists a single term in
+ asymptotics of the particle velocity which has singular derivative near
+ the crack tip.
+ Moreover, those terms (
+\begin_inset Formula $w_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $V_{1}$
+\end_inset
+
+, respectively) are fully defined by the leak-off function 
+\begin_inset Formula $\Phi(t)$
+\end_inset
+
+ and the coefficient 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ in front of the leading term for the crack opening in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sp_3a"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sp_3"
+
+\end_inset
+
+)
+\begin_inset Formula $_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The situation changes dramatically when 
+\begin_inset Formula $\theta=-1/2$
+\end_inset
+
+ (Carter law).
+ We now have 
+\begin_inset Formula $\alpha_{1}=1/2$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{1}=1/6$
+\end_inset
+
+ and 
+\begin_inset Formula $\Phi(t)=C_{1}D(t)$
+\end_inset
+
+.
+ In this case, however, 
+\begin_inset Formula $\beta_{2}<1$
+\end_inset
+
+ and the asymptotic analysis must be continued further to evaluate all terms
+ of the particle velocity which exhibit non-smooth behavior near the crack
+ tip.
+ The full details of this derivation should be omitted there, instead final
+ results are presented in a compact form.
+ The first six exponents in the asymptotic expansions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "v_asym"
+
+\end_inset
+
+), that introduce the singularity of 
+\begin_inset Formula $w_{x}$
+\end_inset
+
+, are: 
+\begin_inset Formula 
+\[
+\alpha_{j}=\frac{1}{2}+\frac{j}{6},\quad\beta_{j}=\frac{j}{6},\quad j=1,2,\ldots,6.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+w_{j}(t)=\kappa_{j}\frac{\Phi^{j}(t)L^{2j}(t)}{w_{0}^{4j-1}(t)},\quad V_{j}(t)=\psi_{j}\frac{\Phi^{j}(t)L^{2j-1}(t)}{w_{0}^{4j-3}(t)},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $j=1,2,\ldots,5$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\begin{array}{l}
+\kappa_{1}=\frac{12}{7},\quad\psi_{1}=2,\quad\kappa_{2}=-\frac{270}{49},\quad\psi_{2}=-\frac{24}{7},\\[4mm]
+\kappa_{3}=\frac{9768}{343},\,\,\psi_{3}=\frac{828}{49},\,\,\kappa_{4}=-\frac{2097252}{12005},\,\,\psi_{4}=-\frac{5136}{49},\\[4mm]
+\kappa_{5}=\frac{1081254096}{924385},\quad\psi_{5}=\frac{1234512}{1715}.
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

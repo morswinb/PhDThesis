@@ -1,0 +1,51 @@
+\documentclass[10pt]{article}
+ \usepackage{latexsym,amsmath,amssymb,amsbsy,amstext,amscd,amsfonts}
+ \usepackage{graphics,graphicx}
+ \usepackage{color}
+ \usepackage{epstopdf}
+ \usepackage{algorithm2e}
+
+
+
+\begin{document}
+
+
+\IncMargin{1em}
+
+\begin{algorithm}
+
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{model instance $\mathcal{M}$, at time $t$}
+
+\Output{$\mathcal{M'}(t,\mathcal{M})$}
+
+\BlankLine
+
+\For{$i\leftarrow 1$ \KwTo j}{
+ 	calculate $\sigma_l^{(j)}$\;
+}
+
+\For{$i\leftarrow 1$ \KwTo V}{
+ 	approximate initial junction fluid pressure $\mathcal{J}$\;
+}
+
+\While{$\left|\sum_1^{V} \left(\mathcal{J}^i_{n+1}-\mathcal{J}^i_{n}\right)\right|>some\ tolerance$}{
+	\For{$i\leftarrow 1$ \KwTo $V$}{
+ 	$\mathcal{J}_{n+1}^{i}\leftarrow$  newton method for junctions with $\mathcal{J}_{n}^{i}$\;
+	}
+}
+
+\For{$i\leftarrow 1$ \KwTo E}{
+	$k\leftarrow $index value of $E_i$ first ODEs\;
+ 	$\mathcal{M'}_{i,...,i+k}\leftarrow\mathcal{F}_i(t,\mathcal{M}_{i,...,i+k})$ \;
+	
+}
+
+
+
+\end{algorithm}\DecMargin{1em}
+
+\end{document}

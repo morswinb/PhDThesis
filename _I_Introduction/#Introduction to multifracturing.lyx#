@@ -1,0 +1,628 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Into Multifracturing
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Introduction-to-multifracturing"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far traditional models assumed single fractures.
+ Although these worked fine for reservoir treatment planing for decades,
+ and were verified through some simple experiments 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "experimental,experimental2"
+
+\end_inset
+
+, these are rather simplified best guesses rather than actual understanding
+ of what is happening underground.
+ The classical models could relay be trying to mimic systems of multiple
+ fractures 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "shelle_guy"
+
+\end_inset
+
+, that under favorable circumstances could form a single dominant fracture.
+ Meanwhile a number of other technologies were developed to aid and monitor
+ treatments process.
+ These included microcosmic mapping, detecting minor seismic activity associated
+ with fracture front movement 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cipolla"
+
+\end_inset
+
+, and surface displacement detection 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Dusseault"
+
+\end_inset
+
+.
+ As more and more fracturing data became available attempts to include these
+ in the simulations were made, unfortunately single fracture models could
+ not account o 
+\end_layout
+
+\begin_layout Standard
+The study of reservoirs geology reveals that the previous uniform medium
+ assumption is not very accurate.
+ In reality rock formations are far from being perfect two dimensional mediums,
+ a number of defects should be included such as pre-existing natural fractures,
+ especially in shale rich formations that are of great interest 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lash"
+
+\end_inset
+
+.
+ These natural preexisting fractures should have effect on propagating hydraulic
+ fractures, possibly resulting in new hydraulic fractures being opened 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kresse2,Zhang"
+
+\end_inset
+
+.
+ Before the treatment, the naturally exiting fractures alone form a discreet
+ fracture network 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DFN_1,Chaoshui_XU"
+
+\end_inset
+
+, and it should be expected that the treatment will not produce a perfect
+ single fracture, but rather be influenced by these preexisting fractures.
+ Furthermore to optimize the hydrofracturing process a number of fractures
+ is initiated simultaneously 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Dusseault,Bunger"
+
+\end_inset
+
+, to achieve grater coverage of the fractured reservoir.
+ Therefore in order to make more accurate model one needs to take account
+ for multiple fractures, build a more complex model based on theoretical
+ single fracture models.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+While a single simple non P3D fracture propagation is relativity easy to
+ compute with proper usage of implicit methods and numerical formulation
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Adachi_2007"
+
+\end_inset
+
+, to improve on these to a multifracture model is a much more complex challenge.
+ The mathematical formulation must be extended to account for any fractures
+ interactions, while the performance should not be drastically affected
+ by multiplying the problem size.
+ On top of that the effort required to handle and display data is much grater
+ when more than one fracture is considered.
+ These factors alone should be accounted for the variety of hydrofracturing
+ models that appeared over the few past years, that are capable of dealing
+ with multiple fractures.
+ 
+\end_layout
+
+\begin_layout Standard
+To list a few example solutions, lets first begin with the model given by
+ Ghani 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ghani"
+
+\end_inset
+
+.
+ It is a relatively straightforward solution that allows for a hydraulic
+ fracture to propagate freely in a inhomogeneous discretization of 2D plane,
+ depicted Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ghani_model"
+
+\end_inset
+
+.
+ Other solutions however tend to put much stricter restrains on fracture
+ path and shape.
+ The influence on nearby fractures can result in shadowing, dampened propagation
+ of certain fractures.
+ These effects are observable in some solutions, including the most recent
+ ones by Bunger 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bunger_multi"
+
+\end_inset
+
+.
+ The most developed models available, are actually commercial software used
+ by oil consulting companies, such as Schlumberger (works of KRasse and
+ Weng 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kresse1,Kresse2,Cipolla"
+
+\end_inset
+
+) or Itasca (Damjanac 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Damjanac"
+
+\end_inset
+
+), which attempt to produce comprehensive simulation of treatment process.
+ 
+\end_layout
+
+\begin_layout Standard
+All these models are based on existing single fracture solutions, but none
+ uses the formulation derived from the speed equation nor 
+\begin_inset Formula $\epsilon-$
+\end_inset
+
+reguralization 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "MWL"
+
+\end_inset
+
+, or two term asymptotics boundary condition 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "moje_bzdury"
+
+\end_inset
+
+.
+ Additionally the source code of these solutions is not publicly available,
+ nor any free licenses.
+ These leaves an open space for new solutions which are thoroughly tested
+ in terms of accuracy, are based on some reliable formulations, and are
+ given away for freeware usage.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename kresse.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Kresse 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kresse1,Kresse2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "kresse_model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename branko.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Damjanac 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Damjanac"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "damjanac_model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename bunger.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bunger
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bunger_multi"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "bunger_model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ghani.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ghani 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ghani"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "ghani_model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename cipola.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cipolla
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Cipolla"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "cipola_model"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang english
+Samples of various multifracturing solutions.
+ The original renderings of the solutions are shown 
+\lang american
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kresse1,Kresse2,Damjanac,Cipolla,ghani,Bunger_multi"
+
+\end_inset
+
+
+\lang english
+, as a quick comparison of the general trend.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

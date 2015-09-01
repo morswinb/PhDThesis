@@ -1,0 +1,1976 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Comparison with known results 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Comparison-with-known"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename K_D_Lenght.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-13em}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}   	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,4.25) {
+\backslash
+Large $L(t)$}; 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (4.75,0) {
+\backslash
+Large $t$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (7.50,1) {
+\backslash
+cite{Kovalyshen}}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The crack length evolution in time.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "K_D_Lenght"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename w_0_symp.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-13em}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}   	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,4.25) {
+\backslash
+hspace{-2em} 
+\backslash
+Large $w(t,0)$}; 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (4.75,0) {
+\backslash
+Large $t$};
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (7.40,1.1) {
+\backslash
+cite{Kovalyshen}}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The evolution of crack opening at zero point, 
+\begin_inset Formula $w(t,0)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "K_D_w_0"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although the benchmark solution used in this work (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Benchmark-Solution"
+
+\end_inset
+
+), includes the leak-off term with a square root singularity, there is no
+ analytical solution available in the literature for the Carter leak-off
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+, one can find the numerical results for this problem.
+ However the original result by Nordgren 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+ is presented as a low resolution figure, making it difficult to accurately
+ interpret the data.
+ The more recent result by Kovalyshen will be used as a point of reference,
+ as exact numerical values are given in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ .
+ Unfortunately the authors provided only some rough estimation of the solution
+ error, but no direct comparison to a known solution, such as zero leak
+ off result 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+.
+ The numerical method used in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ is based on an implicit finite volume algorithm.
+ The data collected in their Table 1 (p.332) describes the normalized values
+ of the crack length, the crack propagation speed and the crack opening
+ at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, at a number of times steps in the interval 
+\begin_inset Formula $t\in[10^{-5},5\cdot10^{2}]$
+\end_inset
+
+.
+ Unfortunately the precise details on how this particular solution was obtained
+ are not presented in great detail.
+\end_layout
+
+\begin_layout Standard
+In Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_Carter"
+
+\end_inset
+
+, the results of using this work numerical scheme are presented in such
+ a manner that these should correspond to those obtained by Kovalyshen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+.
+ Note that, due to different normalizations, the normalized crack length,
+ 
+\begin_inset Formula $L$
+\end_inset
+
+, is two times greater than respective value in that paper.
+ This data was obtained by ODE15s using 
+\begin_inset Formula $U$
+\end_inset
+
+ variable on 
+\begin_inset Formula $N=1000$
+\end_inset
+
+ grid points, which should give the very best accuracy as shown by the analysis
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Computation-Accuracy"
+
+\end_inset
+
+.
+ Additionally Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "K_D_Lenght"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "K_D_w_0"
+
+\end_inset
+
+ present the evolution of crack length 
+\begin_inset Formula $L(t)$
+\end_inset
+
+, and crack aperture at inlet 
+\begin_inset Formula $w(t,0)$
+\end_inset
+
+.
+ The data is presented against early time and large time asymptotic models
+ (respective formula can be found also in
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+), and the numerical results for the transient regime given by Kovalyshen
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="17" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\log(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $L(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $w(t,0)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $u(t)\times10$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.283747e-6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.988347e-2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.9701 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.049209e-5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.298786e-2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.9355 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.265786e-4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.915967e-2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.8716 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.660018e-4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.551088e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.7536 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.456291e-3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.397462e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.5185 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.412817e-2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.629593e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.1173 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.163591e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.326638e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.5267 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.849863e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.541837e-1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.8885 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.779508e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.037495e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.4408 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.035529e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.403522e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.1993 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.968511e1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.883411e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0847 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.308563e1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.518338e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0378 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.006370e2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.362113e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0146 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.360179e2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.485636e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0071 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.013373e3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.982935e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0029 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.369722e3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.979082e0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0014 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Numerical solution of the PKN fracture with Carter leak off.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "table_Carter"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename u_asymp.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-15em}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{.6em}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}   	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,4.25) {
+\backslash
+hspace{-3em} 
+\backslash
+Large $u(t)$}; 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (4.75,0) {
+\backslash
+Large $t$};
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node at (7.8,5.5) {
+\backslash
+cite{Kovalyshen}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The evolution of the normalized crack propagation speed.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "K_D_u"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The analyzed time interval is 
+\begin_inset Formula $t\in[10^{-8},10^{8}]$
+\end_inset
+
+ where the initial conditions correspond to the early time asymptote for
+ 
+\begin_inset Formula $t=10^{-8}$
+\end_inset
+
+.
+ The same initial time was used by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ , but the authors presented their data starting from 
+\begin_inset Formula $t=10^{-5}$
+\end_inset
+
+.
+ In order to increase the legibility of the graphs, the time axis is truncated
+ to range 
+\begin_inset Formula $t\in[10^{-6},5\cdot10^{3}]$
+\end_inset
+
+, while the complete data is presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_Carter"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As can be seen in the Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "K_D_Lenght"
+
+\end_inset
+
+ and Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "K_D_w_0"
+
+\end_inset
+
+, due to used scale, the solution is indistinguishable from that by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+.
+ But this type of graph was originally presented Nordgren 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+, and it should be no surprise that a better presentation should be used
+ to correctly compare the solutions.
+ For this reason Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "K_D_u"
+
+\end_inset
+
+ shows the normalized crack propagation speed, as defined by Kovalyshen
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ .This shows that this work fits the asymptotes very well, which suggests
+ its good quality.
+ The solution by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ approaches the asymptotic values much slower, and the interval it was presented
+ on was caped to 
+\begin_inset Formula $t<10^{-5}$
+\end_inset
+
+ and 
+\begin_inset Formula $t>5\cdot10^{3}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the analyzed case, the value of the parameter 
+\begin_inset Formula $Q_{l}(t)/q_{0}(t)$
+\end_inset
+
+ changes continuously with time from zero to unit.
+ From the data presented in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+ and in this paper, one can conclude that for 
+\begin_inset Formula $N=100$
+\end_inset
+
+ nodal points, the relative error of the crack length changes from 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+ to 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ with the increase of the parameter 
+\begin_inset Formula $Q_{l}/q_{0}$
+\end_inset
+
+.
+ On the other hand, analyzing the data from Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:err_N_plots"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:err_N_plots_L"
+
+\end_inset
+
+ (
+\begin_inset Formula $Q_{l}/q_{0}=0.9$
+\end_inset
+
+), one can expect the achievable level of accuracy of the order 
+\begin_inset Formula $10^{-7}$
+\end_inset
+
+ for 
+\begin_inset Formula $N=1000$
+\end_inset
+
+.
+ This suggests that, the relative error of 
+\begin_inset Formula $L$
+\end_inset
+
+ varies between 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ and 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In order to additionally assess the credibility of this work solution (computed
+ for 
+\begin_inset Formula $N=1000$
+\end_inset
+
+ and presented in the Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_Carter"
+
+\end_inset
+
+), Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dev_L"
+
+\end_inset
+
+ shows the relative deviations 
+\begin_inset Formula $\partial L$
+\end_inset
+
+ between this solution and other numerical solutions and the asymptotes:
+\end_layout
+
+\begin_layout Itemize
+early and large time asymptotes;
+\end_layout
+
+\begin_layout Itemize
+the solution by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+a solution obtained for 
+\begin_inset Formula $N=100$
+\end_inset
+
+ grid points 
+\end_layout
+
+\begin_layout Itemize
+another solution obtained for 
+\begin_inset Formula $N=1000$
+\end_inset
+
+ grid points starting at 
+\begin_inset Formula $t_{0}=10^{-7}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When tracing the data from Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dev_L"
+
+\end_inset
+
+ we can see that the deviations of 
+\begin_inset Formula $L$
+\end_inset
+
+ from the early and large time asymptotes at the ends of the considered
+ interval are of the order 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+.
+ Moreover, the relative deviation from the solution obtained for 
+\begin_inset Formula $N=100$
+\end_inset
+
+ points is of the same order over entire time interval.
+ The discrepancy between the reference solution and the solution for 
+\begin_inset Formula $t_{0}=10^{-7}$
+\end_inset
+
+ decreases rapidly with time.
+ This observation confirms the credibility of the reference solution.
+\end_layout
+
+\begin_layout Standard
+The relative discrepancies between the components of this work solution
+ and the solution by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ are shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dev_Kov"
+
+\end_inset
+
+.
+ Here 
+\begin_inset Formula $d_{L}$
+\end_inset
+
+, 
+\begin_inset Formula $d_{w(0,t)}$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{u}$
+\end_inset
+
+ refer to the deviations of the crack length, 
+\begin_inset Formula $L$
+\end_inset
+
+, the crack opening, 
+\begin_inset Formula $w(t,0)$
+\end_inset
+
+ and the normalized crack velocity, 
+\begin_inset Formula $u$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_layout Standard
+Considering the results presented in this Section, it is possible to believe
+ that the data presented in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_Carter"
+
+\end_inset
+
+ provide the accuracy 
+\series bold
+at least
+\series default
+ of the order 
+\begin_inset Formula $10^{-4}$
+\end_inset
+
+ for both, the crack length, 
+\begin_inset Formula $L$
+\end_inset
+
+, and the crack opening at 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Moreover, in the considerable time range (
+\begin_inset Formula $10^{-6}<t<10^{6}$
+\end_inset
+
+), one can expect the error lower by up to two orders of magnitude.
+ The normalized crack propagation speed 
+\begin_inset Formula $u$
+\end_inset
+
+ is computed with accuracy of one to two orders of magnitude lower.
+ The level of accuracy for the results tabulated by
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+ can be estimated as 
+\begin_inset Formula $10^{-3}\div10^{-2}$
+\end_inset
+
+ for 
+\begin_inset Formula $L$
+\end_inset
+
+, 
+\begin_inset Formula $10^{-4}\div10^{-3}$
+\end_inset
+
+ for 
+\begin_inset Formula $w(t,0)$
+\end_inset
+
+ and of the order 
+\begin_inset Formula $10^{-2}$
+\end_inset
+
+ for 
+\begin_inset Formula $u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dev_L.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-11em}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}   	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,4.00) {
+\backslash
+vspace{1em} 
+\backslash
+hspace{.5em} 
+\backslash
+Large $
+\backslash
+partial$}; 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (4.75,0) {
+\backslash
+vspace{1em} 
+\backslash
+Large $t$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+node at (4.15,2.75) {
+\backslash
+cite{Kovalyshen}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative deviations from the numerical solution for 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dev_L"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h!
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Kov_odch.eps
+	scale 50
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-11.5em}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}   	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (0,4.10) {
+\backslash
+vspace{2em} 
+\backslash
+hspace{.5em} 
+\backslash
+Large $
+\backslash
+partial$}; 	
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+node at (4.75,0)    {
+\backslash
+vspace{1em} 
+\backslash
+Large $t$}; 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative deviations of the solution by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kovalyshen"
+
+\end_inset
+
+, in terms of length 
+\begin_inset Formula $d_{l}$
+\end_inset
+
+, inlet width 
+\begin_inset Formula $d_{w(t,0)}$
+\end_inset
+
+ and normalized propagation velocity
+\begin_inset Formula $u$
+\end_inset
+
+, from the results reported in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table_Carter"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dev_Kov"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

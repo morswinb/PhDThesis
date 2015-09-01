@@ -1,0 +1,1427 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass classicthesis
+\begin_preamble
+% load package with some of the available options - you may not need this!
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+
+% something NOT relevant to the usage of the package.
+\usepackage{url}
+\usepackage{textcomp}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+frenchspacing
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedbottom
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{plain}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Word Count of thesis: 
+\series default
+........................................................................
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+DECLARATION 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This work has not previously been accepted in substance for any degree and
+ is not being concurrently submitted in candidature for any degree.
+ 
+\end_layout
+
+\begin_layout Standard
+Signed ......................................................................
+ (candidate) 
+\end_layout
+
+\begin_layout Standard
+Date ........................................................................
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+STATEMENT 1
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This thesis is the result of my own investigations, except where otherwise
+ stated.
+ Where 
+\series bold
+*correction services
+\series default
+ have been used, the extent and nature of the correction is clearly marked
+ in a footnote(s).
+\end_layout
+
+\begin_layout Standard
+Other sources are acknowledged by footnotes giving explicit references.
+ A bibliography is appended.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Signed .....................................................................
+ (candidate) 
+\end_layout
+
+\begin_layout Standard
+Date ........................................................................
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+[*this refers to the extent to which the text has been corrected by others]
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+STATEMENT 2
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I hereby give consent for my thesis, if accepted, to be available for photocopyi
+ng and for inter-library loan, and for the title and summary to be made
+ available to outside organizations.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Signed .....................................................................
+ (candidate) 
+\end_layout
+
+\begin_layout Standard
+Date ........................................................................
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{scrheadings}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Titlepage.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Titleback.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "Contents.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To begin with, this first introductory Chapter should serve as an introduction
+ to fracturing problems.
+ The brief outline of the process, main challenges and ideas, as well as
+ its real life significance are be outlined in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Literature-overview"
+
+\end_inset
+
+.
+ Then the existing solutions for single fracture problems are reviewed in
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Single-Fracture-Model"
+
+\end_inset
+
+, and for more advanced multifracturing problems in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Introduction-to-multifracturing"
+
+\end_inset
+
+.
+ The text presented here should be interpreted as an overview of methods
+ and results existing in the literature, and used to put the next Chapters
+ in right context.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_I_Introduction/Literature overview.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_I_Introduction/Single fracture models.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_I_Introduction/Introduction to multifracturing.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+PKN model reformulation 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:PKN-model-reformulation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first challenge of this work will be to reformulate the original PKN
+ model formulation.
+ Recently speed equation was reintroduced by Linkov 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_1"
+
+\end_inset
+
+, although it was originally used by Kemp 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kemp"
+
+\end_inset
+
+.
+ Previously the majority of hydrofracturing problems were solved using finite
+ volume methods, but thanks to the speed equation it is now possible to
+ solve these using finite difference methods.
+ Thous this chapter will make an attempt to provide theoretical mathematical
+ background upon which new finite difference based solutions can be later
+ constructed.
+ Hopes are that such a new formulation would not only be more straightforward,
+ but would also lead to improved overall modeling of hydraulic fracture
+ propagation.
+ 
+\end_layout
+
+\begin_layout Standard
+A large part of work presented in this Chapter was done in great collaboration
+ with other research group members, as it repeats published article 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "moje_bzdury"
+
+\end_inset
+
+, and can be traced back to previous works 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL,Linkov_4"
+
+\end_inset
+
+ (and eventually back to the original model by Nordgren 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+).
+ It would be however impossible not to include previous findings, without
+ loosing essential prerequisite information, needed to understand the new
+ formulation.
+ The following sections should attempt the following:
+\end_layout
+
+\begin_layout Itemize
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Preliminary-Results"
+
+\end_inset
+
+ is a general outline of background works on PKN model, with the previously
+ known idea to use the crack tip asymptotics.
+\end_layout
+
+\begin_layout Itemize
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Normalized-formulation"
+
+\end_inset
+
+ presents a new way to formulate the problem using fracture width 
+\begin_inset Formula $w$
+\end_inset
+
+ as the problem variable .
+ This formulation is the first to the first asymptotic term directly (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system"
+
+\end_inset
+
+), instead of opened to interpretation fluid velocity at the crack tip (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_continuity"
+
+\end_inset
+
+).
+ Furthermore a new simplification of carter law 
+\lang english
+( Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Carter-type-leak"
+
+\end_inset
+
+ )
+\lang american
+ is presented which can be used to ease leak off calculation, and further
+ asymptotics terms beyond the second term are derived 
+\lang english
+( Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-details-of"
+
+\end_inset
+
+ )
+\lang american
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Reformulation-of-the"
+
+\end_inset
+
+ reuses 
+\begin_inset Formula $U$
+\end_inset
+
+ variable formulation, bringing it in line with the other formulations of
+ this chapter.
+\end_layout
+
+\begin_layout Itemize
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Reformulation-of-the-1"
+
+\end_inset
+
+ introduces a new variable
+\begin_inset Formula $\Omega$
+\end_inset
+
+, and a new formulation compatible with previous 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $U$
+\end_inset
+
+ variable formulation.
+ 
+\end_layout
+
+\begin_layout Itemize
+Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Epsilon-regularization-and"
+
+\end_inset
+
+ explores the old speed equation related tip boundary condition 
+\lang english
+( Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:One-term-condition"
+
+\end_inset
+
+ ), to introduce improved two term boundary condition ( Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:General-two-term"
+
+\end_inset
+
+ ).
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_II_PKN model reformulation/Preliminary results .lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_II_PKN model reformulation/Normalized formulation.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_II_PKN model reformulation/Reformulation of the problem in proper dependent variables. First approach.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_II_PKN model reformulation/Reformulation of the problem in proper dependent variables. Second approach.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_II_PKN model reformulation/eps-regularization and the respective boundary conditions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+PKN model numerical work 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:PKN-model-numerical"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Having reformulated the classical PKN model in previous Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:PKN-model-reformulation"
+
+\end_inset
+
+ it is time to implement and test the new ideas.
+ This should begin by stiffness analysis shown in Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Stiffness-analysis"
+
+\end_inset
+
+.
+ This will show that the reformulated PKN model is stiff, and therefore
+ should be solved with appropriate stiff methods.
+ The outline of numerical solution, done with proper stiff ODE methods,
+ will be shown in Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dynamic-systems-with"
+
+\end_inset
+
+.
+ The obtained numerical procedure will then be tested for reliability with
+ various initial conditions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sensitivity-to-initial"
+
+\end_inset
+
+ , and accuracy 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Computation-Accuracy"
+
+\end_inset
+
+ against benchmark solutions shown Appendix
+\lang english
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Benchmark-Solution"
+
+\end_inset
+
+.
+
+\lang american
+ It will be shown that using two terms of asymptotics allowed for much better
+ accuracy, when compared to similar works that use only one term 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Comparison-with-known"
+
+\end_inset
+
+.
+ As overall a large number of test would be done, these raised quite a number
+ additional issues, not properly addressed by theoretical formulation.
+ Solving these will allow to obtain problem specific further improvements
+ in accuracy, as well as performance 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Improving-FD-System"
+
+\end_inset
+
+.
+ Some extra testing will implicitly prove results for problems with no analytica
+l solutions 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extra-tests-on"
+
+\end_inset
+
+.
+ Further enchantments will deal with shut down regime in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extra-computational-challenges"
+
+\end_inset
+
+ and reliable leak off calculation.
+ Finally these well tested and understood numerical procedure sill be put
+ together and tested in a real life scenario 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Test-on-real"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Stifness Analysis/Stiffness Analysis.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Dynamic systems with ODE15s/Dynamic systems with ODE15s .lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Sensitivity to initial conditions/Sensitivity to initial conditions .lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Computation Accuracy/Computation Accuracy.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Comparison with known results (Kovalyshen)/Comparison with known results (Kovalyshen) .lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Improved FD system/Improved FD system.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Extra tests on carter law/Extra tests on carter law .lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Extra  computational chalanges/Extra computational chalanges.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Ukraine Data/Ukraine.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Multifracture model theory 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Multifracture-model-theory"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Having developed good and accurate methods for a single fracture, as derived
+ in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:PKN-model-reformulation"
+
+\end_inset
+
+, tested in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:PKN-model-numerical"
+
+\end_inset
+
+, and published in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "moje_bzdury"
+
+\end_inset
+
+, the knowledge of single fracture will be now applied to simulate complex
+ structures composed of multiple fractures.
+ The PKN model will be used as a basis for this challenge, but this will
+ require several significant changes.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The main modification is going to be the replacement of simple linear elasticity
+ relation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "elasticity"
+
+\end_inset
+
+) with:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+kw=p_{net}=p_{fluid}-\sigma_{o}-\sigma_{l}\label{elasticity_multi-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This was used by Bunger
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunger"
+
+\end_inset
+
+, and is identical to original Nordgren 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nordgren"
+
+\end_inset
+
+ formulation except for the term 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset Formula $\sigma_{l}(x,t)$
+\end_inset
+
+ with refers to the influence of other neighboring fractures.
+\end_layout
+
+\begin_layout Standard
+Poiseulle equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "poiseulle"
+
+\end_inset
+
+ with these modified elasticity
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "elasticity_multi-1"
+
+\end_inset
+
+ will be updated:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+q=-\frac{1}{M}w^{3}\frac{\partial p_{fluid}}{\partial x}=-\frac{1}{M}w^{3}\frac{\partial(p_{net}+\sigma_{o}+\sigma_{l})}{\partial x},\label{poiseulle_multi-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+The term 
+\begin_inset Formula $\sigma_{o}$
+\end_inset
+
+ is uniform along propagation direction and will disappear when spatial
+ derivative is applied.
+ The term 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ on the other hand will
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+\lang american
+ remain in new continuity equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "continuity"
+
+\end_inset
+
+, and contribute to new updated Reynolds equation:
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial w}{\partial t}-\frac{1}{M}\frac{\partial}{\partial x}\left(w^{3}\frac{\partial(kw+\sigma_{l})}{\partial x}\right)+q_{l}=0.\label{reynold_multi-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now one can see that this relatively small change in formulation to include
+ the effect of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is going to lead to much different formulation, for a single fracture,
+ not to mention the additional work required to combine them into a system
+ of multiple fractures.
+ 
+\end_layout
+
+\begin_layout Standard
+The description of this theoretical multifracturing model will be divided
+ into five sections.
+ First in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formulation-of-2D"
+
+\end_inset
+
+ the main concept of what is understood as multifracturing formulation shall
+ be explained.
+ Next three Sections will cover particular solutions to joining fractures
+ together 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+, finding fracture stress influence 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Method-for-elasticity"
+
+\end_inset
+
+, and handling intersecting fractures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Fracture-collisions"
+
+\end_inset
+
+.
+ Finally the last Section of this chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Large-Coupled-Dynamic"
+
+\end_inset
+
+ should explain how this whole multifracturing problem should be assembled
+ together in a computer model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_IV_Multifracture model theory/Formulation of 2D multifracturing problem.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_IV_Multifracture model theory/Junction Strategy.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_IV_Multifracture model theory/Method for elasticity iteractions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_IV_Multifracture model theory/Fracture collisions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_IV_Multifracture model theory/Large Dynamic System for Multifracturing.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Multifracture numerical testing and implementation 
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Multifracture-numerical-testing"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This Chapter will cover specific numerical and computational details, and
+ present a series of various test scenarios.
+ It shall begin with relatively straightforward splitting of a single fracture
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Testing-junction-BC,"
+
+\end_inset
+
+ to test the theoretical multifracturing scheme derived in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Multifracture-model-theory"
+
+\end_inset
+
+ against the known result.
+ Then the effects of elastic influence of multiple fractures will be analyzed
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Elastic-influence-testing"
+
+\end_inset
+
+.
+ As the problem gets more complex, so the actual code must be updated to
+ handle new challenges.
+ The overview of software implementation designed reasonably handle all
+ previously introduced multifracturing features is shown in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Implementation"
+
+\end_inset
+
+.
+ Then having tested the very basics, and prepared working multifracturing
+ code, a number of full tests should be done.
+ First some simple cases of systems with a few fractures should be simulated
+ in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Simple-test-scenarios"
+
+\end_inset
+
+, and then finally larger test problems, that take this formulation to the
+ limits, will be considered in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Large-test-scenarios"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_V_Multifracture numerical testing and implementation/Testing against single fracture/Testing against single fracture.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_V_Multifracture numerical testing and implementation/Elastic influence testing/Elastic influence testing.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_V_Multifracture numerical testing and implementation/Code optimalization and parallerization/implementation.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_V_Multifracture numerical testing and implementation/Simpe test scenarios/Simple test scenarios.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_V_Multifracture numerical testing and implementation/Large test scenarios/Large test scenarios.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Conclusions
+\end_layout
+
+\begin_layout Standard
+The ending Chapter should first summarize the achievements of this work,
+ and then suggest future developments.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_VI_Conclusions/General remarks.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_VI_Conclusions/Future work.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+\start_of_appendix
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_III_PKN model numerical work/Grids/Grids.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_Appendix/Benchmark Solution/_Benchmark Solution.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_V_Multifracture numerical testing and implementation/Interpolating and Integrating fractures/Interpolating and Integrating fractures.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_Appendix/Single_fracture_matlab_code.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "_Appendix/Java multifracture code.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage cleardoublepage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "Bibliography.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

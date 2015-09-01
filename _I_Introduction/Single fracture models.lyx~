@@ -1,0 +1,621 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Overview of single fracture models 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Single-Fracture-Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename hf1-fig5.jpg
+	lyxscale 10
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The three classical models of hydraulic fracture: KGD (plane strain), PKN
+ and radial (as originally depicted in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "minesota_maffia"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "clasical_modesl"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are three classical single hydraulic fracture model, as shown on Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "clasical_modesl"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+Radial.
+ Describes evolution of 
+\begin_inset Quotes eld
+\end_inset
+
+Penny-shaped
+\begin_inset Quotes erd
+\end_inset
+
+ (radial) crack, was introduced by Sneddon 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sneddon_1"
+
+\end_inset
+
+.
+ Describes a horizontal fracture that propagates in all direction.
+\end_layout
+
+\begin_layout Itemize
+KGD.
+ Developed independently by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Khristianovic"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Geertsma"
+
+\end_inset
+
+.
+ Similar to PKN, vertical fracture of fixed height that propagates horizontally
+ on all directions.
+\end_layout
+
+\begin_layout Itemize
+PKN.
+ Based on an adaptation of Sneddon's solution 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Sneddon"
+
+\end_inset
+
+.
+ Named after Pekrings, Kern 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Perkins"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Nordgren"
+
+\end_inset
+
+.
+ A fracture of fixed height and elliptical cross section propagating horizontall
+y.
+ 
+\end_layout
+
+\begin_layout Standard
+All these models attempt to account for coupled mechanics governing the
+ hydrofracturing processes:
+\end_layout
+
+\begin_layout Itemize
+solid mechanics equations, describing the deformation of the rock induced
+ by the fluid pressure
+\end_layout
+
+\begin_layout Itemize
+fracture mechanics criteria defining the conditions for fracture propagation
+\end_layout
+
+\begin_layout Itemize
+equations for the fluid flow within the fracture and the
+\emph on
+ leak-off
+\emph default
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Not all the pumped fluid remains inside fracture.
+
+\emph on
+ Leak-off
+\emph default
+ refers to the fluid volume that was lost, leaked through the pores in surroundi
+ng rock formation.
+\end_layout
+
+\end_inset
+
+ to the rock formation
+\end_layout
+
+\begin_layout Standard
+The computational challenges of these models result from several factors:
+\end_layout
+
+\begin_layout Itemize
+strong non-linearity introduced by the Poiseuille equation describing the
+ fluid flow
+\end_layout
+
+\begin_layout Itemize
+in the general case, a non-local relationship between the fracture opening
+ and the net fluid pressure
+\end_layout
+
+\begin_layout Itemize
+moving boundaries of the fluid front and the fracture contour
+\end_layout
+
+\begin_layout Itemize
+degeneration of the governing PDE at the fracture front
+\end_layout
+
+\begin_layout Itemize
+possible lag between the crack tip and the fluid front
+\end_layout
+
+\begin_layout Standard
+For the purpose of this work 
+\emph on
+only PKN model will be considered.
+ 
+\emph default
+The first numerical solution by Nordgren 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Nordgren"
+
+\end_inset
+
+ was based on a few assumptions.
+ The shape of crack was assumed to be elliptical as a possible solution
+ of plain strain equation.
+ Rock toughness and fluid lag at the crack tip was ignored.
+ Carter law 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Carter"
+
+\end_inset
+
+, a simplified one dimensional formula, was chosen to govern fluid leak-off.
+ This resulted in PKN formulation being a relatively simple model, that
+ allowed to predict single fractures under certain conditions, but many
+ questions about its accuracy and properties arise over past years.
+ 
+\end_layout
+
+\begin_layout Standard
+The initial crack length was assumed to be nonzero: 
+\begin_inset Formula $l(0)=l_{*}>0$
+\end_inset
+
+ .
+ For the initial stage of crack propagation inertia term should to be included,
+ thus all classical model that do include inertia would not be credible
+ anyway.
+ But this simplification can be justified as hydrofracturing process might
+ begin from already existing fractures, naturally present or artificially
+ created with directed charges 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Economides2000"
+
+\end_inset
+
+.
+ The reasoning behind zero tougheners (
+\begin_inset Formula $K_{IC}=0$
+\end_inset
+
+) is that the resistance of propagation medium is so small, that the energy
+ dissipated by the fracture extension is negligible compared to the energy
+ dissipated in the viscous fluid flow 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Adachi_2002"
+
+\end_inset
+
+, moreover in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "sav_det_2002"
+
+\end_inset
+
+ it has been proven that 
+\emph on
+radial hydraulic fractures in impermeable rocks generally propagate in the
+ viscosity regime 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Term 
+\emph on
+viscosity regime 
+\emph default
+refers to fluid resistance to flow being the most dominant force in the
+ process, 
+\emph on
+toughness regime 
+\emph default
+would could occur with very hard rock formation and low viscosity fluid.
+ 
+\end_layout
+
+\end_inset
+
+ , and that the toughness regime is relevant only in exceptional circumstances.
+ 
+\emph default
+Furthermore PKN model assumes constant fracture height, which was changed
+ in more recent pseudo 3D models.
+ These P3D models take into account that a fracture can propagate through
+ medium with multiple horizontal layers of different properties, so fracture
+ height can also be made a variable in the problem 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Mack"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Significant improvements to PKN model were introduced by Kemp in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kemp"
+
+\end_inset
+
+.
+ Asymptotic analysis of the solution near the crack tip for impermeable
+ medium model was presented as well as an approximate solution for the zero
+ leak-off case, with accuracy to the first four leading asymptotic terms.
+ In 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kemp"
+
+\end_inset
+
+, probably for the first time, the speed equation was efficiently implemented
+ in the model.
+ The fourth degree of the crack opening (
+\begin_inset Formula $w^{4}$
+\end_inset
+
+) was considered as the variable and used in numerical computations.
+ Finally Kemp suggested to use a special tip element, compatible with the
+ asymptotic behavior of the solution, within Finite Volume (FV) scheme.
+\end_layout
+
+\begin_layout Standard
+It should be noticed that a major part of existing publications can be linked
+ to the University of Minnesota 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "minesota_maffia"
+
+\end_inset
+
+.
+ Among publications produced there the work done by Kovalyshen 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kovalyshen,Kovalyshen_phd"
+
+\end_inset
+
+ which introduced further improvements to PKN model over previous works.
+ Extension of the zero leak off solution 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kemp"
+
+\end_inset
+
+ to the full series representation was then given by Kovalyshen 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kovalyshen"
+
+\end_inset
+
+.
+ For the leak-off function defined by the Carter law the two leading terms
+ of asymptotics were found, to take into account the multi-scale arguments
+ suggested by 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Garagashetal"
+
+\end_inset
+
+.
+ However FV scheme with special tip element was again used.
+\end_layout
+
+\begin_layout Standard
+This trend to use FV based methods was questioned by Linkov in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Linkov_1"
+
+\end_inset
+
+ where the speed equation was reintroduced.
+ This concept was indirectly presented in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "SS"
+
+\end_inset
+
+ and utilized by 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kemp"
+
+\end_inset
+
+, but later abandoned.
+ Linkov discovered that the hydraulic fracture problem may exhibit ill posed
+ properties, and to eliminate this problem a number of techniques were proposed.
+\end_layout
+
+\begin_layout Itemize
+speed equation to trace the crack front instead of the usually applied total
+ flux balance condition.
+\end_layout
+
+\begin_layout Itemize
+the so-called 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization technique which consists of imposing the computational domain
+ boundary at a small distance behind the crack tip.
+\end_layout
+
+\begin_layout Itemize
+new boundary condition to be imposed in the regularized formulation.
+\end_layout
+
+\begin_layout Itemize
+new dependent variables: the particle velocity and the crack opening taken
+ in a degree to exploit the asymptotic behavior of the solution.
+\end_layout
+
+\begin_layout Itemize
+the spatial coordinates moving with the crack front and evaluation of the
+ temporal derivative under fixed values of these coordinates.
+\end_layout
+
+\begin_layout Standard
+This sparkled a series of publications redefining the conventional approach
+ to the PKN model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Linkov_4,Linkov_2,Linkov_3,MWL,Spectral,dupny_universal,moje_bzdury"
+
+\end_inset
+
+ where Finite Differences method were used to deal with governing PDEs.
+ Initially it was shown that for the case of leak-off vanishing near the
+ crack tip a great improvement over previous methods can be achieved by
+ using a proper form of boundary condition and a modified dependent variable
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "MWL"
+
+\end_inset
+
+.
+ Then the paper 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "moje_bzdury"
+
+\end_inset
+
+, that is integrated as a part of this work, proved that also in the case
+ of singular Carter law 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Carter"
+
+\end_inset
+
+ leak off the suggestions of Linkov are very beneficial.
+ Other works in this series 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Spectral,dupny_universal"
+
+\end_inset
+
+ sought to use more promising numerical algorithms, and apply this strategies
+ to the KGD model.
+ 
+\end_layout
+
+\begin_layout Standard
+The context of single hydraulic models and their development was described.
+ This should be treated as a brief overview that outlines most important
+ issues and challenges.
+ For further reading there is a number of intoroductory publications on
+ both theoretical and numerical aspects of single hydraulic fracture models
+ such as: 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Adachi_2007"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Rahman"
+
+\end_inset
+
+, as well as a number of printed books 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Economides2000,hydro_mech_book"
+
+\end_inset
+
+ that start at the fundamental level of non hydraulic fracture mechanics
+ and build up to the formulation to present these single fracture models.
+ 
+\end_layout
+
+\end_body
+\end_document

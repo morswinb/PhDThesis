@@ -1,0 +1,4609 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Large Coupled Dynamic System for Multifracturing 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Large-Coupled-Dynamic"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Main algorithm
+\end_layout
+
+\begin_layout Subsubsection
+Model object concept
+\end_layout
+
+\begin_layout Standard
+So far the basis for the multifracturing model was derived, that covers
+ multiple types of connected edges and their interactions, now it should
+ be combined into a single working model.
+ The approach presented here is an evolution of previous single fracture
+ solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dynamic-systems-with"
+
+\end_inset
+
+.
+ The problem will again be solved as an initial value problem, where the
+ value of 
+\begin_inset Formula $y(t)=\mathcal{M}(t)$
+\end_inset
+
+ is sought, as the problem changes over some time from initial state 
+\begin_inset Formula $y_{0}=\mathcal{M}_{0}$
+\end_inset
+
+.
+ Here 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ should denote the whole model, which is however more than just a value
+ vector as compared to the single fracture case.
+ Instead 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ should be treated as a higher level abstract object that includes:
+\end_layout
+
+\begin_layout Itemize
+expression for the change in time 
+\begin_inset Formula $y'(t)=\mathcal{M}'(t,\mathcal{M})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+collection of edges (cracks or pipes) connected with vertexes into a graph
+ fracture structure.
+\end_layout
+
+\begin_layout Itemize
+1D discretization for each edge with a mesh 
+\begin_inset Formula $x\in<0,1>$
+\end_inset
+
+, and a set of edge specific properties (
+\begin_inset Formula $k,\ L,\ \epsilon,\ ,\ q_{l},...$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+2D discretization of the entire model and other properties, such as volume
+ and placement of fluid pumping 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In case of the one dimensional single fracture problem the solution was
+ effectively a two dimensional array, the value of 
+\begin_inset Formula $w$
+\end_inset
+
+ for each considered 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ and time step.
+ However since in the multifracturing scenario the number of fractures and
+ the structure they create changes over time, the solution should be expressed
+ as a collection of 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ states at different times, which encapsulates both numerical values and
+ the changes in fracture structure:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+multifracture\ solution=\left\{ \mathcal{M}_{0},\ \mathcal{M}_{1},\ \ldots\ ,\ \mathcal{M}_{t_{end}}\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is a step away from the simple numerical value array solution interpretation.
+ Moreover it means that the algorithm must be able to produce a more complex
+ output, which size must be adjusted dynamically as it is impossible to
+ predict the number of fractures.
+ The total number of discretization points will change, the graph structure
+ will be modified.
+ If the solution is to remember all these events it must hold a stepparent
+ 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ state for each of these.
+ On top of that some intermediate 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ states should be stored to accurately represent widths and lengths of fractures
+ in between these events.
+ Consider Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "explain_solution"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename m0.png
+	width 40text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Initial state 
+\begin_inset Formula $\mathcal{M}_{0}$
+\end_inset
+
+, 10 cracks and 5 pipes, and one injection point.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{.5em}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename m1.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Some intermittent 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+, two newly opened fractures are added.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename mn.png
+	lyxscale 20
+	scale 40
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Further 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ state, extra openings were activated, when should 
+\begin_inset Formula $\mathcal{M}_{t_{end}}$
+\end_inset
+
+ be reached ? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A solution to the multifracturing problem should consist of model states
+ 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ at multiple times, to accurately represent the whole process dynamics.
+ (red color indicates high pressure originating from pumping point) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "explain_solution"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Indexing elements
+\end_layout
+
+\begin_layout Standard
+As it should be possible to change the size of 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+, all measurements of its size should be adjusted dynamically, rather than
+ predefined at start.
+ This calls for a well defined method for counting and indexing its components.
+ The size can be measured by three different quantities
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N_{V}$
+\end_inset
+
+ - the number of vertexes, this includes junctions and crack tips.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N_{E}$
+\end_inset
+
+ - the number of edges, fractures and solid pipes.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+ - the total number of ODEs, and the total number grid points.
+\end_layout
+
+\begin_layout Standard
+Lets recall that PKN crack formulation used its own size 
+\begin_inset Formula $N$
+\end_inset
+
+ to define the number of grid points on the normalized one dimensional grid
+ (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Grids"
+
+\end_inset
+
+).
+ Unfortunately the introduction of the operator 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_DS"
+
+\end_inset
+
+ added one extra ODE that was not associated with any grid point.
+ Furthermore the connection points for PKN pipes and PKN cracks, that are
+ to be used here, rely on grid points of 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ or 
+\begin_inset Formula $x_{N}=1$
+\end_inset
+
+, but do not produce any ODE to be associated with those.
+ This creates a situation where the number of introduced grid points is
+ very close, but not identical to the number of 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+.
+ To simplify the process it is possible to add a few extra grid points or
+ extra ODE to match these two values:
+\end_layout
+
+\begin_layout Itemize
+PKN
+\emph on
+ crack
+\emph default
+ grid can be set to account for 
+\begin_inset Formula $N$
+\end_inset
+
+ points 
+\begin_inset Formula $x_{m}=\{0,...,1-\epsilon,1\}$
+\end_inset
+
+, a simple modification that includes 
+\begin_inset Formula $x_{N}=1$
+\end_inset
+
+ as the last grid point.
+ The vale at 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ is obtained via connected junction.
+ Hence operator
+\begin_inset Formula $\mathcal{A}_{crack}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system_elast"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_system_elast"
+
+\end_inset
+
+) can be used for 
+\begin_inset Formula $x_{2},...,x_{N-1}$
+\end_inset
+
+, while
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_DS"
+
+\end_inset
+
+ produces the last ODE and the first ODE is either a dummy or added extra
+ operator 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "operator_leak"
+
+\end_inset
+
+ for leak off integration.
+\end_layout
+
+\begin_layout Itemize
+PKN
+\emph on
+ pipe
+\emph default
+ grid already accounts for exactly 
+\begin_inset Formula $N$
+\end_inset
+
+ points 
+\begin_inset Formula $x_{m}=\{0,...,1\}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathcal{A}_{pipe}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "pipe_reynolds_U"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system_elast_pipe"
+
+\end_inset
+
+) works for 
+\begin_inset Formula $x_{2},...,x_{N-1}$
+\end_inset
+
+.
+ The vale at 
+\begin_inset Formula $x_{1}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N}=1$
+\end_inset
+
+ comes from the two connected junction segments, meaning there are two more
+ points than ODEs.
+ However again the operator 
+\begin_inset Formula $\mathcal{C}$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "operator_leak"
+
+\end_inset
+
+ or a dummy zero ODE can be added to match grid point number with the amount
+ of produced ODEs.
+\end_layout
+
+\begin_layout Itemize
+Other type of edges, closed cracks or concrete pipes contribute no grid
+ points nor ODEs.
+\end_layout
+
+\begin_layout Standard
+So it is fairly easy to makes sure that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+N_{ODE}=\sum_{j=1}^{N_{E}}N_{j}\label{eq:index_convert-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $N_{j}$
+\end_inset
+
+ is the number of grid points and ODEs associated with each edge.
+ 
+\emph on
+The total number of ODEs is the same as the sum of all edge grid points.
+ 
+\end_layout
+
+\begin_layout Standard
+Up to this point indexing of grid points 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ was concluded locally, with local index 
+\begin_inset Formula $i$
+\end_inset
+
+ ranging from 
+\begin_inset Formula $1$
+\end_inset
+
+ to grid 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ However with the introduction of junction condition and elasticity interactions
+ (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Method-for-elasticity"
+
+\end_inset
+
+) it is important to introduce a higher level global indexing :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+i_{global}(i_{local}^{(j)})=\sum_{j=1}^{j-1}N_{j}+i_{local}^{(j)}\label{eq:index_convert}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here 
+\begin_inset Formula $i_{local}^{(j)}$
+\end_inset
+
+ refers to indexing in the reference frame of an edge 
+\begin_inset Formula $j$
+\end_inset
+
+, while 
+\begin_inset Formula $i_{global}$
+\end_inset
+
+ refers to index in the whole model 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+ For an example consider an system with 
+\begin_inset Formula $2$
+\end_inset
+
+ fractures each of 
+\begin_inset Formula $N=10$
+\end_inset
+
+.
+ The first grid point 
+\begin_inset Formula $i_{local}=1$
+\end_inset
+
+ in the second fracture would correspond to 
+\begin_inset Formula $i_{gloabal}=11$
+\end_inset
+
+ .
+ The maximum 
+\begin_inset Formula $i_{gloabal}=20$
+\end_inset
+
+ would refer to the last grid point 
+\begin_inset Formula $i_{local}=10$
+\end_inset
+
+ in the second fracture.
+ Note that this dynamic indexing allows for 
+\emph on
+unique mesh size for each edge.
+ 
+\end_layout
+
+\begin_layout Standard
+The main point of this indexing scheme is to be able to present 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ as a single vector, and be able to identify which element corresponds to
+ which edge, and what value it carries.
+ This is necessary for the next step, which builds an ODE system.
+ Furthermore the global indexing allows for building, and interpreting additiona
+l utility matrices described in Subsection 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Jacobian-and-utility"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Model as ODE system
+\end_layout
+
+\begin_layout Standard
+Having written down a method for indexing grid points and associated ODEs
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:index_convert"
+
+\end_inset
+
+, lets declare 
+\begin_inset Formula $y_{0}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ and 
+\begin_inset Formula $y'(t,y)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ for a given 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+.
+ As 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{0}=\mathcal{M}_{0}=\{\mathcal{F}_{1}^{*},\mathcal{F}{}_{2}^{*},...,\mathcal{F}_{N_{E}}{}^{*}\}\label{initial_value_large_ds}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y'(t,y)=\mathcal{M}'(t,\mathcal{M})=\{\mathcal{F}{}_{1}(t,\mathcal{M}),\mathcal{F}{}_{2}(t,\mathcal{M}),...\mathcal{F}{}_{N_{E}}(t,\mathcal{M})\}\label{derevative_large_ds}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\mathcal{F}{}_{j}^{*}$
+\end_inset
+
+is the initial value, and 
+\begin_inset Formula $\mathcal{F}_{i}$
+\end_inset
+
+ is a generic ODE operator for each edge in the model.
+ 
+\begin_inset Formula $\mathcal{F}{}_{i}$
+\end_inset
+
+ should be made of operators 
+\begin_inset Formula $\mathcal{A},\ \mathcal{B},\mathcal{\ C}$
+\end_inset
+
+ in as given by: 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_DS"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_DS"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system_elast"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system_elast_pipe"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_system_elast"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "operator_leak"
+
+\end_inset
+
+.
+ For example: 
+\begin_inset Formula 
+\begin{equation}
+\mathcal{F}_{crack}=\{\mathcal{C},\mathcal{A}_{1},...,\mathcal{A}_{N-1},\mathbf{\mathcal{B}}\}\label{eq:F_crack}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{F}_{pipe}=\{\mathcal{C},\mathcal{A}_{1},...,\mathcal{A}_{N-1},0\}\label{eq:F_pipe}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $0$
+\end_inset
+
+ indicated a dummy zero ODE, and the usage of 
+\begin_inset Formula $C$
+\end_inset
+
+ is optional.
+ The initial values of 
+\begin_inset Formula $\mathcal{F}^{*}$
+\end_inset
+
+ should be similarity combined, meaning when the initial value for model
+ 
+\begin_inset Formula $\mathcal{M}_{0}$
+\end_inset
+
+ is needed, all the vector values of discretization edges are combined together
+ in a single vector.
+ Similarly when the derivative 
+\begin_inset Formula $\mathcal{M}'(t,\mathcal{M})$
+\end_inset
+
+ is needed the vector values of derivatives for each 
+\emph on
+crack pipe
+\emph default
+ or 
+\emph on
+crack
+\emph default
+ are put together in to one vector.
+\end_layout
+
+\begin_layout Subsubsection
+Multifracturing algorithm
+\end_layout
+
+\begin_layout Standard
+This formulation leaves the task of integrating equations to some unspecified
+ ODE 
+\emph on
+solver
+\emph default
+.
+ Similarly to single fracture case, the used 
+\emph on
+solver
+\emph default
+ is unaware of the whole formulation, it is merely a tool to perform numerical
+ integration form initial time 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ to final time 
+\begin_inset Formula $t_{end}.$
+\end_inset
+
+ The 
+\emph on
+solver 
+\emph default
+will be encapsulated as an abstract object to advance the model 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ by some time step 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+.
+ Its instance will be provided with a function constructed to appear as
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+a simple generic 
+\begin_inset Formula $y'(t,y)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ , though the inside of that function will perform a whole set of operations
+ to calculate the whole 
+\begin_inset Formula $\mathcal{M}'(t,\mathcal{M})$
+\end_inset
+
+ (check Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "algo_ode"
+
+\end_inset
+
+).
+ On top of this there is another quasi integrating algorithm, that runs
+ the provided abstracted 
+\emph on
+solver, 
+\emph default
+tracks fluid balance and checks for fracture collisions (check Algorithm
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "algo_ode"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "algo_multi"
+
+\end_inset
+
+).
+ The state of 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+at each steps made by this upper algorithm is recorded.
+ Any required re meshing is done separately from the encapsulated ODE 
+\emph on
+solver, 
+\emph default
+since such operations are not a part of casual integrating methods.
+\end_layout
+
+\begin_layout Standard
+There are two significant advantages of this approach:
+\end_layout
+
+\begin_layout Itemize
+The integration, discretization, and fracture collisions are well divided
+ between different parts of code.
+\end_layout
+
+\begin_layout Itemize
+The utilized integration code/ODE solver 
+\emph on
+can be changed at will 
+\emph default
+, switched to any other method of preference (a search for best solvers
+ is presented in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Comparison-of-ODE"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+The result of computation is stored as a collection of 
+\begin_inset Formula $\mathcal{M}(t)$
+\end_inset
+
+ states at different times 
+\begin_inset Formula $t\in(t_{0},t_{end})$
+\end_inset
+
+.
+ These might be different in size, due to collisions or other events.
+ Processing the solution is a challenge on its own, but will not be shown
+ in this work, except for some interesting results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+IncMargin
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+1em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+This
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+this
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Input
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+model instance 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+, at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Output
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{M'}(t,\mathcal{M})$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $i\leftarrow1$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ calculate 
+\begin_inset Formula $\sigma_{l}^{(i)}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $k\leftarrow1$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N_{V}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ approximate initial junction fluid pressure 
+\begin_inset Formula $\mathcal{J}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+While
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left|\sum_{1}^{N_{V}}\left(\mathcal{J}_{n+1}^{k}-\mathcal{J}_{n}^{k}\right)\right|>some\ tolerance$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $k\leftarrow1$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $V$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{J}_{n+1}^{k}\leftarrow$
+\end_inset
+
+ newton method for junctions with 
+\begin_inset Formula $\mathcal{J}_{n}^{k}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $i\leftarrow1$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N_{E}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $j\leftarrow$
+\end_inset
+
+index of first ODEs in 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M'}_{j+1,...,j+N_{i}}\leftarrow\mathcal{F}_{i}(t,\mathcal{M}_{j+1,...,j+N_{i}})$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorithm for computing 
+\begin_inset Formula $\mathcal{M}'(t,\mathcal{M})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "algo_ode"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+DecMargin
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+1em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+This
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+this
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Input
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+initial time 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+, end time 
+\begin_inset Formula $t_{end}$
+\end_inset
+
+, initial model state 
+\begin_inset Formula $\mathcal{M}_{0}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, inner 
+\emph on
+solver
+\emph default
+ instance
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Output
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+colection of model states 
+\begin_inset Formula $\mathcal{M}_{0},...,\mathcal{M}_{t_{end}}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $Vol_{0}\longleftarrow$
+\end_inset
+
+ initial fracture volume
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}_{list}\longleftarrow$
+\end_inset
+
+ new model collection
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ add 
+\begin_inset Formula $\mathcal{M}_{0}$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathcal{M}_{list}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}_{i}\longleftarrow\mathcal{M}_{0}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $t\longleftarrow t_{0}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Delta t\longleftarrow$
+\end_inset
+
+ default time step
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+While
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $t<t_{end}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{M}_{j}\longleftarrow\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}_{i}\longleftarrow$
+\end_inset
+
+ deep copy of 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ update 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ visibility and jacobian pattern matrices
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ use 
+\begin_inset Formula $solver$
+\end_inset
+
+ to advance 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ by 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $Vol\longleftarrow$
+\end_inset
+
+ total volume of 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $Q_{0}\longleftarrow$
+\end_inset
+
+ sum of 
+\begin_inset Formula $\int_{t}^{t+\Delta t}q_{0}\ dt$
+\end_inset
+
+ for all vertecis 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $Q_{l}\longleftarrow$
+\end_inset
+
+ sum of 
+\begin_inset Formula $\int_{t}^{t+\Delta t}\int_{0}^{1}q_{l}\ dx\ dt$
+\end_inset
+
+ for all edges 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ store relative fluid balance for 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ as 
+\begin_inset Formula $\frac{Vol-Vol_{0}-Q_{l}}{Q_{0}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+uIf
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ has overshoots
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}_{i}\longleftarrow\mathcal{M}_{j}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Delta t\longleftarrow$
+\end_inset
+
+ time to soonest overshot in 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+uElseIf
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ has valid collisions
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ add 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathcal{M}_{list}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathcal{M}_{i}\longleftarrow$
+\end_inset
+
+ deep copy of 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ resolve collisions for 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+uElse
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Delta t\longleftarrow2\Delta t$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $t_{col}\longleftarrow$
+\end_inset
+
+ soonest forecasted time to collision for 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+If
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $t_{col}<\Delta t$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Delta t\longleftarrow t_{col}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ add 
+\begin_inset Formula $\mathcal{M}_{i}$
+\end_inset
+
+ to 
+\begin_inset Formula $\mathcal{M}_{list}$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Algorithm for processing multifracturing problem.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "algo_multi"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Jacobian and 
+\begin_inset Quotes eld
+\end_inset
+
+utility
+\begin_inset Quotes erd
+\end_inset
+
+ matrices 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Jacobian-and-utility"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets recall to the benefits that were achieved by properly utilizing Jacobian
+ matrix pattern 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ shown in section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sub:Jacobian-Matrix-patter"
+
+\end_inset
+
+.
+ It would be worthwhile to make some attempts to use similar techniques
+ in multifracturing formulation.
+ Similar speedup could be achieved as the presented multifracturing problem
+ will also produce sparse 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ .
+ The sparseness pattern will however be now much more complex to derive.
+ To deal with this problem, lets divide 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ into three matrices, each derived from a different source, all of then
+ 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+ by 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+ in size that when added together form full 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ of this problem.
+ Instead of presenting exact formulas for obtaining these, generalized means
+ of obtaining and sample results for an arrangement of fractures, as shown
+ on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example_for_pattern"
+
+\end_inset
+
+, are presented here.
+ The exact code used for calculating these can be is shown in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Java-multifracturing-code"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Additionally it is worth considering that 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ could be generalized by a much smaller matrix that shows edge to edge dependenc
+e.
+ The number of 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+ will be of at least one order more than used 
+\begin_inset Formula $E$
+\end_inset
+
+ edges, thous such would allow to save a lot of time by giving some possible
+ shortcuts in further computations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pattern_example.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Example multifracturing scenario.
+ Two arrays of PKN fractures, connected by some PKN pipes, and concrete
+ pipes.
+ Edge visibility shown for some grid points (but not all).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "example_for_pattern"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Discretization Matrix 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Discretization-Matrix"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first source of 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ is the tri-diagonal like discretization.
+ It is formed by operator 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+, in a similar manner as described in Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sub:Jacobian-Matrix-patter"
+
+\end_inset
+
+ for a single fracture.
+ With multiple fractures each fracture will add this almost tridiagonal
+ structure.
+ Here an example of such a matrix is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "disc_mat"
+
+\end_inset
+
+.
+ All 
+\begin_inset Formula $E$
+\end_inset
+
+ edges in the problem form a piece of this diagonal pattern, and the indexes
+ of associated grid points are given by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:index_convert"
+
+\end_inset
+
+).
+ Each repeated 
+\begin_inset Formula $\backslash|$
+\end_inset
+
+ shape represents a PKN 
+\emph on
+crack, 
+\emph default
+while single 
+\begin_inset Formula $\backslash$
+\end_inset
+
+ stands for one PKN pipe element.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename discretization.eps
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Discretization Matrix for example shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example_for_pattern"
+
+\end_inset
+
+, formed by FD approximation (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "central_FD"
+
+\end_inset
+
+ or as shown in sample code Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Asym-FD"
+
+\end_inset
+
+) and normalization over 
+\begin_inset Formula $L$
+\end_inset
+
+ , close to tridiagonal in structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "disc_mat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Junction Matrix 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Junction-Matrix"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The boundary condition at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, calculated by junction strategy 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ adds dependence of each boundary point (
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N_{i}-1}$
+\end_inset
+
+) involved in fluid pressure approximation on all the other points contributed
+ by connected edges.
+ These in case of PKN 
+\emph on
+cracks
+\emph default
+ and 
+\emph on
+pipes
+\emph default
+ are 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+and 
+\begin_inset Formula $x_{3}$
+\end_inset
+
+ or 
+\begin_inset Formula $x_{N_{i}-2}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N_{i}-3}$
+\end_inset
+
+.
+ Furthermore all interconnected concrete pipe segments share pressure, thus
+ all other attached edges are connected by this pressure dependence.
+ If an edge shares a junction with concrete pipe, then the edges connected
+ to the other end of that pipe are also affected.
+ To find these interactions a graph traversal must be done, to mark all
+ clusters of junctions traversable by concrete pipe connections.
+ The outcome of these operation is converted into a very sparse matrix,
+ marking all of these connections, as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "junction_mat"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename joints.eps
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Full point to point joint matrix.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "junction_mat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename joints_edg.eps
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Generalized edge to edge version.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "junction_mat_edge"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Junction Matrix for example shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example_for_pattern"
+
+\end_inset
+
+, indicates which points are dependent on another by junction BC 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Pseudo elasticity Visibility Matrix 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Visibility-Matrix"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally the matrix formed by resolving edge visibility 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Resolving-edge-visibility"
+
+\end_inset
+
+.
+ It is a symmetric matrix, that has non-zero entries where two points are
+ visible to each other, hence 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is projected.
+ The structure itself is unfortunately very dependent on location of edges
+ in relation to each other.
+ Furthermore while in case of a single fracture, or some other specific
+ placement, this matrix will be empty, for some geometries this matrix might
+ be full, or very close to being full dense matrix.
+ In fact comparing this to Discretization 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Discretization-Matrix"
+
+\end_inset
+
+ and Junction 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+ matrices, in can be clearly observed how the introduction of 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ increases the overall effort required to solve the multifracturing problem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename visibility.eps
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Full elasticity matrix, shows point to point visibility.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "ellasticity_mat"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename visibility_edg.eps
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Edge to edge visibility matrix, generalization of the above with much less
+ entries to work on.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "ellasticity_mat_edge"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pseudo elasticity visibility matrices, for example shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example_for_pattern"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Utilization of sparseness pattern 
+\end_layout
+
+\begin_layout Standard
+A common feature for many ODE solver is that custom Jacobian function can
+ be optionally supplemented.
+ If not some naive dense approximation function is used.
+ The dense approximation would however have very high computational cost,
+ especially in this multifracturing scenario.
+ To naively compute the Jacobian, one needs to compute 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "derevative_large_ds"
+
+\end_inset
+
+ for a small change of each solution vector element 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "initial_value_large_ds"
+
+\end_inset
+
+.
+ This itself is 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+ number of operations, but when 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ is present, the function 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "derevative_large_ds"
+
+\end_inset
+
+, if not handled properly will check for visibility of all the other grid
+ points 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sigma_formula_total"
+
+\end_inset
+
+, effectively making 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "derevative_large_ds"
+
+\end_inset
+
+ perform 
+\begin_inset Formula $O\left(N_{ODE}^{2}\right)$
+\end_inset
+
+ operations.
+ Thus ignoring the overall structure will force 
+\begin_inset Formula $O\left(N_{ODE}^{3}\right)$
+\end_inset
+
+ time complexity.
+\end_layout
+
+\begin_layout Standard
+Although this could indicate that the computation of Jacobian would take
+ somehow comparable amount of time to that consumed by matrix inversion
+ inside integrating solver, the real cost could be much higher as 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "derevative_large_ds"
+
+\end_inset
+
+ requires in fact much more operations a than simple matrix reduction (as
+ proven in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Code-optimization-and"
+
+\end_inset
+
+).
+ On the other hand if simplified edge version visibility 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ellasticity_mat_edge"
+
+\end_inset
+
+ and junction 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "junction_mat_edge"
+
+\end_inset
+
+ are used, the function (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "derevative_large_ds"
+
+\end_inset
+
+) can cost much less.
+ Knowing which edges depend on each other reduces the number of calculations
+ needed in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sigma_formula_total"
+
+\end_inset
+
+) from 
+\begin_inset Formula $N_{ODE}$
+\end_inset
+
+, to possibly even 
+\begin_inset Formula $0$
+\end_inset
+
+ if no edges are visible, as knowing whereabouts of non zero entries of
+ visibility allows to skip unnecessary calculations.
+ Similarly knowing which edges are connected to each other through junction
+ connection allows to skip unnecessary operations when computing the Jacobian.
+ 
+\end_layout
+
+\begin_layout Standard
+For the best case scenario, such as a single fracture, the cost of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "derevative_large_ds"
+
+\end_inset
+
+) and calculating Jacobian is 
+\begin_inset Formula $O\left(N_{ODE}\right)$
+\end_inset
+
+, if the information about sparseness is used.
+ Excluding fracture length 
+\begin_inset Formula $L$
+\end_inset
+
+ effect, all points depend on two neighbors, thus constant additional cost
+ of Jacobian.
+ In the worst case scenario, all grid points are visible to each other and
+ computing (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "derevative_large_ds"
+
+\end_inset
+
+) will require 
+\begin_inset Formula $O\left(N_{ODE}^{2}\right)$
+\end_inset
+
+, so Jacobian would cost 
+\begin_inset Formula $O\left(N_{ODE}^{3}\right)$
+\end_inset
+
+.
+ It is impossible to make a good prediction of what average time complexity
+ would be, but it is clear that for many geometries that result in much
+ sparser 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ the improvement gained by taking problem sparseness into account can be
+ of a time order, or greater (again computationally proven in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Code-optimization-and"
+
+\end_inset
+
+ ).
+ 
+\end_layout
+
+\begin_layout Standard
+To conclude the above monologue, it will be very beneficial to exploit sparsenes
+s effects appearing in the multifracturing system.
+ The computational ideas described here are best shown by the actual code
+ in Appendix (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Java-multifracturing-code"
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename jacobian_num.eps
+	scale 65
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Naively, always 
+\begin_inset Formula $O\left(N_{ODE}^{3}\right)$
+\end_inset
+
+, computed Jacobian, can be used to verify results.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename full_pattern.eps
+	scale 65
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sum of Discretization, Junction and Visibility matrices, may lead to 
+\begin_inset Formula $O\left(N_{ODE}\right)$
+\end_inset
+
+ in the best case if no visibility.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Full 
+\begin_inset Formula $J_{patter}$
+\end_inset
+
+ for of an example multifracturing scenario shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example_for_pattern"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

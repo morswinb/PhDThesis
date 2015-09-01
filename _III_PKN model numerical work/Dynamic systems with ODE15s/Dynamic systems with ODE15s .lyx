@@ -1,0 +1,2174 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\begin_modules
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Dynamic systems with ODE15s 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Dynamic-systems-with"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+BDF and ODE solvers 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:BDF-and-ODE"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Backward differentiation formulas is a set of implicit multistep methods
+ designed to solve systems of stiff ordinary differential equations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wiki_bdf"
+
+\end_inset
+
+.
+ These formulas were originally developed by Gear 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gear"
+
+\end_inset
+
+and are sometimes called Gear method.
+\end_layout
+
+\begin_layout Standard
+BDFs can be used to solve initial value problem in form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y'=f(t,y),\quad y(t_{0})=y_{0}\label{eq:IVP}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the general formula for BDF is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sum_{k=0}^{s}a_{k}y_{n+k}=h\beta f(t_{n+s},y_{n+s})\label{eq:BDF_first_order}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $h$
+\end_inset
+
+ is the step size, while 
+\begin_inset Formula $a_{k}$
+\end_inset
+
+and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are coefficient dependent on method order 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ Although the general formula might not be very familiar, the 
+\begin_inset Formula $1^{st}$
+\end_inset
+
+ order BDF is something that appears in all introductory numerical analysis
+ courses:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{n+1}-y_{n}=hf(t_{n+1},y_{n+1})\label{eq:Euler}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which is just backward Euler method for differential equations.
+ Such is not yet a multistep method as only one known point 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ is involved in the approximation of new solution point 
+\begin_inset Formula $y_{n+1}$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $2^{nd}$
+\end_inset
+
+ BDF formula is given as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{2}{3}hf(t_{n+2},y_{n+2})=y_{n+2}-\frac{4}{3}y_{n+1}+\frac{1}{3}y_{n}\label{BDF26}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here the name multistep comes in as this approximation uses two known data
+ points 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{n+1}$
+\end_inset
+
+.
+ The further BDF up to 
+\begin_inset Formula $6^{th}$
+\end_inset
+
+ order were derived by Gear 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gear"
+
+\end_inset
+
+.
+ The order of formula is the number of backward points used.
+ Up to 
+\begin_inset Formula $6$
+\end_inset
+
+ points are used in 
+\begin_inset Formula $6^{th}$
+\end_inset
+
+ order formula, and this is the last zero-stable BDF 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "num_an"
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+further order formulas will not converge to a solution
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+BDF are most popular method in stiff solvers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BDF_lecture_slides"
+
+\end_inset
+
+, and this should be probably attributed to several factors.
+ Very good accuracy and stability can be obtained (as it will be shown later),
+ and essentially the same algorithm can be used for each of the methods
+ order.
+ When using Euler method, the main challenge results from matrix inversion.
+ Adjusting the solution vector such so it is a sum of several known previous
+ points is a simple task, so higher order BDF are not really more difficult
+ to use than Euler method.
+ The constant coefficients 
+\begin_inset Formula $a_{k}$
+\end_inset
+
+ for each order, were derived by Lagrange Polynomial interpolation.
+ The higher orders rely on more data points, so the approximation can be
+ more accurate, but at the same time method becomes less stable, as the
+ approximation must much a more complex polynomial.
+ Proper usage of this method requires balancing between high accuracy of
+ higher orders, and better stability of lower orders.
+\end_layout
+
+\begin_layout Standard
+The most important advantage of BDF methods in view of this work is how
+ straightforward it is to apply these method to previously formulated PKN
+ problem.
+ For stiff BDF based solvers, as well as all other ODE solvers, one has
+ to describe the problem as IVP (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:IVP"
+
+\end_inset
+
+) ,that is specify at least these two constructs:
+\end_layout
+
+\begin_layout Itemize
+initial value 
+\begin_inset Formula $y_{0}$
+\end_inset
+
+, here it is a vector value of 
+\begin_inset Formula $N+1$
+\end_inset
+
+ elements.
+ Where 
+\begin_inset Formula $N$
+\end_inset
+
+ corresponds to grid size (Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Grids"
+
+\end_inset
+
+), the initial opening 
+\begin_inset Formula $w_{*}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_initial"
+
+\end_inset
+
+) is evaluated at each of these points.
+ This vector is amended by squared initial length 
+\begin_inset Formula $l_{*}^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}y_{0} & =\big\{ w_{*},l_{*}^{2}\big\}\\
+ & =\big\{ w_{*}(x_{1}),w_{*}(x_{2}),\ldots,w_{*}(x_{N}),l_{*}^{2}\big\}
+\end{split}
+\label{eq:ODE_ic}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+function 
+\begin_inset Formula $y'$
+\end_inset
+
+, the rate of change of this systems of ODE.
+ This function takes a vector with 
+\begin_inset Formula $N+1$
+\end_inset
+
+ elements as the value of 
+\begin_inset Formula $y(t)$
+\end_inset
+
+, and then returns corresponding 
+\begin_inset Formula $y'\left(t,y(t)\right)$
+\end_inset
+
+ as another vector with 
+\begin_inset Formula $N+1$
+\end_inset
+
+ elements.
+ Operator 
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+) is used to make 
+\begin_inset Formula $N$
+\end_inset
+
+ ODEs, one for each grid point, and 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ forms one extra ODE.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}y' & =\big\{\mathcal{A}(y),\mathcal{B}(y)\big\}\\
+ & =\big\{\mathcal{A}(y_{1\ldots N},y_{N+1}),\mathcal{A}_{2}(y_{1\ldots N},y_{N+1}),\ldots\\
+ & \quad\quad\quad,\mathcal{A_{N}}(y_{1\ldots N},y_{N+1}),\mathcal{B}(y_{1\ldots N})\big\}
+\end{split}
+\label{eq:ODE_system}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally having given value of 
+\begin_inset Formula $y_{0}$
+\end_inset
+
+ and an expression for 
+\begin_inset Formula $y'(t,y)$
+\end_inset
+
+, the solver is asked to perform integration from some initial time 
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ to final time 
+\begin_inset Formula $t_{end}$
+\end_inset
+
+.
+ A solution, a two dimensional array, will be produced that consists of
+ all 
+\begin_inset Formula $y$
+\end_inset
+
+ values at initial, end, and a number if intermittent times:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}y(t_{0},...,t_{end}) & =\big\{ w(t_{0},...,t_{end},x),L^{2}(t_{0},...,t_{end})\big\}\\
+ & =\big\{ w(t_{0},...,t_{end},x_{1}),w(t_{0},...,t_{end},x_{2}),\ldots\\
+ & \quad\quad\quad,w(t_{0},...,t_{end},x_{N}),L^{2}(t_{0},...,t_{end})\big\}
+\end{split}
+\label{eq:ODE_solution}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Although the above presents how 
+\begin_inset Formula $w$
+\end_inset
+
+ formulation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+) can be tackled with ODE solvers, other formulations 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U_DS"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Omega_DS"
+
+\end_inset
+
+) can be implemented in similar manner.
+\end_layout
+
+\begin_layout Standard
+Having stated that the problem can be solved with common stiff ODE methods,
+ the question that needs to be answered is: Should some existing solver
+ be used, or own customized version be implemented.
+ The answer is not trivial, as there are advantages and drawbacks associated
+ with both choices.
+ An attempt to develop own BDF solver was carried as well as another one
+ to use alternative Cranck-Nicolson methods.
+ This attempts however exposed various issues that need to be covered in
+ order to make a properly working solver, even if it was to work only for
+ this particular PKN formulation.
+ Apart from integrating the function a good solver carries number of other
+ tasks including: error approximation, time step handling, event detections
+ and a number of performance and stability tunings.
+ Writing a new solver would mean tackling these problems that were already
+ attempted by someone else.
+ These could pose a valid theoretical challenge, however lets remind ourselves
+ of and an old software development principle:
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Do not reinvent the wheel.
+\end_layout
+
+\begin_layout Standard
+Which in this case translates into: save time and effort by using existing
+ well tested and understood solvers.
+ Developing a solver could easy be a subject of another thesis on its own.
+ This work will therefore first attempt to formulate a novel enough and
+ solvable fracturing problem, and then seek in detail attempts to improve
+ computational efforts.
+\end_layout
+
+\begin_layout Standard
+The single fracture code will be approached with ODE15s, one of solvers
+ available in MATLAB ode suite, that is specially designed to deal with
+ stiff problems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ode15sMathworks"
+
+\end_inset
+
+ .
+ There are some very good readings that clearly describe the inner mechanics
+ of this solver  that I would recommend anyone interested in the subject
+ to have a glance at.
+ As a brief summary it should be mentioned that ODE15s is based on two implicit
+ sets of formulas: NDFs and BDFs.
+ (which are the direct opposite to explicit Runge–Kutta methods that some
+ authors insist to be involved 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+) Numerical differentiation formulas are a modification of BDF with better
+ usage of predicted value.
+\end_layout
+
+\begin_layout Standard
+An example simplified MATLAB script that obtains solution to self similar
+ problem presented in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Simple-Running-Script"
+
+\end_inset
+
+.
+ Thanks to using well developed solver the implementation is very straightforwar
+d.
+ Object orientated approach is used to divide of tasks into separate modules.
+ The main class is CrackSystemW 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+, which holds general IVP made out off expressions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_ic"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_solution"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection
+building 
+\begin_inset Formula $y'$
+\end_inset
+
+ for ODE solvers 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:building_ode_solvers"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This section should explain the details how 
+\begin_inset Formula $w$
+\end_inset
+
+ problem formulation is implemented into single fracture code 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matlab-single-fracture"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The function representation 
+\begin_inset Formula $y'$
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ODE_system"
+
+\end_inset
+
+) is dynamically passed 
+\emph on
+at runtime
+\emph default
+ (line 41 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+) to ODE15s, as a function reference (subroutine) with simple signature
+ that directly translates to 
+\begin_inset Formula $y'=f(t,y)$
+\end_inset
+
+ (line 47 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+), thous the ODE solver does not known anything about the behavior of these
+ system upfront.
+ The output value vector can be obtained in virtually any manner.
+\end_layout
+
+\begin_layout Standard
+Multiple approaches to obtaining these are possible.
+ An old school approach could treat the problem as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+{\bf Y}'={\bf A}{\bf Y}+{\bf G},\label{governing_dis}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With linearized mass matrix 
+\begin_inset Formula ${\bf A},$
+\end_inset
+
+ and leak off dependent vector 
+\begin_inset Formula ${\bf G}$
+\end_inset
+
+.
+ The above would require multiple iterations, to finally produce the return
+ value for 
+\begin_inset Formula $y'$
+\end_inset
+
+ function, as this problem is nonlinear.
+\end_layout
+
+\begin_layout Standard
+The above approach is neither efficient (unnecessary iterations and sparse
+ matrix creation) or straightforward.
+ As the problem requires to find value of 
+\begin_inset Formula $\mathcal{A}_{1},...,\mathcal{A}_{N}$
+\end_inset
+
+ at points 
+\begin_inset Formula $x_{1},...x_{n}$
+\end_inset
+
+, the operator
+\begin_inset Formula $\mathcal{A}$
+\end_inset
+
+ for each of the three variables 
+\begin_inset Formula $w$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "w_system"
+
+\end_inset
+
+, 
+\begin_inset Formula $U$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_system"
+
+\end_inset
+
+, and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_system"
+
+\end_inset
+
+, is evaluated separately at each point:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}y_{i}'= & \mathcal{A}_{i}=\\
+ & \begin{cases}
+\mathcal{A}_{i\ w}= & \frac{1}{y_{N+1}}\left[\frac{1}{3}w_{0}^{3}x_{i}\frac{\partial y_{i}}{\partial x_{i}}+3y_{i}^{2}\left(\frac{\partial y_{i}}{\partial x_{i}}\right)^{2}+y_{i}^{3}\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}}\right]-q_{l}(x_{i})\\
+\mathcal{A}_{i\ U}= & \frac{1}{3y_{N+1}}\left[w_{0}^{3}x_{i}\frac{\partial y_{i}}{\partial x_{i}}+\left(\frac{\partial y_{i}}{\partial x_{i}}\right)^{2}+3y_{i}\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}}\right]-3y_{i}^{\frac{2}{3}}q_{l}(x_{i})\\
+\mathcal{A}_{i\ \Omega}= & \frac{-1}{y_{N+1}}\left[\left(\frac{\partial y_{i}}{\partial x}\right)^{3}\frac{\partial^{2}y_{i}}{\partial x^{2}}+\frac{1}{3}w_{0}^{3}\left(y_{i}-x\frac{\partial y_{i}}{\partial x}\right)\right]-Q_{l}(x_{i}).
+\end{cases}\\
+ & \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad i=1,\ldots,N
+\end{split}
+\label{system_i}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $y_{1\ldots N}=w_{1\ldots N}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{N+1}=L^{2}$
+\end_inset
+
+.
+ The value of asymptotic term 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ is easily interchangeable with 
+\begin_inset Formula $U_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega_{0}$
+\end_inset
+
+since 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_coefs"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_coefs"
+
+\end_inset
+
+, furthermore the operator 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ also does not differ significantly between systems, so it is possible to
+ interpret the problem as if only the first term 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+is needed.
+ Then the extra ODE governing
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ is just:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+y_{N+1}'=\mathcal{B}_{w,U,\Omega}=\frac{2}{3}w_{0}^{3}\label{w_system_Li}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now it can be seen that for all the variable formulation the only actual
+ unknowns when constructing 
+\begin_inset Formula $y_{i}'$
+\end_inset
+
+ are 
+\begin_inset Formula $\frac{\partial y_{i}}{\partial x_{i}}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{l}(x_{i})$
+\end_inset
+
+ .
+ This means one can threat all variables with essentially 
+\emph on
+one common algorithm
+\emph default
+ for building 
+\begin_inset Formula $y'$
+\end_inset
+
+ as presented as Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dy_algo"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "system_i"
+
+\end_inset
+
+ can be directly translated to code for each grid point (line 76 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+), and so the additional equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system_Li"
+
+\end_inset
+
+) (line 81 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+).
+ Values of 
+\begin_inset Formula $\frac{\partial y_{i}}{\partial x_{i}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}}$
+\end_inset
+
+ should be computed before (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "system_i"
+
+\end_inset
+
+) is evaluated.
+ For the interior of the grid 
+\begin_inset Formula $x_{2,...N-1}$
+\end_inset
+
+a numerical scheme, such as central finite difference can be used (details
+ are outlined in Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Improving-FD-System"
+
+\end_inset
+
+).
+ The boundary values for grid point 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{N}$
+\end_inset
+
+ must treated specially with boundary conditions.
+ So three subroutines are needed to evaluate:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial y_{i}}{\partial x_{i}},\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}}=\begin{cases}
+left\ side\ BC & for\ x_{1}\\
+derivative\ approximation\ scheme & for_{\ }x_{2,\ldots N-1}\\
+right\ side\ BC & for_{\ }x_{N}
+\end{cases}\label{eq:dydx_choices}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Leak off 
+\begin_inset Formula $q_{l}(x_{i})$
+\end_inset
+
+ requires usage of some additional code handle, the details on writing such
+ are presented in Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Extra-computational-challenges"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In conclusion, the function (subroutine) for 
+\begin_inset Formula $y'$
+\end_inset
+
+ is designed here such so it uses four other functions (subroutines) left
+ and right side BC, derivative approximation and leak off handle.
+ This is shown in sample code at lines 64-73 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+.
+ The objects that are used there are passed through constructor (line 14
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Crack-systemW"
+
+\end_inset
+
+), and can be easily replaced by different implementations, allowing experimenta
+tion with many different ideas.
+ Further section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Derivative-approximation-schemes"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Better-FD-formulation"
+
+\end_inset
+
+ shows what happens when some different approximations of the derevatives
+ are considered.
+\end_layout
+
+\begin_layout Subsubsection
+Left BC 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Left-BC"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets consider one variation of left side BC, derived explicitly for 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\frac{\partial y_{1}}{\partial x_{1}} & = & -\frac{ML(t)}{k}q_{0}(t)\frac{1}{y_{1}^{3}}\label{eq:left_bc_first_der}\\
+\frac{\partial^{2}y_{1}}{\partial x_{1}^{2}} & \approx & \left(-\frac{2}{x_{2}}a+\frac{4}{x_{2}}\frac{ML(t)q_{0}(t)y_{1}^{-4}}{k}-\frac{6}{x_{2}^{-2}}\right)y_{1}+\label{eq:left_bc_second_der}\\
+ &  & \left(-\frac{2}{x_{2}}b+\frac{6}{x_{2}^{-2}}\right)y_{2}+\left(-\frac{2}{x_{2}}c\right)y_{3}\nonumber 
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+a=-\frac{1}{2\left(x_{2}-x_{1}\right)},\quad b=\frac{1}{2}\left(\frac{1}{x_{2}-x_{1}}-\frac{1}{x_{3}-x_{2}}\right),\quad c=\frac{1}{2\left(x_{3}-x_{2}\right)}\label{abc}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This left side BC relates first derivative (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:left_bc_first_der"
+
+\end_inset
+
+) directly to fluid pumping 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+.
+ The second derivative (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:left_bc_second_der"
+
+\end_inset
+
+) is obtained by differentiating a cubic polynomial 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+A cubic polynomial 
+\begin_inset Formula $ax^{3}+bx^{2}+cx+d$
+\end_inset
+
+ can be interpolated to match points 
+\begin_inset Formula $(x_{1},w_{1})$
+\end_inset
+
+, and 
+\begin_inset Formula $(x_{2},w_{2})$
+\end_inset
+
+ , such so it first derivative and second derivative at 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+matches 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:left_bc_first_der"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "as"
+
+\end_inset
+
+.
+ These are four conditions for four unknowns.
+ 
+\end_layout
+
+\end_inset
+
+.
+ Similar expressions can be derived for 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ variables (but not if alternative form of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ BC 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "omega_boundary_1"
+
+\end_inset
+
+ is used) .
+ Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BC-x=0"
+
+\end_inset
+
+ shows example code.
+\end_layout
+
+\begin_layout Subsubsection
+Right BC
+\begin_inset CommandInset label
+LatexCommand label
+name "tip_strategy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The value of 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+ is best to be found as a byproduct of the right side BC.
+ Several right side BC versions were tested, as 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "BC_N"
+
+\end_inset
+
+, or 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L1"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L2"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L3"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L4"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "L5"
+
+\end_inset
+
+ can be implemented in multiple ways, and the best found is to consider
+ the following two equations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}w_{0} & \approx A_{1}y_{N-1}+A_{2}y_{N}\\
+w_{1} & \approx B_{1}y_{N-1}+B_{2}y_{N}
+\end{split}
+\label{w0w1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the constants 
+\begin_inset Formula $A_{1},\ A_{2},\ B_{1},\ B_{2}$
+\end_inset
+
+ are based on the last two grid points:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}A_{1}= & \left((1-x_{N-1})^{\frac{1}{3}}-\frac{(1-x_{N-1})^{\frac{1}{2}}}{(1-x_{N})^{\frac{1}{6}}}\right)^{-1}\\
+A_{2}= & -\left(\frac{1-x_{N-1}}{1-x_{N}}\right)^{\frac{1}{2}}A_{1}\\
+B_{1}= & -\frac{A_{1}}{(1-x_{N-1})^{\frac{1}{6}}}\\
+B_{2}= & \frac{1}{(1-x_{N-1})^{\frac{1}{2}}}-\frac{A_{2}}{(1-x_{N-1})^{\frac{1}{6}}}
+\end{split}
+\label{blablabla}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Again constants 
+\begin_inset Formula $A_{1},\ A_{2},\ B_{1},\ B_{2}$
+\end_inset
+
+ presented here were derived for 
+\begin_inset Formula $w$
+\end_inset
+
+ variable system, but it is possible to do the same for both 
+\begin_inset Formula $U$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Having found 
+\begin_inset Formula $w_{0}$
+\end_inset
+
+and 
+\begin_inset Formula $w_{1}$
+\end_inset
+
+, these values can be used in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "system_i"
+
+\end_inset
+
+ and the right end derivatives can be directly set as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{split}\frac{\partial y_{N}}{\partial x_{N}}= & -\frac{w_{0}}{3}(1-x_{N})^{-\frac{2}{3}}-\frac{w_{1}}{2}(1-x_{N})^{-\frac{1}{2}}\\
+\frac{\partial^{2}y_{N}}{\partial x_{N}}= & -\frac{2w_{0}}{9}(1-x_{N})^{-\frac{5}{3}}-\frac{w_{1}}{4}(1-x_{N})^{-\frac{3}{2}}
+\end{split}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which corresponds to implementing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "BC_N"
+
+\end_inset
+
+ (or 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "expan_3"
+
+\end_inset
+
+, or 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "expan_3"
+
+\end_inset
+
+).
+ Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:BC-x=1"
+
+\end_inset
+
+ for example code.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+left
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+This
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+this
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwData
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+up
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Union
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwFunction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+FindCompress
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+input
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetKwInOut
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+output
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Input
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $y(t)$
+\end_inset
+
+ as a vector 
+\begin_inset Formula $\{w_{1},w_{2},...,w_{N},L^{2}\}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+Output
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $y'(t)$
+\end_inset
+
+ as a vector 
+\begin_inset Formula $\{\mathcal{A}_{1},\mathcal{A}_{2},...,\mathcal{A}_{N},\mathcal{B}\}$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{\partial y_{1}}{\partial x_{1}},\frac{\partial^{2}y_{1}}{\partial x_{1}^{2}}\longleftarrow$
+\end_inset
+
+ left BC 
+\begin_inset Formula $\left(y(t)\right)$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $w_{0},\ \frac{\partial y_{N}}{\partial x_{N}},\frac{\partial^{2}y_{N}}{\partial x_{N}^{2}}\longleftarrow$
+\end_inset
+
+ right BC 
+\begin_inset Formula $\left(y(t)\right)$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $i\leftarrow2$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N-1$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{\partial y_{i}}{\partial x_{i}},\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}}\longleftarrow$
+\end_inset
+
+ derivative
+\begin_inset space \space{}
+\end_inset
+
+approximation
+\begin_inset space \space{}
+\end_inset
+
+scheme 
+\begin_inset Formula $\left(y(t)\right)$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+For
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $i\leftarrow1$
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $y'_{i}\leftarrow\mathcal{A}_{i}\left(y(t),w_{0},\frac{\partial y_{i}}{\partial x_{i}},\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}},q_{l}(t,x_{i})\right)$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $y'_{N+1}\leftarrow\mathcal{B}\left(w_{0}\right)$
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The procedure for obtaining 
+\begin_inset Formula $y'(t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dy_algo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

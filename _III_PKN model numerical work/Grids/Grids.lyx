@@ -1,0 +1,303 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Grids 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Grids"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All grids assume spacing of 
+\begin_inset Formula $N$
+\end_inset
+
+ number of points in an interval of 
+\begin_inset Formula $\tilde{x}\in[0,1-\epsilon]$
+\end_inset
+
+ with some small value of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Uniform grid
+\end_layout
+
+\begin_layout Standard
+Uniform grid 
+\begin_inset Formula 
+\begin{equation}
+x_{m}^{(1)}=(1-\epsilon)k/N,\quad k=0,1,...,N\label{mesh_uniform}
+\end{equation}
+
+\end_inset
+
+witch divides the interval into 
+\begin_inset Formula $N$
+\end_inset
+
+ equally spaced points.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Power grid
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{m}^{(2)}(\delta)=1-\left(1-\left(1-\varepsilon^{\frac{1}{\delta}}\right)\frac{m}{N}\right)^{\delta},\quad m=1,...,N.\label{mesh_power}
+\end{equation}
+
+\end_inset
+
+Such grid has a benefit of being denser in the proximity of crack tip where
+ the solution for the problem is harder to obtain, therefore allows for
+ greater accuracy
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+As proved by countless tests with non regular meshes 
+\end_layout
+
+\end_inset
+
+.
+ The value of parameter 
+\begin_inset Formula $\delta$
+\end_inset
+
+ should be chosen such so problem stiffens is minimized.
+ In the Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Stiffness-analysis"
+
+\end_inset
+
+ it is shown that the optimal value is somewhere close to 
+\begin_inset Formula $\delta=2.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Exponential grid
+\end_layout
+
+\begin_layout Standard
+Modification of the exponential law:
+\begin_inset Formula 
+\begin{equation}
+x_{m}^{(3)}=\tanh(ak),\quad k=0,1,...,N
+\end{equation}
+
+\end_inset
+
+where parameter 
+\begin_inset Formula $a$
+\end_inset
+
+ is given by 
+\begin_inset Formula 
+\begin{equation}
+a=\frac{\tanh(1-\epsilon)}{N}\label{grid_condition_1}
+\end{equation}
+
+\end_inset
+
+Again such grid has a benefit of being denser in the proximity of crack
+ tip where the solution for the problem is harder to obtain, therefore allows
+ for greater accuracy.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Double power grid
+\end_layout
+
+\begin_layout Standard
+Special designed grid that will be used in the case of multifracturing.
+ It is a composition of two power grids, that has the same advantage as
+ power grid when it comes to extra accuracy in the tip region, and adds
+ extra accuracy at the crack inlet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{a}(\delta_{a})=1-\left(1-\left(1-(2\varepsilon)^{\frac{1}{\delta_{a}}}\right)\frac{m}{\lfloor\frac{N}{2}\rfloor}\right)^{\delta_{a}},\quad m=1,...,\lfloor\frac{N}{2}\rfloor+1.\label{double_mesh_a}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{b}(\delta_{b})=1-\left(1-\frac{m}{\lfloor\frac{N}{2}\rfloor}\right)^{\delta_{b}},\quad m=1,...,\lfloor\frac{N}{2}\rfloor+1.\label{double_mesh_b}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{m}^{(4)}=\begin{cases}
+\frac{1-x_{b}}{2} & m<\lfloor\frac{N}{2}\rfloor+1\\
+\frac{1}{2}+\frac{x_{a}}{2} & m>\lfloor\frac{N}{2}\rfloor+1
+\end{cases}\quad m=0,...,N\label{double_power_mesh}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The values of parameters are 
+\begin_inset Formula $\delta_{a}=2.25$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta_{b}=1.5$
+\end_inset
+
+.
+ This mesh has one disadvantage of working only for odd values of 
+\begin_inset Formula $N$
+\end_inset
+
+ (though this is not a real problem).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h*
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename grid_comp.eps
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Comparison of used grids.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "grid_comp"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

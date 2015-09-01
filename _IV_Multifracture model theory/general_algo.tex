@@ -1,0 +1,71 @@
+\documentclass[10pt]{article}
+ \usepackage{latexsym,amsmath,amssymb,amsbsy,amstext,amscd,amsfonts}
+ \usepackage{graphics,graphicx}
+ \usepackage{color}
+ \usepackage{epstopdf}
+ \usepackage{algorithm2e}
+
+
+
+\begin{document}
+
+
+\IncMargin{1em}
+
+\begin{algorithm}
+
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{initial time $t_0$, end time $t_{end}$, initial model state $\mathcal{M}_0$}, inner $solver$ instance
+
+\Output{colection of model states  $\mathcal{M}_0,..., \mathcal{M}_{t_{end}}$}
+
+\BlankLine
+
+$Vol_0\longleftarrow$ initial fracture volume\;
+$\mathcal{M}_{list} \longleftarrow $ new model collection\;
+add $\mathcal{M}_{0}$ to  $\mathcal{M}_{list}$\;
+$\mathcal{M}_{i}\longleftarrow \mathcal{M}_{0}$ \;
+$t\longleftarrow t_0$\;
+$\Delta t\longleftarrow $ default time step\;
+	
+\While{$t<t_{end}$}{
+
+	$\mathcal{M}_{j} \longleftarrow \mathcal{M}_{i}$\;
+	$\mathcal{M}_{i} \longleftarrow$ deep copy of $\mathcal{M}_{i}$\;
+	update $\mathcal{M}_{i}$ visibility and jacobian pattern matrices\;
+	use $solver$ to advance $\mathcal{M}_{i}$ by $\Delta t$\;
+	$Vol  \longleftarrow $ total volume of $\mathcal{M}_{i}$\;
+	$Q_0 \longleftarrow$ sum of $\int_t^{t+\Delta t}q_0\ dt$ for all vertecis \;
+	$Q_l \longleftarrow$ sum of $\int_t^{t+\Delta t}\int_0^1 q_l\ dx\ dt$ for all edges \;
+	store relative fluid balance for $\mathcal{M}_{i}$ as $\frac{Vol-Vol_0-Q_l}{Q_0}$
+
+	\uIf{$\mathcal{M}_{i}$ has overshoots}{
+		$\mathcal{M}_{i} \longleftarrow \mathcal{M}_{j}$ \;
+		$\Delta t \longleftarrow $ time to soonest overshot in $\mathcal{M}_{i}$\;
+	}
+
+	\uElseIf{$\mathcal{M}_{i}$ has valid collisions}{
+		add $\mathcal{M}_{i}$ to  $\mathcal{M}_{list}$\;
+		$\mathcal{M}_{i} \longleftarrow$ deep copy of $\mathcal{M}_{i}$\;
+		resolve collisions for $\mathcal{M}_{i}$\;
+	}
+
+	\uElse{
+		$\Delta t\longleftarrow 2\Delta t$ \;
+		$t_{col} \longleftarrow$ soonest forecasted time to collision for $\mathcal{M}_{i}$\;
+		\If{$t_{col} <\Delta t$ }{
+			$\Delta t \longleftarrow t_{col} $\;
+		}
+		add $\mathcal{M}_{i}$ to  $\mathcal{M}_{list}$\;
+
+	}
+
+
+}
+
+\end{algorithm}\DecMargin{1em}
+
+\end{document}

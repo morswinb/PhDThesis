@@ -1,0 +1,785 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Interpolating and Integrating fractures
+\end_layout
+
+\begin_layout Standard
+For the problem of multifracturing it is necessary to have a procedure for
+ both integrating and interpolating the crack and pipe segments.
+ These need arises form two reasons.
+ First, when computing the fluid balance equation the volume of fractures
+ needs to be found.
+ Second various events of crack collisions and splits require unknown intermedia
+te width values that must be found by interpolation the known width data
+ on discredited grid.
+ Three strategies for interpolation are considered.
+ Linear, cubic and cubic Hermite splines were considered.
+\end_layout
+
+\begin_layout Paragraph
+piecewise polynomial definition
+\end_layout
+
+\begin_layout Standard
+The grid of 
+\begin_inset Formula $N$
+\end_inset
+
+ points can be divided into 
+\begin_inset Formula $N-1$
+\end_inset
+
+ intervals, and for each of these such values of 
+\begin_inset Formula $a_{i},b_{i},c_{i},d_{i}$
+\end_inset
+
+ are found that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+S_{i}(x)=d_{i}(x-x_{i})^{3}+c_{i}(x-x_{i})^{2}+b_{i}(x-x_{i})+a_{i}\label{piecewise_polynomial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course in linear case for all 
+\begin_inset Formula $i$
+\end_inset
+
+ 
+\begin_inset Formula $c_{i}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{i}=0$
+\end_inset
+
+, however the equations for evaluation of these strategies can be more easy
+ implemented when generalized to one equation.
+\end_layout
+
+\begin_layout Paragraph
+interpolation details (???)
+\end_layout
+
+\begin_layout Standard
+The details how to obtain 
+\begin_inset Formula $a_{i},b_{i},c_{i},d_{i}$
+\end_inset
+
+ could be found here
+\end_layout
+
+\begin_layout Paragraph
+value evaluation
+\end_layout
+
+\begin_layout Standard
+When obtaining the value of interpolating piecewise polynomial at some point
+ x, it is important to the interval 
+\begin_inset Formula $x_{i}<x\le x_{i+i}$
+\end_inset
+
+ to locate witch 
+\begin_inset Formula $S_{i}(x)$
+\end_inset
+
+ polynomial piece to use.
+ Then the faster too compute form of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "piecewise_polynomial"
+
+\end_inset
+
+ can be used.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+S_{i}(x)=a_{i}+\left(x-x_{i}\right)\left(b_{i}+\left(x-x_{i}\right)\left(c_{i}+\left(x-x_{i}\right)d_{i})\right))\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since the values of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ are sorted the index 
+\begin_inset Formula $i$
+\end_inset
+
+ of the next lesser value than given 
+\begin_inset Formula $x$
+\end_inset
+
+ can be find using the binary search method.
+ Doing so 
+\begin_inset Formula $O(\log_{2}N)$
+\end_inset
+
+ search time is obtained, and so the need to find the right piece of polynomial
+ when evaluating is not a burden on computation time.
+\end_layout
+
+\begin_layout Paragraph
+integration
+\end_layout
+
+\begin_layout Standard
+Having a segment of a pipe or crack interpolated, it is easy to find the
+ integral of a cross section by integrating the piecewise polynomials.
+ Given integration start point 
+\begin_inset Formula $a$
+\end_inset
+
+ and end point 
+\begin_inset Formula $b$
+\end_inset
+
+ the integral of 
+\begin_inset Formula $S(x)$
+\end_inset
+
+ is: 
+\begin_inset Formula 
+\begin{equation}
+\int_{a}^{b}S_{i}(x)dx=(x-x_{i})\left(\frac{a_{i}}{2}+\left(x-x_{i}\right)\left(\frac{b_{i}}{3}+\left(x-x_{i}\right)\left(\frac{c_{i}}{4}+\left(x-x_{i}\right)\frac{d_{i}}{4}\right)\right)\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can apply this to the whole piecewise spline:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\int_{a}^{b}wdx=\int_{a}^{x_{k}}S_{k-1}(x)dx+\sum_{0}^{j}\int_{x_{k+j}}^{x_{k+j+1}}S_{k+j}(x)dx+\int_{x_{k+j}}^{b}S_{k+j+1}(x)dx
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $w$
+\end_inset
+
+ is the width of pipe or crack under integration.
+ The values of 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are obtained such so 
+\begin_inset Formula $a<x_{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{k+j}<b$
+\end_inset
+
+, and all and only the piecewise polynomial segments that lie in the integration
+ interval are used.
+\end_layout
+
+\begin_layout Paragraph
+interpolating crack with knowledge of asymptotic
+\end_layout
+
+\begin_layout Standard
+When dealing with crack and its width 
+\begin_inset Formula $w_{crack}$
+\end_inset
+
+, it is possible to obtain much better accuracy when interpolating.
+ The two terms asymptotic representation of PKN model fracture [??] can
+ simplify the process:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+f(x)=A(1-x)^{\alpha}+B(1-x)^{\beta}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the powers 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and parameters 
+\begin_inset Formula $A$
+\end_inset
+
+, 
+\begin_inset Formula $B$
+\end_inset
+
+ obtained through crack tip handling strategies [???].
+ Now when interpolating polynomial 
+\begin_inset Formula $S(x)$
+\end_inset
+
+, it can be interpolated over 
+\begin_inset Formula $w_{crack}-f(x)$
+\end_inset
+
+ instead.
+ Then the value of 
+\begin_inset Formula $w(x)$
+\end_inset
+
+ after interpolation for some point x can be found as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+w(x)=S(x)+A(1-x)^{\alpha}+B(1-x)^{\beta}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This simplification can also be used to find 
+\begin_inset Formula $\int_{0}^{1}wdx$
+\end_inset
+
+, that is the whole cross section of a fracture.
+ This can be done by the following,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{1}w_{crack}dx=\int_{0}^{1}(w_{crack}-f)dx+\int_{0}^{1}f(x)dx
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and since 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ can be easily integrated: 
+\begin_inset Formula 
+\begin{equation}
+\int_{0}^{1}f(x)dx=\frac{A}{\alpha+1}+\frac{B}{\beta+1}
+\end{equation}
+
+\end_inset
+
+After subtracting 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ from 
+\begin_inset Formula $w_{crack}$
+\end_inset
+
+ and a large part of the problem analytically, leaving much lesser part
+ to be computed by numerical approximation.
+ This allows for less error when comparing integration and value evaluation
+ results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\int_{0}^{1}w_{crack}dx$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\int_{0}^{1}(w_{crack}-f)dx+F$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\int_{0}^{1}w_{pipe}dx$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+linear 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.17e-03
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.34e-05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.13e-04 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cubic 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.24e-04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.22e-06
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.53e-06 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cubic clamped 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.48e-04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.22e-04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.57e-06
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hermite 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.64e-04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.44e-08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.17e-07
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hermite clamped 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.24e-04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.34e-04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.84e-08
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+accuracy of integration of pipe and crack sections on 
+\begin_inset Formula $N=10$
+\end_inset
+
+ point quadratic (for crack) and regular grid (for pipe).
+ Clearly with as little as 
+\begin_inset Formula $N=10$
+\end_inset
+
+ points it is possible to achieve integration accuracy of a few orders better
+ than the expected accuracy of numerically computed 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_last-2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pipe_inter.eps
+	scale 55
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename crack_inter.eps
+	scale 55
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Relative error obtained while computing midpoints between 
+\begin_inset Formula $N=10$
+\end_inset
+
+ points grid, self similar based pipe and crack.
+ First various interpolates were was constructed, then the continuous value
+ of crack and pipe with was approximated.
+ It is possible to achieve accuracy of 
+\begin_inset Formula $10^{-}4$
+\end_inset
+
+ or better for some methods over the entire interval
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

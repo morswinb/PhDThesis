@@ -1,0 +1,409 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+
+% load package with some of the available options - you may not need this!
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
+
+% something NOT relevant to the usage of the package.
+\usepackage{url}
+\usepackage{textcomp}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip 18pt
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+MATLAB single fracture code
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Matlab-single-fracture"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Simple Running Script
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Simple-Running-Script"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/SampleRunScript.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Crack system 
+\begin_inset Formula $w$
+\end_inset
+
+ variable
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Crack-systemW"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/CrackSystemW.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+central FD
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:central-FD"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/diffs/FiniteDifferences.
+m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+polynomial
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:polynomial"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/diffs/Polynomial2nd.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+spline
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:spline"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/diffs/DiffSpline.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Asym FD
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Asym-FD"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/diffs/AsymFD.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+regular grid
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:regural-grid"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/grids/RegularGrid.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+BC x=0
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:BC-x=0"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/leftBC1.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+BC x=1
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:BC-x=1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/rightBC1.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Benchmark Self-Similar
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Benchmark-Self-Similar"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/BenchmarkSimilar.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Initial condition
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Initial-condition"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=Matlab]{C:/Matlab_Source/_Final/InitialCondition.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

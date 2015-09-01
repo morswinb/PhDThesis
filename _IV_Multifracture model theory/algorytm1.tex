@@ -1,0 +1,66 @@
+\documentclass[10pt]{article}
+ \usepackage{latexsym,amsmath,amssymb,amsbsy,amstext,amscd,amsfonts}
+ \usepackage{graphics,graphicx}
+ \usepackage{color}
+ \usepackage{epstopdf}
+ \usepackage{algorithm2e}
+
+
+
+\begin{document}
+
+
+\IncMargin{1em}
+
+\begin{algorithm}
+
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+
+\Input{vectors with $L(t_{i})$, $t_{i}$ and $V_{0}(t_{i})$, arranged by their appearance time $t_{i}$, N grid points $x_{k}$}
+\Output{$\tau_{num}(x_k)$ as a vector of size N}
+
+\BlankLine
+
+$\tau_{n}(x_{k})-\longleftarrow$ array length $N$ of empty dynamic arrays length $n$ \;
+$k \longleftarrow 1$\;
+\For{$i\leftarrow 1$ \KwTo length of $t_i-1$}{
+	\If{$L(t_{i+1})\geq L(t_{i})$}{
+		\Repeat{$x_{k}>L(t_{i})$}
+		{
+			$\tau_{n+1}(x_{k}) \longleftarrow $ output of interpolating $L(t),V_0(t)$ at $t_i,t_{i+1}$\;
+			$k \longleftarrow k+1$\;
+		}
+
+	}{
+
+	}
+	\If{$L(t_{i+1})<L(t_{i})$}{
+		\Repeat{$x_{k}<L(t_{i})$}
+		{
+			$\tau_{n+1}(x_{k}) \longleftarrow $ output of interpolating $L(t),V_0(t)$ at $t_i,t_{i+1}$\;
+			$k:=k-1$\;
+		}
+
+	}
+
+}
+
+\For{$i\leftarrow 1$ \KwTo $N$}{
+	$\tau_{num}(x_{k}) \longleftarrow \tau_{1}(x_{k})$\;
+	\For{$j\leftarrow 2$ \KwTo length of $\tau_{n}(x_{k})$ }{
+
+		\uIf{j even}{
+			$\tau_{num}(x_{k}) \longleftarrow \tau_{num}(x_{k}) + \tau_j(x_{k})$\;
+		}
+		\uElse{$\tau_{num}(x_{k}) \longleftarrow \tau_{num}(x_{k}) - \tau_j(x_{k})$\;}
+			
+
+	}
+
+}
+
+\end{algorithm}\DecMargin{1em}
+
+\end{document}

@@ -1,0 +1,163 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+General Summary
+\end_layout
+
+\begin_layout Standard
+There were two main goal in this work.
+ The first goal was to study and improve the existing PKN model, the second
+ was to develop a working multifracturing solution based on this model.
+\end_layout
+
+\begin_layout Standard
+Using a mixture of recent improvements, forgotten computational techniques,
+ and some own additions it was possible to construct and implement an improved
+ formulation for these classical model.
+ The overall accuracies were always of at least 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+, up to 
+\begin_inset Formula $10^{-6}$
+\end_inset
+
+ in some more specific cases.
+ Additionally the computation time needed for these single fractures is
+ always kept at reasonable low levels.
+ The two term asymptotics boundary condition proved to be especially beneficial
+ in these single fracture formulation, as it not only allowed to adequately
+ tackle degenerative PDE at the crack tip, but also gave accurately approximated
+ first term, later used for fracture velocity, finite differences and integratio
+n.
+ It was shown that the proper choice of dependent variable offers substantial
+ improvements, although even better improvements could be achieved with
+ proper discretization: derivative approximation and spatial mesh choices.
+ 
+\end_layout
+
+\begin_layout Standard
+The obtained procedure for single fracture was tested on a wide range of
+ initial conditions: different leak off types, storage, receding and propagating
+ regimes, various pump in rates and initial shapes.
+ It was proven that it is possible to obtain accurate numerical solution
+ for a great majority of possible combinations of these conditions, although
+ in some cases it was necessary to do some extra extensions to the original
+ formulation, to properly account for previously unforeseen circumstances.
+ 
+\end_layout
+
+\begin_layout Standard
+The second task of building multifracturing model proved to be much more
+ challenging.
+ Although the PKN model neatly serves it purpose, it is, just like other
+ theoretical fracturing models, very limited in its scope and grossly oversimpli
+fied.
+ If a single fracture model is to be called a multiphisics formulation,
+ then a combination of these should be treated as a 
+\begin_inset Quotes eld
+\end_inset
+
+grand
+\begin_inset Quotes erd
+\end_inset
+
+ multiphisics problem.
+ Not all the possible issues were addressed or resolved here, rock toughness,
+ propane transportation or thermal effects were skipped all along.
+ The achieved primary task was to build a multifracturing model with open
+ 2D geometry and fracture interactions, both pseudo elastic and derived
+ from presence of natural fractures.
+ This required derivation of new governing equations and boundary conditions
+ that could handle multiple fractures adequately.
+ The algorithms developed for obtaining numerical solutions of single fractures
+ were also eventually superseded to deal with growing size and complexity.
+ Furthermore it was necessity to consciously design software capable of
+ dealing with multiple fracture hydraulic simulation, using appropriate
+ programing techniques as well as the derived mathematical formulation.
+\end_layout
+
+\begin_layout Standard
+The final result of this work is a study that formulated theoretical and
+ practical basis for construction of relatively simple but powerful hydraulic
+ fracture simulation program, that can handle a wide range of possible hydraulic
+ fracturing treatment scenarios.
+ The task is by no means complete yet, but rather works as a prof of concept
+ that using one dimensional formulation it is eventually possible to build
+ comprehensive solution that could compete with its commercial counterparts.
+ A variety of mathematical techniques ranging from asymptotics analysis,
+ through numerical integrations, and ending up on computer graphics and
+ vision algorithms were utilized, making this thesis covering several fields,
+ but all of these were applied to solve strict hydraulic fracture problems
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,391 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Reformulation of the problem in proper dependent variables.
+ First approach 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Reformulation-of-the"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+ and later in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL"
+
+\end_inset
+
+ it has been shown that the dependent variable 
+\begin_inset Formula 
+\begin{equation}
+U(t,x)=w^{3}(t,x)\label{U}
+\end{equation}
+
+\end_inset
+
+is more favorable for the solution of the system (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_initial_DS"
+
+\end_inset
+
+) than the crack opening itself.
+ This idea is based on the fact that, according to the asymptotics of the
+ solution near the crack tip, the dependent variable 
+\begin_inset Formula $U$
+\end_inset
+
+ is much smoother than 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ In the case of an impermeable solid, the solution 
+\begin_inset Formula $U$
+\end_inset
+
+ is analytic in the closed interval 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+).
+ However, the type of leak-off function is of significant importance here.
+ Thus, adopting asymptotic representation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_asym_1n"
+
+\end_inset
+
+), one can see that for 
+\begin_inset Formula $x\to1$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+U=U_{0}(t)(1-x)+U_{1}(t)(1-x)^{\frac{2}{3}+\alpha}+o((1-x)^{\frac{1}{3}+2\alpha}),\label{U_asymp}
+\end{equation}
+
+\end_inset
+
+where the coefficients 
+\begin_inset Formula $U_{0}(t)$
+\end_inset
+
+ and 
+\begin_inset Formula $U_{1}(t)$
+\end_inset
+
+ are directly related to those appearing in the crack opening formulation:
+ 
+\begin_inset Formula 
+\begin{equation}
+U_{0}(t)=w_{0}^{3}(t),\quad U_{1}(t)=w_{0}^{2}(t)w_{1}(t).\label{U_coefs}
+\end{equation}
+
+\end_inset
+
+Depending on the type of leak-off described in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "carter"
+
+\end_inset
+
+, the exponent in the second asymptotic term 
+\begin_inset Formula $\frac{2}{3}+\alpha$
+\end_inset
+
+ may take value 
+\begin_inset Formula $3/2$
+\end_inset
+
+, 
+\begin_inset Formula $11/6$
+\end_inset
+
+ or 2, respectively.
+ Thus in the first two cases, the transformation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "U"
+
+\end_inset
+
+) no longer results in polynomial representations of asymptotic expansion
+ for 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ For this reason, the advantage of the approach using variable 
+\begin_inset Formula $U$
+\end_inset
+
+ in more general cases, when the leak-off is singular near the crack tip,
+ should still be confirmed.
+ On the other hand, at least two factors work in favor of this formulation.
+ First, the spatial derivative of 
+\begin_inset Formula $U$
+\end_inset
+
+ is not singular and, second, the particle velocity is given by a linear
+ relationship 
+\begin_inset Formula 
+\begin{equation}
+V(t,x)=-\frac{1}{3L(t)}\frac{\partial U}{\partial x}.\label{V_norm}
+\end{equation}
+
+\end_inset
+
+The governing equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_continuity"
+
+\end_inset
+
+ in terms of the new variable can be written in the normalized domain 
+\begin_inset Formula $x\in(0,1)$
+\end_inset
+
+ as: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial U}{\partial t}=\frac{1}{L(t)}\left[\left(xV(t,1)-V(t,x)\right)\frac{\partial U}{\partial x}-3U\frac{\partial V}{\partial x}\right]-3U^{\frac{2}{3}}q_{l},\label{U_continuity}
+\end{equation}
+
+\end_inset
+
+Similarly to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_system"
+
+\end_inset
+
+) the particle velocity function may be eliminated from the lubrication
+ equation: 
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial U}{\partial t}=\frac{1}{3L^{2}(t)}\left[xU_{0}\frac{\partial U}{\partial x}+\left(\frac{\partial U}{\partial x}\right)^{2}+3U\frac{\partial^{2}U}{\partial x^{2}}\right]-3U^{\frac{2}{3}}q_{l}.\label{U_system}
+\end{equation}
+
+\end_inset
+
+Note that equations 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_continuity"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_system"
+
+\end_inset
+
+ are of a very similar structure to those evaluated for the crack opening
+ 
+\begin_inset Formula $w$
+\end_inset
+
+.
+ They exhibit the same degenerative nature near the crack tip.
+\end_layout
+
+\begin_layout Standard
+Finally, boundary conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "norm_boundary"
+
+\end_inset
+
+) transform to: 
+\begin_inset Formula 
+\begin{equation}
+-\frac{\sqrt[3]{U(t,0)}}{3L(t)}\frac{\partial}{\partial x}U(t,0)=q_{0}(t),\quad U(t,1)=0,\label{U_boundary}
+\end{equation}
+
+\end_inset
+
+while the speed equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "new_speed"
+
+\end_inset
+
+ takes the following form: 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}L^{2}=\frac{2}{3}U_{0}(t),\quad\quad t>0.\label{new_speed_U}
+\end{equation}
+
+\end_inset
+
+The system of PDEs equivalent to (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "w_DS"
+
+\end_inset
+
+) is now defined as: 
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}U=\mathcal{A}_{U}(U,L^{2}),\quad\frac{d}{dt}L^{2}(t)=\mathcal{B}_{U}(U).\label{U_DS}
+\end{equation}
+
+\end_inset
+
+The operator 
+\begin_inset Formula $\mathcal{A}_{U}$
+\end_inset
+
+ is described by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_system"
+
+\end_inset
+
+ with boundary conditions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "U_boundary"
+
+\end_inset
+
+, while the second operator 
+\begin_inset Formula $\mathcal{B}_{U}$
+\end_inset
+
+ is given by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "new_speed_U"
+
+\end_inset
+
+.
+ Finally, the initial conditions are similar to those in the previous formulatio
+n 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_initial"
+
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+L(0)=1,\quad U(0,x)=w_{*}^{3}(x),\quad x\in(0,1).\label{U_initial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

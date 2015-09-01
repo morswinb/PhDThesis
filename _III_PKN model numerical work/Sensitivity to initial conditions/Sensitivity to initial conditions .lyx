@@ -1,0 +1,3057 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Sensitivity to initial conditions
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sensitivity-to-initial"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Some works attempt to start from zero initial width and opening 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Spectral"
+
+\end_inset
+
+ , others take some known non zero result and treat it as the initial condition
+ 
+\lang american
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Economides2000,MWL"
+
+\end_inset
+
+
+\lang english
+.
+ As it was shown in the problem formulation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_initial"
+
+\end_inset
+
+ this work assumes some existing non zero fracture aperture and length.
+ In the work by
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+ the self similar zero leak off solution (see Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Zero-leak-off benchnchmark"
+
+\end_inset
+
+) was used as this starting point, and this idea was carried over in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "MWL,moje_bzdury"
+
+\end_inset
+
+.
+ The initial conditions were therefore based a valid solution of existing
+ hydraulic fracture.
+ One can ask a question on what implications does the change of value of
+ initial condition has on the solution, what happens if the initial fracture
+ does not look like a casual hydraulic fracture ?
+\end_layout
+
+\begin_layout Standard
+To answer this question a set of test scenarios with modifications to the
+ conventional initial conditions was prepared.
+ The approach presented here uses the zero leak off self similar solution
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+) given by Linkov 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+, to identify 
+\begin_inset Formula $w_{*}$
+\end_inset
+
+and corresponding 
+\begin_inset Formula $l_{*}$
+\end_inset
+
+.
+ This values will be alternated to show possible results of tempering with
+ initial conditions.
+ The outcome will be presented as plots with multiple possible trajectories
+ of 
+\begin_inset Formula $L(t)$
+\end_inset
+
+, each corresponding to different values of 
+\begin_inset Formula $w_{*}$
+\end_inset
+
+,
+\begin_inset Formula $l_{*}$
+\end_inset
+
+and 
+\begin_inset Formula $a$
+\end_inset
+
+ (which is the initial time).
+ As an example of such a plot consider Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "example_initial_plot"
+
+\end_inset
+
+ where several possible trajectories of 
+\begin_inset Formula $L(t)$
+\end_inset
+
+ are shown.
+ 
+\end_layout
+
+\begin_layout Standard
+Different initial values will affect the stability of computations.
+ The calculations which resulted in solver failures or incorrect fluid balance
+ value (see Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "subsec:fluid_balance"
+
+\end_inset
+
+), relative loss of over 
+\begin_inset Formula $5\%$
+\end_inset
+
+ of fluid, will be shown as 
+\emph on
+doted lines
+\emph default
+, or not shown at all.
+ All the tests will be carried out with initial time values of
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\left\{ 10^{-8},10^{-6},10^{-4},10^{-2},1\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and multiple values of some other parameters, giving a total of about 30-50
+ attempted fracture computations for each initial condition variation.
+ Three variants of leak offs will be also considered for each of the tests
+ scenarios: zero leak off, Carter law (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+, and pressure proportional version of Carter law (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+ Each of these leak offs can be associated with a known large time asymptote:
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:carter_law_large_time"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pressure_carter_large_time"
+
+\end_inset
+
+) to which the fracture length should eventually approach to.
+ Zero leak off solution (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+) is used both as modifiable starting point and large time asymptote for
+ simulations with no leak off.
+ The numerical simulations, if successful, will eventually tend to these
+ large time solutions, but the transient regime will be shown to be difficult
+ to obtain, but very interesting, in many considered cases.
+ One of most deceptive aspects of this computation is the treatment of 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+, two strategies (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "preconditioning_1"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "preconditioning_2"
+
+\end_inset
+
+) will be used.
+ The one essentially forbids any leak off to the formation for the initial
+ segment 
+\begin_inset Formula $xL(x)<l_{*}$
+\end_inset
+
+, while the second strategy allows for leak off at this initial segment.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename example_plot.eps
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example comparison of lengths 
+\begin_inset Formula $L(t)$
+\end_inset
+
+ of five different fractures.
+ Despite different starting times 
+\begin_inset Formula $a$
+\end_inset
+
+ and initial lengths all of the trajectories eventually converge to large
+ time asymptote.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "example_initial_plot"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Varying initial length
+\end_layout
+
+\begin_layout Standard
+Lets first examine the effect of changing the initial lengths.
+ To do so, the original initial crack length 
+\begin_inset Formula $l_{*}$
+\end_inset
+
+ will be multiplied by a factor 
+\begin_inset Formula $B$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+\hat{l_{*}}=Bl_{*}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where the considered values of 
+\begin_inset Formula $B$
+\end_inset
+
+ are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+B=\left\{ 10^{-5},\ 10^{-4},\ 10^{-3},\ 10^{-2},\ 10^{-1},\ 10^{0},\ 10^{1},\ 10^{2},\ 10^{3},\ 10^{4},\ 10^{5}\right\} .
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So now one can observe effects of changing just the fracture length.
+ 
+\end_layout
+
+\begin_layout Standard
+The most stable and predictable result is obtained with zero leak off.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "length_zero_leak"
+
+\end_inset
+
+ shows that trajectories either catch up immediately with the asymptote,
+ if 
+\begin_inset Formula $B<1$
+\end_inset
+
+ hence shorter initial fracture, or wait for the asymptote if 
+\begin_inset Formula $B>1$
+\end_inset
+
+ and longer initial fracture.
+ 
+\end_layout
+
+\begin_layout Standard
+Much more interesting results are obtained with leak offs (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+ and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+, as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "length_carter_leak"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "length_p_carter_leak"
+
+\end_inset
+
+.
+ Here the computations perform well if 
+\begin_inset Formula $B<1$
+\end_inset
+
+, but for 
+\begin_inset Formula $B>1$
+\end_inset
+
+ most of the attempts failed.
+ This could be attributed to ODE15s loosing stability.
+ Where there was no leak off at the initial length (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "preconditioning_1"
+
+\end_inset
+
+), these fractures, that were computed correctly, also waited for the asymptote,
+ while if (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "preconditioning_2"
+
+\end_inset
+
+) was used, successfully computed fractures would shut down until meeting
+ up with the asymptote 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "length_carter_leak"
+
+\end_inset
+
+.
+ (The mechanics behind computing the shut down regime are shown in Subsection
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Shut-down-regime"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename L0_no_leak.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying initial length, zero leak off.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "length_zero_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename L0_carter_leak_no_pre.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No leak off at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename L0_carter_leak.eps
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying initial length, Carter leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "length_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename L0_p_carter_leak_no_pre.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No leak off at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename L0_p_carter_leak.eps
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying initial length, pressure proportional Carter leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "length_p_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Varying the influx at crack mouth
+\end_layout
+
+\begin_layout Standard
+To analyze how perturbations of the influx at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ impact the solution of the problem, lets multiply the pump in rate 
+\begin_inset Formula $q_{0}$
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+which in case of the aforementioned self-similar based initial condition
+ has a constant value 
+\begin_inset Formula $q_{0}=1$
+\end_inset
+
+ (see Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Zero-leak-off benchnchmark"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ by a factor 
+\begin_inset Formula $C$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{equation}
+\hat{q_{0}}=Cq_{0}
+\end{equation}
+
+\end_inset
+
+thus 
+\begin_inset Formula $\hat{q_{0}}$
+\end_inset
+
+ is the new pump in rate.
+ Here considered range of 
+\begin_inset Formula $C$
+\end_inset
+
+ is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+C=\left\{ 10^{-5},\ 10^{-4},\ 10^{-3},10^{-2},\ 10^{-1},\ 10^{0},\ 10^{1},\ 10^{2},\ 10^{3},\ 10^{4},\ 10^{5}\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With the change of pump in rate, relevant large time asymptotes (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+) (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:carter_law_large_time"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pressure_carter_large_time"
+
+\end_inset
+
+) are also affected, the solutions will eventually tend to asymptotes correspond
+ing to the different values of fluid pump in rate.
+\end_layout
+
+\begin_layout Standard
+The result for zero leak off is showed on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "q0_zero_leak"
+
+\end_inset
+
+.
+ Here no problems were encountered, there were smooth transitions from 
+\begin_inset Formula $q_{0}=1$
+\end_inset
+
+ to other zero leak off solutions.
+ The leak offs (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+ and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+ , as shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "q0_carter_leak"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "q0_p_carter_leak"
+
+\end_inset
+
+ again proved to be much more of a challenge.
+ The general tendency was again for each of the trajectories to tend to
+ the corresponding asymptotes.
+ For 
+\begin_inset Formula $C>1$
+\end_inset
+
+ all the attempted computations succeed.
+ For 
+\begin_inset Formula $C<1$
+\end_inset
+
+ fractures would enter shut down regime, in many of the cases, even if no
+ leak off at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+ was allowed.
+ This shut down could take place on a newly opened fracture part (some blue
+ trajectories on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "q0_carter_leak_a"
+
+\end_inset
+
+).
+ Interestingly the most reliable strategy with leak off is shown on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "q0_carter_leak_b"
+
+\end_inset
+
+, where the effects of closing shut down regimes are most noticeable.
+ Only two trajectories were terminated prematurely.
+ On the remaining leak off enabled strategies more trajectories would not
+ reach expected asymptotes, and the worst results were obtained for later
+ start points.
+ Starting at greater times mean longer initial fractures, and so greater
+ discrepancy between zero leak off initial fracture aperture and a solution
+ with leak off.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename q0_no_leak.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying pump in rate, zero leak off.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "q0_zero_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename q0_carter_leak_no_pre.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No leak off at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "q0_carter_leak_a"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset CommandInset label
+LatexCommand label
+name "q0_carter_leak_b"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename q0_carter_leak.eps
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying pump in rate, Carter leak-off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "q0_carter_leak"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename q0_p_carter_leak_no_pre.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No leak off at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename q0_p_carter_leak.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying pump in rate, pressure Carter leak-off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "q0_p_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Varying the initial shape 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename inital_shapes_comp.eps
+	scale 68
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Initial opening 
+\begin_inset Formula $\hat{w_{*}}(x)$
+\end_inset
+
+ obtained by changing power in 
+\begin_inset Formula $A_{j}(1-x)^{\alpha_{j}}$
+\end_inset
+
+.
+ Note that there are no grid points (markers) after
+\begin_inset Formula $1-\epsilon$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "initial_shapes_comparision"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This time it will be investigated how the solution changes depending on
+ the initial shape of the fracture opening 
+\begin_inset Formula $w_{*}(x)$
+\end_inset
+
+.
+ Lets use the following function: 
+\begin_inset Formula 
+\begin{equation}
+\hat{w_{*}}(x)=A_{j}(1-x)^{\alpha_{j}},\ x\leq1-\epsilon
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ defines the shape of the initial fracture and constant 
+\begin_inset Formula $A_{j}$
+\end_inset
+
+ is chosen so that the volume of the fracture is the same for each considered
+ initial shapes.
+\end_layout
+
+\begin_layout Standard
+The values of 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ are in range:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\alpha_{j}=\left\{ -\frac{2}{3},\ -\frac{1}{3},\ 0,\ \frac{1}{3},\ 1,\ 2\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It can be argued that such conditions will create unnatural fractures.
+ Indeed when taking a look Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "initial_shapes_comparision"
+
+\end_inset
+
+ it can be observed that for 
+\begin_inset Formula $\alpha_{j}<0$
+\end_inset
+
+ a singularity at the crack tip is being introduced.
+ However, as the tip is already treated with the special boundary condition
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "expan_1"
+
+\end_inset
+
+ , zero value at crack the tip is implicitly build in the numerical procedure.
+ Furthermore there is no actual grid point past 
+\begin_inset Formula $1-\epsilon$
+\end_inset
+
+, so the produced initial opening has numerically valid values.
+ There are numerous techniques for obtaining initial fractures 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "perforating"
+
+\end_inset
+
+ ,so it is not very far fetched that under right circumstances unusual shapes,
+ close to the results of 
+\begin_inset Formula $\alpha_{j}=-\frac{2}{3},\ -\frac{1}{3},\ 0$
+\end_inset
+
+, might be produced.
+ Testing negative 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ does add some interesting hypothetical scenario, and shows how the algorithm
+ deals with some extreme input values.
+\end_layout
+
+\begin_layout Standard
+The behavior of the solutions with zero leak off shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "shape_zero_leak"
+
+\end_inset
+
+ was again the least interesting to analyze.
+ The initial disturbance in fracture shape would initially contribute to
+ different propagation speed.
+ These differences would however be visible only at small times, thous some
+ areas on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "shape_zero_leak"
+
+\end_inset
+
+ are enlarged to show this subtle variations.
+ The larger values of 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ would cause initial fracture to stop, while smaller 
+\begin_inset Formula $\alpha_{j}$
+\end_inset
+
+ slightly accelerated initial propagation.
+ For 
+\begin_inset Formula $\alpha_{j}=\frac{1}{3}$
+\end_inset
+
+, the shape closest to zero leak off solution 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Benchmark-Self-Similar"
+
+\end_inset
+
+, result was nearly identical.
+ 
+\end_layout
+
+\begin_layout Standard
+For fractures with Carter type leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+ shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "shape_carter_leak"
+
+\end_inset
+
+, similar results were observed, with an exception of initial time of 
+\begin_inset Formula $t=1$
+\end_inset
+
+.
+ At this time start fractures with 
+\begin_inset Formula $\alpha_{j}<\frac{1}{3}$
+\end_inset
+
+ would initially propagate faster, just to open more fresh fracture wall
+ surface (not saturated by cake layer build up), and then recede due to
+ large leak off value, and finally propagate again.
+ For values of 
+\begin_inset Formula $\alpha_{j}>\frac{1}{3}$
+\end_inset
+
+, the trajectories first show shut down regime, followed by propagation,
+ another shutdown, and then yet more propagation.
+ This result could not be obtained without sophisticated approach to 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ approximation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Extra-computational-challenges"
+
+\end_inset
+
+.
+ It is indeed a very interesting result, and should require some proper
+ verification, but as for the testing of initial conditions it is enough
+ to point out that such result might appear, and the single fracture procedure
+ described in this work can handle such a result.
+\end_layout
+
+\begin_layout Standard
+With Carter type leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+ shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "shape_p_carter_leak"
+
+\end_inset
+
+, a similar issue of unexpected solution at 
+\begin_inset Formula $t=1$
+\end_inset
+
+ is present.
+ Here fractures enter extended slow shut down period, which is terminated
+ rapidly at 
+\begin_inset Formula $t\approx10^{4}$
+\end_inset
+
+.
+ Note that this result was tested for conformance with fluid balance equation
+ (Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "subsec:fluid_balance"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+ interpretation of 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ is not shown here, as it was not possible to obtain any good solutions.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename w0_no_leak.eps
+	scale 68
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying initial shape, zero leak off.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "shape_zero_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename w0_carter_leak.eps
+	scale 68
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying initial shape, Carter leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+.
+ Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "shape_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename w0_p_carter_leak.eps
+	display false
+	scale 68
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Varying initial shape, pressure Carter leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+ Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "shape_p_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fractures with added linear extension to the initial shape
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dzioby_wykres.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Aperture of fractures with added linear extension: 
+\begin_inset Formula $l_{extra}=1,\ 2\ 5,\ 10,\ 20,\ 50$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dzioby_sample"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the last test of initial condition modification lets consider if the
+ initial shape can be enlarged by addition of a long and thin extension
+ at the crack tip.
+ After this modification the crack should have new initial length:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{l_{*}}=l_{*}(1+l_{extra}),\label{dzioby_L}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\hat{l_{*}}$
+\end_inset
+
+ is the new length, with addition of extra quantity 
+\begin_inset Formula $l_{extra}>0$
+\end_inset
+
+, that is a multitude of original length.
+ Initial fracture width changes as well, namely the old part obtained from
+ self-similar solution is squeezed along 
+\begin_inset Formula $x$
+\end_inset
+
+-direction, while a linear function covers amount contributed by 
+\begin_inset Formula $l_{extra}$
+\end_inset
+
+.
+ This change in initial crack width can be written as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{w_{*}}(x)=\begin{cases}
+w_{*}\left(x(1+l_{extra})\right) & \text{if }0\leq x\leq x_{*}\\
+w_{*}\left(x(1+l_{extra})\right)\frac{1-x}{1-x_{*}} & \text{if }x_{*}<x\leq1,
+\end{cases}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\hat{w_{*}}$
+\end_inset
+
+is new initial shape, and 
+\begin_inset Formula $x_{*}$
+\end_inset
+
+ is the connection point:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{*}=\frac{1-\varepsilon}{1+l_{extra}},\label{xs}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is a small value used in 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularisation.
+ (see Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:One-term-condition"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+To account for the change in computation of opening times 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+ , the original used self-similar length inverse is changed to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{l}^{-1}=l^{-1}\left(\frac{x}{1+l_{extra}}\right).\label{dzioby_inverse}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This new 
+\begin_inset Formula $\hat{l}^{-1}$
+\end_inset
+
+ is later used to compute 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ in numerical leak off scheme (Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sub:Exposure-time-computation"
+
+\end_inset
+
+).
+ The considered values of 
+\begin_inset Formula $l_{extra}$
+\end_inset
+
+ are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+l_{extra}=\left\{ 1,\ 2\ 5,\ 10,\ 20,\ 50,\ 100,\ 200\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As the following modification of initial solution is much easier to visualize,
+ on Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "dzioby_sample"
+
+\end_inset
+
+ a number of initial fracture openings is shown.
+\end_layout
+
+\begin_layout Standard
+Yet again, with zero leak off the modification of initial condition contributed
+ to no significant difference.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "dzioby_zero_leak"
+
+\end_inset
+
+ shows how each extended fracture remains essential in storage regime, until
+ merged with the asymptote.
+\end_layout
+
+\begin_layout Standard
+With leak offs (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+ and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+ the added linear extensions close, and the trajectories approach the asymptote.
+ This behavior is much more rapid for pure Carter leak off, Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "dzioby_carter_leak"
+
+\end_inset
+
+, than for pressure proportional variant shown on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "dzioby_p_carter_leak"
+
+\end_inset
+
+.
+ Furthermore for both of these leak offs, the addition of linear extensions
+ does cause a great number of computations to fail.
+ This could be used as a starting point if looking for a more reliable algorithm.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_1"
+
+\end_inset
+
+ interpretation of 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ is also not shown here, as the computations failed in producing any good
+ results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dzioby_no_leak.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding linear extension, zero leak off.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dzioby_zero_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dzioby_carter_leak.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding linear extension, Carter leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+.
+ Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dzioby_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dzioby_p_carter_leak.eps
+	scale 60
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Adding linear extension, pressure Carter leak off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+ Leak off allowed at initial length 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "preconditioning_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "dzioby_p_carter_leak"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+General conclusions from tests on initial conditions.
+\end_layout
+
+\begin_layout Standard
+One can observe that in the vast majority of successful computation 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+A successful computation here means that a solution was obtained that ends
+ at designated 
+\begin_inset Formula $t_{end}$
+\end_inset
+
+ and all the fluid volume can be accounted for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fluid_balance"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ the outcome tends to the expected large asymptote regardless of applied
+ modifications to the initial conditions.
+ This phenomena can be explained by taking a closer look at Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "dzioby_aj"
+
+\end_inset
+
+.
+ Although the initial shape is much different than what forms in most fracture
+ simulations, which generally closely resembles the lead asymptote 
+\begin_inset Formula $(1-x)^{\frac{1}{3}}$
+\end_inset
+
+, it can be observed that these fractures profiles adjust to resemble this
+ casual profile.
+ Quite remarkably in both cases a new propagating front can be observed
+ that appears as a fracture within other fracture.
+ This inside fracture front itself propagates towards the tip 
+\begin_inset Formula $x=1$
+\end_inset
+
+, and should be governed by an equation similar to the speed equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_speed"
+
+\end_inset
+
+ used for main fracture front.
+ Interestingly, as shown by initial conditions variants with increased fracture
+ lengths, the fracture will not propagate significantly, that is remain
+ in storage regime, until this inside propagating front joins with the tip.
+ This process is however much more difficult to compute as the benefits
+ of 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+-regularization do not cover this additional in fracture propagating front.
+ 
+\end_layout
+
+\begin_layout Standard
+Another general observation is, in case of leak off enabled simulations,
+ that there seams to be a relation between the placement of the initial
+ starting point relative to the starting self similar asymptote (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "self_similar_linkov"
+
+\end_inset
+
+) and the large time asymptote (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:carter_law_large_time"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pressure_carter_large_time"
+
+\end_inset
+
+) and the reliability of computational scheme.
+ The locations of all starting points 
+\begin_inset Formula $(t,L(t))$
+\end_inset
+
+ are shown on Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "initial_carter_comb"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "initial_p_carter_comb"
+
+\end_inset
+
+.
+ If the initial condition places the start 
+\begin_inset Formula $(t,L(t))$
+\end_inset
+
+ above the large time asymptote, the computations are apparently much more
+ likely to fail.
+ Also note that the less stable a computation is the longer it takes to
+ finish.
+ The systems that succeeded producing a result, would do so in just a few
+ seconds, while the failed computations could run for minutes before invalid
+ solution was produced, or a solver exception was thrown .
+ This means that proper choice of initial condition will have significant
+ impact on computational performance.
+ 
+\end_layout
+
+\begin_layout Standard
+Other observations can be summed up in the following points:
+\end_layout
+
+\begin_layout Itemize
+Alerting initial conditions also indirectly changes interpretation of 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Ability to handle closing fractures, being able to compute shut down regime,
+ allows to carry simulations from a wider range of initial conditions.
+\end_layout
+
+\begin_layout Itemize
+It appears overall, using zero leak off self similar solution is the most
+ sensible choice.
+\end_layout
+
+\begin_layout Itemize
+Small initial times, and short fractures are preferable as initial conditions.
+\end_layout
+
+\begin_layout Itemize
+Computations with zero leak off are much more reliable and predictable.
+\end_layout
+
+\begin_layout Itemize
+Other leak off regimes will produce less manageable results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dzioby_aj.eps
+	scale 60
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "dzioby_aj"
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evolution of two modified fracture profile fractures.
+ Both of of these eventually converge to a more natural fracture shape.
+ However it can be observed how another internal fracture shapes develops
+ that overrides the initial condition.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename carter_fails.eps
+	scale 35
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Successful and failed starting points, Carter leak-off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(1)}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "initial_carter_comb"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename p_carter_fails.eps
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "initial_p_carter_comb"
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Successful and failed starting points, pressure Carter leak-off (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "carter"
+
+\end_inset
+
+)
+\begin_inset Formula $^{(2)}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+General observations on initial conditions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -236,7 +236,7 @@ reference "sec:Grids"
 \begin_inset Formula $N_{p}$
 \end_inset
 
-and the density parameter 
+ and the density parameter 
 \begin_inset Formula $\gamma$
 \end_inset
 
@@ -288,17 +288,8 @@ reference "sub:Comparison-of-ODE"
 \end_layout
 
 \begin_layout Standard
-
-\emph on
-...
- The effect of 
-\begin_inset Formula $N_{p}$
-\end_inset
-
- needs to be checked later as there might be some integration related bug
- in the code....
-\emph default
-Thou the general observation proves that using 
+It is an early experimental result, however the general observation proves
+ that using 
 \begin_inset Formula $x_{m}^{(4)}$
 \end_inset
 

@@ -224,7 +224,8 @@ reference "ghani_model"
 status open
 
 \begin_layout Plain Layout
-A fracture growth may be inhibited by the adad Shadowing
+A fracture growth may be inhibited by the presence of other nearby fractures,
+ this phenomena is sometimes called shadowing 
 \end_layout
 
 \end_inset

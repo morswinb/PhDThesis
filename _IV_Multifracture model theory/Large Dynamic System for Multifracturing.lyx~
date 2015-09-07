@@ -4438,8 +4438,11 @@ reference "derevative_large_ds"
 \begin_inset Formula $L$
 \end_inset
 
- effect, all points depend on two neighbors, thus constant additional cost
- of Jacobian.
+ effect, all points depend on two neighbors, thus 
+\begin_inset Formula $O\left(N_{ODE}\right)$
+\end_inset
+
+ additional cost of Jacobian.
  In the worst case scenario, all grid points are visible to each other and
  computing (
 \begin_inset CommandInset ref

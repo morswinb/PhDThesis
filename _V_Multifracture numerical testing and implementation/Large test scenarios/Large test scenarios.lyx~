@@ -417,7 +417,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Length of end cracks segments converges to large time asymptote.
+Length of end cracks segments converges to the large time asymptote.
  Fluid balance accuracies for various combinations of pipe grid type and
  point number 
 \begin_inset Formula $N_{p}.$

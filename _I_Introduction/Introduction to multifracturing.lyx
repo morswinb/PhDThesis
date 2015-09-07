@@ -456,7 +456,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Bunger
+Bunger 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Bunger_multi"
@@ -573,7 +573,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Cipolla
+Cipolla 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Cipolla"

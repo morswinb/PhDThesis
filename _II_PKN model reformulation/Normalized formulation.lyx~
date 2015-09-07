@@ -826,7 +826,21 @@ This relationship gives a finite value of
 \begin_inset Formula $A$
 \end_inset
 
- if and only if 
+ if
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $(1-\tilde{x})^{1}$
+\end_inset
+
+ appears in the denominator, and cancels out with context of the numerator
+ 
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Formula $\xi=1/2$
 \end_inset
 
@@ -934,6 +948,8 @@ Interestingly the value of
 \end_inset
 
  :
+\lang american
+is 
 \end_layout
 
 \begin_layout Standard

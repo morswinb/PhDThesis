@@ -95,6 +95,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -124,9 +137,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\emph on
-placeholder
+A fracture collides with natural fracture and produces three new openings.
 \end_layout
 
 \end_inset
@@ -169,7 +180,8 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Lengths of fractures and relative fluid balance in respect of time.
+ 
 \end_layout
 
 \end_inset
@@ -249,6 +261,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -278,9 +303,13 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+A fracture collides with natural fracture and produces three new openings.
+ The difference in backstress 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
 
-\emph on
-placeholder
+ creates differences in produced fracture lengths.
+ 
 \end_layout
 
 \end_inset
@@ -323,7 +352,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Lengths of fractures and relative fluid balance in respect of time.
 \end_layout
 
 \end_inset
@@ -367,6 +396,22 @@ name "crack_to_nf_test2"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+clearpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Collision: crack to other hydraulic fracture
 \end_layout
@@ -379,6 +424,19 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -408,9 +466,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\emph on
-placeholder
+A fracture merges together with another one.
 \end_layout
 
 \end_inset
@@ -453,7 +509,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
+Lengths of fractures and relative fluid balance in respect of time.
 \end_layout
 
 \end_inset

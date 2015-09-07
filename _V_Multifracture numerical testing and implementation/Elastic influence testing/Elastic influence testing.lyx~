@@ -120,7 +120,7 @@ status open
 \begin_inset Graphics
 	filename two_close_fractures.png
 	lyxscale 30
-	scale 10
+	scale 20
 
 \end_inset
 
@@ -136,7 +136,8 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Two close parallel fractures.
+Two close parallel fractures, with all point to point interactions drawn.
+ 
 \end_layout
 
 \end_inset
@@ -170,7 +171,7 @@ key "Bunger"
 
 \end_inset
 
-, except for the fact that only two fractures are presents, hence
+, except for the fact that only two fractures are present, hence 
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
@@ -186,7 +187,7 @@ reference "sigma_close"
 \begin_inset Formula $1$
 \end_inset
 
-, one should expect to for our elastic scheme to produce a result that follows:
+, one should expect for this elastic scheme to produce a result that follows:
 \end_layout
 
 \begin_layout Standard
@@ -233,7 +234,7 @@ This value of
 \end_inset
 
  allows the pseudo elastic influence used here to match the value one would
- expect form Bunger scheme 
+ expect from Bunger scheme 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bunger"
@@ -260,10 +261,10 @@ key "Bunger"
 
 \end_inset
 
- was derived for very long fractures, thous the effect of tip region where
- width rapidly detergents to zero, and consequently the region with no opened
- fracture that follows, was not included, the whole fracture aperture was
- essential treated as flat surface.
+ was derived for very long fractures, thus the effect of tip region where
+ width decreases to zero, and consequently the region with no opened fracture
+ that follows, was not included, the whole fracture aperture was essential
+ treated as flat surface.
  Therefore to find matching value of 
 \begin_inset Formula $g$
 \end_inset
@@ -277,8 +278,8 @@ key "Bunger"
 \begin_inset Formula $L$
 \end_inset
 
- is indeed much larger than the spacing (accuracy grater than internal relative
- tolerance set to 
+ is indeed much larger than the spacing (accuracy grater than the internal
+ relative tolerance set to 
 \begin_inset Formula $10^{-3}$
 \end_inset
 
@@ -306,7 +307,7 @@ reference "sub:Approximation-tolerances,-and"
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
- value can be observed.
+ value takes place.
  When fracture length is lesser than the distance, as for example 
 \begin_inset Formula $L=\frac{1}{4}$
 \end_inset
@@ -410,7 +411,7 @@ status open
 
 \begin_layout Plain Layout
 Relative discrepancies of 
-\begin_inset Formula $\sigma_{l}$
+\begin_inset Formula $\delta\sigma_{l}$
 \end_inset
 
  from close approximation 
@@ -538,15 +539,14 @@ reference "sigma_formula"
 
 .
  This would be disastrous.
- Furthermore note that the single fracture formulation already effectively
- normalized 
+ Furthermore note that the single fracture formulation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "elasticity"
 
 \end_inset
 
- fracture height to 
+ already effectively normalized fracture height to 
 \begin_inset Formula $1$
 \end_inset
 
@@ -588,11 +588,11 @@ reference "sigma_formula"
 \begin_inset Formula $w<<L$
 \end_inset
 
-, thous the slight deviation form location on crack surface and middle should
+, thus the slight deviation from location on crack surface and middle should
  not matter, but here as these fractures are interconnected a small overlapping
  region appears near the connecting junction.
  Properly modeling this region is beyond the current problem formulation,
- thous 
+ thus 
 \begin_inset Formula $\frac{1}{max(d^{3},1)}$
 \end_inset
 
@@ -677,8 +677,9 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ang_1.eps
-	scale 150
+	filename ang_1.png
+	lyxscale 20
+	scale 25
 
 \end_inset
 
@@ -686,7 +687,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Two fractures are orientated by an angle 
+Two fractures attached at an angle 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -928,7 +929,7 @@ reference "sigma_tols"
 \begin_inset Formula $10^{-2}$
 \end_inset
 
-, thous less strict tolerances should not be used.
+, thus less strict tolerances should not be used.
 \end_layout
 
 \begin_layout Standard
@@ -948,7 +949,7 @@ reference "sigma_formula"
 
 \end_inset
 
-), and thous more time is consumed.
+), and thus more time is consumed.
  Since the general accuracies of this multifracturing model are unlikely
  to be greater than 
 \begin_inset Formula $10^{-5}$
@@ -968,7 +969,7 @@ reference "sub:Comparison-of-ODE"
 
 \begin_layout Standard
 An additional improvement can be achieved by tweaking the inverse square
- root present in (
+ root included in (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sigma_formula"
@@ -978,7 +979,7 @@ reference "sigma_formula"
 ): 
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{d^{3}}\xrightarrow{requires}\frac{1}{\sqrt{x}^{3}}\label{eq:inverse_sqrt_is_neede}
+\frac{1}{d^{3}}\xrightarrow[d=\sqrt{...}]{}\frac{1}{\sqrt{x}}\label{eq:inverse_sqrt_is_neede}
 \end{equation}
 
 \end_inset
@@ -996,7 +997,7 @@ reference "sec:Method-for-elasticity"
 
 \end_inset
 
- does not require any more complex mathematical functions, except for 
+ does not require any complex arithmetic operations, except for 
 \begin_inset Formula $\sqrt{x}$
 \end_inset
 
@@ -1022,7 +1023,8 @@ reference "sec:Method-for-elasticity"
 \begin_layout Standard
 A number of 3D graphics problems requires massive repeated calculations
  of surface normals, which can be speedup by the fast approximation of inverse
- square root, a method which is very well described in blog by Hansen 
+ square root , a method which is very well described in a blog by Hansen
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "0x5f3759df"
@@ -1030,6 +1032,21 @@ key "0x5f3759df"
 \end_inset
 
 .
+ This fast inverse square root approximation is based on bitwise operations
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+magic 
+\begin_inset Quotes erd
+\end_inset
+
+ hexadecimal number 
+\begin_inset Formula $0x5f3759df$
+\end_inset
+
+, an exploitation of floating point notation bit pattern, which is then
+ followed by one or more newton iterations.
  The most influential code implementation of this algorithm would be the
  one attributed to Cormack found in Quake III source code 
 \begin_inset CommandInset citation
@@ -1060,28 +1077,14 @@ reference "eq:inverse_sqrt_is_neede"
 \end_layout
 
 \begin_layout Standard
-This fast inverse square root approximation is based on bitwise operations
- with 
-\begin_inset Quotes eld
-\end_inset
-
-magic constant
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Formula $0x5f3759df$
-\end_inset
-
- followed by one or two newton iterations.
- In Table 
+In Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "quake_root_speedup"
 
 \end_inset
 
- the relative time differences resulting form different tolerances, and
+ the relative time differences resulting from different tolerances, and
  square root methods are shown.
  With one newton iteration fast 
 \begin_inset Formula $\frac{1}{\sqrt{x}}$
@@ -1102,10 +1105,11 @@ reference "quake_root_speedup"
 .
  Furthermore two newton iterations in the fast square root, are enough to
  achieve the same results as native sqrt() function, but still save about
+ 
 \begin_inset Formula $10\%$
 \end_inset
 
- of time.
+ of computation time.
  Although these improvements are not large performance gains, these are
  given for 
 \emph on
@@ -1386,7 +1390,15 @@ Relative discrepancies in
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
-, depending on the desired accuracies.
+, depending on the desired accuracies, baseline 
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-8}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{l}^{abstol}=10^{-12}$
+\end_inset
+
+.
  The alternative calculations with fast 
 \begin_inset Formula $\frac{1}{\sqrt{x}}$
 \end_inset
@@ -1447,7 +1459,7 @@ Pseudo elastic influence
 \end_layout
 
 \begin_layout Standard
-The method for resolving fracture visibility 
+The method for resolving fracture visibility shown in Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "visibility_algorithm"
@@ -1557,7 +1569,7 @@ reference "sample_visibility1"
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
- sources, thous the value of 
+ sources, thus the value of 
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
@@ -1734,15 +1746,16 @@ centering
 
 
 \begin_inset Graphics
-	filename vis1.eps
-	scale 50
+	filename vis1.png
+	lyxscale 20
+	scale 30
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename vis1_mat.eps
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -1811,16 +1824,42 @@ centering
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1em}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename vis2.eps
-	scale 50
+	filename vis2.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace{-0em}
+\end_layout
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename vis2_mat.eps
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -1835,13 +1874,6 @@ centering
 \end_inset
 
  
-\begin_inset CommandInset label
-LatexCommand label
-name "sample_visibility2"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -1854,6 +1886,16 @@ Example visibility matrix and
 
 , a set of connected PKN cracks and pipes.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "sample_visibility2"
 
 \end_inset
 
@@ -1884,15 +1926,15 @@ centering
 
 
 \begin_inset Graphics
-	filename vis3.eps
-	scale 50
+	filename vis3.png
+	scale 35
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename vis3_mat.eps
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -1958,6 +2000,13 @@ clearpage
 
 \begin_layout Subsection
 Power input in an array of fractures
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Power-input-in"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2005,7 +2054,7 @@ reference "sub:Two-nearby-parallel"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-H=\frac{Z}{N_{fracture}},\quad q_{i}=\frac{q_{0}}{N_{fracture}}\label{bunger_test}
+H=\frac{Z}{N_{fracture}},\quad\hat{q}=\frac{q_{0}}{N_{fracture}}\label{bunger_test}
 \end{equation}
 
 \end_inset
@@ -2021,9 +2070,8 @@ key "Bunger"
 
 \end_inset
 
-.
- Thous in this case flow is amused to disperse evenly to each fracture resulting
- in the same value of pumping 
+, thus in this case flow is assumed to disperse evenly to each fracture
+ resulting in the same value of pumping 
 \begin_inset Formula $q_{i}$
 \end_inset
 
@@ -2035,7 +2083,7 @@ key "Bunger"
  is approximated by: 
 \begin_inset Formula 
 \begin{equation}
-P(t)=\sum_{1}^{N_{fracture}}q_{i}p_{fluid}(t,0)\label{power_input}
+P(t)=\sum_{j=1}^{N_{fracture}}\hat{q}p_{fluid}^{j}(t,0)\label{power_input}
 \end{equation}
 
 \end_inset
@@ -2044,7 +2092,25 @@ P(t)=\sum_{1}^{N_{fracture}}q_{i}p_{fluid}(t,0)\label{power_input}
 \end_layout
 
 \begin_layout Standard
-The other parameters used in this scenario are:
+Where 
+\begin_inset Formula $p_{fluid}^{j}(t,0)$
+\end_inset
+
+ is the net fluid pressure at the inlet of each fracture (it has to be evaluated
+ through junction pressure scheme as shown in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Junction-Strategy"
+
+\end_inset
+
+), so the total power input is proportional to the sum of fracture opening
+ widths and effective 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ .
+ The other parameter values used in this scenario are:
 \end_layout
 
 \begin_layout Standard
@@ -2094,14 +2160,15 @@ reference "testvsbunger-1-1"
 \begin_inset Formula $\nu$
 \end_inset
 
- is not known, and this work does not include formation toughness 
+ is not known.
+ Furthermore this work does not include formation toughness 
 \begin_inset Formula $K_{IC}$
 \end_inset
 
-.
+, hence the energy required to break rock structure is not included .
  However the result, minimization of power input for some number of fractures,
  prevails.
- Fluid balance was maintained at at least 
+ Fluid balance was maintained at least 
 \begin_inset Formula $10^{-4}$
 \end_inset
 
@@ -2145,13 +2212,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "testvsbunger-1-2"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2174,6 +2234,16 @@ reference "eq:g_value"
  can be found.
  
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "testvsbunger-1-2"
 
 \end_inset
 
@@ -2216,13 +2286,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "testvsbunger-1-1"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -2235,6 +2298,16 @@ key "Bunger"
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "testvsbunger-1-1"
 
 \end_inset
 
@@ -2262,6 +2335,13 @@ name "testvsbunger-1"
 
 \begin_layout Plain Layout
 Power input in parallel array of fractures, vs number of fractures.
+ Although the exact value of output was not matched, the saturation at some
+ critical 
+\begin_inset Formula $N_{fracture}$
+\end_inset
+
+ was reproduced.
+ 
 \end_layout
 
 \end_inset

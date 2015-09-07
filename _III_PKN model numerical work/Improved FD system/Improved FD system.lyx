@@ -705,7 +705,23 @@ Hybrid
 
 \begin_layout Standard
 In hydrofracturing problems the discretization is much more difficult than
- integration (or at least as generally observed for PKN model in this work).
+ integration
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Or at least as generally observed for PKN model in this work.
+ Nevertheless the problem includes moving boundary in a form of the crack
+ tip, hence the discretization is much harder, especially if multiple fractures
+ are involved.
+ On the other hand many problems, such as 1D heat transfer in a uniform
+ rod, pose much less challenge when choosing the right discretization method.
+ 
+\end_layout
+
+\end_inset
+
+ .
  Indeed the three mentioned formulations differ in spatial discretization,
  while the same integrating algorithm is used.
  The 

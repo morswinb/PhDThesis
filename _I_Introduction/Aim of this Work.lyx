@@ -1,0 +1,153 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass classicthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Aim of this work 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:aim_of_this_work"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So far this introduction Chapter has shown the economic motivation behind
+ hydrofracturing, the techniques for single fracture modeling, and the attempts
+ to model more complex reservoirs with multi fracture models.
+\end_layout
+
+\begin_layout Standard
+Reservoir stimulation can be an expensive and uncertain task.
+ Choosing the right place to drill, and performing the fracturing properly,
+ is hard and without adequate planning the whole enterprise is very likely
+ to fail.
+ The industry attempts to eliminate this risk by developing computer models
+ that predict what the results might be.
+ Thou this work will attempt to make yet another prototype model that answers
+ a part of more general question: will this well produce any oil or gas
+ ?
+\end_layout
+
+\begin_layout Standard
+The answer is however not a simple yes or no, but rather a combination of
+ if multiple results, where each of them carries a piece of information.
+ The single fracture models mentioned in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Single-Fracture-Model"
+
+\end_inset
+
+ give a prediction about how deeply the rock formations can be penetrated.
+ This does not tell much about the cost, risks or result production, but
+ provides one piece of the puzzle.
+\end_layout
+
+\begin_layout Standard
+This work should concentrate on exploring the existing models and finding
+ their applications which can be generalized in 4 main tasks:
+\end_layout
+
+\begin_layout Itemize
+Studying the PKN model of a single fracture, and attempting to improve its
+ theoretical formulation.
+\end_layout
+
+\begin_layout Itemize
+Implementing code that can efficiently handle one fracture problems.
+\end_layout
+
+\begin_layout Itemize
+Extending the single fracture formulation into multiple fracture formulation,
+ multifracturing, that can handle more complex problems
+\end_layout
+
+\begin_layout Itemize
+Building a software solution, that utilizes all this new ideas, to model
+ the process of hydraulic fracture growth.
+ 
+\end_layout
+
+\begin_layout Standard
+All of the above have been attempted a number of times, and so numbers of
+ solutions exist.
+ However all the solutions are different in accuracy, performance, applicability
+, scalability and even availability.
+ Thus the work here does not outright seek to produce better result, but
+ rather an alternative that uses different methods and approaches to produce
+ different, yet compatible solutions.
+ 
+\end_layout
+
+\end_body
+\end_document

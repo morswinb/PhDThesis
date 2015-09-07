@@ -115,8 +115,8 @@ key "wiki_oo"
  Interestingly, as observed by the author, quite a large number of academics,
  who were educated before OO became dominant, do not use, nor attempt to
  use any of OO features in their work.
- On the other hand a number of courses form top universities, or researchers
- form recognized institutions, do mix OO methods with numerical models 
+ On the other hand a number of courses from top universities, or researchers
+ from recognized institutions, do mix OO methods with numerical models 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "oo_slides_1,oo_slides_2,oo_slides_3"
@@ -291,15 +291,15 @@ reference "eq:ODE_solution"
 
 ).
  It is implemented by Edge that ultimately handles a single fracture, and
- Model that combines all fractures outputs 
+ Model that combines all fractures outputs (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "algo_ode"
 
 \end_inset
 
-.
- The Result is feed to Solver, turning this part into Builder pattern.
+).
+ The result is feed to Solver, turning this part into Builder pattern.
  
 \end_layout
 
@@ -500,19 +500,22 @@ centering
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "UML"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Simplified UML design diagram, general class structure of multifracturing
  code
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "UML"
 
 \end_inset
 
@@ -589,13 +592,6 @@ reference "eq:BDF_first_order"
 
 \end_inset
 
-) (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:BDF26"
-
-\end_inset
-
 ) methods.
  
 \end_layout
@@ -616,13 +612,6 @@ key "ls_ode"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:BDF_first_order"
-
-\end_inset
-
-) (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:BDF26"
 
 \end_inset
 
@@ -1075,7 +1064,7 @@ reference "derevative_large_ds"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'_{1..E}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{E}(t,\mathcal{M})\}\label{parall_1}
+y'_{1..N_{E}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{N_{E}}(t,\mathcal{M})\}\label{parall_1}
 \end{equation}
 
 \end_inset
@@ -1093,7 +1082,7 @@ Since all
 \end_inset
 
  is data parallel, and can be trivially split into any number of threads,
- each working a piece of the whole 
+ each working on a piece of the whole 
 \begin_inset Formula $y'$
 \end_inset
 
@@ -1104,11 +1093,11 @@ Since all
 
  to be assigned to one thread.
  Hence a problem with 
-\begin_inset Formula $E$
+\begin_inset Formula $N_{E}$
 \end_inset
 
- edges would be effectively split into 
-\begin_inset Formula $E$
+ edges could be effectively split into 
+\begin_inset Formula $N_{E}$
 \end_inset
 
  threads: 
@@ -1117,7 +1106,7 @@ Since all
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'_{1..E}(t,y)=\left\{ \underset{thread\ 1}{\underbrace{\mathcal{F}'_{1}(t,\mathcal{M})}},\underset{thread\ 2}{\underbrace{\mathcal{F}'_{2}(t,\mathcal{M})}},...,\underset{thread\ E}{\underbrace{\mathcal{F}'_{E}(t,\mathcal{M})}}\right\} \label{parall_1-1}
+y'_{1..N_{E}}(t,y)=\left\{ \underset{thread\ 1}{\underbrace{\mathcal{F}'_{1}(t,\mathcal{M})}},\underset{thread\ 2}{\underbrace{\mathcal{F}'_{2}(t,\mathcal{M})}},...,\underset{thread\ E}{\underbrace{\mathcal{F}'_{N_{E}}(t,\mathcal{M})}}\right\} \label{parall_1-1}
 \end{equation}
 
 \end_inset
@@ -1153,7 +1142,7 @@ But the above simple parallelization of
 \begin_inset Formula $y'$
 \end_inset
 
-does not solve the problem of optimizing Jacobian pattern.
+ does not solve the problem of optimizing Jacobian pattern.
  Previously in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1330,6 +1319,7 @@ centering
 
 \begin_inset Graphics
 	filename performance_gains.png
+	scale 70
 
 \end_inset
 
@@ -1338,7 +1328,7 @@ centering
 
 \begin_layout Plain Layout
 Performance gains with various computational techniques.
- (will be updated later)
+ Achieving orders of magnitude difference can save hours of computations.
 \end_layout
 
 \end_inset

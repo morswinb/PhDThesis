@@ -3718,7 +3718,7 @@ reference "disc_mat"
 
 .
  All 
-\begin_inset Formula $E$
+\begin_inset Formula $N_{E}$
 \end_inset
 
  edges in the problem form a piece of this diagonal pattern, and the indexes

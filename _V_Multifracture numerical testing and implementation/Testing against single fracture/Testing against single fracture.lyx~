@@ -341,17 +341,21 @@ reference "simple_test_num"
 \end_layout
 
 \begin_layout Standard
-As one can observe the linear fracture split condition works, but adds significa
-nt numerical error, with magnitude of twice the value compared to original
- single fracture computation.
+It can be observed that the linear fracture split condition works, as the
+ result is within 
+\begin_inset Formula $10^{-3}$
+\end_inset
+
+ order of accuracy, but the obtained result is less accurate when compared
+ to original single fracture computation.
  The quadratic polynomial approach is however very close to producing identical
  error as the undivided solution.
  In fact the difference in 
 \begin_inset Formula $\delta w$
 \end_inset
 
- is so close that it should be solely attributed to solver introduced error
- .
+ with quadratic split is so little that is likely that it does not affected
+ the solution.
  Conclusion: junction BC strategy 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -360,7 +364,7 @@ reference "sec:Junction-Strategy"
 \end_inset
 
  with quadratic flow components approximation allows to split fracture into
- two segments without affecting noticeably computation accuracy.
+ two segments without noticeably affecting computation accuracy.
 \end_layout
 
 \begin_layout Standard
@@ -721,35 +725,35 @@ Comparison of crack opening relative error
 \begin_inset Formula $\delta w$
 \end_inset
 
- on connected pipe and crack segments, using linear (
+ on connected pipe and crack segments, using linear 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:Linear split1"
 
 \end_inset
 
-), (
+, 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:Linear split2"
 
 \end_inset
 
-) and quadratic (
+ and quadratic 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:quad split1"
 
 \end_inset
 
-), (
+, 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:quad split2"
 
 \end_inset
 
-) split methods.
+ split methods.
 \end_layout
 
 \end_inset
@@ -820,7 +824,7 @@ reference "L_split_large1"
 \begin_inset Formula $0.8$
 \end_inset
 
- the difference in accuracy is relay negligible.
+ the difference in accuracy is negligible.
  This indicated that long crack segments attached to shorter pipe segments
  are not a challenge to compute.
  For the values of 
@@ -859,12 +863,27 @@ reference "L_split_large2"
  orders of magnitude longer than the crack segment the computation eventual
  produces accurate result.
  However for real fracturing applications such difference in lengths might
- be a gross exaggeration, the 
+ be a huge exaggeration, the 
 \begin_inset Formula $L_{split}=10^{-5}$
 \end_inset
 
  factor which is probably already over the upper limit of possible disproportion
-s takes relatively short time to converge to acceptable accuracies.
+s
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $L_{split}=10^{-5}$
+\end_inset
+
+ would indicate a one centimeter crack connected to a 10 kilometer long
+ pipe.
+ 
+\end_layout
+
+\end_inset
+
+ takes relatively short time to converge to acceptable accuracies.
  As shown previously in Sections 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -879,14 +898,14 @@ reference "sec:Fracture-collisions"
 
 \end_inset
 
- the initial condition (
+ the initial condition 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "initial"
 
 \end_inset
 
-) could have 
+ could have 
 \begin_inset Formula $l_{*}$
 \end_inset
 
@@ -1049,7 +1068,7 @@ name "L_split_large2"
 \end_layout
 
 \begin_layout Subsection
-Testing multiply divided PKN fracture.
+Testing a multiply divided PKN fracture.
 \end_layout
 
 \begin_layout Standard
@@ -1080,19 +1099,22 @@ centering
 \end_inset
 
  
-\begin_inset CommandInset label
-LatexCommand label
-name "split_pipe_chain"
-
-\end_inset
-
- 
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 A single crack can be modeled as a chain of connected pipe segments with
  short crack segment at the tip.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "split_pipe_chain"
 
 \end_inset
 

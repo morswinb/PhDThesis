@@ -130,7 +130,7 @@ x_{m}^{(2)}(\delta)=1-\left(1-\left(1-\varepsilon^{\frac{1}{\delta}}\right)\frac
 
 Such grid has a benefit of being denser in the proximity of crack tip where
  the solution for the problem is harder to obtain, therefore allows for
- greater accuracy
+ greater accuracy 
 \begin_inset Foot
 status open
 

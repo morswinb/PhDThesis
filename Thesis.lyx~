@@ -430,7 +430,7 @@ reference "sec:aim_of_this_work"
 
 \end_inset
 
- should lay out what this work is trying to achiebe 
+ should lay out what this work is trying to achieve.
 \end_layout
 
 \begin_layout Standard
@@ -515,7 +515,17 @@ key "Kemp"
 \end_layout
 
 \begin_layout Standard
-A large part of work presented in this Chapter was done with great mentoring
+A significant part of this Chapter was done with great mentoring
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+as opposed to the next Chapters where more and more work would be done completel
+y independently
+\end_layout
+
+\end_inset
+
  from other research group members, as it repeats published article 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -568,39 +578,33 @@ reference "sec:Normalized-formulation"
 \begin_inset Formula $w$
 \end_inset
 
- as the problem variable .
- This formulation is the first to the first asymptotic term directly (
+ as the problem variable 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "w_system"
 
 \end_inset
 
-).
- Furthermore a new simplification of carter law 
+, probably the first formulation to use the asymptotic term directly.
+ Furthermore simplification of carter law 
 \lang english
-( Subsection 
+(Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Carter-type-leak"
 
 \end_inset
 
- )
-\lang american
- is presented which can be used to ease leak off calculation, and further
- asymptotics terms beyond the second term are derived 
-\lang english
-( Subsection 
+ ) and dereviation of further asymptotic terms (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-details-of"
 
 \end_inset
 
- )
+)
 \lang american
-.
+ is presented.
  
 \end_layout
 
@@ -616,8 +620,14 @@ reference "sec:Reformulation-of-the"
 \begin_inset Formula $U$
 \end_inset
 
- variable formulation, bringing it in line with the other formulations of
- this chapter.
+ variable formulation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Linkov_4"
+
+\end_inset
+
+ , bringing it in line with the other formulations of this Chapter.
 \end_layout
 
 \begin_layout Itemize
@@ -654,14 +664,14 @@ reference "sec:Epsilon-regularization-and"
 
  explores the old speed equation related tip boundary condition 
 \lang english
-( Subsection 
+(Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:One-term-condition"
 
 \end_inset
 
- ), to introduce improved two term boundary condition ( Subsection 
+ ), to introduce improved two term boundary condition (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:General-two-term"
@@ -741,134 +751,118 @@ reference "chap:PKN-model-reformulation"
 \end_inset
 
  it is time to implement and test the new ideas.
- 
+ Therefore this Chapter focuses on numerical programing, testing, and comparing
+ results.
 \end_layout
 
 \begin_layout Itemize
-This should begin by stiffness analysis shown in Subsection 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Stiffness-analysis"
 
 \end_inset
 
-.
- This will show that the reformulated PKN model is stiff, and therefore
- should be solved with appropriate stiff methods.
- 
+ analyzes problem stiffens, and proves that the PKN problem formulation
+ is indeed stiff.
 \end_layout
 
 \begin_layout Itemize
-The outline of numerical solution, done with proper stiff ODE methods, will
- be shown in Subsection 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Dynamic-systems-with"
 
 \end_inset
 
-.
+ outlines the numerical solution prepared for stiff ODE solvers.
 \end_layout
 
 \begin_layout Itemize
-The obtained numerical procedure will then be tested for reliability with
- various initial conditions 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Sensitivity-to-initial"
 
 \end_inset
 
- , 
+ shows results of hundreds of tests with various initial conditions, the
+ reliability is tested here.
 \end_layout
 
 \begin_layout Itemize
-and accuracy 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Computation-Accuracy"
 
 \end_inset
 
- against benchmark solutions shown Appendix
-\lang english
- 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "sec:Benchmark-Solution"
-
-\end_inset
-
-.
-
-\lang american
+ shows shows that the developed code produces accurate results when tested
+ against numerical benchmarks.
+ The accuracy gains are mostly attributed to better, new two term asymptotic,
+ boundary condition at the crack tip.
  
 \end_layout
 
 \begin_layout Itemize
-It will be shown that using two terms of asymptotics allowed for much better
- accuracy, when compared to similar works that use only one term 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Comparison-with-known"
 
 \end_inset
 
-.
- As overall a large number of test would be done, these raised quite a number
- additional issues, not properly addressed by theoretical formulation.
- 
+ is a comparison with results by other authors obtained by other means.
+ Here it is implied that the accuracy of this work approach is greater than
+ these other results.
 \end_layout
 
 \begin_layout Itemize
-Solving these will allow to obtain problem specific further improvements
- in accuracy, as well as performance 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Improving-FD-System"
 
 \end_inset
 
-.
- 
+ explains some implementation details which allowed to gain further accuracy
+ and performance gains.
 \end_layout
 
 \begin_layout Itemize
-Some extra testing will implicitly prove results for problems with no analytical
- solutions 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Extra-tests-on"
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Further enchantments will deal with shut down regime in 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Extra-computational-challenges"
 
 \end_inset
 
- and reliable leak off calculation.
- 
+ presents algorithms for dealing with closing fracture and leak off phenomena.
 \end_layout
 
 \begin_layout Itemize
-Finally these well tested and understood numerical procedure sill be put
- together and tested in a real life scenario 
+Section
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Test-on-real"
 
 \end_inset
 
-.
+ shows outcomes of using real life inputs.
  
+\end_layout
+
+\begin_layout Standard
+The Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Matlab-single-fracture"
+
+\end_inset
+
+ includes some sample source code, a bare minimum required perform single
+ fracture simulations.
 \end_layout
 
 \begin_layout Standard
@@ -999,22 +993,16 @@ key "moje_bzdury"
 
 , the knowledge of single fracture will be now applied to simulate complex
  structures composed of multiple fractures.
- The PKN model will be used as a basis for this challenge, but this will
- require several significant changes.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The main modification is going to be the replacement of simple linear elasticity
- relation (
+ The PKN model used a a basis for this challenge requires a few significant
+ modifications, the first one being the replacement of simple linear elasticity
+ relation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "elasticity"
 
 \end_inset
 
-) with:
+ with:
 \end_layout
 
 \begin_layout Standard
@@ -1110,13 +1098,13 @@ The term
 \begin_inset Formula $\sigma_{o}$
 \end_inset
 
- is uniform along propagation direction and will disappear when spatial
- derivative is applied.
+ is assumed to be uniform along propagation direction and disappears with
+ differentiation.
  The term 
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
- on the other hand will
+ on the other hand
 \family default
 \series default
 \shape default
@@ -1129,14 +1117,14 @@ The term
 \noun default
 \color inherit
 \lang american
- remain in new continuity equation 
+ remains in the new continuity equation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "continuity"
 
 \end_inset
 
-, and contribute to new updated Reynolds equation:
+, and contributes to new updated Reynolds equation:
 \begin_inset Formula 
 \begin{equation}
 \frac{\partial w}{\partial t}-\frac{1}{M}\frac{\partial}{\partial x}\left(w^{3}\frac{\partial(kw+\sigma_{l})}{\partial x}\right)+q_{l}=0.\label{reynold_multi-1}
@@ -1148,14 +1136,13 @@ reference "continuity"
 \end_layout
 
 \begin_layout Standard
-Now one can see that this relatively small change in formulation to include
- the effect of 
+Now one that this small decision to include 
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
- is going to lead to much different formulation, for a single fracture,
- not to mention the additional work required to combine them into a system
- of multiple fractures.
+ leads huge modification to the single fracture formulation, not to mention
+ the additional work required to combine them into a system of multiple
+ fractures.
  
 \end_layout
 
@@ -1165,66 +1152,70 @@ The description of this theoretical multifracturing model will be divided
 \end_layout
 
 \begin_layout Itemize
-First in Section 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Formulation-of-2D"
 
 \end_inset
 
- the main concept of what is understood as multifracturing formulation shall
- be explained.
+ explains a new mathematical formulation for multifracturing, introduces
+ a number of components and a general idea on how to combine them.
 \end_layout
 
 \begin_layout Itemize
-Next three Sections will cover particular solutions to joining fractures
- together 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"
 
 \end_inset
 
-, 
+ presents an approach to joining fractures together and outlines an algorithm
+ for calculating common junction pressure.
 \end_layout
 
 \begin_layout Itemize
-finding fracture stress influence 
-\begin_inset Formula $\sigma_{l}$
-\end_inset
-
- 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Method-for-elasticity"
 
 \end_inset
 
-, and
+ presents an algorithm for resolving fracture 
+\emph on
+visibility
+\emph default
+, and as the result calculating 
+\begin_inset Formula $\sigma_{l}$
+\end_inset
+
+ efficiently.
 \end_layout
 
 \begin_layout Itemize
-handling intersecting fractures 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Fracture-collisions"
 
 \end_inset
 
-.
+ theorizes simple approaches to resolving fracture collisions.
  
 \end_layout
 
 \begin_layout Itemize
-Finally the last Section of this chapter 
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Large-Coupled-Dynamic"
 
 \end_inset
 
- should explain how this whole multifracturing problem should be assembled
- together in a computer model.
+ explains how this whole multifracturing formulation can be assembled together
+ in a computer model, outlining some performance bottlenecks.
 \end_layout
 
 \begin_layout Standard
@@ -1289,80 +1280,77 @@ name "chap:Multifracture-numerical-testing"
 \end_layout
 
 \begin_layout Standard
-This Chapter will cover specific numerical and computational details, and
- present a series of various test scenarios
+This Chapter covers specific numerical and computational details, and present
+ a series of various test scenarios developed for the multifracturing case.
+ As many tests were already performed in Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:PKN-model-numerical"
+
+\end_inset
+
+ on a single fracture, the focus here is to confirm that the different,
+ multifracturing capable implementation, performs identically to the single
+ fracture code, and show its capabilities when dealing with multiple fractures.
 \end_layout
 
-\begin_layout Standard
-.It shall begin with relatively straightforward splitting of a single fracture
- in Section 
+\begin_layout Itemize
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Testing-junction-BC,"
 
 \end_inset
 
- to test the theoretical multifracturing scheme derived in Chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Multifracture-model-theory"
-
-\end_inset
-
- against the known result.
- 
+ confirms that both single fracture and multifracture code produce identical
+ results under right conditions.
 \end_layout
 
-\begin_layout Standard
-Then the effects of elastic influence of multiple fractures will be analyzed
- in Section 
+\begin_layout Itemize
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Elastic-influence-testing"
 
 \end_inset
 
-.
- As the problem gets more complex, so the actual code must be updated to
- handle new challenges.
+ tests elasticity computation scheme with various possible fracture structures,
+ and proves that it produces reasonable results when compered to other counterpa
+rts.
 \end_layout
 
-\begin_layout Standard
-The overview of software implementation designed reasonably handle all previousl
-y introduced multifracturing features is shown in Section 
+\begin_layout Itemize
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Implementation"
 
 \end_inset
 
-.
+ focuses on practical implementation aspects, including object orientated
+ design, parallelization, and multiple ODE solvers comparison.
 \end_layout
 
-\begin_layout Standard
-Then having tested the very basics, and prepared working multifracturing
- code, a number of full tests should be done.
- First some simple cases of systems with a few fractures should be simulated
- in Section 
+\begin_layout Itemize
+Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Simple-test-scenarios"
 
 \end_inset
 
-, 
+ shows some tests scenarios, to proof the whole formulation is working.
 \end_layout
 
 \begin_layout Standard
-and then finally larger test problems, that take this formulation to the
- limits, will be considered in Section 
+The Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Large-test-scenarios"
+reference "sec:Java-multifracturing-code"
 
 \end_inset
 
-.
+ points to the location of developed source code.
 \end_layout
 
 \begin_layout Standard
@@ -1399,16 +1387,6 @@ filename "_V_Multifracture numerical testing and implementation/Code optimalizat
 \begin_inset CommandInset include
 LatexCommand include
 filename "_V_Multifracture numerical testing and implementation/Simpe test scenarios/Simple test scenarios.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "_V_Multifracture numerical testing and implementation/Large test scenarios/Large test scenarios.lyx"
 
 \end_inset
 

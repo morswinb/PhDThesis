@@ -2608,7 +2608,11 @@ A good way to integrate leak off function
 \begin_inset Formula $\int_{0}^{t}\int_{0}^{1}q_{l}(t,x)dxdt$
 \end_inset
 
- is to add an extra ode to ODE15s, lets call it:
+ is to add an extra ode to 
+\lang american
+Further enchantments will deal with shut down regime in
+\lang english
+ODE15s, lets call it:
 \end_layout
 
 \begin_layout Standard

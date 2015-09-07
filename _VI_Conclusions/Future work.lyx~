@@ -119,6 +119,14 @@ More physical properties could be included in the formulation such as rock
 \end_layout
 
 \begin_layout Itemize
+A more dynamic approach to mesh sizes could be considered.
+ Currently the mesh sizes are fixed, but each fracture could be given assigned
+ a different number of grid points.
+ This could increase local accuracy in a few crucial fractures, or improve
+ overall performance by downsizing grid density in some less important areas.
+\end_layout
+
+\begin_layout Itemize
 So far only one dimensional leak off models were considered.
  Thou in the reality the fluid flow around the hydraulic fractures should
  me modeled independently by 2D or even 3D porous flow simulations.
@@ -152,7 +160,7 @@ s, it would be reasonable to assume that this solution can be copied for
  Such an approach would allow for huge problems to be computed instantaneously.
  This could produce fairy accurate result, with fine table resolution and
  some error corrections techniques, which could be used in treatment optimizatio
-n algorithms, where placments of multiple wheels must be chacked in order
+n algorithms, where placements of multiple wheels must be checked in order
  to find most profitable solution.
 \end_layout
 

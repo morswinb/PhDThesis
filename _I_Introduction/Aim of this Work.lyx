@@ -115,7 +115,7 @@ reference "sec:Single-Fracture-Model"
 
 \begin_layout Standard
 This work should concentrate on exploring the existing models and finding
- their applications which can be generalized in 4 main tasks:
+ their applications which can be generalized in the following tasks:
 \end_layout
 
 \begin_layout Itemize
@@ -145,7 +145,19 @@ All of the above have been attempted a number of times, and so numbers of
 , scalability and even availability.
  Thus the work here does not outright seek to produce better result, but
  rather an alternative that uses different methods and approaches to produce
- different, yet compatible solutions.
+ different, yet compatible solutions, that are freely available for others
+ to use
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Provided as it is, with a strong and justified belief that it works, but
+ no solid guarantees, aka GPL
+\end_layout
+
+\end_inset
+
+.
  
 \end_layout
 

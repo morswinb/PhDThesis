@@ -852,7 +852,7 @@ Obtaining
 \begin_inset Formula $w_{crack}$
 \end_inset
 
-, visualization of equation 
+, visualization of conversion 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:w_crack_to_w_pipe"
@@ -1130,7 +1130,7 @@ centering
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/Users/Morswin/Documents/THESIS.0.1/crack_pipe_mass_transfer.png
+	filename crack_pipe_mass_transfer.png
 	lyxscale 10
 	scale 45
 

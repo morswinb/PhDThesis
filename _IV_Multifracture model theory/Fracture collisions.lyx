@@ -1132,7 +1132,7 @@ centering
 \begin_inset Graphics
 	filename crack_pipe_mass_transfer.png
 	lyxscale 10
-	scale 45
+	width 80text%
 
 \end_inset
 

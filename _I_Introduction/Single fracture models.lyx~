@@ -118,7 +118,7 @@ centering
 
 \begin_layout Plain Layout
 The three classical models of hydraulic fracture: KGD (plane strain), PKN
- and radial (as originally depicted in 
+ and Radial (as originally depicted in 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "minesota_maffia"
@@ -159,7 +159,7 @@ reference "clasical_modesl"
 
 \begin_layout Itemize
 Radial.
- Describes evolution of 
+ Describes evolution of a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -167,7 +167,7 @@ Penny-shaped
 \begin_inset Quotes erd
 \end_inset
 
- (radial) crack, was introduced by Sneddon 
+ crack, was introduced by Sneddon 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Sneddon_1"
@@ -175,7 +175,7 @@ key "Sneddon_1"
 \end_inset
 
 .
- Describes a horizontal fracture that propagates in all direction.
+ This horizontal fracture that propagates evenley in all directions.
 \end_layout
 
 \begin_layout Itemize
@@ -183,20 +183,20 @@ KGD.
  Developed independently by 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Khristianovic"
+key "Geertsma"
 
 \end_inset
 
-, and 
+ and 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Geertsma"
+key "Khristianovic"
 
 \end_inset
 
 .
  Similar to PKN, vertical fracture of fixed height that propagates horizontally
- on all directions.
+ in one direction.
 \end_layout
 
 \begin_layout Itemize
@@ -225,8 +225,7 @@ key "Nordgren"
 
 .
  A fracture of fixed height and elliptical cross section propagating horizontall
-y.
- 
+y, in one direction.
 \end_layout
 
 \begin_layout Standard
@@ -235,8 +234,8 @@ All these models attempt to account for coupled mechanics governing the
 \end_layout
 
 \begin_layout Itemize
-solid mechanics equations, describing the deformation of the rock induced
- by the fluid pressure
+solid mechanics equations, describing the rock deformation induced by the
+ fluid pressure
 \end_layout
 
 \begin_layout Itemize
@@ -258,13 +257,13 @@ Not all the pumped fluid remains inside fracture.
 \emph on
  Leak-off
 \emph default
- refers to the fluid volume that was lost, leaked through the pores in surroundi
-ng rock formation.
+ refers to the fluid volume that was lost, leaked through pores into the
+ surrounding rock formation.
 \end_layout
 
 \end_inset
 
- to the rock formation
+ to the surrounding rock formation
 \end_layout
 
 \begin_layout Standard
@@ -307,8 +306,8 @@ key "Nordgren"
 \end_inset
 
  was based on a few assumptions.
- The shape of crack was assumed to be elliptical as a possible solution
- of plain strain equation.
+ The shape of crack was assumed to be elliptical as a solution for the plain
+ strain equation.
  Rock toughness and fluid lag at the crack tip was ignored.
  Carter law 
 \begin_inset CommandInset citation
@@ -319,8 +318,8 @@ key "Carter"
 
 , a simplified one dimensional formula, was chosen to govern fluid leak-off.
  This resulted in PKN formulation being a relatively simple model, that
- allowed to predict single fractures under certain conditions, but many
- questions about its accuracy and properties arise over past years.
+ allowed to predict single fractures under certain conditions, however many
+ questions about its accuracy and properties have risen over the past years.
  
 \end_layout
 
@@ -329,13 +328,22 @@ The initial crack length was assumed to be nonzero:
 \begin_inset Formula $l(0)=l_{*}>0$
 \end_inset
 
- .
- For the initial stage of crack propagation inertia term should to be included,
- thus all classical model that do include inertia would not be credible
- anyway.
- But this simplification can be justified as hydrofracturing process might
- begin from already existing fractures, naturally present or artificially
- created with directed charges 
+.
+ For the initial stage of crack propagation inertia term
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+No mass is included, hence Newton's second law of motion is not applied.
+\end_layout
+
+\end_inset
+
+ should be included, thus all classical model that do not include inertia
+ would not be credible anyway.
+ But this simplification can be justified as hydrofracturing is a relatively
+ slow process that might begin from already existing fractures, naturally
+ present or artificially created with directed charges 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Economides2000"
@@ -349,7 +357,17 @@ key "Economides2000"
 
 ) is that the resistance of propagation medium is so small, that the energy
  dissipated by the fracture extension is negligible compared to the energy
- dissipated in the viscous fluid flow 
+ dissipated
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Lost to overcome the viscous forces.
+\end_layout
+
+\end_inset
+
+ in the viscous fluid flow 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Adachi_2002"
@@ -378,9 +396,9 @@ viscosity regime
 refers to fluid resistance to flow being the most dominant force in the
  process, 
 \emph on
-toughness regime 
+toughness regime
 \emph default
-would could occur with very hard rock formation and low viscosity fluid.
+ could occur with very hard rock formation and low viscosity fluid.
  
 \end_layout
 
@@ -443,15 +461,14 @@ key "minesota_maffia"
 
 \end_inset
 
-.
- Among publications produced there the work done by Kovalyshen 
+, including the work done by Kovalyshen 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Kovalyshen,Kovalyshen_phd"
 
 \end_inset
 
- which introduced further improvements to PKN model over previous works.
+ which introduced further improvements to PKN model.
  Extension of the zero leak off solution 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -459,7 +476,7 @@ key "Kemp"
 
 \end_inset
 
- to the full series representation was then given by Kovalyshen 
+ to the full series representation was given by Kovalyshen in 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Kovalyshen"
@@ -477,7 +494,8 @@ key "Garagashetal"
 \end_inset
 
 .
- However FV scheme with special tip element was again used.
+ However FV scheme with special tip element was again used as the computation
+ method.
 \end_layout
 
 \begin_layout Standard
@@ -523,12 +541,12 @@ the so-called
 \end_layout
 
 \begin_layout Itemize
-new boundary condition to be imposed in the regularized formulation.
+a new boundary condition to be imposed in the regularized formulation.
 \end_layout
 
 \begin_layout Itemize
-new dependent variables: the particle velocity and the crack opening taken
- in a degree to exploit the asymptotic behavior of the solution.
+a new dependent variables: the particle velocity and the crack opening cubed,
+ that exploits the asymptotic behavior of the solution.
 \end_layout
 
 \begin_layout Itemize
@@ -545,7 +563,7 @@ key "Linkov_4,Linkov_2,Linkov_3,MWL,Spectral,dupny_universal,moje_bzdury"
 
 \end_inset
 
- where Finite Differences method were used to deal with governing PDEs.
+ where Finite Differences method were used to deal the with governing PDEs.
  Initially it was shown that for the case of leak-off vanishing near the
  crack tip a great improvement over previous methods can be achieved by
  using a proper form of boundary condition and a modified dependent variable
@@ -589,19 +607,12 @@ key "Spectral,dupny_universal"
 The context of single hydraulic models and their development was described.
  This should be treated as a brief overview that outlines most important
  issues and challenges.
- For further reading there is a number of intoroductory publications on
- both theoretical and numerical aspects of single hydraulic fracture models
- such as: 
+ For further reading there is a number of introductory publications on both
+ theoretical and numerical aspects of single hydraulic fracture models such
+ as: 
 \begin_inset CommandInset citation
 LatexCommand citep
-key "Adachi_2007"
-
-\end_inset
-
-
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Rahman"
+key "Adachi_2007,Rahman"
 
 \end_inset
 
@@ -612,8 +623,8 @@ key "Economides2000,hydro_mech_book"
 
 \end_inset
 
- that start at the fundamental level of non hydraulic fracture mechanics
- and build up to the formulation to present these single fracture models.
+ that start at an elementary level of non hydraulic fracture mechanics and
+ builds up to the formulation to present these single fracture models.
  
 \end_layout
 

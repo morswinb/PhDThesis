@@ -93,14 +93,14 @@ Reservoir stimulation can be an expensive and uncertain task.
  to fail.
  The industry attempts to eliminate this risk by developing computer models
  that predict what the results might be.
- Thou this work will attempt to make yet another prototype model that answers
- a part of more general question: will this well produce any oil or gas
- ?
+ This work will attempt to make yet another prototype model that answers
+ a part the of more general question: will this well produce any oil or
+ gas ?
 \end_layout
 
 \begin_layout Standard
-The answer is however not a simple yes or no, but rather a combination of
- if multiple results, where each of them carries a piece of information.
+The answer is not a simple yes or no, but rather a combination of multiple
+ results, where each of them carries a bit of information.
  The single fracture models mentioned in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -124,7 +124,7 @@ Studying the PKN model of a single fracture, and attempting to improve its
 \end_layout
 
 \begin_layout Itemize
-Implementing code that can efficiently handle one fracture problems.
+Implementing code that can efficiently handle single fracture problems.
 \end_layout
 
 \begin_layout Itemize
@@ -139,20 +139,20 @@ Building a software solution, that utilizes all this new ideas, to model
 \end_layout
 
 \begin_layout Standard
-All of the above have been attempted a number of times, and so numbers of
- solutions exist.
+All of the above have been attempted a number of times, and so multiple
+ solutions already exist.
  However all the solutions are different in accuracy, performance, applicability
 , scalability and even availability.
  Thus the work here does not outright seek to produce better result, but
- rather an alternative that uses different methods and approaches to produce
- different, yet compatible solutions, that are freely available for others
- to use
+ rather to make an alternative that uses different methods and approaches
+ to produce different, yet compatible solutions, that are freely available
+ for others to use
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
 Provided as it is, with a strong and justified belief that it works, but
- no solid guarantees, aka GPL
+ no written guarantees, aka GPL
 \end_layout
 
 \end_inset

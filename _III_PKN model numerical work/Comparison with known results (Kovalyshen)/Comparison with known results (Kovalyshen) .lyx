@@ -288,7 +288,7 @@ name "K_D_w_0"
 \end_layout
 
 \begin_layout Standard
-Although the benchmark solution used in this work (Section 
+Although the benchmark solution used in this work (Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Benchmark-Solution"
@@ -299,7 +299,7 @@ reference "sec:Benchmark-Solution"
  analytical solution available in the literature for the Carter leak-off
  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "carter"
 
 \end_inset
@@ -308,7 +308,7 @@ reference "carter"
 \end_layout
 
 \begin_layout Standard
-In
+In 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kovalyshen"
@@ -345,7 +345,7 @@ key "Kovalyshen"
  error, but no direct comparison to a known solution, such as zero leak
  off result 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "self_similar_linkov"
 
 \end_inset
@@ -1938,7 +1938,7 @@ key "Kovalyshen"
 \begin_inset Formula $d_{w(t,0)}$
 \end_inset
 
- and normalized propagation velocity
+ and normalized propagation velocity 
 \begin_inset Formula $u$
 \end_inset
 

@@ -92,10 +92,9 @@ First, when computing the fluid balance equation the volume of fractures
 \end_layout
 
 \begin_layout Itemize
-Second.
- various events of crack collisions and splits require unknown intermediate
- width values that must be found by interpolation the known width data on
- discredited grid.
+Second, various events of crack collisions and splits require unknown intermedia
+te width values that must be found by interpolation the known width data
+ on discredited grid.
  
 \end_layout
 
@@ -348,13 +347,14 @@ With the powers
 \begin_inset Formula $B$
 \end_inset
 
- obtained through crack tip handling strategies 
+ obtained through crack tip handling strategies (Subsection 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "tip_strategy"
 
 \end_inset
 
+).
  Now when interpolating polynomial 
 \begin_inset Formula $S(x)$
 \end_inset
@@ -425,7 +425,7 @@ Subtracting
  allows major part of the integral is done analytically, leaving much lesser
  part to be computed by numerical approximation.
  This allows for less error when obtaining volume and extrapolating width
- values..
+ values.
 \end_layout
 
 \begin_layout Standard
@@ -809,7 +809,7 @@ Relative error obtained while extrapolating midpoints values between
  grid point.
  Self similar solution based pipe and crack segments.
  It is possible to achieve accuracy of 
-\begin_inset Formula $10^{-}4$
+\begin_inset Formula $10^{-4}$
 \end_inset
 
  or better for most types of interpolants over the entire interval.

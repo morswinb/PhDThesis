@@ -312,16 +312,8 @@ reference "omega_continuity"
  we derive a new formula for the lubrication equation: 
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial\Omega}{\partial t}=\label{omega_system}
+\frac{\partial\Omega}{\partial t}=-\frac{1}{L^{2}(t)}\left[\left(\frac{\partial\Omega}{\partial x}\right)^{3}\frac{\partial^{2}\Omega}{\partial x^{2}}+\frac{64}{81}\Omega_{0}^{3}\left(\Omega-x\frac{\partial\Omega}{\partial x}\right)\right]-Q_{l}.\label{omega_system}
 \end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
--\frac{1}{L^{2}(t)}\left[\left(\frac{\partial\Omega}{\partial x}\right)^{3}\frac{\partial^{2}\Omega}{\partial x^{2}}+\frac{64}{81}\Omega_{0}^{3}\left(\Omega-x\frac{\partial\Omega}{\partial x}\right)\right]-Q_{l}.
-\]
 
 \end_inset
 
@@ -375,12 +367,8 @@ reference "omega_boundary"
 
 \end_inset
 
-)
-\begin_inset Formula $_{1}$
-\end_inset
-
- itself, but may lead to some increase of the problem stiffness, as shown
- later in Section 
+), but may lead to some increase of the problem stiffness, as shown later
+ in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Stiffness-analysis"
@@ -415,10 +403,6 @@ is equivalent to the original one
 LatexCommand eqref
 reference "omega_boundary"
 
-\end_inset
-
-
-\begin_inset Formula $_{2}$
 \end_inset
 
 .

@@ -119,7 +119,7 @@ reference "leak-off"
 
  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "q_l_bench"
 
 \end_inset
@@ -160,14 +160,14 @@ reference "sub:General-benchmark"
 
  is limited in to the two terms its components 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "w_bench"
 
 \end_inset
 
 -
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "q_l_bench"
 
 \end_inset
@@ -189,7 +189,7 @@ reference "carter"
 \begin_layout Standard
 can be substituted in to 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "q_star"
 
 \end_inset
@@ -223,7 +223,7 @@ The term
 
  from benchmark 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "v_bench"
 
 \end_inset
@@ -232,7 +232,7 @@ reference "v_bench"
 \begin_inset Formula $\tau(x)=L^{-1}(x)$
 \end_inset
 
- described in Subsection
+ described in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Exposure-time-computation"
@@ -257,7 +257,7 @@ The
 \end_inset
 
  variable system can be slightly modified such so the known 
-\begin_inset Formula $q_{1}^{*}$
+\begin_inset Formula $q_{l}^{*}$
 \end_inset
 
  term is provided and only the remaining 
@@ -292,8 +292,8 @@ reference "w_DS"
 
 \begin_layout Standard
 This gives us some settings to test the accuracy of the method for computing
- leak off itself, and indirectly the accuracy of the transient solution
- .Lets use the leak off numerical 
+ leak off itself, and indirectly the accuracy of the transient solution.
+ Lets use the leak off numerical 
 \begin_inset Formula $\tau$
 \end_inset
 
@@ -332,7 +332,56 @@ reference "q_star_test"
  the accuracy remains unchanged.
  The computation time, and number of time steps required is affected.
  Numerical approximation triggers the solver to make more time steps.
- Nevertheless this tests proves that Carter leak off can be accurately computed
+ Note that this essential binds the maximum time step to the propagation
+ speed.
+ While the fracture opening 
+\begin_inset Formula $w$
+\end_inset
+
+ and fracture length 
+\begin_inset Formula $L$
+\end_inset
+
+ apparently become predictable after a number of successful time steps,
+ the numerical approximation of 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ for each grid point prevents the solver from increasing the time steps
+ infinitely.
+ Numerical inversion of 
+\begin_inset Formula $L^{-1}$
+\end_inset
+
+ based on an interpolation of previously computed time steps will eventually
+ produce less accurate result if the time step becomes too large, that is
+ 
+\begin_inset Formula $\tau(x)$
+\end_inset
+
+ is guesstimated on history points that are too far away.
+ This means that the strategy shown in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Spectral"
+
+\end_inset
+
+, and any publication that follows, where the time step grows 
+\emph on
+exponentially, 
+\emph default
+will require a new time step strategy or much more sophisticated leak off
+ computation algorithm than the one presented here, if the leak off is to
+ be computed as a part of the unknown solution rather than simply artificially
+ analytically provided.
+ On the other hand the test shown here was relatively straightforward to
+ set up, as conventional ODE solvers are capable of effectively managing
+ the time step themselves.
+\end_layout
+
+\begin_layout Standard
+Nevertheless this tests proves that Carter leak off can be accurately computed
  numerically, and suggests that the numerical accuracy is unaffected by
  the leak off approximation used in this work.
 \end_layout
@@ -535,8 +584,8 @@ key "Economides2000,Kovalyshen_phd,MKP"
 
 \end_inset
 
- Moreover, when combining Carter's leak-off with some non-local variants
- of elasticity models (for example, KGD model of hydrofracturing), one obtains
+ Moreover, when combining Carter leak off with some non-local variants of
+ elasticity models (for example, KGD model of hydrofracturing), one obtains
  an infinite particle velocity at the crack tip.
  As a result, the speed equation (
 \begin_inset CommandInset ref

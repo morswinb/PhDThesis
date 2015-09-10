@@ -110,7 +110,7 @@ reference "w_DS"
 
 \end_inset
 
-), (
+)(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "norm_initial_DS"
@@ -192,7 +192,7 @@ reference "carter"
 \begin_inset Formula $\frac{2}{3}+\alpha$
 \end_inset
 
- may take value 
+ may take value of 
 \begin_inset Formula $3/2$
 \end_inset
 
@@ -200,7 +200,11 @@ reference "carter"
 \begin_inset Formula $11/6$
 \end_inset
 
- or 2, respectively.
+ or 
+\begin_inset Formula $2$
+\end_inset
+
+.
  Thus in the first two cases, the transformation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -226,7 +230,7 @@ reference "U"
 \end_inset
 
  is not singular and, second, the particle velocity is given by a linear
- relationship 
+ relationship: 
 \begin_inset Formula 
 \begin{equation}
 V(t,x)=-\frac{1}{3L(t)}\frac{\partial U}{\partial x}.\label{V_norm}

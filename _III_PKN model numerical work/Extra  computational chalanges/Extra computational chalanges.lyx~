@@ -112,8 +112,8 @@ reference "initial"
 
 \end_inset
 
-, however the information about the history of the process, including inverse
- length function, is not given in the original formulation.
+, however the information about the history of the process, including the
+ inverse length function, is not given in the original formulation.
  It could be understood that the crack was previously opened and filled
  with fluid for some large unknown time, or have just been opened and well
  defined 
@@ -204,12 +204,12 @@ reference "actual_tau"
  outputs of the numerical exposure time calculation scheme described in
  Subsection 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "sub:Exposure-time-computation"
 
 \end_inset
 
- below .
+ below.
  The effects on 
 \begin_inset Formula $q_{l}$
 \end_inset
@@ -236,12 +236,11 @@ reference "leak_tau_a_b"
 \begin_inset Formula $xL(x)<l_{*}$
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Standard
-.
- On Figure 
+On Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "different_leak_off_efects"
@@ -404,7 +403,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Initial fracture closes for both
+Initial fracture closes for both 
 \begin_inset Formula $\tau_{b}$
 \end_inset
 
@@ -472,13 +471,13 @@ Depending on the choice of
 \begin_inset Formula $x$
 \end_inset
 
- was exposed, as marked by solid red line.
+ was exposed, as marked by the solid red line.
  
 \begin_inset Formula $\tau_{a}$
 \end_inset
 
  ignores most of the information.
- Dashed lines indicate ignored exposure time, 
+ Dashed lines indicate ignored exposure time.
 \end_layout
 
 \end_inset
@@ -495,20 +494,21 @@ Depending on the choice of
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Comparison of effects various interpretations of initial fracture history
+Comparison of effects of various interpretations of initial fracture history
  and 
 \begin_inset Formula $\tau(x)$
 \end_inset
 
  calculation.
- This particular result was obtained while testing initial conditions (
+ This particular result was obtained while testing initial conditions shown
+ on Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "q0_carter_leak_a"
 
 \end_inset
 
-).
+.
  (negligible difference for 
 \begin_inset Formula $\tau_{a}^{(1,2)}$
 \end_inset
@@ -629,8 +629,7 @@ Where odd terms refer to opening times and even times to closure times,
 \begin_inset Formula $N_{\tau}$
 \end_inset
 
- is the number of times a single point on fracture was opened (or actually
- reopened).
+ is the number of times a single point on fracture was opened (or reopened).
  
 \end_layout
 
@@ -694,7 +693,7 @@ reference "different_leak_off_efects"
 \end_inset
 
 -axis the number of times the crack tip passed through that point is accounted
- for , as shown by intersections of vertical lines with black line in Figure
+ for, as shown by intersections of vertical lines with black line in Figure
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1349,18 +1348,14 @@ BlankLine
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Formula $\tau_{n}(x_{k})-\longleftarrow$
+\begin_inset Formula $\tau_{n}(x_{k})\longleftarrow$
 \end_inset
 
  array length 
 \begin_inset Formula $N$
 \end_inset
 
- of empty dynamic arrays length 
-\begin_inset Formula $n$
-\end_inset
-
- 
+ of empty dynamic arrays
 \begin_inset ERT
 status collapsed
 
@@ -1775,7 +1770,7 @@ status collapsed
 \end_inset
 
  
-\begin_inset Formula $k:=k-1$
+\begin_inset Formula $k\longleftarrow k-1$
 \end_inset
 
 
@@ -2263,8 +2258,8 @@ The underlying assumptions were that the crack propagation speed is positive
 
 .
  These could however become invalid under specific conditions.
- Fracture remains open as long as fluid flow inside the fracture is greater
- than the leak-off, so propose a simple observation that: 
+ Fracture remains open as long as the fluid flux inside the fracture is
+ greater than the leak off, so propose a simple observation that: 
 \shape italic
 if the fracture width is monotonically decreasing from mouth to tip, and
  the value of leak-off monotonically increases up to the crack tip, then
@@ -2313,15 +2308,15 @@ Then when the value of the crack width at the last grid point reaches
 \begin_inset Formula $w_{N}=0$
 \end_inset
 
-, ODE15s is going to stop computation.
- Now it is possible to restart the computation after a small modification
- of the solution at the time the event occurred:
+, ODE15s is going to hold integration.
+ Now it is possible to resume after a small modification of the solution
+ at the time the event occurred:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-l_{*}=(1-\varepsilon)l_{end},\quad\quad w_{*}(x)=w_{end}(x(1-\varepsilon)),\label{event_re-mesh}
+l_{end}\coloneqq(1-\varepsilon)l_{end},\quad\quad w_{end}(x)\coloneqq(w_{end}(x(1-\varepsilon)),\label{event_re-mesh}
 \end{equation}
 
 \end_inset
@@ -2352,15 +2347,15 @@ c terms
 \begin_inset Formula $w_{1}$
 \end_inset
 
- for "good enough" accuracy 
+ for "good enough" accuracy (Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Interpolating-and-Integrating"
 
 \end_inset
 
-.
- The fluid balance is satisfied (see subsection 
+).
+ The fluid balance is satisfied (see Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:fluid_balance"
@@ -2368,14 +2363,13 @@ reference "subsec:fluid_balance"
 \end_inset
 
 ).
- This operation essentially chops off closed fracture segment off the length
+ This operation essentially chops off closed fracture segment off length
  
 \begin_inset Formula $\varepsilon l$
 \end_inset
 
 , thus it is a discontinuous step, however the change is relatively small
  and insignificant.
- Final solution is obtained by combining all the outputs together.
  If fracture is to recede significantly, this operation needs to be repeated
  multiple times, which might lead to high computational cost, as each backward
  step is 
@@ -2384,19 +2378,19 @@ reference "subsec:fluid_balance"
 
 .
  For this reason to compute possibly closing fractures it would be unwise
- to use
+ to use 
 \begin_inset Formula $\varepsilon<10^{-2}$
 \end_inset
 
- for shut down regime , but it is possible to use smaller 
+ for shut down regime, but it is possible to use smaller 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
- for propagating regime, and switch to a larger value if a change of propagation
+ in propagating regime, and switch to a larger value if change of propagation
  regime is detected.
- Note that this approach should not be treated as a proper, it is a simplified
- extension to propagating fracture model.
- An example solution of closing fracture is presented in Figure 
+ Note that this approach should not be treated as a proper closing regime
+ solution, it is a simplified extension to propagating fracture model.
+ An example of closing fracture is presented in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "closing_zoom"
@@ -2428,13 +2422,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Close view on closing fracture length.
- Fracture is allowed to close by
+Close up view on closing fracture length.
+ Fracture is allowed to close by 
 \begin_inset Formula $\varepsilon l$
 \end_inset
 
 , thus staircase pattern is formed.
- Smaller
+ Smaller 
 \begin_inset Formula $\varepsilon$
 \end_inset
 
@@ -2525,8 +2519,8 @@ key "hydro_mech_book"
 \begin_inset Formula $L$
 \end_inset
 
-, not net inlet pressure, possibly making it original (cant find any other
- example).
+, not net inlet pressure, possibly making it original (as it is hard to
+ find such an example in the literature).
  Note relation between old peeks and change in propagation speed marked
  by dotted horizontal lines.
 \end_layout
@@ -2604,17 +2598,17 @@ Fluid balance equation is used to verify if solver output is valid:
 \end_layout
 
 \begin_layout Standard
-A good way to integrate leak off function
+A good way to integrate leak off function 
 \begin_inset Formula $\int_{0}^{t}\int_{0}^{1}q_{l}(t,x)dxdt$
 \end_inset
 
- is to add an extra ode to ODE15s, lets call it:
+ is to add an extra ODE, lets make in an operator and call it:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{\mathcal{C}=}\int_{0}^{1}q_{l}(t,x)dx\label{operator_leak}
+\mathcal{\mathcal{C}=}\int_{0}^{1}q_{l}(t,x)dx,\label{operator_leak}
 \end{equation}
 
 \end_inset
@@ -2623,7 +2617,7 @@ A good way to integrate leak off function
 \end_layout
 
 \begin_layout Standard
-So then the derivative function (
+so then the derivative function (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ODE_system"
@@ -2652,7 +2646,7 @@ reference "eq:ODE_system"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'=\{\mathcal{A},\mathcal{B},\mathcal{\mathcal{C}}\}\label{fluid_balance-2}
+y'=\{\mathcal{A},\mathcal{B},\mathcal{\mathcal{C}}\}.\label{fluid_balance-2}
 \end{equation}
 
 \end_inset

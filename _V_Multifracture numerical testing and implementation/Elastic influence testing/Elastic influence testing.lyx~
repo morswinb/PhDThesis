@@ -161,9 +161,16 @@ name "two_close_paraller"
 \end_layout
 
 \begin_layout Standard
-As the first test for pseudo elastic influence procedure, lets consider
- a relatively simple case where two fractures are placed parallel to each
- other, and aligned as if there were mirror images of each other.
+As the first test for the pseudo elastic influence procedure (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Method-for-elasticity"
+
+\end_inset
+
+), lets consider a relatively simple case where two fractures are placed
+ parallel to each other, and aligned as if there were mirror images of each
+ other.
  This is similar to the case described by Bunger 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -187,13 +194,13 @@ reference "sigma_close"
 \begin_inset Formula $1$
 \end_inset
 
-, one should expect for this elastic scheme to produce a result that follows:
+, one should expect this elastic scheme to produce a result that follows:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sigma_{l}(x)=\frac{3}{16}p_{net}(x)\label{eq:expected_two_fracures_elasticity}
+\sigma_{l}(x)=\frac{3}{16}p_{net}(x).\label{eq:expected_two_fracures_elasticity}
 \end{equation}
 
 \end_inset
@@ -220,7 +227,7 @@ reference "sigma_formula"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-g=0.1413\label{eq:g_value}
+g=0.1413.\label{eq:g_value}
 \end{equation}
 
 \end_inset
@@ -283,7 +290,7 @@ key "Bunger"
 \begin_inset Formula $10^{-3}$
 \end_inset
 
-, see Section below 
+, see Subsection below 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Approximation-tolerances,-and"
@@ -572,14 +579,14 @@ Furthermore there is a much more significant problem with distance calculation
 \begin_inset Formula $\hat{\sigma}$
 \end_inset
 
- is computed 
+ is computed by 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "sigma_formula"
 
 \end_inset
 
- from the fracture propagation axis 
+ as originating from the fracture propagation axis 
 \begin_inset Formula $x$
 \end_inset
 
@@ -877,7 +884,7 @@ reference "two_close_paraller"
 \end_inset
 
 .
- The spacing is set to
+ The spacing is set to 
 \begin_inset Formula $1$
 \end_inset
 
@@ -886,7 +893,7 @@ reference "two_close_paraller"
 \end_inset
 
  to increase number the divisions needed to achieve desired accuracies.
- .Results of such measurements for three pairs of tolerance values are shown
+ Results of such measurements for three pairs of tolerance values are shown
  on Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -901,11 +908,11 @@ reference "sigma_tols"
 
 .
  Increasing the tolerances to 
-\begin_inset Formula $\sigma_{l}^{reltol}=10^{-4},\sigma_{l}^{reltol}=10^{-8}$
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-4},\ \sigma_{l}^{reltol}=10^{-8}$
 \end_inset
 
  reduces the accuracy but to a level comparable with 
-\begin_inset Formula $\sigma_{l}^{reltol}=10^{-3},\sigma_{l}^{reltol}=10^{-6}$
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-3},\ \sigma_{l}^{reltol}=10^{-6}$
 \end_inset
 
  when considering the proximity of end interval points 
@@ -918,7 +925,7 @@ reference "sigma_tols"
 
 .
  However further increase to 
-\begin_inset Formula $\sigma_{l}^{reltol}=10^{-2},\sigma_{l}^{reltol}=10^{-4}$
+\begin_inset Formula $\sigma_{l}^{reltol}=10^{-2},\ \sigma_{l}^{reltol}=10^{-4}$
 \end_inset
 
  results in unsafe relative values of 
@@ -955,7 +962,7 @@ reference "sigma_formula"
 \begin_inset Formula $10^{-5}$
 \end_inset
 
- (see Section 
+ (see Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Comparison-of-ODE"
@@ -979,7 +986,7 @@ reference "sigma_formula"
 ): 
 \begin_inset Formula 
 \begin{equation}
-\frac{1}{d^{3}}\xrightarrow[d=\sqrt{...}]{}\frac{1}{\sqrt{x}}\label{eq:inverse_sqrt_is_neede}
+\frac{1}{d^{3}}\xrightarrow[d=\sqrt{...}]{}\frac{1}{\sqrt{x}}.\label{eq:inverse_sqrt_is_neede}
 \end{equation}
 
 \end_inset
@@ -990,7 +997,7 @@ reference "sigma_formula"
 \begin_layout Standard
 Interestingly so far the majority of this work could be implemented only
  as numerical additions, subtractions, multiplications and divisions.
- The whole pseudo-elasticity scheme 
+ The whole pseudo-elasticity scheme shown in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Method-for-elasticity"
@@ -1014,16 +1021,15 @@ reference "sec:Method-for-elasticity"
 \begin_inset Formula $\sqrt{x}$
 \end_inset
 
- will be used a lot of times in this multifracturing problem, but there
- are other great works where the issue of native sqrt() performance was
- fixed.
+ will be used a lot in this multifracturing problem, but there are other
+ great works where the issue of native sqrt() performance was fixed.
  
 \end_layout
 
 \begin_layout Standard
 A number of 3D graphics problems requires massive repeated calculations
  of surface normals, which can be speedup by the fast approximation of inverse
- square root , a method which is very well described in a blog by Hansen
+ square root, a method which is very well described in a blog by Hansen
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1042,10 +1048,10 @@ magic
 \end_inset
 
  hexadecimal number 
-\begin_inset Formula $0x5f3759df$
+\begin_inset Formula $0x5F3759DF$
 \end_inset
 
-, an exploitation of floating point notation bit pattern, which is then
+, an exploitation of floating point notation bit properties, which is then
  followed by one or more newton iterations.
  The most influential code implementation of this algorithm would be the
  one attributed to Cormack found in Quake III source code 
@@ -1065,14 +1071,14 @@ reference "sigma_formula"
 \end_inset
 
 ) to replace the native sqrt() function.
- The endlessly repeated calculation of inverse distance 
+ The almost endlessly repeated calculation of inverse distance 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:inverse_sqrt_is_neede"
 
 \end_inset
 
-, makes this problem somehow similar to 3D graphics engine.
+, makes this problem somehow similar to a 3D graphics engine.
  
 \end_layout
 
@@ -2017,7 +2023,7 @@ key "Bunger"
 
 \end_inset
 
- as mentioned before in Section 
+ as mentioned before in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Two-nearby-parallel"
@@ -2044,8 +2050,8 @@ reference "sub:Two-nearby-parallel"
 \begin_inset Formula $H$
 \end_inset
 
- , and 
-\begin_inset Formula $q_{i}$
+, and 
+\begin_inset Formula $\hat{q}$
 \end_inset
 
  the individual pumping rate for each half fracture wing:
@@ -2054,7 +2060,7 @@ reference "sub:Two-nearby-parallel"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-H=\frac{Z}{N_{fracture}},\quad\hat{q}=\frac{q_{0}}{N_{fracture}}\label{bunger_test}
+H=\frac{Z}{N_{fracture}},\quad\hat{q}=\frac{q_{0}}{N_{fracture}},\label{bunger_test}
 \end{equation}
 
 \end_inset
@@ -2063,7 +2069,7 @@ H=\frac{Z}{N_{fracture}},\quad\hat{q}=\frac{q_{0}}{N_{fracture}}\label{bunger_te
 \end_layout
 
 \begin_layout Standard
-Which follow the test scenario proposed by Bunger 
+which follow the test scenario proposed by Bunger 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bunger"
@@ -2072,7 +2078,7 @@ key "Bunger"
 
 , thus in this case flow is assumed to disperse evenly to each fracture
  resulting in the same value of pumping 
-\begin_inset Formula $q_{i}$
+\begin_inset Formula $\hat{q}$
 \end_inset
 
  for each fracture.
@@ -2083,7 +2089,7 @@ key "Bunger"
  is approximated by: 
 \begin_inset Formula 
 \begin{equation}
-P(t)=\sum_{j=1}^{N_{fracture}}\hat{q}p_{fluid}^{j}(t,0)\label{power_input}
+P(t)=\sum_{j=1}^{N_{fracture}}\hat{q}p_{fluid}^{j}(t,0).\label{power_input}
 \end{equation}
 
 \end_inset
@@ -2097,7 +2103,7 @@ Where
 \end_inset
 
  is the net fluid pressure at the inlet of each fracture (it has to be evaluated
- through junction pressure scheme as shown in Section 
+ through junction pressure scheme as showed in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"
@@ -2109,21 +2115,18 @@ reference "sec:Junction-Strategy"
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
- .
+.
  The other parameter values used in this scenario are:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\begin{split}\nu= & 0.25\\
-E= & 10^{10}\\
-h= & 20\\
-\mu= & 1\\
-q_{0}= & 0.1\\
-\sigma_{x}= & 7*10^{7}
-\end{split}
-\label{eq:power_params}
+\begin{array}{cccccc}
+\nu & = & 0.25 & \mu & = & 1\\
+E & = & 10^{10} & q_{0} & = & 0.1\\
+h & = & 20 & \sigma_{x} & = & 7*10^{7}
+\end{array}\label{eq:power_params}
 \end{equation}
 
 \end_inset
@@ -2132,7 +2135,11 @@ q_{0}= & 0.1\\
 \end_layout
 
 \begin_layout Standard
-Where all these values are taken form the original paper 
+
+\end_layout
+
+\begin_layout Standard
+where all these values are taken form the original paper 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bunger"
@@ -2165,9 +2172,9 @@ reference "testvsbunger-1-1"
 \begin_inset Formula $K_{IC}$
 \end_inset
 
-, hence the energy required to break rock structure is not included .
- However the result, minimization of power input for some number of fractures,
- prevails.
+, hence the energy required to break rock structure is not included.
+ However the general result, minimization of power input for some number
+ of fractures, prevails.
  Fluid balance was maintained at least 
 \begin_inset Formula $10^{-4}$
 \end_inset
@@ -2221,7 +2228,7 @@ With the proper choice of the elasticity constant
 
  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:g_value"
 
 \end_inset

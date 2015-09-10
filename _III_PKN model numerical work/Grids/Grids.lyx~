@@ -100,15 +100,14 @@ Uniform grid
 \end_layout
 
 \begin_layout Standard
-Uniform grid 
 \begin_inset Formula 
 \begin{equation}
-x_{m}^{(1)}=(1-\epsilon)k/N,\quad k=0,1,...,N\label{mesh_uniform}
+x_{m}^{(1)}=(1-\epsilon)k/N,\quad k=0,1,...,N.\label{mesh_uniform}
 \end{equation}
 
 \end_inset
 
-witch divides the interval into 
+The simplest possible grid, divides the interval into 
 \begin_inset Formula $N$
 \end_inset
 
@@ -130,7 +129,7 @@ x_{m}^{(2)}(\delta)=1-\left(1-\left(1-\varepsilon^{\frac{1}{\delta}}\right)\frac
 
 Such grid has a benefit of being denser in the proximity of crack tip where
  the solution for the problem is harder to obtain, therefore allows for
- greater accuracy
+ greater accuracy 
 \begin_inset Foot
 status open
 
@@ -165,22 +164,21 @@ Exponential grid
 \end_layout
 
 \begin_layout Standard
-Modification of the exponential law:
 \begin_inset Formula 
 \begin{equation}
-x_{m}^{(3)}=\tanh(ak),\quad k=0,1,...,N
+x_{m}^{(3)}=tanh(ak),\quad k=0,1,...,N.
 \end{equation}
 
 \end_inset
 
-where parameter 
+Modification of the exponential law, where parameter 
 \begin_inset Formula $a$
 \end_inset
 
- is given by 
+ is given by: 
 \begin_inset Formula 
 \begin{equation}
-a=\frac{\tanh(1-\epsilon)}{N}\label{grid_condition_1}
+a=\frac{tanh(1-\epsilon)}{N}.\label{grid_condition_1}
 \end{equation}
 
 \end_inset
@@ -196,10 +194,10 @@ Double power grid
 \end_layout
 
 \begin_layout Standard
-Special designed grid that will be used in the case of multifracturing.
+Specially designed grid that will be used in the case of multifracturing.
  It is a composition of two power grids, that has the same advantage as
  power grid when it comes to extra accuracy in the tip region, and adds
- extra accuracy at the crack inlet.
+ extra accuracy at the crack inlet:
 \end_layout
 
 \begin_layout Standard

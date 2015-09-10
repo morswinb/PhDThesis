@@ -111,7 +111,7 @@ key "wiki_oo"
 
 \end_inset
 
- , as languages supporting this paradigm, C++ and Java become available.
+, as languages supporting this paradigm, C++ and Java become available.
  Interestingly, as observed by the author, quite a large number of academics,
  who were educated before OO became dominant, do not use, nor attempt to
  use any of OO features in their work.
@@ -170,7 +170,7 @@ key "matlab_stack"
 Having crossed out MATLAB as a feasible language for multifracturing problems
  the other choices of languages should be outlined.
  Traditionally the heaviest numerical projects have been developed in C/C++
- or FORTRAN 
+ or FORTRAN
 \begin_inset Foot
 status open
 
@@ -225,7 +225,7 @@ key "java_vs_c"
 
 \begin_layout Standard
 Writing well written and maintainable code is at least as important as its
- numerical performance 
+ numerical performance
 \begin_inset Foot
 status open
 
@@ -243,7 +243,7 @@ Basic Computer Science principle.
  would be the most consistent choice.
  Furthermore Java has unquestionably superior capabilities (stack trace,
  portability, exceptions) when it comes to code stability and reliability.
- Thous the final choice was to solve the main part of this multifracturing
+ Thus the final choice was to solve the main part of this multifracturing
  problem in Java.
  This decision was outlined here as a brief overview, and could be in fact
  carried further into much more detail, but the general reasoning should
@@ -291,7 +291,7 @@ reference "eq:ODE_solution"
 
 ).
  It is implemented by Edge that ultimately handles a single fracture, and
- Model that combines all fractures outputs (
+ Model that combines all fractures outputs (Algorithm 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "algo_ode"
@@ -305,18 +305,18 @@ reference "algo_ode"
 
 \begin_layout Itemize
 Abstract Solver is used by Multifracturing, which is the main class that
- logically advances the whole model in time 
+ logically advances the whole model in time (Algorithm
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "algo_multi"
 
 \end_inset
 
-.
+).
  The numerical work of integration is however done by extensions of Solver,
  which serve as Bridges.
  Multiple versions of ODEs solvers can be used here, as shown in the next
- section 
+ Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Comparison-of-ODE"
@@ -339,11 +339,11 @@ Model acts as a Facade, that decouples most of the detail away from main
 
 \begin_layout Itemize
 There are 
-\begin_inset Formula $\mathcal{V}$
+\begin_inset Formula $N_{V}$
 \end_inset
 
  number of Vertexes and 
-\begin_inset Formula $\mathcal{E}$
+\begin_inset Formula $N_{E}$
 \end_inset
 
  number of Edges held by Model.
@@ -422,32 +422,32 @@ reference "UML"
  of Edge can be integrated with the rest of this structure.
  Other fracturing geometries, especially KGD model that can abstracted as
  line connection between two points, if made compatible with junction strategy
- 
+ (Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"
 
 \end_inset
 
- and described as a system of ODEs, should fit without the need to alert
+) and described as a system of ODEs, should fit without the need to alert
  any other of the code.
 \end_layout
 
 \begin_layout Itemize
 Additional Classes used by Multifracturing hold specific functionality for
- collisions, 
+ collisions (Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Fracture-collisions"
 
 \end_inset
 
-, global and configuration variables, and do other tasks such as data handling
+), global and configuration variables, and do other tasks such as data handling
  and rendering.
 \end_layout
 
 \begin_layout Itemize
-The Utility Matrices specified in 
+The Utility Matrices specified in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Jacobian-and-utility"
@@ -504,7 +504,7 @@ centering
 
 \begin_layout Plain Layout
 Simplified UML design diagram, general class structure of multifracturing
- code
+ code.
 \end_layout
 
 \end_inset
@@ -561,9 +561,19 @@ name "sub:Comparison-of-ODE"
 \begin_layout Standard
 Having formulated the design in such a manner that the underlying solver
  is in fact just an abstraction, it is possible to switch utilized integration
- code with a single switch.
+ code with a single command.
  A separate bridge is prepared to deal with each method.
- Most of these rely on JNI to access native C code.
+ Most of these rely on JNI
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Java Native Access
+\end_layout
+
+\end_inset
+
+ to access native C code.
  
 \end_layout
 
@@ -581,7 +591,7 @@ key "GSL_ode"
 
  is a collection of numerous numerical libraries available under GNU public
  license.
- These libraries cover all major numerical problems, which include solving
+ These libraries cover all major numerical tools, which include solving
  initial value problems.
  The particular function used here is gsl_odeiv2, which can make a choice
  of type of method used.
@@ -656,10 +666,10 @@ ODE15s
 \begin_layout Standard
 At the earlier state of development of this software, a successful attempt
  to use MATLAB ODE15s solver was made.
- Unfortunately the process calling MATLAB from Java is not straightforward.
+ Unfortunately the process of calling MATLAB from Java is not straightforward.
  Despite the reverse type of call, accessing Java code from MATLAB is made
- extremely easy with build in features, the only to access ODE15s found,
- was through some open source bindings 
+ extremely easy with build in features, the only way to access ODE15s that
+ was found, was through some open source bindings 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "matlabcontrol"
@@ -671,12 +681,12 @@ key "matlabcontrol"
  The biggest is the reliance on its own internal JVM, which in case of used
  bindings meant all send objects needed to be serialized and transferred
  between two running JVMs.
- This alone would not be a huge issue, if the MATLAB R2013a version of Java
- was 1.6, but the developed code already relied on Java 1.8 functionality.
+ This alone would not be a huge issue, but the MATLAB R2013a version of
+ Java was 1.6, but the developed code already relied on Java 1.8 functionality.
  This means keeping backward compatibility with ODE15s was not feasible
  at later stages.
  The accuracy and performance of ODE15s, when the code was still compatible
- with Java 1.6, was at the same levels to what was obtained LSODE or GLS
+ with Java 1.6, was at the same levels to what was obtained by LSODE or GLS
  solvers.
  
 \end_layout
@@ -688,7 +698,14 @@ Test on zero leak off self similar solution.
 \begin_layout Standard
 Now a comparison of several available solvers can be made.
  These solvers were tested on the same test based on zero leak off self
- similar solution [ref], with all parameters set the same.
+ similar solution, Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Zero-leak-off benchnchmark"
+
+\end_inset
+
+.
  The test was done with 
 \begin_inset Formula $N_{c}=11$
 \end_inset
@@ -767,12 +784,7 @@ reference "solvers_w"
 \begin_inset Formula $w$
 \end_inset
 
-, and Intel ODE performed about and order off accuracy better when computing
- fracture length 
-\begin_inset Formula $L$
-\end_inset
-
- 
+, and Intel ODE performed about and order off accuracy
 \begin_inset Foot
 status open
 
@@ -792,6 +804,11 @@ key "gena_apm"
 \end_inset
 
 .
+ better when computing fracture length 
+\begin_inset Formula $L$
+\end_inset
+
+.
  However the time needed to obtain the solution was about 5 times longer
  for Intel ODE solver, when compared to LSODE.
  The third shown solver GSL ODE did performed worse by and up to two orders
@@ -799,22 +816,22 @@ key "gena_apm"
  on 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "solvers_w"
+reference "solvers_w-1"
 
 \end_inset
 
- (a) ) to keep up near the crack tip.
- The time needed by GLS was about 30 times longer compared to the time used
+) to keep up near the crack tip.
+ The time needed by GLS was about 30 times grater compared to the time used
  by LSODE in this test.
  This is a very significant difference, but similar discrepancy, 10-30 times
- more iterations, was observed in comparison made in
+ more iterations, was observed in comparison made in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "stiff_ode"
 
 \end_inset
 
- between LSODE and GSL solver methods.
+ between LSODE and GSL solvers.
  This results suggest LSODE should be the default solver for most of the
  scenarios, as it offers the best performance, but the other solvers can
  still be used if any difficulties were encountered.
@@ -922,6 +939,16 @@ status open
 \begin_layout Plain Layout
 GNU Scientific Library ODE solver
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "solvers_w-1"
 
 \end_inset
 
@@ -1064,7 +1091,7 @@ reference "derevative_large_ds"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'_{1..N_{E}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{N_{E}}(t,\mathcal{M})\}\label{parall_1}
+y'_{1..N_{E}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{N_{E}}(t,\mathcal{M})\}.\label{parall_1}
 \end{equation}
 
 \end_inset
@@ -1106,7 +1133,7 @@ Since all
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'_{1..N_{E}}(t,y)=\left\{ \underset{thread\ 1}{\underbrace{\mathcal{F}'_{1}(t,\mathcal{M})}},\underset{thread\ 2}{\underbrace{\mathcal{F}'_{2}(t,\mathcal{M})}},...,\underset{thread\ E}{\underbrace{\mathcal{F}'_{N_{E}}(t,\mathcal{M})}}\right\} \label{parall_1-1}
+y'_{1..N_{E}}(t,y)=\left\{ \underset{thread\ 1}{\underbrace{\mathcal{F}'_{1}(t,\mathcal{M})}},\underset{thread\ 2}{\underbrace{\mathcal{F}'_{2}(t,\mathcal{M})}},...,\underset{thread\ N_{E}}{\underbrace{\mathcal{F}'_{N_{E}}(t,\mathcal{M})}}\right\} \label{parall_1-1}
 \end{equation}
 
 \end_inset
@@ -1116,20 +1143,10 @@ y'_{1..N_{E}}(t,y)=\left\{ \underset{thread\ 1}{\underbrace{\mathcal{F}'_{1}(t,\
 
 \begin_layout Standard
 Since the current implementation is Java based, and executes commands on
- the local CPU, a simple for each loop that assigns edge index 
-\begin_inset Formula $i$
-\end_inset
-
- to each newly created local worker is used.
- With Lambda expressions introduced in Java 1.8, the task very easy to perform,
- see source code in Appendix 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Java-multifracturing-code"
-
-\end_inset
-
-).
+ the local CPU, a simple for each loop that assigns edge to one local worker
+ is used.
+ With Lambda expressions introduced in Java 1.8, the task is even easier
+ perform.
  A multifracturing problem is likely to have tens, if not a few hundreds
  of edges involved, which should be grater than available hardware threads,
  so this simple work division is likely to achieve fair balance without
@@ -1143,14 +1160,14 @@ But the above simple parallelization of
 \end_inset
 
  does not solve the problem of optimizing Jacobian pattern.
- Previously in Section 
+ Previously in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Jacobian-and-utility"
 
 \end_inset
 
- it was shown how a matrix of Jacobian pattern can be constructed, which
+ it was shown how the matrix for Jacobian pattern can be constructed, which
  should be used in a proper custom Jacobian function.
  First lets make another version of (
 \begin_inset CommandInset ref
@@ -1159,8 +1176,16 @@ reference "derevative_large_ds"
 
 \end_inset
 
-) that operates on grid point index 
-\begin_inset Formula $j$
+) that operates on global grid point index 
+\begin_inset Formula $i_{global}$
+\end_inset
+
+ ranging from 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $N_{ode}$
 \end_inset
 
 :
@@ -1169,7 +1194,7 @@ reference "derevative_large_ds"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'_{1..N_{ODE}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{N_{ODE}}(t,\mathcal{M})\}\label{parall_1-1-1}
+y'_{1..N_{ODE}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathcal{M}),...\mathcal{F}'_{N_{ODE}}(t,\mathcal{M})\}.\label{parall_1-1-1}
 \end{equation}
 
 \end_inset
@@ -1179,11 +1204,11 @@ y'_{1..N_{ODE}}(t,y)=\{\mathcal{F}'_{1}(t,\mathcal{M}),\mathcal{F}'_{2}(t,\mathc
 
 \begin_layout Standard
 Where 
-\begin_inset Formula $\mathcal{F}'_{j}$
+\begin_inset Formula $\mathcal{F}'_{i_{global}}$
 \end_inset
 
  translates to 
-\begin_inset Formula $\mathcal{F}'_{i}$
+\begin_inset Formula $\mathcal{F}'_{i_{local}}$
 \end_inset
 
  by (
@@ -1195,14 +1220,10 @@ reference "eq:index_convert"
 
 ).
  So now 
-\begin_inset Formula $\mathcal{F}'_{j}$
+\begin_inset Formula $\mathcal{F}'_{i_{global}}$
 \end_inset
 
- returns a single point, as opposed to vector value in 
-\begin_inset Formula $\mathcal{F}'_{i}$
-\end_inset
-
-.
+ returns a single point, as opposed to vector value.
  So now when calculating the Jacobian it is possible to make the approximation
  for only the non zero values:
 \end_layout
@@ -1262,9 +1283,9 @@ reference "perf"
 \end_inset
 
  shows the computation time gains on a sample multifracturing system achieved
- with code parallelization, Jacobian matrix patternization.
+ with code parallelization and Jacobian matrix patternization.
  The speed up can be over 2 orders of magnitude, which in practice means
- that a problem that could take an hour to solve, with proper code implementatio
+ that a problem that would take an hour to solve, with proper code implementatio
 n would take less than a minute.
  The main goal of this section is to show that these relatively simple technique
 s can make a difference between a solution that gives a result, and a one
@@ -1328,7 +1349,7 @@ centering
 
 \begin_layout Plain Layout
 Performance gains with various computational techniques.
- Achieving orders of magnitude difference can save hours of computations.
+ Achieving orders of magnitude difference can save hours of real life time.
 \end_layout
 
 \end_inset

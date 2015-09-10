@@ -354,9 +354,10 @@ Interpretation of some possible fracture collision scenarios.
 
 \begin_layout Standard
 So far the presented formulation offered no restrictions on geometry of
- the model .
- Each edge representing fracture object could be placed anywhere in 2D plane,
- without any particular rules about its position with respect to other objects.
+ the model.
+ Each edge representing fracture object could be placed anywhere in the
+ 2D plane, without any particular rules about its position with respect
+ to other objects.
  This should be changed in order to obtain more physical meaning.
  The most urgent restriction to the placement of fractures should be accounting
  for possible edge intersections.
@@ -387,10 +388,11 @@ The initial placement of edges contains intersections.
 \end_layout
 
 \begin_layout Itemize
-When the solution is computed, propagating fracture fronts run into other
+When the solution is computed, propagating fracture front runs into other
  edge.
- This event could have its consequences in creation of new fractures, propagatin
-g in new directions, thus rapidly increase complexity of the model geometry.
+ This event could have its consequences in creation of new fractures and
+ propagating in new directions, thus rapidly increase complexity of the
+ model geometry.
 \end_layout
 
 \begin_layout Standard
@@ -404,7 +406,7 @@ While the first type is a trivial problem that should be resolved before
 To detect these collisions any simple line intersection algorithm can be
  used, when each edge is treated as a line segment between the two vertexes
  it connects.
- This requires a number of edges squared intersection tests to be performed,
+ This requires the number of edges squared intersection tests to be performed,
  but compared to the complexity of the whole problem is not a significant
  number.
  
@@ -629,7 +631,7 @@ The parameter
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-time\ to\ collision\approx\frac{distance\ to\ intersection\ +\frac{3}{2}T_{C}}{V_{0}}
+time\ to\ collision\approx\frac{distance\ to\ intersection\ +\frac{3}{2}T_{C}}{V_{0}},
 \end{equation}
 
 \end_inset
@@ -638,7 +640,7 @@ time\ to\ collision\approx\frac{distance\ to\ intersection\ +\frac{3}{2}T_{C}}{V
 \end_layout
 
 \begin_layout Standard
-Which gives yet another usage for speed equation 
+which gives yet another usage for speed equation 
 \begin_inset Formula $V_{0}$
 \end_inset
 
@@ -671,7 +673,7 @@ reference "eq:colision_constant_volume"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Vol{}_{before}=L_{crack}\int_{1-\frac{d}{L}}^{1}w_{crack}dx\label{eq:v_bef_NF}
+Vol{}_{before}=L_{crack}\int_{1-\frac{d}{L}}^{1}w_{crack}dx.\label{eq:v_bef_NF}
 \end{equation}
 
 \end_inset
@@ -687,7 +689,7 @@ Now the reminder of initial crack should be translated into a pipe segment.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-w_{pipe}(x)=w_{crack}\left(x\frac{L_{crack}-d}{L_{pipe}}\right)\ x\in(0,1)
+w_{pipe}(x)=w_{crack}\left(x\frac{L_{crack}-d}{L_{pipe}}\right)\ x\in(0,1).
 \end{equation}
 
 \end_inset
@@ -714,21 +716,21 @@ reference "sec:Interpolating-and-Integrating"
 
 \end_inset
 
- .
+.
  Then the old crack segment is removed from the model and three new segments
- originating from new junction are considered.
- (Figure 
+ originating from new junction are considered (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "crack_to_nf"
 
 \end_inset
 
-) These have respective lengths 
+).
+ These have respective lengths 
 \begin_inset Formula $L_{1},L_{2},L_{3}$
 \end_inset
 
-and are under influence of stresses 
+ and are under influence of stresses 
 \begin_inset Formula $\sigma_{1},\sigma_{2},\sigma_{3}$
 \end_inset
 
@@ -747,7 +749,7 @@ reference "opening_condition"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-p_{net}>0\ \rightarrow\ p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}>0,\ i=1,2,3.\label{NF_condition}
+p_{net}>0\ \rightarrow\ p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}>0,\ i=1,2,3,\label{NF_condition}
 \end{equation}
 
 \end_inset
@@ -756,18 +758,17 @@ p_{net}>0\ \rightarrow\ p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}>0,\ i=1,2,3.
 \end_layout
 
 \begin_layout Standard
-Where the value of 
+where the value of 
 \begin_inset Formula $p_{fluid}$
 \end_inset
 
- , fluid pressure
+, fluid pressure
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
 Note again that the fluid pressure is different than the net pressure, as
- the later is affected by fracture orientation.
- 
+ the later is affected by the fracture orientation.
 \end_layout
 
 \end_inset
@@ -796,7 +797,7 @@ Note again that the fluid pressure is different than the net pressure, as
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-w^{(i)}(x_{2})=\frac{p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}}{k},\ i=1,2,3.\label{eq:w_crack_to_w_pipe}
+w^{(i)}(x_{2}):=\frac{p_{fluid}-\sigma_{o}^{(i)}-\sigma_{l}^{(i)}}{k},\ i=1,2,3,\label{eq:w_crack_to_w_pipe}
 \end{equation}
 
 \end_inset
@@ -901,7 +902,7 @@ reference "self_similar_linkov"
 
 \end_inset
 
-), as argued in Section 
+), as argued in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Initial-condition"
@@ -926,6 +927,7 @@ reference "sub:Initial-condition"
 \begin{split}Vol{}_{after}=L_{1}\int_{0}^{1}w_{new\ crack}^{(1)}dx & +L_{2}\int_{0}^{1}w_{new\ crack}^{(2)}dx\\
  & +L_{3}\int_{0}^{1}w_{new\ crack}^{(3)}dx
 \end{split}
+,
 \end{equation}
 
 \end_inset
@@ -953,7 +955,7 @@ reference "eq:v_bef_NF"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-f(L_{(i)})=L_{(i)}\int_{0}^{1}w_{new\ crack}^{(i)}dx-\frac{w^{(i)}}{w^{(1)}+w^{(2)}+w^{(3)}}Vol{}_{before}
+f(L_{(i)})=L_{(i)}\int_{0}^{1}w_{new\ crack}^{(i)}dx-\frac{w^{(i)}}{w^{(1)}+w^{(2)}+w^{(3)}}Vol{}_{before}.
 \end{equation}
 
 \end_inset
@@ -979,22 +981,15 @@ reference "NF_condition"
 \end_inset
 
 ).
- The method could potentially be replaced by other, more sophisticated solution
- (
+ The method could potentially be replaced by other, more sophisticated solutions
+ by 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Chuprakov"
+key "Chuprakov,Kresse2"
 
 \end_inset
 
-,
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Kresse2"
-
-\end_inset
-
-) however the outcome should still have to agree with (
+, however the outcome should still have to agree with (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:colision_constant_volume"
@@ -1145,21 +1140,21 @@ centering
 \begin_layout Plain Layout
 When two fractures collide some fluid transfer is allowed in the close proximity
  of newly connected junction point.
- The volume added with 
-\begin_inset Formula $\hat{w_{e_{1}}}$
+ The volume added by 
+\begin_inset Formula $\hat{w}_{e_{1}}$
 \end_inset
 
-should correspond to the volume removed with 
-\begin_inset Formula $\hat{w_{e_{2}}}$
+ should correspond to the volume removed by 
+\begin_inset Formula $\hat{w}_{e_{2}}$
 \end_inset
 
  and 
-\begin_inset Formula $\hat{w_{e_{3}}}$
+\begin_inset Formula $\hat{w}_{e_{3}}$
 \end_inset
 
 .
  This crates nice smooth starting point for further simulations.
- Not to scale
+ Not to scale.
 \end_layout
 
 \end_inset
@@ -1189,7 +1184,7 @@ The second probable type of collisions are intersections of propagating
  literature were unsuccessful and no good existing example was found.
  Here again some simplified method that does the task for the purpose of
  simulating the whole model is used.
- The detection of this intersections will be based again on some collision
+ The detection of this intersections will be again based on some collision
  acceptance threshold 
 \begin_inset Formula $T_{C}$
 \end_inset
@@ -1230,8 +1225,8 @@ When intersection is detected, new junction is created in its place.
  The old crack, and hit pipe or crack are removed form the model, and replaced
  with two new pipe segments and a new crack segment (if hit a crack), or
  three new pipe segments (if hit a pipe).
- The procedure is the same, regardless of what type of object was hit, it
- is being treated as generic edge.
+ The procedure is the same, regardless of what type of object was hit, as
+ all are being treated as generic edges.
  The crack will be transformed into new edge 
 \begin_inset Formula $e_{1}$
 \end_inset
@@ -1255,7 +1250,7 @@ The volume before is:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Vol{}_{before}=L_{old_{\ }crack}\int_{0}^{1}w_{old_{\ }crack}dx+L_{hit_{\ }edge}\int_{0}^{1}w_{hit\ edge}dx\label{eq:v_bef_HF}
+Vol{}_{before}=L_{old_{\ }crack}\int_{0}^{1}w_{old_{\ }crack}dx+L_{hit_{\ }edge}\int_{0}^{1}w_{hit\ edge}dx,\label{eq:v_bef_HF}
 \end{equation}
 
 \end_inset
@@ -1264,10 +1259,10 @@ Vol{}_{before}=L_{old_{\ }crack}\int_{0}^{1}w_{old_{\ }crack}dx+L_{hit_{\ }edge}
 \end_layout
 
 \begin_layout Standard
-While the volume after would be 
+while the volume after would be 
 \begin_inset Formula 
 \begin{equation}
-Vol{}_{before}=L_{e_{1}}\int_{0}^{1}w_{e_{1}}dx+L_{e_{2}}\int_{0}^{1}w_{e_{2}}dx+L_{e_{3}}\int_{0}^{1}w_{e_{3}}dx\label{eq:v_aff_HF}
+Vol{}_{before}=L_{e_{1}}\int_{0}^{1}w_{e_{1}}dx+L_{e_{2}}\int_{0}^{1}w_{e_{2}}dx+L_{e_{3}}\int_{0}^{1}w_{e_{3}}dx.\label{eq:v_aff_HF}
 \end{equation}
 
 \end_inset
@@ -1286,7 +1281,7 @@ The openings
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-w_{e_{1}}(x)=w_{old_{\ }crack}\left(x\right)\ x\in(0,1)
+w_{e_{1}}(x)=w_{old_{\ }crack}\left(x\right)\ x\in(0,1),
 \end{equation}
 
 \end_inset
@@ -1297,7 +1292,7 @@ w_{e_{1}}(x)=w_{old_{\ }crack}\left(x\right)\ x\in(0,1)
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-w_{e_{2}}(x)=w_{hit\ edge}\left(s_{1}x\right)\ x\in(0,1)
+w_{e_{2}}(x)=w_{hit\ edge}\left(s_{1}x\right)\ x\in(0,1),
 \end{equation}
 
 \end_inset
@@ -1308,7 +1303,7 @@ w_{e_{2}}(x)=w_{hit\ edge}\left(s_{1}x\right)\ x\in(0,1)
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-w_{e_{3}}(x)=w_{hit\ edge}\left(s_{2}x+s_{1}\right)\ x\in(0,1)
+w_{e_{3}}(x)=w_{hit\ edge}\left(s_{2}x+s_{1}\right)\ x\in(0,1),
 \end{equation}
 
 \end_inset
@@ -1317,7 +1312,7 @@ w_{e_{3}}(x)=w_{hit\ edge}\left(s_{2}x+s_{1}\right)\ x\in(0,1)
 \end_layout
 
 \begin_layout Standard
-Where parameters 
+where parameters 
 \begin_inset Formula $s_{1}=\frac{L_{e_{1}}}{L_{e_{1}}+L_{e_{2}}}$
 \end_inset
 
@@ -1344,11 +1339,11 @@ reference "sec:Interpolating-and-Integrating"
 \end_layout
 
 \begin_layout Standard
-So far the volume was changed, as 
+So far the volume has changed, as 
 \begin_inset Formula $e_{1}$
 \end_inset
 
-is a result of snapping old crack to attach it at the new intersection.
+ is a result of snapping old crack to attach it at the new intersection.
  Moreover the inherited value of 
 \begin_inset Formula $p_{net\ e_{1}}(x_{N-1})\approx0$
 \end_inset
@@ -1367,8 +1362,9 @@ reference "newton root junction"
 \end_inset
 
 , or significantly increase problem stiffness.
- To fix this problem, while maintaining same fluid volume a scheme is constructe
-d that attempts to transfer some of the volume to meet both conditions (
+ To fix this problem, while maintaining the same fluid volume a scheme is
+ constructed that attempts to transfer some of the volume to meet both condition
+s (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:colision_constant_volume"
@@ -1401,7 +1397,7 @@ weights
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\varpi_{i}^{(e_{1})}=x_{i}^{p}\label{eq:weigth1}
+\varpi_{i}^{(e_{1})}=x_{i}^{p},\label{eq:weigth1}
 \end{equation}
 
 \end_inset
@@ -1412,7 +1408,7 @@ weights
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\varpi_{i}^{(e_{2})}=s_{2}x_{i}^{p}\label{eq:weigth2}
+\varpi_{i}^{(e_{2})}=s_{2}x_{i}^{p},\label{eq:weigth2}
 \end{equation}
 
 \end_inset
@@ -1423,7 +1419,7 @@ weights
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\varpi_{i}^{(e_{3})}=s_{1}(1-x_{i})^{p}\label{eq:weigth3}
+\varpi_{i}^{(e_{3})}=s_{1}(1-x_{i})^{p}.\label{eq:weigth3}
 \end{equation}
 
 \end_inset
@@ -1455,7 +1451,7 @@ reference "crack_pipe_volume_transfer"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\hat{w_{e_{1}}}(x)=(1+b\varpi_{i}^{(e_{1})})w_{e_{1}}
+\hat{w_{e_{1}}}(x)=(1+b\varpi_{i}^{(e_{1})})w_{e_{1}},
 \end{equation}
 
 \end_inset
@@ -1466,7 +1462,7 @@ reference "crack_pipe_volume_transfer"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\hat{w_{e_{2}}}(x)=(1+a\varpi_{i}^{(e_{2})})w_{e_{2}}
+\hat{w_{e_{2}}}(x)=(1+a\varpi_{i}^{(e_{2})})w_{e_{2}},
 \end{equation}
 
 \end_inset
@@ -1477,7 +1473,7 @@ reference "crack_pipe_volume_transfer"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\hat{w_{e_{3}}}(x)=(1+a\varpi_{i}^{(e_{3})})w_{e_{3}}
+\hat{w_{e_{3}}}(x)=(1+a\varpi_{i}^{(e_{3})})w_{e_{3}},
 \end{equation}
 
 \end_inset
@@ -1486,27 +1482,27 @@ reference "crack_pipe_volume_transfer"
 \end_layout
 
 \begin_layout Standard
-Such so (
+such so 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:colision_constant_volume"
 
 \end_inset
 
-) (
+ 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "smooth_pressure"
 
 \end_inset
 
-) are satisfied by finding zeros of:
+ are satisfied by finding zeros of:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-f_{1}(a,b)=Vol{}_{before}-L_{e_{1}}\int_{0}^{1}\hat{w_{e_{1}}}dx-L_{e_{2}}\int_{0}^{1}\hat{w_{e_{2}}}dx-L_{e_{3}}\int_{0}^{1}\hat{w_{e_{3}}}dx\label{eq:HF_bisection_1}
+f_{1}(a,b)=Vol{}_{before}-L_{e_{1}}\int_{0}^{1}\hat{w_{e_{1}}}dx-L_{e_{2}}\int_{0}^{1}\hat{w_{e_{2}}}dx-L_{e_{3}}\int_{0}^{1}\hat{w_{e_{3}}}dx,\label{eq:HF_bisection_1}
 \end{equation}
 
 \end_inset
@@ -1517,7 +1513,7 @@ f_{1}(a,b)=Vol{}_{before}-L_{e_{1}}\int_{0}^{1}\hat{w_{e_{1}}}dx-L_{e_{2}}\int_{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-f_{2}(a,b)=p_{fluid}^{(e_{1})}(x_{N-2})-\frac{p_{fluid}^{(e_{2})}(x_{N-1})+p_{fluid}^{(e_{3})}(x_{2})}{2}\label{eq:v_aff_HF_bisection_2}
+f_{2}(a,b)=p_{fluid}^{(e_{1})}(x_{N-2})-\frac{p_{fluid}^{(e_{2})}(x_{N-1})+p_{fluid}^{(e_{3})}(x_{2})}{2}.\label{eq:v_aff_HF_bisection_2}
 \end{equation}
 
 \end_inset
@@ -1577,7 +1573,8 @@ reference "eq:weigth3"
 ) , the majority of volume is displaced locally, near the junction.
  It can have a physical interpretation of pressure jump in system resolving
  relatively fast, compared to the other processes.
- However, this modification does not resolve entire pressure drop problem.
+ However, this modification does not resolve entire pressure drop problem,
+ which must be later resolved by the ODE solver.
  
 \end_layout
 

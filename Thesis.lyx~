@@ -33,7 +33,7 @@ algorithm2e
 \font_tt_scale 100
 \graphics default
 \default_output_format default
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \paperfontsize default
@@ -179,7 +179,7 @@ This work has not previously been accepted in substance for any degree and
 \begin_inset Graphics
 	filename sign.png
 	lyxscale 20
-	scale 65
+	width 65text%
 
 \end_inset
 
@@ -237,7 +237,7 @@ Other sources are acknowledged by footnotes giving explicit references.
 \begin_inset Graphics
 	filename sign.png
 	lyxscale 20
-	scale 65
+	width 65text%
 
 \end_inset
 
@@ -298,7 +298,7 @@ ng and for inter-library loan, and for the title and summary to be made
 \begin_inset Graphics
 	filename sign.png
 	lyxscale 20
-	scale 65
+	width 65text%
 
 \end_inset
 
@@ -401,7 +401,7 @@ name "chap:Introduction"
 To begin with, this first introductory Chapter should serve as an introduction
  to fracturing problems.
  The brief outline of the process, main challenges and ideas, as well as
- its real life significance are be outlined in Section 
+ its real life significance are outlined in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Literature-overview"
@@ -417,7 +417,7 @@ reference "sec:Single-Fracture-Model"
 
 \end_inset
 
-, and for more advanced multifracturing problems in Section 
+, and more advanced multifracturing problems follow in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:aim_of_this_work"
@@ -426,8 +426,8 @@ reference "sec:aim_of_this_work"
 
 .
  The text presented here should be interpreted as an overview of methods
- and results existing in the literature, and used to put the next Chapters
- in right context.
+ and important results existing in the literature, and used to put the next
+ Chapters in the right context.
  Finally in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -492,7 +492,7 @@ name "chap:PKN-model-reformulation"
 \begin_layout Standard
 The first challenge of this work will be to reformulate the original PKN
  model formulation.
- Recently speed equation was reintroduced by Linkov 
+ Recently the speed equation was reintroduced by Linkov 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Linkov_1"
@@ -510,9 +510,8 @@ key "Kemp"
  Previously the majority of hydrofracturing problems were solved using finite
  volume methods, but thanks to the speed equation it is now possible to
  solve these using finite difference methods.
- Thous this chapter will make an attempt to provide the theoretical mathematical
- background upon which new finite difference based solutions can be later
- constructed.
+ This chapter will prepare the theoretical mathematical background upon
+ which new finite difference based solutions can be later constructed.
  Hopes are that such a new formulation would not only be more straightforward,
  but would also lead to improved overall modeling of hydraulic fracture
  propagation.
@@ -520,18 +519,18 @@ key "Kemp"
 \end_layout
 
 \begin_layout Standard
-A significant part of this Chapter was done with great mentoring
+A significant part of this Chapter was done under mentoring
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-as opposed to the next Chapters where more and more work would be done completel
-y independently
+As opposed to the next Chapters where more and more work would be done completel
+y independently.
 \end_layout
 
 \end_inset
 
- from other research group members, as it repeats published article 
+ by other research group members, as it repeats published article 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "moje_bzdury"
@@ -545,18 +544,11 @@ key "MWL,Linkov_4"
 
 \end_inset
 
- (and eventually back to the original model by Nordgren 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Nordgren"
-
-\end_inset
-
-).
+.
  It would be however impossible not to include these previous findings,
  without loosing essential prerequisite information, needed to understand
  the new formulation.
- The sections in this chapter achieve the following:
+ The Sections in this Chapter achieve the following:
 \end_layout
 
 \begin_layout Itemize
@@ -567,7 +559,7 @@ reference "sec:Preliminary-Results"
 
 \end_inset
 
- is a general outline of background works on PKN model, with the previously
+ is a general outline of background works on PKN model, including the previously
  known idea to use the crack tip asymptotics.
 \end_layout
 
@@ -600,7 +592,7 @@ reference "sec:Carter-type-leak"
 
 \end_inset
 
- ) and dereviation of further asymptotic terms (Subsection 
+) and dereviation of further asymptotic terms (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-details-of"
@@ -632,7 +624,7 @@ key "Linkov_4"
 
 \end_inset
 
- , bringing it in line with the other formulations of this Chapter.
+, bringing it in line with the other formulations of this Chapter.
 \end_layout
 
 \begin_layout Itemize
@@ -643,11 +635,11 @@ reference "sec:Reformulation-of-the-1"
 
 \end_inset
 
- introduces a new variable
+ introduces a new variable 
 \begin_inset Formula $\Omega$
 \end_inset
 
-, and a new formulation compatible with previous 
+, and a new formulation compatible with the previous 
 \begin_inset Formula $w$
 \end_inset
 
@@ -676,14 +668,14 @@ reference "sub:One-term-condition"
 
 \end_inset
 
- ), to introduce improved two term boundary condition (Subsection 
+), to introduce improved two term boundary condition (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:General-two-term"
 
 \end_inset
 
- ).
+).
 \end_layout
 
 \begin_layout Standard
@@ -780,7 +772,7 @@ reference "sec:Dynamic-systems-with"
 
 \end_inset
 
- outlines the numerical solution prepared for stiff ODE solvers.
+ outlines the numerical procedure prepared for stiff ODE solvers.
 \end_layout
 
 \begin_layout Itemize
@@ -803,10 +795,10 @@ reference "sec:Computation-Accuracy"
 
 \end_inset
 
- shows shows that the developed code produces accurate results when tested
- against numerical benchmarks.
- The accuracy gains are mostly attributed to better, new two term asymptotic,
- boundary condition at the crack tip.
+ shows that the developed code produces accurate results when tested against
+ numerical benchmarks.
+ The accuracy gains are mostly attributed to the better, new, two term asymptoti
+c boundary condition at the crack tip.
  
 \end_layout
 
@@ -819,8 +811,8 @@ reference "sec:Comparison-with-known"
 \end_inset
 
  is a comparison with results by other authors obtained by other means.
- Here it is implied that the accuracy of this work approach is greater than
- these other results.
+ Here it is implied that the accuracy of this work is greater than these
+ of other authors.
 \end_layout
 
 \begin_layout Itemize
@@ -854,7 +846,7 @@ reference "sec:Test-on-real"
 
 \end_inset
 
- shows outcomes of using real life inputs.
+ shows outcomes of using real life inputs in a single fracture simulation.
  
 \end_layout
 
@@ -866,8 +858,8 @@ reference "sec:Matlab-single-fracture"
 
 \end_inset
 
- includes some sample source code, a bare minimum required perform single
- fracture simulations.
+ includes some sample source code, a bare minimum required to reproduce
+ single fracture simulations.
 \end_layout
 
 \begin_layout Standard
@@ -996,9 +988,9 @@ key "moje_bzdury"
 
 \end_inset
 
-, the knowledge of single fracture will be now applied to simulate complex
- structures composed of multiple fractures.
- The PKN model used a a basis for this challenge requires a few significant
+, knowledge of the single fracture model will be now applied to simulate
+ complex structures composed of multiple fractures.
+ The PKN model used as a basis for this challenge requires a few significant
  modifications, the first one being the replacement of simple linear elasticity
  relation 
 \begin_inset CommandInset ref
@@ -1064,7 +1056,7 @@ reference "poiseulle"
 
 \end_inset
 
- with these modified elasticity
+ with these modified elasticity 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "elasticity_multi-1"
@@ -1141,13 +1133,13 @@ reference "continuity"
 \end_layout
 
 \begin_layout Standard
-Now one that this small decision to include 
+Now note that this small decision to include 
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
  leads huge modification to the single fracture formulation, not to mention
- the additional work required to combine them into a system of multiple
- fractures.
+ the additional work required to combine them into a functional system of
+ multiple fractures.
  
 \end_layout
 
@@ -1369,12 +1361,6 @@ filename "_V_Multifracture numerical testing and implementation/Testing against 
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand include
-filename "_V_Multifracture numerical testing and implementation/Elastic influence testing/Elastic influence testing.lyx"
-
-\end_inset
-
 
 \end_layout
 

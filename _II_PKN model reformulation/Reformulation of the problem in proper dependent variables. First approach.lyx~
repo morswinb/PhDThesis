@@ -110,7 +110,7 @@ reference "w_DS"
 
 \end_inset
 
-), (
+)(
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "norm_initial_DS"
@@ -192,7 +192,7 @@ reference "carter"
 \begin_inset Formula $\frac{2}{3}+\alpha$
 \end_inset
 
- may take value 
+ may take value of 
 \begin_inset Formula $3/2$
 \end_inset
 
@@ -200,7 +200,11 @@ reference "carter"
 \begin_inset Formula $11/6$
 \end_inset
 
- or 2, respectively.
+ or 
+\begin_inset Formula $2$
+\end_inset
+
+.
  Thus in the first two cases, the transformation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -248,16 +252,8 @@ reference "norm_continuity"
  as: 
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial U}{\partial t}=\label{U_continuity}
+\frac{\partial U}{\partial t}=\frac{1}{L(t)}\left[\left(xV(t,1)-V(t,x)\right)\frac{\partial U}{\partial x}-3U\frac{\partial V}{\partial x}\right]-3U^{\frac{2}{3}}q_{l},\label{U_continuity}
 \end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\frac{1}{L(t)}\left[\left(xV(t,1)-V(t,x)\right)\frac{\partial U}{\partial x}-3U\frac{\partial V}{\partial x}\right]-3U^{\frac{2}{3}}q_{l},
-\]
 
 \end_inset
 

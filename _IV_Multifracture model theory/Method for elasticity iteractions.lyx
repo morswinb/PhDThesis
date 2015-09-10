@@ -140,7 +140,7 @@ where
 \begin_inset Formula $H$
 \end_inset
 
- is fracture spacing in an array of parallel PKN fractures, thus the distance
+ is fracture spacing in an array of parallel PKN fractures, the distance
  between two fractures.
  The approximations 
 \begin_inset Formula $\sigma_{l}^{(1)}$
@@ -176,7 +176,7 @@ e results, yet allows for calculation of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sigma_{l}^{(j)}=\frac{gkhw_{j}\Delta x_{j}L}{min(d^{3},1)}|(\hat{n_{j}}\cdot\hat{\sigma})(\hat{n_{i}}\cdot\hat{\sigma})|\label{sigma_formula}
+\sigma_{l}^{(j)}=\frac{gkhw_{j}\Delta x_{j}L}{min(d^{3},1)}|(\hat{n_{j}}\cdot\hat{\sigma})(\hat{n_{i}}\cdot\hat{\sigma})|,\label{sigma_formula}
 \end{equation}
 
 \end_inset
@@ -185,7 +185,7 @@ e results, yet allows for calculation of
 \end_layout
 
 \begin_layout Standard
-Where:
+where:
 \end_layout
 
 \begin_layout Itemize
@@ -404,7 +404,7 @@ Where:
 \begin_inset Formula $g$
 \end_inset
 
- - an elasticity constant (value approximated in Section 
+ - an elasticity constant (value approximated in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Two-nearby-parallel"
@@ -435,7 +435,7 @@ reference "sigma_far"
 \end_inset
 
 ), but is added here to make simulations possible, as explained further
- in Section 
+ in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Two-fractures-from"
@@ -480,7 +480,7 @@ reference "sigma_close"
 
 \end_inset
 
-), as shown in Section 
+), as shown in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Two-nearby-parallel"
@@ -534,7 +534,7 @@ centering
 
 \begin_layout Plain Layout
 Graphical reference to calculation of pseudoelastic influence between two
- edges
+ edges.
 \end_layout
 
 \end_inset
@@ -631,7 +631,7 @@ For edge with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Delta x_{j-1/4}=\frac{x_{j}-x_{j-1}}{2},\quad\frac{3}{2}\leq j-1/4\leq N\label{delta_x_elasticity}
+\Delta x_{j-1/4}=\frac{x_{j}-x_{j-1}}{2},\quad\frac{3}{2}\leq j-1/4\leq N,\label{delta_x_elasticity}
 \end{equation}
 
 \end_inset
@@ -642,7 +642,7 @@ For edge with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Delta x_{j+1/4}=\frac{x_{j+1}-x_{j}}{2},\quad1\leq j+1/4\leq N-\frac{3}{2}\label{delta_x_elasticity-1}
+\Delta x_{j+1/4}=\frac{x_{j+1}-x_{j}}{2},\quad1\leq j+1/4\leq N-\frac{3}{2},\label{delta_x_elasticity-1}
 \end{equation}
 
 \end_inset
@@ -653,7 +653,7 @@ For edge with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Delta x_{1+1/4}=0,\quad,\Delta x_{N-1/4}=0\label{delta_x_elasticity-1-1}
+\Delta x_{1+1/4}=0,\quad,\Delta x_{N-1/4}=0,\label{delta_x_elasticity-1-1}
 \end{equation}
 
 \end_inset
@@ -664,7 +664,7 @@ For edge with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Delta x_{2-1/4}=x_{2},\quad\Delta x_{N-1+1/4}=1-x_{N-1}\label{delta_x_elasticity-1-1-1}
+\Delta x_{2-1/4}=x_{2},\quad\Delta x_{N-1+1/4}=1-x_{N-1}.\label{delta_x_elasticity-1-1-1}
 \end{equation}
 
 \end_inset
@@ -722,7 +722,7 @@ cracks
 \begin_inset Formula $j+1/4$
 \end_inset
 
-, which are halves of the distance to each other neighboring points.
+, which are quaters of the distance to each other neighboring points.
  The most outer points are given zero 
 \begin_inset Formula $\Delta x$
 \end_inset
@@ -791,7 +791,7 @@ This process should then recursively continue dividing the original
 \begin_inset Formula 
 \begin{eqnarray}
 \sigma_{l}^{(j)} & = & \sigma_{l}^{(j-1/4)}+\sigma_{l}^{(j+1/4)}\label{sigma_formula_recursive}\\
- & = & \sigma_{l}^{(j-3/8)}+\sigma_{l}^{(j-1/8)}+\sigma_{l}^{(j+1/8)}+\sigma_{l}^{(j+3/8)}\nonumber \\
+ & = & \sigma_{l}^{(j-3/8)}+\sigma_{l}^{(j-1/8)}+\sigma_{l}^{(j+1/8)}+\sigma_{l}^{(j+3/8)},\nonumber \\
  & = & ...\nonumber 
 \end{eqnarray}
 
@@ -804,7 +804,7 @@ This process should then recursively continue dividing the original
 \begin_inset Formula 
 \begin{eqnarray}
 \sigma_{l}^{(j)} & = & \sigma_{l}^{(j-c)}+\sigma_{l}^{(j+c)}\label{sigma_formula_recursive-1}\\
- & = & \sigma_{l}^{(j-c-c/2)}+\sigma_{l}^{(j-c+c/2)}+\sigma_{l}^{(j+c-c/2)}+\sigma_{l}^{(j+c+c/2)}\nonumber \\
+ & = & \sigma_{l}^{(j-c-c/2)}+\sigma_{l}^{(j-c+c/2)}+\sigma_{l}^{(j+c-c/2)}+\sigma_{l}^{(j+c+c/2)},\nonumber \\
  & = & ...\nonumber 
 \end{eqnarray}
 
@@ -864,7 +864,7 @@ Where
 \begin{split}\sigma_{l}^{abstol} & >|\sigma_{l}^{(j\pm c)}-\sigma_{l}^{(j\pm c-c/2)}-\sigma_{l}^{(j\pm c+c/2)}|\\
 \sigma_{l}^{reltol} & >\frac{|\sigma_{l}^{(j\pm c)}-\sigma_{l}^{(j\pm c-c/2)}-\sigma_{l}^{(j\pm c+c/2)}|}{\sigma_{l}^{(j\pm c)}}
 \end{split}
-\label{eq:elasticity_recursive_condition}
+.\label{eq:elasticity_recursive_condition}
 \end{equation}
 
 \end_inset
@@ -888,7 +888,7 @@ For each new point
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-w_{j\pm c}=a_{j\pm1/4}x_{j\pm c}+w_{j-1/4}\label{eq:w_j+-c}
+w_{j\pm c}=a_{j\pm1/4}x_{j\pm c}+w_{j-1/4},\label{eq:w_j+-c}
 \end{equation}
 
 \end_inset
@@ -897,7 +897,7 @@ w_{j\pm c}=a_{j\pm1/4}x_{j\pm c}+w_{j-1/4}\label{eq:w_j+-c}
 \end_layout
 
 \begin_layout Standard
-Where the value of 
+where the value of 
 \family roman
 \series medium
 \shape up
@@ -919,7 +919,7 @@ Where the value of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-a_{j-1/4}=\frac{x_{j}-x_{j-1}}{2},\quad a_{j+1/4}=\frac{x_{j+1}-x_{j}}{2}\label{eq:a_j+-1/4}
+a_{j-1/4}=\frac{x_{j}-x_{j-1}}{2},\quad a_{j+1/4}=\frac{x_{j+1}-x_{j}}{2}.\label{eq:a_j+-1/4}
 \end{equation}
 
 \end_inset
@@ -950,7 +950,7 @@ The length for each subdivision of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Delta x_{j\pm c}=\frac{\Delta x_{j\pm4c}}{2}\label{delta_x_k+-c}
+\Delta x_{j\pm c}=\frac{\Delta x_{j\pm4c}}{2},\label{delta_x_k+-c}
 \end{equation}
 
 \end_inset
@@ -959,7 +959,7 @@ The length for each subdivision of
 \end_layout
 
 \begin_layout Standard
-And finally to find the distance 
+and finally to find the distance 
 \family roman
 \series medium
 \shape up
@@ -985,7 +985,7 @@ And finally to find the distance
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{j\pm c/2}=x_{j\pm c}+\Delta x_{j\pm c/2}\label{x_j+-c}
+x_{j\pm c/2}=x_{j\pm c}+\Delta x_{j\pm c/2}.\label{x_j+-c}
 \end{equation}
 
 \end_inset
@@ -1042,7 +1042,7 @@ reference "elasticity_subdivision"
 \uwave default
 \noun default
 \color inherit
- This method could be replaced by some integral, as this recursive integration
+ This method could be replaced by some integral, as this recursive subdivision
  does essentially do numerical integration, where distance function 
 \begin_inset Formula $d$
 \end_inset
@@ -1145,7 +1145,7 @@ name "sub:Resolving-edge-visibility"
 
 \begin_layout Standard
 Further question arises from finding which fractures are visible to each
- other, and therefore project stress influence
+ other, and therefore project stress influence 
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
@@ -1174,6 +1174,7 @@ straight line of sight
 
 \begin_layout Standard
 This is trivial if only parallel fractures of equal length are considered
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bunger"
@@ -1192,8 +1193,8 @@ key "redblob"
 .
  This is a combination of ray casting and wall tracking techniques, common
  in 2D graphics applications.
- PKN crack and pipe edges are treated as impermeable walls for coasted visibilit
-y rays, and these rays are treated as projections of 
+ PKN crack and pipe edges are treated as impermeable walls for casted visibility
+ rays, and these rays are treated as projections of 
 \family roman
 \series medium
 \shape up
@@ -1794,7 +1795,7 @@ status collapsed
 
 \end_inset
 
-each grid point in ever edge
+each grid point in every edge
 \begin_inset ERT
 status collapsed
 
@@ -2021,7 +2022,7 @@ BlankLine
 \end_inset
 
  divide the edge into edge slices using rays between this edge end vertexes,
- as determined by vertexes index in sorted array
+ as determined by vertexes index in the sorted array
 \begin_inset ERT
 status collapsed
 
@@ -2285,7 +2286,7 @@ BlankLine
 \end_inset
 
  mark all corresponding points as visible by the grid point considered in
- outer loop
+ the outer loop
 \begin_inset ERT
 status collapsed
 
@@ -2530,7 +2531,7 @@ reference "sigma_formula"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sigma_{l}=\sum_{k=1}^{all\; visible}\sigma_{l}^{(k)}\label{sigma_formula_total}
+\sigma_{l}=\sum_{k=1}^{all\; visible}\sigma_{l}^{(k)}.\label{sigma_formula_total}
 \end{equation}
 
 \end_inset
@@ -2547,7 +2548,7 @@ Then it is possible to numerically approximate
 \begin_inset Formula $\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}$
 \end_inset
 
- witch appeared in (
+ which appeared in (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "w_system_elast"
@@ -2569,8 +2570,7 @@ reference "central_FD"
 \end_inset
 
 ).
- These approximation can then at next steps be used in Reynolds equations
- (
+ These approximation can then be used in Reynolds equations (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "w_system_elast"
@@ -2591,7 +2591,7 @@ reference "w_system_elast_pipe"
 
 \end_inset
 
-), or in junction strategy 
+), or in junction strategy shown in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"

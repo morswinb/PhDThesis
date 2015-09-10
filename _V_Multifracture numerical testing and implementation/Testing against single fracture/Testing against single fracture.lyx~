@@ -82,7 +82,7 @@ name "sec:Testing-junction-BC,"
 
 \begin_layout Standard
 Here the implementation and some basic testing of the junction strategy
- proposed in section 
+ proposed in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"
@@ -125,7 +125,7 @@ reference "newton root junction"
 \begin_inset Formula $\frac{dq}{d\mathcal{J}}$
 \end_inset
 
- Section 
+ Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Flow-components-for_PKN"
@@ -261,7 +261,7 @@ reference "sec:Benchmark-Solution"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-L_{crack}=(1-L_{split})l_{*}\label{eq:L_split_1}
+L_{crack}=(1-L_{split})l_{*},\label{eq:L_split_1}
 \end{equation}
 
 \end_inset
@@ -272,7 +272,7 @@ L_{crack}=(1-L_{split})l_{*}\label{eq:L_split_1}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-L_{pipe}=L_{split}l_{*}
+L_{pipe}=L_{split}l_{*},
 \end{equation}
 
 \end_inset
@@ -283,7 +283,7 @@ L_{pipe}=L_{split}l_{*}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-l_{*}=L_{crack}+L_{pipe}
+l_{*}=L_{crack}+L_{pipe}.
 \end{equation}
 
 \end_inset
@@ -396,7 +396,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename crack_pipe_split.png
-	width 100text%
+	width 80text%
 
 \end_inset
 
@@ -533,7 +533,7 @@ Right crack segment.
 
 \begin_layout Plain Layout
 An explanation of single fracture spiting, left pipe and right crack segments
- add up to whole fracture.
+ add up to the whole fracture.
 \end_layout
 
 \end_inset
@@ -613,7 +613,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Pipe segment under linear split 
+Pipe segment relative opening error 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ under linear split.
 \end_layout
 
 \end_inset
@@ -644,7 +648,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Crack segment under linear split 
+Crack segment relative opening error 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ under linear split.
 \end_layout
 
 \end_inset
@@ -679,7 +687,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Pipe segment under quadratic split
+Pipe segment under relative opening error 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ quadratic split.
 \end_layout
 
 \end_inset
@@ -707,7 +719,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Crack segment under quadratic split
+Crack segment under relative opening error 
+\begin_inset Formula $\delta w$
+\end_inset
+
+ quadratic split.
 \end_layout
 
 \end_inset
@@ -826,7 +842,7 @@ reference "L_split_large1"
 
  the difference in accuracy is negligible.
  This indicated that long crack segments attached to shorter pipe segments
- are not a challenge to compute.
+ do not present any challenge to compute.
  For the values of 
 \begin_inset Formula $L_{split}>0.8$
 \end_inset
@@ -884,17 +900,17 @@ status open
 \end_inset
 
  takes relatively short time to converge to acceptable accuracies.
- As shown previously in Sections 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sub:Initial-condition"
-
-\end_inset
-
- and 
+ As shown previously in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Fracture-collisions"
+
+\end_inset
+
+ and Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Initial-condition"
 
 \end_inset
 
@@ -909,7 +925,7 @@ reference "initial"
 \begin_inset Formula $l_{*}$
 \end_inset
 
-a few orders lower than attached fractures, which in related to the test
+ a few orders lower than attached fractures, which in relation to the test
  done here, is a plausible combination.
 \end_layout
 
@@ -1022,17 +1038,11 @@ Testing how the different values of
 \begin_inset Formula $L_{split}$
 \end_inset
 
- affects computational accuracy, in terms of fracture length, and with in
- pipe and crack segments.
- Close to 
-\begin_inset Formula $1$
+ affects accuracy of relative fracture length error 
+\begin_inset Formula $\delta L$
 \end_inset
 
- values of 
-\begin_inset Formula $L_{split}$
-\end_inset
-
- generate large maximum error, however these values might be deceptive.
+ with respect to time.
  Even with 
 \begin_inset Formula $L_{split}=1-10^{-9}$
 \end_inset
@@ -1127,11 +1137,11 @@ name "split_pipe_chain"
 \end_layout
 
 \begin_layout Standard
-So far testing was done to determinate numerical details of joining pipe
+So far testing was done to investigate numerical details of joining pipe
  and crack segments, and how these affect two connected segments.
  But this test can be extended to an arbitrary number of pipe segments connected
- in a each other, in one sequence, ended with a crack segment at the tip
- (see Figure 
+ by each other, in one sequence, ended with a crack segment at the tip (see
+ Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "split_pipe_chain"
@@ -1162,9 +1172,9 @@ reference "sec:Junction-Strategy"
 
 \end_inset
 
-, as FV formulation of the problem requires, while crack segment at the
+, as FV formulation of this would in fact do, while crack segment at the
  tip acts as a special element.
- Naturally this similarity is just an outcome if different assumptions and
+ Naturally this similarity is just an outcome of different assumptions and
  techniques in just this particular test scenario.
 \end_layout
 
@@ -1217,7 +1227,7 @@ reference "eq:quad split2"
 \begin_inset Formula $N\approx200$
 \end_inset
 
- observed on 
+ observed on Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:err_N_plots"
@@ -1229,9 +1239,9 @@ reference "fig:err_N_plots"
 \end_layout
 
 \begin_layout Standard
-The most important conclusion form this observation is that the number of
- pipe segments can be can be increased freely without any negative impact,
- at least if dividing one fracture.
+The most important conclusion from this observation is that the number of
+ pipe segments be can be increased freely without any negative impact, at
+ least if dividing one fracture.
 \end_layout
 
 \begin_layout Standard
@@ -1283,8 +1293,11 @@ Relative crack length error
 \end_inset
 
  pipe segments are used.
- Extra segments increase the accuracy.
- 
+ Extra segments increase the accuracy, but saturation at 
+\begin_inset Formula $N\approx200$
+\end_inset
+
+ is reached.
 \end_layout
 
 \end_inset

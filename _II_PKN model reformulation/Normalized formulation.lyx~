@@ -135,7 +135,7 @@ reference "continuity"
  in the normalized domain is rewritten in the following manner: 
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial\tilde{w}}{\partial\tilde{t}}=\frac{1}{L(\tilde{t})}\left[\left(\tilde{x}\tilde{V}(\tilde{t},1)-\tilde{V}(\tilde{t},\tilde{x})\right)\frac{\partial\tilde{w}}{\partial\tilde{x}}-\tilde{w}\frac{\partial\tilde{V}}{\partial\tilde{x}}\right]-\tilde{q}_{l}(\tilde{t},\tilde{x}),\label{norm_continuity}
+\frac{\partial\tilde{w}}{\partial\tilde{t}}=\frac{1}{L(\tilde{t})}\left[\left(\tilde{x}\tilde{V}(\tilde{t},1)-\tilde{V}(\tilde{t},\tilde{x})\right)\frac{\partial\tilde{w}}{\partial\tilde{x}}-\tilde{w}\frac{\partial\tilde{V}}{\partial\tilde{x}}\right]-\tilde{q}_{l}(\tilde{t},\tilde{x}).\label{norm_continuity}
 \end{equation}
 
 \end_inset
@@ -172,7 +172,7 @@ D\left(\tilde{t}\right)=\sqrt{\frac{L'\left(\tilde{t}\right)}{L\left(\tilde{t}\r
 
 \end_inset
 
-was introduced in the Section 
+is introduced in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Carter-type-leak"
@@ -233,11 +233,11 @@ reference "fluid_balance_full"
 
 \end_inset
 
-) can be written in the form: 
+) can be written as: 
 \begin_inset Formula 
 \begin{equation}
 \begin{split}L(\tilde{t})\int_{0}^{1}\tilde{w}(\tilde{t},x)dx-\int_{0}^{1}\tilde{w}(x,0)dx- & \int_{0}^{\tilde{t}}\tilde{q}_{0}(t)dt\\
-+\int_{0}^{\tilde{t}}L(t)\int_{0}^{1}\tilde{q}_{l}(t,x)dxdt=0
++\int_{0}^{\tilde{t}}L(t)\int_{0}^{1}\tilde{q}_{l}(t,x)dxdt=0.
 \end{split}
 \label{balance_2}
 \end{equation}
@@ -253,7 +253,7 @@ For convenience, from now on the "
 \end_inset
 
 " symbol should be omitted, and all dependent and independent variables
- and will only consider the respective dimensionless values.
+ will only be consider as the respective dimensionless values.
 \end_layout
 
 \begin_layout Standard
@@ -264,9 +264,8 @@ reference "norm_continuity"
 
 \end_inset
 
-) of the Rey\SpecialChar \-
-nolds equation highlights an essential feature of the problem
- - it is singularly perturbed near the crack tip.
+) of Reynolds equation highlights an essential feature of the problem -
+ it is singularly perturbed near the crack tip.
  Indeed, both coefficients in front of the spatial derivatives on the right-hand
  side of the equation (
 \begin_inset CommandInset ref
@@ -300,12 +299,12 @@ V=V_{0}(t)+V_{1}(t)\left(1-x\right)^{\alpha-\frac{1}{3}}+o\left((1-x)^{\alpha-\f
 
 \end_inset
 
-represents nothing but the boundary layer 
+represents nothing but the boundary layer
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-the boundary layer concept was introduced by Ludwig Prandtl at 
+The boundary layer concept was introduced by Ludwig Prandtl at 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Boundary_Layer"
@@ -462,7 +461,7 @@ reference "v_0_w_0_relation"
 
 \end_inset
 
-), the latter can be rewritten in the following form 
+), the latter can be rewritten in the following form: 
 \begin_inset Formula 
 \begin{equation}
 \frac{d}{dt}L^{2}=\frac{2}{3}w_{0}^{3}(t),\quad\quad t>0.\label{new_speed}
@@ -483,9 +482,9 @@ key "MWL"
 
 \end_inset
 
-, 
+ that 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "new_speed"
 
 \end_inset
@@ -618,14 +617,14 @@ To find function
 \begin_inset Formula $D(t)$
 \end_inset
 
-, and thus to obtain an exact form of equation (
+, and thus to obtain the exact form of equation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "function_D"
 
 \end_inset
 
-), it is enough to compute the limit 
+), it is enough to compute the limit: 
 \begin_inset Formula 
 \begin{equation}
 D^{2}(t)=\lim_{\tilde{x}\rightarrow1}\frac{1-\tilde{x}}{t-\tau(x)}<\infty.\label{d_t_intro}
@@ -633,8 +632,8 @@ D^{2}(t)=\lim_{\tilde{x}\rightarrow1}\frac{1-\tilde{x}}{t-\tau(x)}<\infty.\label
 
 \end_inset
 
-This can be done by utilising L'Hopital's rule with taking into account
- that 
+This can be done by utilising L'Hopital's rule, taking into account that
+ 
 \begin_inset Formula $x\to L(t)$
 \end_inset
 
@@ -692,7 +691,7 @@ Having the value of
 \begin_inset Formula $\xi\ne0$
 \end_inset
 
- which guarantees that the limit 
+ which guarantees that the limit: 
 \begin_inset Formula 
 \[
 A=\lim_{\tilde{x}\rightarrow1}\frac{R(t,\tilde{x})}{(1-\tilde{x})^{\xi}}=
@@ -708,8 +707,8 @@ A=\lim_{\tilde{x}\rightarrow1}\frac{R(t,\tilde{x})}{(1-\tilde{x})^{\xi}}=
 
 \end_inset
 
-does not turn to zero or infinity.
- Due to this assumption, we can write 
+does not approach to zero or infinity.
+ Thanks to this assumption, we can write 
 \begin_inset Formula 
 \begin{equation}
 \frac{1}{\sqrt{t-\tau(x)}}=\frac{D(t)}{\sqrt{1-\tilde{x}}}+A(1-\tilde{x})^{\xi}+o\left((1-\tilde{x})^{\xi}\right),\label{subs_2}
@@ -761,7 +760,7 @@ reference "d_t_intro"
 
 \end_inset
 
-) into the limit one has: 
+) into the limit one has obtained: 
 \begin_inset Formula 
 \[
 A=\lim_{\tilde{x}\rightarrow1}\frac{D(t)}{2\xi(1-\tilde{x})^{\xi-1/2}}\left(\frac{1}{1-\tilde{x}}-\frac{L(t)\tau'(x)}{t-\tau(x)}\right)-\frac{AL(t)D^{2}(t)}{2\xi L'(t)}.
@@ -822,11 +821,7 @@ reference "subs_2"
 
 \end_inset
 
-This relationship gives a finite value of 
-\begin_inset Formula $A$
-\end_inset
-
- if
+This relationship gives a finite value
 \begin_inset Foot
 status open
 
@@ -834,13 +829,17 @@ status open
 \begin_inset Formula $(1-\tilde{x})^{1}$
 \end_inset
 
- appears in the denominator, and cancels out with context of the numerator
- 
+ appears in the denominator, and after some algebra cancels out with context
+ of the numerator 
 \end_layout
 
 \end_inset
 
- 
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ if 
 \begin_inset Formula $\xi=1/2$
 \end_inset
 
@@ -939,7 +938,7 @@ Where
 \end_layout
 
 \begin_layout Standard
-Interestingly the value of 
+Interestingly 
 \begin_inset Formula $V(t,1)$
 \end_inset
 
@@ -948,8 +947,6 @@ Interestingly the value of
 \end_inset
 
  :
-\lang american
-is 
 \end_layout
 
 \begin_layout Standard
@@ -976,7 +973,7 @@ It can be concluded that if
 \begin_inset Formula $a_{0}$
 \end_inset
 
- must be chosen such that 
+ must be chosen such so 
 \begin_inset Formula $\beta_{0}=3\alpha_{0}-1=0$
 \end_inset
 
@@ -985,8 +982,8 @@ It can be concluded that if
 \end_inset
 
 .
- This will make sure the fracture tip can be propagating with some finite
- speed, following the
+ This will make sure the fracture tip can be propagating at finite speed,
+ following the
 \emph on
  zero fluid lag
 \emph default
@@ -999,7 +996,7 @@ If
 \begin_inset Formula $V(t,1)$
 \end_inset
 
- was zero and
+ was zero and 
 \begin_inset Formula $\alpha_{0}>\frac{1}{3}$
 \end_inset
 
@@ -1017,7 +1014,7 @@ If
 \begin_inset Formula $\beta_{0}=0$
 \end_inset
 
- so for asymptotics of speed function it is obtained: 
+ so:
 \end_layout
 
 \begin_layout Standard
@@ -1032,7 +1029,7 @@ V(t,1)=v_{0}(t)(1-1)^{0}=v_{0}(t)
 \end_layout
 
 \begin_layout Standard
-hence it can said that the crack tip propagates with speed 
+hence it can be said that the crack tip propagates at speed 
 \begin_inset Formula $v_{0}(t)$
 \end_inset
 
@@ -1057,7 +1054,7 @@ Now having found the value of
 \begin_inset Formula $\alpha_{0}=\frac{1}{3}$
 \end_inset
 
- one term expansions 
+ for one term expansions 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "w_first_term"
@@ -1071,14 +1068,14 @@ reference "v_first_term"
 
 \end_inset
 
- can be substituted into 
+ these can be substituted into 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "norm_continuity"
 
 \end_inset
 
-:
+ to obtain:
 \end_layout
 
 \begin_layout Standard
@@ -1096,8 +1093,8 @@ If next power was such so
 \begin_inset Formula $\alpha_{1}>\frac{4}{3}$
 \end_inset
 
-, then this expansion would be complete, that is further terms would be
- grater significance than 
+, then this expansion would be complete, that is further terms would of
+ higher order than 
 \begin_inset Formula $O\left(1-x\right)^{\frac{1}{3}}$
 \end_inset
 
@@ -1313,7 +1310,7 @@ Here, the terms on the left-hand side of the equation are always bounded
  near the crack tip, while those on the right-hand side can behave differently
  depending on the chosen leak-off function 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "carter"
 
 \end_inset
@@ -1339,7 +1336,7 @@ q_{l}(t,x)=o\big(w(t,x)\big),\quad x\to1.
 
 \end_inset
 
-This case naturally includes the impermeable rock formation.
+This case includes the impermeable rock formation.
  Analyzing the leading order terms in the equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1347,15 +1344,7 @@ reference "norm_continuity_as"
 
 \end_inset
 
-), it is clear that 
-\begin_inset Formula $w(V_{0}-V)=O((1-x)^{4/3})$
-\end_inset
-
-, as 
-\begin_inset Formula $x\to1$
-\end_inset
-
- 
+), it is clear
 \begin_inset Foot
 status open
 
@@ -1389,6 +1378,14 @@ reference "norm_continuity_as"
 
 \end_layout
 
+\end_inset
+
+ that 
+\begin_inset Formula $w(V_{0}-V)=O((1-x)^{4/3})$
+\end_inset
+
+, as 
+\begin_inset Formula $x\to1$
 \end_inset
 
 .
@@ -1432,7 +1429,7 @@ Now assume that the leak-off function is estimated by the solution as
 \begin_inset Formula $O\big(w(t,x)\big)$
 \end_inset
 
-, or equivalently; 
+, or equivalently: 
 \begin_inset Formula 
 \[
 q_{l}(t,x)\sim\Upsilon(t)w_{0}(t)(1-x)^{1/3},\quad x\to1,
@@ -1448,18 +1445,18 @@ then the previous results are related to the values of
 \begin_inset Formula $\beta_{1}$
 \end_inset
 
- and, therefore, the equation (
+ and, therefore, the equation of 
+\begin_inset Formula $V_{1}(t)$
+\end_inset
+
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sp_1"
 
 \end_inset
 
-)
-\begin_inset Formula $_{2}$
-\end_inset
-
- remain unchanged, while the first one becomes: 
+) remains unchanged, while the first one becomes: 
 \begin_inset Formula 
 \begin{equation}
 w_{0}'(t)=\frac{1}{3L(t)}w_{0}(t)\big(V_{0}(t)+4V_{1}(t)\big)-\Upsilon(t)w_{0}(t).\label{sp_2}
@@ -1467,18 +1464,18 @@ w_{0}'(t)=\frac{1}{3L(t)}w_{0}(t)\big(V_{0}(t)+4V_{1}(t)\big)-\Upsilon(t)w_{0}(t
 
 \end_inset
 
-This case corresponds to (
+This case corresponds to 
+\begin_inset Formula $q_{l}^{(3)}$
+\end_inset
+
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "norm_leak_off_1"
 
 \end_inset
 
-)
-\begin_inset Formula $_{3}$
-\end_inset
-
- when 
+) when 
 \begin_inset Formula $C_{32}=0$
 \end_inset
 
@@ -1550,41 +1547,37 @@ Note that the particle velocity function is not smooth in this case near
 
 \end_inset
 
-To formulate an expression similar to (
+To formulate an expression similar to 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "sp_1"
 
 \end_inset
 
-)
-\begin_inset Formula $_{1}$
-\end_inset
-
- or (
+ or 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "sp_2"
 
 \end_inset
 
-), one needs to continue asymptotic analysis of the equation (
+, one needs to continue asymptotic analysis of the equation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "norm_continuity_as"
 
 \end_inset
 
-) incorporating the available information.
+ incorporating the available information.
  Although the analysis can be done for the general case, only three variants
- should be considered (compare with (
+ should be considered (compare with 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "carter"
 
 \end_inset
 
-)), respectively: 
+), respectively: 
 \begin_inset Formula $\theta=0$
 \end_inset
 
@@ -1612,14 +1605,14 @@ When
 \begin_inset Formula $\beta_{1}=2/3$
 \end_inset
 
-, returning to the equation (
+, returning to the equation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "v_asym_1"
 
 \end_inset
 
-), one concludes that 
+, one concludes that 
 \begin_inset Formula $\beta_{2}>1$
 \end_inset
 
@@ -1631,15 +1624,15 @@ w_{0}'(t)=\frac{1}{3L(t)}w_{0}(t)V_{0}(t).\label{sp_4}
 
 \end_inset
 
-This case corresponds to (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "norm_leak_off_1"
-
+This case corresponds to 
+\begin_inset Formula $q_{l}^{(3)}$
 \end_inset
 
-)
-\begin_inset Formula $_{3}$
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "norm_leak_off_1"
+
 \end_inset
 
  when 
@@ -1675,36 +1668,36 @@ If
 \begin_inset Formula $\Phi(t)=C_{2}D(t)w_{0}(t)$
 \end_inset
 
- (compare to (
+ (compare to 
+\begin_inset Formula $q_{l}^{(2)}$
+\end_inset
+
+ 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "norm_leak_off_1"
 
 \end_inset
 
-)
-\begin_inset Formula $_{2}$
-\end_inset
-
-) and again equation (
+) and again equation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "v_asym_1"
 
 \end_inset
 
-) gives 
+ gives 
 \begin_inset Formula $\beta_{2}>1$
 \end_inset
 
-, while equation (
+, while equation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "norm_continuity_as"
 
 \end_inset
 
-) leads to 
+ leads to 
 \begin_inset Formula 
 \begin{equation}
 w_{0}'(t)=\frac{1}{3L(t)}\big(w_{0}(t)V_{0}(t)+4w_{1}(t)V_{1}(t)\big).\label{sp_5}
@@ -1731,22 +1724,18 @@ Summarizing, in both mentioned above cases, there exists a single term in
 \begin_inset Formula $w_{0}$
 \end_inset
 
- in front of the leading term for the crack opening in (
+ in front of the leading term for the crack opening in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "sp_3a"
 
 \end_inset
 
-) and (
+ and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "sp_3"
 
-\end_inset
-
-)
-\begin_inset Formula $_{1}$
 \end_inset
 
 .
@@ -1780,21 +1769,21 @@ The situation changes dramatically when
  tip.
  The full details of this derivation should be omitted there, instead final
  results are presented in a compact form.
- The first six exponents in the asymptotic expansions (
+ The first six exponents in the asymptotic expansions 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "w_asym"
 
 \end_inset
 
-) and (
+ and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "v_asym"
 
 \end_inset
 
-), that introduce the singularity of 
+, that introduce the singularity of 
 \begin_inset Formula $w_{x}$
 \end_inset
 

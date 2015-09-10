@@ -83,7 +83,8 @@ name "sec:Literature-overview"
 \begin_layout Standard
 To begin, lets start with a brief explanation of what hydrofracturing is,
  and why it was created.
- Natural gas and oil are the main fossil fuels in use for over a century.
+ Natural gas and oil have been the main fossil fuels in use for the past
+ century.
  These were initially extracted from conventional deposits, underground
  pockets of trapped hydrocarbons.
  Figure 
@@ -94,7 +95,7 @@ reference "gas_picture"
 \end_inset
 
  shows various types of oil and gas reservoirs, where an example of conventional
- gas deposit is shown.
+ gas and oil deposits are shown.
  These deposits were relatively easy to access, when a rig was drilled the
  pressure would often force a violate burst of stored fossil fuel.
  A very accurate (but over dramatic) cinematization of these early days
@@ -106,30 +107,30 @@ key "there_will_be_blood"
 \end_inset
 
 .
- Even in recent history there are examples of oil and gas uncontrollably
- forcing its way to the surface: Kuwait 1991, Gulf of Mexico 2010 and a
- recent one in Nefteyugansk 2015, to name just a few major ones.
+ Even in the recent history there are examples of oil and gas uncontrollably
+ forcing its way to the surface: Kuwait 1991, Gulf of Mexico 2010 or Nefteyugans
+k 2015, to name just a few major ones.
  It could be mistaken that extraction of liquid fossil fuels is just about
- capturing this uncontrollable flow of free natural resource.
+ capturing this uncontrollable flow of a free natural resource.
  
 \end_layout
 
 \begin_layout Standard
-Unfortunately, in reality oil and gas acquisition a complex multiphysics
+Unfortunately, in reality oil and gas acquisition is a complex multiphysics
  problem.
  In an attempt to introduce the overall complexity, lets begin with pressure,
- porosity and permeability .
+ porosity and permeability.
  The deeper underground we go the higher the formation pressure, at depths
- of a few kilometers the weight of the above rock formations will add up
- to a multitude of the atmospheric pressure.
+ of a few kilometers the weight of the above material will add up to a multitude
+ of the atmospheric pressure.
  Porosity is a measure of how much of a rock is open space, a proportion
  of pores to solid matter, and even at these great depths, there pores might
  be filled with some hydrocarbonate fluid.
- Finally Permeability is a measure of the ease with which a fluid (oil or
+ Finally permeability is a measure of the ease with which a fluid (oil or
  gas) can move through a porous rock.
  A conventional reservoir would therefore be made of a filled porous rock,
  such as sandstone, covered by some other impermeable rock layer.
- The drilled well would create a path that would allow a pressure driven
+ The drilled well would create a path that would direct a pressure driven
  viscous flow of oil or gas to the surface, which could be modeled by Darcy's
  Law 
 \begin_inset CommandInset citation
@@ -139,9 +140,9 @@ key "darcy_law"
 \end_inset
 
 .
- These type of reservoirs are still operational, and contribute to a major
- part of the worlds oil and gas production, however many are depleted or
- running dry.
+ These type of reservoirs are still operational, and contribute the major
+ part of world oil and gas production, however many are depleted or running
+ dry.
 \end_layout
 
 \begin_layout Standard
@@ -208,15 +209,15 @@ clearpage
 \end_layout
 
 \begin_layout Standard
-The output of conventional oil and gas fields could be described by Hubbert
- Curve 
+The output of conventional oil and gas fields could have been described
+ by Hubbert Curve 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Hubbert1"
 
 \end_inset
 
-, a model that assumed a peek in production followed by a steady decline.
+, a model that assumes a peek in production followed by a steady decline.
  In the US (see Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -224,7 +225,7 @@ reference "oil_peak_fig"
 
 \end_inset
 
-) these maximum production output apparently occurred in 1970s.
+) these maximum production output appeared to occur in the 1970s.
  Therefore as known techniques of hydrocarbons extraction were proving to
  be insufficient, efforts to find new ways of obtaining oil were made.
  The first pioneering papers on the topic of hydrofracturing 
@@ -253,13 +254,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "oil_peak_fig"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -272,6 +266,16 @@ key "wiki_peak_oil"
 
 )
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "oil_peak_fig"
 
 \end_inset
 
@@ -359,16 +363,17 @@ reference "fracking_scheme"
 \end_layout
 
 \begin_layout Itemize
-Drilling of a vertical well, or preparation of existing one if stimulating
+Drilling of a vertical well, or preparation of an existing one if stimulating
  depleted reservoir.
  The wells walls must be prepared to withstand massive pressures without
- unanticipated leak go the ground waters.
+ unanticipated leak to the ground waters.
  
 \end_layout
 
 \begin_layout Itemize
 Drilling of a long horizontal section that spans throughout target resource
- rich rock formation, which could be gas rich shale as shown on Figure 
+ rich rock formation, which could be some gas rich shale as shown on Figure
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "gas_picture"
@@ -388,19 +393,30 @@ Preparation of initial fractures with directed explosive charges.
 \begin_layout Itemize
 Pumping of fracturing fluid.
  This could go on for days, and requires substantial reserves of water,
- chemical additives, and powerful pumps.
+ chemical additives, and powerful pumps
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Apparently to extract oil one must first burn some oil
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
 Mixing in proppant.
  This hard solid additive spreads inside fractures and prevents them from
  closing, after pumping is stopped.
- Sand, or other granulate material such as ceramic grains can be used.
- 
+ Sand, or other granulate material such as ceramic grains can be used, provided
+ it is hard enough to hold drained fracture walls opened.
 \end_layout
 
 \begin_layout Itemize
-And finally moving on to production phase.
+And finally moving on to production phase, capturing hydrocarbons that flow
+ out of the created fractures.
 \end_layout
 
 \begin_layout Standard
@@ -412,8 +428,8 @@ key "Cavallo"
 
 \end_inset
 
- and the popularized in mass media forecast of fossil fuel depletion appears
- to be postponed at least to the next century.
+ and the popularized in the mass media forecast of fossil fuel depletion
+ appears to be postponed for the next century.
  Indeed over the past decade natural gas production in the US alone increased
  by over 50% 
 \begin_inset CommandInset citation
@@ -422,10 +438,10 @@ key "usa_gas_production"
 
 \end_inset
 
- due to recent shale gas boom.
- This was achieved thanks to hydrofracturing.
+ due to the recent shale gas boom.
+ This was achieved by widespread application of hydrofracturing.
  Shale gas deposits, as opposed to conventional sandstones, have natural
- gas trapped in pores off non permeable shale formations (see Figure 
+ gas trapped in pores of non permeable shale formations (see Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "gas_picture"
@@ -434,16 +450,16 @@ reference "gas_picture"
 
  again).
  Hydrofracturing, pumping fluid under extremely high pressures opens new
- fractures, and creates pathways for the natural gas to escape pores in
- shale and flow to the surface.
+ fractures, and creates pathways for the natural gas to escape these pores
+ in shale and flow all the way to the surface.
 \end_layout
 
 \begin_layout Standard
 This work should cover only a single stage of the hydrofracturing process,
  the numerical modeling of fracture propagation due to fluid pumping.
- Although it is only one stage of the whole multiphysics problem, modeling
- fracture propagation is already a sufficient challenge on its own to produce
- interesting and novel research.
+ Although it is only a single stage of this large multiphysics problem,
+ modeling fracture propagation is already a sufficient enough challenge
+ on its own to produce interesting and novel research.
  The previous physical concepts: pressure, porosity and permeability of
  the reservoir will now be coupled with incompressible viscous fluid dynamics,
  fracture mechanics and complex non static geometries into a dynamic mathematica
@@ -477,11 +493,12 @@ key "Kuzkin"
 
 \end_inset
 
-, but would make fluid viscosity dependent on proppant concentration, thous
+, but would make fluid viscosity dependent on proppant concentration, thus
  add yet another variable.
- Furthermore other thermal and chemical processes should be included as
- these also affect fluid viscosity, therefore it is reasonable to exclude
- these and assume uniform constant viscosity of fracturing fluid.
+ Furthermore other thermal and chemical processes would need to be taken
+ care of as these also affect fluid viscosity, therefore it is reasonable
+ to exclude these and simply assume uniform constant viscosity of the fracturing
+ fluid.
 \end_layout
 
 \begin_layout Standard
@@ -498,13 +515,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "fracking_scheme"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -517,6 +527,16 @@ key "wiki_fracturing"
 
 )
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fracking_scheme"
 
 \end_inset
 

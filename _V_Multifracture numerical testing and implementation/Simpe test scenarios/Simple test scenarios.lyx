@@ -582,21 +582,21 @@ reference "sec:Junction-Strategy"
 .
  Then there are four consequent depth levels.
  The first three levels split the flow through connected PKN pipe segments
- 
+ (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:PKN-pipe"
 
 \end_inset
 
-, and the deepest level represents an array of PKN cracks 
+), and the deepest level represents an array of PKN cracks (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:PKN-crack"
 
 \end_inset
 
-.
+).
  For the purpose of this test the crack stress influence is ignored, 
 \begin_inset Formula $\sigma_{l}=0$
 \end_inset
@@ -613,12 +613,12 @@ reference "sub:PKN-crack"
 \begin_inset Formula $w_{*}$
 \end_inset
 
-and length 
+ and length 
 \begin_inset Formula $l_{*}$
 \end_inset
 
  for each of used crack segments is set to match zero leak off benchmark
- solution 
+ solution , Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Benchmark-Self-Similar"
@@ -647,19 +647,18 @@ reference "sub:Benchmark-Self-Similar"
 \begin_inset Formula $w_{*}$
 \end_inset
 
-is not chosen as natural, and should introduce some extra initial error,
- however the multifracturing scheme should be able to deal with it, which
- adds additional challenge to this problem.
+is not chosen as a natural state, and should introduce some extra initial
+ error, however the multifracturing scheme should be able to deal with it,
+ which adds additional challenge to this problem.
  This test should be run with zero leak off 
 \begin_inset Formula $q_{l}=0$
 \end_inset
 
-, and grid settings.
+.
 \end_layout
 
 \begin_layout Standard
-The result of running computation on this structure is also shown on Figure
- 
+The result of running computation on this structure is shown on Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tree_fracture_structure"
@@ -673,7 +672,7 @@ reference "tree_fracture_structure"
 
 \begin_layout Standard
 First, the behavior of end crack segments, at large times, can be characterized
- by the large time asymptote for zero leak off solution.
+ by the large time asymptote for the zero leak off solution.
  This is a trivial result by itself, but it verifies that the pump rate
  
 \begin_inset Formula $q_{0}=1$
@@ -690,7 +689,7 @@ First, the behavior of end crack segments, at large times, can be characterized
 \end_layout
 
 \begin_layout Standard
-The accuracy is most significantly affected by the choice of grid type (Section
+The accuracy is most significantly affected by the choice of grid type (Appendix
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -715,8 +714,7 @@ reference "sec:Grids"
 \begin_inset Formula $\gamma$
 \end_inset
 
-.
- The double power grid 
+ in the double power grid 
 \begin_inset Formula $x_{m}^{(4)}$
 \end_inset
 
@@ -727,12 +725,13 @@ reference "double_power_mesh"
 
 \end_inset
 
-) is used, which has two values of 
+) are used.
+ The value of 
 \begin_inset Formula $\gamma$
 \end_inset
 
-, the value which is refereed here affects the density of points near junction
- segments, not in the proximity of crack tip.
+ which is refereed here affects points density near junction segments, not
+ in the proximity of crack tip.
  Therefore the test with 
 \begin_inset Formula $\gamma=1$
 \end_inset
@@ -815,7 +814,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename ../Large test scenarios/tree_structure.png
-	scale 50
+	width 35page%
 
 \end_inset
 

@@ -111,13 +111,6 @@ centering
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "van_der_pol_solution"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -130,8 +123,18 @@ key "van_der_pol"
 
 .
  Nonstiff method results in oscillations that fall out of sync, compared
- to the more accurate stiff method 
+ to the more accurate stiff method.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "van_der_pol_solution"
 
 \end_inset
 
@@ -147,7 +150,7 @@ key "van_der_pol"
 Before attempting to solve the single fracture formulation presented in
  previous Chapter 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "chap:PKN-model-reformulation"
 
 \end_inset
@@ -155,7 +158,7 @@ reference "chap:PKN-model-reformulation"
 , lets perform a stiffness analysis of the problem.
  Stiffens is a phenomena that is rather hard to define.
  Certain models may result in systems of equations that are not numerical
- stable (
+ stable
 \begin_inset Foot
 status open
 
@@ -166,7 +169,7 @@ Unsolvable due to technical reasons.
 
 \end_inset
 
-) when attempted to solve with nonstiff numerical methods 
+ when attempted to solve with nonstiff numerical methods 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "stiff_wiki"
@@ -174,7 +177,7 @@ key "stiff_wiki"
 \end_inset
 
 .
- A commonly used example of such systems are based on the van der Pol Equation
+ A good example of such systems can be based on the van der Pol Equations
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -183,7 +186,7 @@ key "van_der_pol"
 \end_inset
 
 .
- Solutions to these are osculations,with very sharp turning points.
+ Solutions to these are osculations, with very sharp turning points.
  When a nonstiff method is used it is much harder for the method to correctly
  detect turning points and properly adjust step size.
  As a result the method fails to detect these important turning points at
@@ -264,14 +267,14 @@ reference "Omega_DS"
 \end_inset
 
 ) can be treated by spatial derivatives (using three point central finite
- difference (
+ difference Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:central-FD"
 
 \end_inset
 
-)) as a system of equation .
+) as a system of equation .
  This system can be written in the following form: 
 \begin_inset Formula 
 \begin{equation}
@@ -290,7 +293,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-{\bf F}=[f(t,x_{1}),f(t,x_{2}),\ldots,f(t,x_{N}),L^{2}(t)]
+{\bf F}=[f(t,x_{1}),f(t,x_{2}),\ldots,f(t,x_{N}),L^{2}(t)],
 \end{equation}
 
 \end_inset
@@ -345,11 +348,7 @@ Here
 \begin_inset Formula $|\lambda_{min}|$
 \end_inset
 
- are the largest and smallest eigenvalues of linearized matrix 
-\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
-\end_inset
-
- 
+ are the largest and smallest eigenvalues of linearized matrix
 \begin_inset Foot
 status open
 
@@ -376,6 +375,11 @@ reference "sub:Jacobian-and-utility"
  making this a relevant method for measuring stiffens
 \end_layout
 
+\end_inset
+
+.
+ 
+\begin_inset Formula ${\bf A}^{(f)}({\bf F)}$
 \end_inset
 
 .
@@ -741,7 +745,8 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename stiff_carter3.eps
-	width 55text%
+	lyxscale 30
+	width 58text%
 
 \end_inset
 
@@ -805,7 +810,8 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename stiff_carter1.eps
-	width 55text%
+	lyxscale 30
+	width 58text%
 
 \end_inset
 
@@ -869,7 +875,8 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename stiff_carter2.eps
-	width 55text%
+	lyxscale 30
+	width 58text%
 
 \end_inset
 
@@ -2054,7 +2061,7 @@ reference "mesh_power"
 \begin_inset Formula $Q_{l}/q_{0}$
 \end_inset
 
- ratio, indicates how much )
+ ratio, indicates how much of the fluid leaks off)
 \end_layout
 
 \end_inset

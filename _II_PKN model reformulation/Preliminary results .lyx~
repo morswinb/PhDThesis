@@ -97,7 +97,7 @@ status open
 \begin_inset Graphics
 	filename nice_PKN_crack_updated.png
 	lyxscale 20
-	scale 60
+	width 58page%
 
 \end_inset
 
@@ -129,7 +129,7 @@ name "PKN_model_layout"
 
 \lang american
 PKN model is essentially a 1D model, with a single horizontal axis of propagatio
-n
+n 
 \begin_inset Formula $x$
 \end_inset
 
@@ -148,8 +148,8 @@ key "moje_bzdury,MWL,Nordgren,Kovalyshen_phd"
 
 \end_inset
 
-, thous the one provided here should outline the most important aspects
- in context of this thesis.
+, thus the one provided here should outline the most important aspects in
+ context of this Thesis.
  Consider a symmetrical crack of the length 
 \begin_inset Formula $2l$
 \end_inset
@@ -162,15 +162,15 @@ key "moje_bzdury,MWL,Nordgren,Kovalyshen_phd"
 \begin_inset Formula $l=l(t)$
 \end_inset
 
- is one of the solution components changing as a result of fluid flow inside
- the crack.
+ is one of the solution components changing as a result of the fluid flow
+ inside the crack.
  The initial crack length is assumed to be nonzero: 
 \begin_inset Formula $l(0)=l_{*}>0$
 \end_inset
 
 .
- By convention, the crack is fully filled by a Newtonian liquid injected
- at some known rate 
+ The crack is fully filled by a Newtonian fluid pumped at some known rate
+ 
 \begin_inset Formula $q_{0}(t)$
 \end_inset
 
@@ -184,7 +184,7 @@ key "moje_bzdury,MWL,Nordgren,Kovalyshen_phd"
 \begin_layout Standard
 
 \lang american
-The Poiseulle equation for the Newtonian liquid flow in a narrow channel
+The Poiseulle equation for the Newtonian fluid flow in a narrow channel
  is written in the form: 
 \begin_inset Formula 
 \begin{equation}
@@ -214,7 +214,7 @@ where
 \begin_inset Formula $\sigma_{0}$
 \end_inset
 
- 
+
 \begin_inset Foot
 status open
 
@@ -247,14 +247,14 @@ status open
 \begin_inset Formula $\mu$
 \end_inset
 
- stands for the dynamic viscosity ( for example see 
+ stands for the dynamic viscosity (for example see 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Linkov_4"
 
 \end_inset
 
- ).
+).
 \end_layout
 
 \begin_layout Standard
@@ -273,8 +273,8 @@ where
 \begin_inset Formula $q_{l}=q_{l}(t,x)$
 \end_inset
 
- is the volume rate of fluid loss to formation in the direction perpendicular
- to the crack propagation direction (
+ is the volume rate of fluid loss to the surrounding formation in the direction
+ perpendicular to the crack propagation direction (
 \begin_inset Formula $x$
 \end_inset
 
@@ -284,9 +284,12 @@ where
 \begin_layout Standard
 
 \lang american
-Although the definition of leak-off as the volume of fluid lost to the surroundi
-ng medium is well defined, the choice of function that describes this quantity
- is subject to further interpretation.
+Although the definition of leak-off as 
+\emph on
+the volume of fluid lost to the surrounding medium
+\emph default
+ is well defined, the choice of function that describes this quantity is
+ subject to further interpretation.
  Indeed various works choose to use different functions to represent this
  physical phenomena 
 \begin_inset CommandInset citation
@@ -296,8 +299,8 @@ key "Kovalyshen_phd,Nordgren,Kresse2,MWL"
 \end_inset
 
 , so a sensible choice is to consider multiple possible representations
- and be able to switch these in the model.
- In this work the following leak-off versions are be considered: 
+ and be able to switch these at will.
+ In this work the following leak-off versions are considered: 
 \begin_inset Formula 
 \begin{equation}
 q_{l}(t,x)=q_{l}^{(j)}(t,x)+q_{j}^{*}(t,x),\quad j=1,2,3,\label{leak-off}
@@ -311,7 +314,7 @@ q_{l}(t,x)=q_{l}^{(j)}(t,x)+q_{j}^{*}(t,x),\quad j=1,2,3,\label{leak-off}
 \begin_layout Standard
 
 \lang american
-where
+where:
 \end_layout
 
 \begin_layout Standard
@@ -442,14 +445,14 @@ key "Clifton"
 
 \end_inset
 
-, which is a more accurate version of Carter Law which takes pressure difference
+, which is a more accurate version of Carter Law that takes pressure difference
  in to account.
- The function 
+ Function 
 \begin_inset Formula $\tau(x)$
 \end_inset
 
- contains information on the history of the process (it is explored in greater
- detain in Section 
+ contains information on the process history (it is explored in greater
+ detain later in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Extra-computational-challenges"
@@ -461,7 +464,7 @@ reference "sec:Extra-computational-challenges"
 \begin_inset Formula $x$
 \end_inset
 
- and can be computed as the inverse of the crack length: 
+ and can be computed as inverse of the crack length: 
 \begin_inset Formula 
 \begin{equation}
 \tau(x)=l^{-1}(x),\quad x>l_{*}.\label{tau}
@@ -577,7 +580,7 @@ with a known proportionality coefficient
 \end_inset
 
  found from the solution of a plane strain elasticity problem for an elliptical
- crack of height 
+ crack of fixed height 
 \begin_inset Formula $h$
 \end_inset
 
@@ -616,7 +619,7 @@ key "Kovalyshen_phd"
 
 \end_inset
 
- 
+
 \begin_inset Foot
 status open
 
@@ -645,11 +648,11 @@ reference "sec:Test-on-real"
 \end_inset
 
  is the dominant regime, and radial model only fits very well if the first
- initial fracture originated from point source 
+ initial fracture originated from a point source 
 \begin_inset Formula $q_{0}$
 \end_inset
 
-(end of the well).
+.
 \end_layout
 
 \end_inset
@@ -664,32 +667,6 @@ reference "sec:Test-on-real"
 \end_inset
 
  are the Young modulus and the Poisson ratio, respectively.
- In fact, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "elasticity"
-
-\end_inset
-
- implies that the so-called zero toughness condition is satisfied in this
- model
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\lang american
-fracture toughness 
-\begin_inset Formula $K_{IC}=0$
-\end_inset
-
-, no force is required to overcome material strength to initially open the
- fracture, but force is rather required to make it wider.
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -716,8 +693,8 @@ reference "continuity"
 
 \end_inset
 
-, one obtains a well known lubrication (Reynolds) equation defined in the
- trapezoidal domain (
+, one obtains well known lubrication (Reynolds) equation defined in a trapezoida
+l domain (
 \begin_inset Formula $t>0,\ 0<x<l(t)$
 \end_inset
 
@@ -781,7 +758,7 @@ q(t,0)=q_{0}(t),\quad w(t,l(t))=0,\quad q(t,l(t))=0.\label{boundary_conditions}
 
 \end_inset
 
-Note that this formulation looks overdetermined 
+Note that this formulation looks overdetermined
 \begin_inset Foot
 status open
 
@@ -840,8 +817,8 @@ reference "reynold"
 
 \end_inset
 
- over time and then space, one can also derive the standard formula for
- the global fluid balance in the form: 
+ over time and then space, one can also derive the formula for global fluid
+ balance: 
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{l}
@@ -875,8 +852,8 @@ key "Linkov_4"
 
 \end_inset
 
-, the crucial role in the analysis of the problem plays the particle velocity
- defined in the following manner: 
+, that the crucial role in analysis of the problem is played by the particle
+ velocity defined as: 
 \begin_inset Formula 
 \begin{equation}
 V(t,x)=\frac{q}{w},\quad t>0,\quad0\le x\le l(t),\label{velocity_1}
@@ -933,16 +910,16 @@ l'(t)=V\left(t,l(t)\right),\quad t>0.\label{velocity_2}
 \end_inset
 
 Moreover, for physical reasons, one can deduce that the fluid velocity at
- the crack tip is finite 
+ the crack tip is finite: 
 \begin_inset Formula 
 \begin{equation}
-0\le V\left(t,x\right)<\infty,\quad t>0,\quad x\le l(t)\label{velocity_b}
+0\le V\left(t,x\right)<\infty,\quad t>0,\quad x\le l(t).\label{velocity_b}
 \end{equation}
 
 \end_inset
 
 Note that, allowing the crack propagation speed to be infinite, one has
- to simultaneously include the inertia term in the equations 
+ to simultaneously include the inertia term in the equations
 \begin_inset Foot
 status open
 
@@ -1011,9 +988,9 @@ key "Linkov_1,Linkov_2,Linkov_4,Linkov_3,gena_apm"
 
 
 \emph default
- , proper usage of fluid velocity may be extremely beneficial.
- First, it allows one to replace two boundary conditions at the crack tip
- (
+, proper usage of fluid velocity may be extremely beneficial.
+ First, it allows one to replace the two boundary conditions at the crack
+ tip (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "boundary_conditions"
@@ -1060,7 +1037,7 @@ reference "elasticity"
 
 \end_inset
 
-) lead to the estimate 
+) lead to the estimate: 
 \begin_inset Formula 
 \begin{equation}
 w(t,x)=o\left((l(t)-x)^{\frac{1}{4}}\right),\quad x\rightarrow l(t),\label{w_asym_0}
@@ -1154,7 +1131,7 @@ reference "w_asym_1"
 
 \end_inset
 
- shows that fluid velocity is indeed bounded near the crack tip.
+ shows that the fluid velocity is indeed bounded near the crack tip.
  Moreover, 
 \begin_inset Formula 
 \begin{equation}
@@ -1179,7 +1156,7 @@ V_{0}=\frac{k}{3M}w_{0}^{3}(t),\quad V_{1}=\frac{k}{M}\left(\alpha+\frac{2}{3}\r
 
 \end_inset
 
-As follows from Appendix 
+As follows from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-details-of"
@@ -1202,7 +1179,7 @@ reference "V_asym_0"
 
 \end_inset
 
-) plays an important role for this.
+) plays an important role here.
  Indeed, if 
 \begin_inset Formula $\beta\ge1$
 \end_inset
@@ -1230,7 +1207,7 @@ reference "V_asym_0"
 \end_inset
 
 .
- In Appendix 
+ In Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-details-of"
@@ -1370,9 +1347,9 @@ reference "sec:Epsilon-regularization-and"
 \end_inset
 
 ).
- Therefore, the one of the aims of this work is show that, regardless of
- possible smoothness of the particle velocity near the crack tip, the approach
- proposed in 
+ Therefore, one of the aims of this work is show that, regardless of possible
+ smoothness of the particle velocity near the crack tip, the approach proposed
+ in 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Linkov_1,Linkov_2,Linkov_4,Linkov_3"

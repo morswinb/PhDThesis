@@ -127,7 +127,7 @@ key "MWL"
 
 \end_inset
 
-, the authors efficiently adopted this approach for the normalized coordinate
+ the authors efficiently adopted this approach for the normalized coordinate
  system.
  As the result a mesh, 
 \begin_inset Formula $\{x_{i}\}_{i=1}^{N}$
@@ -173,11 +173,7 @@ reference "U_boundary"
 
 \end_inset
 
-)
-\begin_inset Formula $_{2}$
-\end_inset
-
- is replaced with an approximate one: 
+) is replaced with an approximate one: 
 \begin_inset Formula 
 \begin{equation}
 U(t,1-\varepsilon)=3\varepsilon L(t)V(t,1),\label{L1}
@@ -327,7 +323,14 @@ reference "omega_L2"
 \end_layout
 
 \begin_layout Subsection
-General two term condition
+General two term condition 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:General-two-term"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -393,7 +396,7 @@ key "Linkov_1"
 \end_inset
 
  are based on the leading term of the asymptotic expansion.
- But as shown in Appendix 
+ But as shown in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:The-details-of"
@@ -402,7 +405,7 @@ reference "sec:The-details-of"
 
  the Carter leak off 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "carter"
 
 \end_inset
@@ -415,10 +418,10 @@ reference "sec:Computation-Accuracy"
 
 \end_inset
 
- ).
+).
  To properly account for the second term, that under likely circumstances
- might be as significant as the first term [ref], a modification of this
- approach which consists of two asymptotic terms will be proposed.
+ might be as significant as the first term, a modification of this approach
+ which consists of two asymptotic terms will be proposed.
 \end_layout
 
 \begin_layout Standard
@@ -566,9 +569,18 @@ key "moje_bzdury,MWL"
 \begin_inset Formula $\frac{\partial^{2}f}{\partial x^{2}}$
 \end_inset
 
- directly, and this approach will be preferred later.
- [a detailed study of a number of different versions could be shown, but
- I don't think it is necessary to show it].
+ directly, and this approach will be preferred later
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+An extensive practical study of many crack tip boundary condition variations
+ was made to arrive at this conclusion.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -692,33 +704,21 @@ reference "w_DS"
 
 \end_inset
 
-)
-\begin_inset Formula $_{2}$
-\end_inset
-
-, (
+), (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "U_DS"
 
 \end_inset
 
-)
-\begin_inset Formula $_{2}$
-\end_inset
-
- or (
+) or (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "Omega_DS"
 
 \end_inset
 
-)
-\begin_inset Formula $_{2}$
-\end_inset
-
-, respectively.
+), respectively.
 \end_layout
 
 \begin_layout Standard
@@ -739,7 +739,7 @@ reference "expan_1"
 
 \end_inset
 
-) of the boundary condition near the crack tip in the linear form
+) of the boundary condition near the crack tip in the linear form:
 \end_layout
 
 \begin_layout Standard

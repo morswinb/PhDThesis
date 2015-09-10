@@ -93,7 +93,7 @@ c
 tion
 \emph default
  connects a number 
-\begin_inset Formula $j$
+\begin_inset Formula $m$
 \end_inset
 
  of edges: 
@@ -121,8 +121,8 @@ At least one edge should be connected, but there should be no restriction
 junction
 \shape default
  itself is small enough, compared to the dimensions of connected edges,
- and these openings are relatively small compered to their lengths, so it
- is plausible to modeled 
+ and these openings are relatively small compered to their lengths, it is
+ plausible to modeled 
 \emph on
 junctions
 \emph default
@@ -148,7 +148,7 @@ Fluid pressure is exactly the same across all connected edges at the point
  
 \begin_inset Formula 
 \begin{equation}
-p_{fluid}^{(1)}=p_{fluid}^{(2)}=...=p_{fluid}^{(j)}\label{constant_pressure}
+p_{fluid}^{(1)}=p_{fluid}^{(2)}=...=p_{fluid}^{(m)}.\label{constant_pressure}
 \end{equation}
 
 \end_inset
@@ -159,12 +159,12 @@ p_{fluid}^{(1)}=p_{fluid}^{(2)}=...=p_{fluid}^{(j)}\label{constant_pressure}
 \begin_layout Standard
 
 \shape italic
-Zero flux sum, all the flow in and out adds up to zero,
+Zero flux sum, all the flow in and out adds up to zero
 \shape default
  
 \begin_inset Formula 
 \begin{equation}
-q_{1}+q_{2}+...+q_{j}=0\label{zero flow}
+q_{1}+q_{2}+...+q_{m}=0.\label{zero flow}
 \end{equation}
 
 \end_inset
@@ -238,11 +238,7 @@ key "WhiteFluidMechanics"
 \end_layout
 
 \begin_layout Subsection
-Newton method for 
-\emph on
-junction
-\emph default
- fluid pressure 
+Newton method for junction fluid pressure 
 \end_layout
 
 \begin_layout Standard
@@ -267,35 +263,35 @@ solid pipes
 \begin_inset Formula $q_{i}$
 \end_inset
 
- ( 
+ ( PKN pipe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Flow-components-for-pipe"
 
 \end_inset
 
- and 
+ or PKN crack 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Flow-components-for_PKN"
 
 \end_inset
 
-) should added up to zero as required by flux sum (
+) should added up to zero as required by flux sum 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "zero flow"
 
 \end_inset
 
-).
+.
  thus:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sum_{i}^{m}q_{i}+q_{0}=0\label{components sum}
+\sum_{i}^{m}q_{i}+q_{0}=0,\label{components sum}
 \end{equation}
 
 \end_inset
@@ -420,7 +416,7 @@ reference "flow sum component pipe"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{J}_{n+1}=\mathcal{J}_{n}-\frac{F_{\mathcal{J}}(\mathcal{J}_{n},\mathcal{J}_{other\; n})}{F_{\mathcal{\mathcal{J}}}'(\mathcal{J})}\label{newton root junction}
+\mathcal{J}_{n+1}=\mathcal{J}_{n}-\frac{F_{\mathcal{J}}(\mathcal{J}_{n},\mathcal{J}_{other\; n})}{F_{\mathcal{\mathcal{J}}}'(\mathcal{J})}.\label{newton root junction}
 \end{equation}
 
 \end_inset
@@ -452,7 +448,7 @@ junctions
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-F'_{\mathcal{J}}(\mathcal{J},\mathcal{J}_{other})=\sum_{i}^{m}\frac{dq_{i}}{d\mathcal{J}}\label{pressure root derevative}
+F'_{\mathcal{J}}(\mathcal{J},\mathcal{J}_{other})=\sum_{i}^{m}\frac{dq_{i}}{d\mathcal{J}},\label{pressure root derevative}
 \end{equation}
 
 \end_inset
@@ -491,7 +487,7 @@ solid pipes
 \end_inset
 
 .
- The expressions for these are given in later Sections:
+ The expressions for these are given in later Subsections 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Flow-components-for_PKN"
@@ -508,8 +504,8 @@ reference "sub:Flow-components-for-pipe"
 .
  Note that this strategy for obtaining junction pressure is not dependent
  on the type of connected edges, instead each edge should contain a generic
- function to calculate this values, which can be later used in object orientated
- code design.
+ function to calculate this values, which can be later used in a object
+ orientated code design.
 \end_layout
 
 \begin_layout Subsection
@@ -566,7 +562,7 @@ reference "elasticity_multi-1"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-q=-\frac{1}{ML}w^{3}\frac{\partial p_{fluid}}{\partial x}=\frac{1}{MLk^{3}}(p_{fluid}-\sigma_{o}-\sigma_{l})^{3}\frac{\partial p_{fluid}}{\partial x}\label{flow_rate_junciton}
+q=-\frac{1}{ML}w^{3}\frac{\partial p_{fluid}}{\partial x}=\frac{1}{MLk^{3}}(p_{fluid}-\sigma_{o}-\sigma_{l})^{3}\frac{\partial p_{fluid}}{\partial x}.\label{flow_rate_junciton}
 \end{equation}
 
 \end_inset
@@ -643,7 +639,7 @@ junction component flow
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-q(\mathcal{J},\mathcal{J}_{other})=\frac{\lambda}{MLk^{3}}(\mathcal{J}-\sigma_{o}-\sigma_{l})^{3}\left(\alpha\mathcal{J}+\beta\right)\label{flow component crack}
+q(\mathcal{J},\mathcal{J}_{other})=\frac{\lambda}{MLk^{3}}(\mathcal{J}-\sigma_{o}-\sigma_{l})^{3}\left(\alpha\mathcal{J}+\beta\right).\label{flow component crack}
 \end{equation}
 
 \end_inset
@@ -658,7 +654,7 @@ And consequently:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{dq}{d\mathcal{J}}=\frac{\lambda}{MLk^{3}}\left[3(\mathcal{J}-\sigma_{o}-\sigma_{l})^{2}\left(\alpha\mathcal{J}+\beta\right)+(\mathcal{J}-\sigma_{o}-\sigma_{l})^{3}\alpha\right]\label{flow component crack der}
+\frac{dq}{d\mathcal{J}}=\frac{\lambda}{MLk^{3}}\left[3(\mathcal{J}-\sigma_{o}-\sigma_{l})^{2}\left(\alpha\mathcal{J}+\beta\right)+(\mathcal{J}-\sigma_{o}-\sigma_{l})^{3}\alpha\right].\label{flow component crack der}
 \end{equation}
 
 \end_inset
@@ -688,7 +684,8 @@ The parameters
 \end_inset
 
  depends on the direction of flow.
- Two versions of these polynomial approximations are shown in Section 
+ Two versions of these polynomial approximations are shown in Subsection
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Split-strategy-numerical"
@@ -731,7 +728,7 @@ solid pipe
 : 
 \begin_inset Formula 
 \begin{equation}
-\gamma=\frac{3\pi R^{4}}{2ML}\label{pipe gamma}
+\gamma=\frac{3\pi R^{4}}{2ML}.\label{pipe gamma}
 \end{equation}
 
 \end_inset
@@ -772,7 +769,7 @@ reference "pressure root function"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-q(\mathcal{J},\mathcal{J}_{other})=\gamma\mathcal{J}-\gamma\mathcal{J}_{other}\label{flow sum component pipe}
+q(\mathcal{J},\mathcal{J}_{other})=\gamma\mathcal{J}-\gamma\mathcal{J}_{other}.\label{flow sum component pipe}
 \end{equation}
 
 \end_inset
@@ -787,7 +784,7 @@ And consequently:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{dq}{d\mathcal{J}}=\gamma\label{flow sum component der}
+\frac{dq}{d\mathcal{J}}=\gamma.\label{flow sum component der}
 \end{equation}
 
 \end_inset

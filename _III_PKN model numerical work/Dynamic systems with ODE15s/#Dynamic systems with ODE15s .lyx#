@@ -504,8 +504,8 @@ Having stated that the problem can be solved with common stiff ODE methods,
  be used, or own customized version be implemented? The answer is not trivial,
  as there are advantages and drawbacks associated with both choices.
  An attempt to develop own BDF solver was carried as well as another one
- based on alternative Cranck-Nicolson methods.
- This attempts however exposed various issues that need to be resolved in
+ based onalternative Cranck-Nicolson methods.
+ This attempts however exposed various issues that need to be covered in
  order to make a properly working solver, even if it was to work only for
  this particular PKN formulation.
  Apart from integrating the function a good solver carries number of other
@@ -515,27 +515,18 @@ Having stated that the problem can be solved with common stiff ODE methods,
  attempted by someone else.
  These could pose a valid theoretical challenge, however lets remind ourselves
  of and an old software development principle:
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 
 \emph on
-Do not reinvent the wheel,
-\begin_inset Newline newline
-\end_inset
-
-
+Do not reinvent the wheel.
 \end_layout
 
 \begin_layout Standard
-which in this case translates into: save time and effort by using existing
+Which in this case translates into: save time and effort by using existing
  well tested and understood solvers.
- Developing a solver could easily be a subject of another thesis on its
- own.
+ Developing a solver could easy be a subject of another thesis on its own.
  This work will therefore first attempt to formulate a novel enough and
  solvable fracturing problem, and then seek in detail attempts to improve
  computational efforts.
@@ -551,16 +542,10 @@ key "ode15sMathworks"
 
 \end_inset
 
-.
- There are some very good readings 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "MatlabODEa"
-
-\end_inset
-
- that clearly describe the inner mechanics of this solver  that I would
- recommend anyone interested in the subject to have a glance at.
+ .
+ There are some very good readings that clearly describe the inner mechanics
+ of this solver  that I would recommend anyone interested in the subject
+ to have a glance at.
  As a brief summary it should be mentioned that ODE15s is based on two implicit
  sets of formulas: NDFs and BDFs.
  (which are the direct opposite to explicit Runge–Kutta methods that some
@@ -587,15 +572,15 @@ reference "sub:Simple-Running-Script"
 .
  Thanks to using well developed solver the implementation is very straightforwar
 d.
- Object orientated approach is used to divide tasks into separate modules.
- The main class is CrackSystemW (Appendix 
+ Object orientated approach is used to divide of tasks into separate modules.
+ The main class is CrackSystemW 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Crack-systemW"
 
 \end_inset
 
-), which holds general IVP made out off expressions (
+, which holds general IVP made out off expressions (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ODE_ic"
@@ -621,7 +606,7 @@ reference "eq:ODE_solution"
 \end_layout
 
 \begin_layout Subsection
-Building 
+building 
 \begin_inset Formula $y'$
 \end_inset
 
@@ -640,15 +625,13 @@ This section should explain the details how
 \begin_inset Formula $w$
 \end_inset
 
- problem formulation is implemented into single fracture code (Appendix
- 
+ problem formulation is implemented into single fracture code 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Matlab-single-fracture"
 
 \end_inset
 
-).
  
 \end_layout
 
@@ -798,7 +781,7 @@ reference "omega_system"
 
 \begin_layout Standard
 Since 
-\begin_inset Formula $y_{1\ldots N}=w_{1\ldots N}\ or\ U_{1\ldots N}\ or\ \Omega_{1\ldots N}$
+\begin_inset Formula $y_{1\ldots N}=w_{1\ldots N}$
 \end_inset
 
  and 
@@ -818,7 +801,7 @@ Since
 \begin_inset Formula $\Omega_{0}$
 \end_inset
 
- since 
+since 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "U_coefs"
@@ -841,8 +824,8 @@ reference "omega_coefs"
 \begin_inset Formula $w_{0}$
 \end_inset
 
- is needed.
- Then the extra ODE governing 
+is needed.
+ Then the extra ODE governing
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
@@ -899,6 +882,7 @@ reference "dy_algo"
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -951,7 +935,7 @@ reference "system_i"
 \begin_inset Formula $x_{2,...N-1}$
 \end_inset
 
- a numerical scheme, such as central finite difference can be used (details
+a numerical scheme, such as central finite difference can be used (details
  are outlined in Section 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -995,7 +979,7 @@ Leak off
  requires usage of some additional code handle, the details on writing such
  are presented in Section 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "sec:Extra-computational-challenges"
 
 \end_inset
@@ -1018,8 +1002,8 @@ reference "sub:Crack-systemW"
 \end_inset
 
 .
- The object representations of these are passed through constructor (line
- 14 
+ The objects that are used there are passed through constructor (line 14
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Crack-systemW"
@@ -1028,7 +1012,7 @@ reference "sub:Crack-systemW"
 
 ), and can be easily replaced by different implementations, allowing experimenta
 tion with many different ideas.
- Further Subsections 
+ Further section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Derivative-approximation-schemes"
@@ -1042,7 +1026,7 @@ reference "sub:Better-FD-formulation"
 
 \end_inset
 
- shows what happens when some different approximations of the derivatives
+ shows what happens when some different approximations of the derevatives
  are considered.
 \end_layout
 
@@ -1114,7 +1098,7 @@ reference "eq:left_bc_second_der"
 
 \end_inset
 
-) is obtained by differentiating a cubic polynomial
+) is obtained by differentiating a cubic polynomial 
 \begin_inset Foot
 status open
 
@@ -1131,11 +1115,11 @@ A cubic polynomial
 \begin_inset Formula $(x_{2},w_{2})$
 \end_inset
 
-, such so it first derivative and second derivative at 
+ , such so it first derivative and second derivative at 
 \begin_inset Formula $x_{1}$
 \end_inset
 
- matches 
+matches 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:left_bc_first_der"
@@ -1145,12 +1129,12 @@ reference "eq:left_bc_first_der"
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:left_bc_second_der"
+reference "as"
 
 \end_inset
 
 .
- These are four conditions and four unknowns.
+ These are four conditions for four unknowns.
  
 \end_layout
 
@@ -1270,6 +1254,9 @@ Where the constants
 \end_inset
 
  are based on the last two grid points:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \begin{split}A_{1}= & \left((1-x_{N-1})^{\frac{1}{3}}-\frac{(1-x_{N-1})^{\frac{1}{2}}}{(1-x_{N})^{\frac{1}{6}}}\right)^{-1}\\
@@ -1307,7 +1294,7 @@ Again constants
 \begin_inset Formula $w_{0}$
 \end_inset
 
- and 
+and 
 \begin_inset Formula $w_{1}$
 \end_inset
 
@@ -1337,7 +1324,7 @@ reference "system_i"
 \begin_layout Standard
 Which corresponds to implementing 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "BC_N"
 
 \end_inset
@@ -1546,7 +1533,7 @@ status collapsed
 
  
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -1800,14 +1787,10 @@ status collapsed
 \end_inset
 
 
-\begin_inset Formula $y\left(t\right)$
+\begin_inset Formula $y(t)$
 \end_inset
 
  as a vector 
-\begin_inset Formula $\{y_{1},y_{2},...,y_{N},y_{N-1}\}$
-\end_inset
-
- equivalent of 
 \begin_inset Formula $\{w_{1},w_{2},...,w_{N},L^{2}\}$
 \end_inset
 
@@ -1847,7 +1830,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Formula $y'\left(t\right)$
+\begin_inset Formula $y'(t)$
 \end_inset
 
  as a vector 
@@ -1885,32 +1868,11 @@ BlankLine
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Formula $q_{l}\left(t,x_{i}\right)\longleftarrow$
-\end_inset
-
- leak off handle 
-\begin_inset Formula $\left(y\left(t\right)\right)$
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-;
-\end_layout
-
-\end_inset
-
-  
 \begin_inset Formula $\frac{\partial y_{1}}{\partial x_{1}},\frac{\partial^{2}y_{1}}{\partial x_{1}^{2}}\longleftarrow$
 \end_inset
 
  left BC 
-\begin_inset Formula $\left(y\left(t\right)\right)$
+\begin_inset Formula $\left(y(t)\right)$
 \end_inset
 
  
@@ -1931,7 +1893,7 @@ status collapsed
 \end_inset
 
  right BC 
-\begin_inset Formula $\left(y\left(t\right)\right)$
+\begin_inset Formula $\left(y(t)\right)$
 \end_inset
 
 
@@ -1948,9 +1910,6 @@ status collapsed
 \end_inset
 
  
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset ERT
 status collapsed
 
@@ -2030,7 +1989,7 @@ approximation
 \end_inset
 
 scheme 
-\begin_inset Formula $\left(y\left(t\right)\right)$
+\begin_inset Formula $\left(y(t)\right)$
 \end_inset
 
  
@@ -2128,7 +2087,7 @@ status collapsed
 \end_inset
 
  
-\begin_inset Formula $y'_{i}\leftarrow\mathcal{A}_{i}\left(y\left(t\right),w_{0},\frac{\partial y_{i}}{\partial x_{i}},\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}},q_{l}\left(t,x_{i}\right)\right)$
+\begin_inset Formula $y'_{i}\leftarrow\mathcal{A}_{i}\left(y(t),w_{0},\frac{\partial y_{i}}{\partial x_{i}},\frac{\partial^{2}y_{i}}{\partial x_{i}^{2}},q_{l}(t,x_{i})\right)$
 \end_inset
 
 
@@ -2183,7 +2142,7 @@ status collapsed
 
 \begin_layout Plain Layout
 The procedure for obtaining 
-\begin_inset Formula $y'\left(t\right)$
+\begin_inset Formula $y'(t)$
 \end_inset
 
 

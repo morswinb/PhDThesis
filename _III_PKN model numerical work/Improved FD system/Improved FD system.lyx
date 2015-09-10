@@ -125,7 +125,7 @@ Probably the most casual approach to numerical approximation of derivatives
 \begin_inset Formula 
 \begin{equation}
 \begin{split}\frac{\partial w}{\partial x}|_{x_{k}}\approx & \frac{1}{2}\left(\frac{\Delta w_{k+1}}{\Delta x_{k+1}}+\frac{\Delta w_{k}}{\Delta x_{k}}\right)\\
-\frac{\partial^{2}w}{\partial x^{2}}|_{x_{k}}\approx & \frac{1}{2}\left(\frac{1}{\Delta x_{k+1}}+\frac{1}{\Delta x_{k}}\right)\left(\frac{\Delta w_{k+1}}{\Delta x_{k+1}}-\frac{\Delta w_{k}}{\Delta x_{k}}\right)
+\frac{\partial^{2}w}{\partial x^{2}}|_{x_{k}}\approx & \frac{1}{2}\left(\frac{1}{\Delta x_{k+1}}+\frac{1}{\Delta x_{k}}\right)\left(\frac{\Delta w_{k+1}}{\Delta x_{k+1}}-\frac{\Delta w_{k}}{\Delta x_{k}}\right),
 \end{split}
 \label{central_FD}
 \end{equation}
@@ -136,7 +136,7 @@ Probably the most casual approach to numerical approximation of derivatives
 \end_layout
 
 \begin_layout Standard
-Or in a computationally optimized and matrix representation friendly form:
+or in a computationally optimized and matrix representation friendly form:
 \end_layout
 
 \begin_layout Standard
@@ -219,7 +219,7 @@ b_{k}=-\frac{1}{2}\left(\frac{1}{x_{k+1}-x_{k}}+\frac{1}{x_{k}-x_{k-1}}\right)^{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-c_{k}=\frac{1}{2}\left(\frac{1}{x_{k+1}-x_{k}}+\frac{1}{x_{k}-x_{k-1}}\right)\frac{1}{x_{k+1}-x_{k}}
+c_{k}=\frac{1}{2}\left(\frac{1}{x_{k+1}-x_{k}}+\frac{1}{x_{k}-x_{k-1}}\right)\frac{1}{x_{k+1}-x_{k}}.
 \end{equation}
 
 \end_inset
@@ -256,7 +256,7 @@ An alternative approach is to interpolate a quadratic polynomial
 \begin_inset Formula 
 \begin{equation}
 \begin{split}a(x_{k-1}-\tilde{x}_{k})^{2}+b(x_{k-1}-x_{k}) & =w_{k-1}-w_{k}\\
-a(x_{k+1}-x_{k})^{2}+b(x_{k+1}-x_{k}) & =w_{k+1}-w_{k}
+a(x_{k+1}-x_{k})^{2}+b(x_{k+1}-x_{k}) & =w_{k+1}-w_{k}.
 \end{split}
 \end{equation}
 
@@ -266,13 +266,13 @@ And such so is solved by
 \begin_inset Formula 
 \begin{equation}
 \begin{split}a= & \left(\frac{\Delta w_{k+1}}{\Delta x_{k+1}}\Delta x_{k}-\Delta w_{k}\right)\big(\Delta x_{k}\left(\Delta x_{k}+\Delta x_{k+1}\right)\big)^{-1}\\
-b= & \frac{\Delta w_{k+1}}{\Delta x_{k+1}}-a\Delta x_{k+1}
+b= & \frac{\Delta w_{k+1}}{\Delta x_{k+1}}-a\Delta x_{k+1},
 \end{split}
 \end{equation}
 
 \end_inset
 
-As the last unknown is found autocratically by setting 
+As the last unknown is found automatically by setting 
 \begin_inset Formula $c=w_{k}$
 \end_inset
 
@@ -289,7 +289,7 @@ As the last unknown is found autocratically by setting
 \begin_inset Formula 
 \begin{equation}
 \begin{split}\frac{\partial w}{\partial x}|_{x_{k}}\approx & \frac{1}{\Delta x_{k+1}+\Delta x_{k}}\left(\frac{\Delta w_{k+1}\Delta x_{k}}{\Delta x_{k+1}}+\frac{\Delta w_{k}\Delta x_{k+1}}{\Delta x_{k}}\right)\\
-\frac{\partial^{2}w}{\partial x^{2}}|_{x_{k}}\approx & \frac{2}{\Delta x_{k+1}+\Delta x_{k}}\left(\frac{\Delta w_{k+1}}{\Delta x_{k+1}}-\frac{\Delta w_{k}}{\Delta x_{k}}\right)
+\frac{\partial^{2}w}{\partial x^{2}}|_{x_{k}}\approx & \frac{2}{\Delta x_{k+1}+\Delta x_{k}}\left(\frac{\Delta w_{k+1}}{\Delta x_{k+1}}-\frac{\Delta w_{k}}{\Delta x_{k}}\right),
 \end{split}
 \label{eq:FD_quad_poly}
 \end{equation}
@@ -300,7 +300,7 @@ As the last unknown is found autocratically by setting
 \end_layout
 
 \begin_layout Standard
-Or
+or
 \end_layout
 
 \begin_layout Standard
@@ -339,7 +339,7 @@ b_{k}=-\frac{1}{x_{k+1}-x_{k-1}}\left(\frac{x_{k+1}-x_{k}}{x_{k}-x_{k-1}}-\frac{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-c_{k}=-=\frac{1}{x_{k+1}-x_{k-1}}\left(\frac{x_{k}-x_{k-1}}{x_{k+1}-x_{k}}\right)
+c_{k}=-=\frac{1}{x_{k+1}-x_{k-1}}\left(\frac{x_{k}-x_{k-1}}{x_{k+1}-x_{k}}\right),
 \end{equation}
 
 \end_inset
@@ -348,7 +348,7 @@ c_{k}=-=\frac{1}{x_{k+1}-x_{k-1}}\left(\frac{x_{k}-x_{k-1}}{x_{k+1}-x_{k}}\right
 \end_layout
 
 \begin_layout Standard
-And
+and
 \end_layout
 
 \begin_layout Standard
@@ -387,7 +387,7 @@ b_{k}=-\frac{2}{x_{k+1}-x_{k-1}}\left(\frac{1}{x_{k+1}-x_{k}}+\frac{1}{x_{k}-x_{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-c_{k}=\frac{2}{x_{k+1}-x_{k-1}}\left(\frac{1}{x_{k+1}-x_{k}}\right)
+c_{k}=\frac{2}{x_{k+1}-x_{k-1}}\left(\frac{1}{x_{k+1}-x_{k}}\right).
 \end{equation}
 
 \end_inset
@@ -451,7 +451,7 @@ Suppose that we have already computed the first and second asymptotic term
 \begin_inset Formula $w_{1}$
 \end_inset
 
-from tip boundary (
+ from tip boundary (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "BC_N"
@@ -477,7 +477,7 @@ reference "w_asym_1n"
 \frac{\partial^{2}w}{\partial x^{2}}= & \alpha_{1}(\alpha_{1}-1)w_{0}(1-x)^{\alpha_{1}-2}\\
  & +\alpha_{2}(\alpha_{2}-1)w_{1}(1-x)^{\alpha_{2}-2}+o\left((1-x)^{\alpha_{3}-3}\right)
 \end{split}
-\quad x\rightarrow1
+\quad x\rightarrow1.\label{eq:diff_asym_amalitical}
 \end{equation}
 
 \end_inset
@@ -508,7 +508,7 @@ w=w-asymptotics+asymptotics
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial w}{\partial x}=\frac{\partial}{\partial x}\left(w-asymptotics\right)+\frac{\partial}{\partial x}asymptotics
+\frac{\partial w}{\partial x}=\frac{\partial}{\partial x_{FD}}\left(w-asymptotics\right)+\frac{\partial}{\partial x_{analytical}}asymptotics
 \end{equation}
 
 \end_inset
@@ -519,7 +519,7 @@ w=w-asymptotics+asymptotics
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial^{2}w}{\partial x^{2}}=\frac{\partial^{2}}{\partial x^{2}}\left(w-asymptotic\right)+\frac{\partial^{2}}{\partial x^{2}}asymptotics
+\frac{\partial^{2}w}{\partial x^{2}}=\frac{\partial^{2}}{\partial x_{FD}^{2}}\left(w-asymptotic\right)+\frac{\partial^{2}}{\partial x_{analytical}^{2}}asymptotics,
 \end{equation}
 
 \end_inset
@@ -528,26 +528,41 @@ w=w-asymptotics+asymptotics
 \end_layout
 
 \begin_layout Standard
-Where the result of subtraction 
+where the result of subtraction 
 \begin_inset Formula $\left(w-asymptotics\right)$
 \end_inset
 
- is treated with FD scheme (
+ is treated with FD scheme 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "central_FD"
 
 \end_inset
 
-) to approximate 
-\begin_inset Formula $\frac{\partial}{\partial x}$
+ to approximate 
+\begin_inset Formula $\frac{\partial}{\partial x_{FD}}$
 \end_inset
 
  and 
-\begin_inset Formula $\frac{\partial^{2}}{\partial x^{2}}$
+\begin_inset Formula $\frac{\partial^{2}}{\partial x_{FD}^{2}}$
 \end_inset
 
- .
+ , while 
+\begin_inset Formula $\frac{\partial}{\partial x_{analytical}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{\partial^{2}}{\partial x_{analytical}^{2}}$
+\end_inset
+
+ are exact analytical expressions 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff_asym_amalitical"
+
+\end_inset
+
+.
  To be more precise this method results in:
 \end_layout
 
@@ -575,7 +590,7 @@ The motivation behind this procedure is that fracture width
 
  is going to very similar to its asymptotic expansion at the tip region.
  The difference of these two should produce less error when differentiated
- with numerical methods, which can be observed on Figure
+ with numerical methods, which can be observed on Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "step differences"
@@ -714,14 +729,14 @@ Or at least as generally observed for PKN model in this work.
  Nevertheless the problem includes moving boundary in a form of the crack
  tip, hence the discretization is much harder, especially if multiple fractures
  are involved.
- On the other hand many problems, such as 1D heat transfer in a uniform
+ On the other hand many problems, such as 1D heat transfer in an uniform
  rod, pose much less challenge when choosing the right discretization method.
  
 \end_layout
 
 \end_inset
 
- .
+.
  Indeed the three mentioned formulations differ in spatial discretization,
  while the same integrating algorithm is used.
  The 
@@ -749,7 +764,7 @@ key "Linkov_4,MWL"
 \end_inset
 
  formulation on the other hand has the property of 
-\begin_inset Formula $\frac{\partial\Omega}{\partial x}|_{x=1}$
+\begin_inset Formula $\frac{\partial\Omega}{\partial x}|_{x=1}=0$
 \end_inset
 
  which also makes finite difference approximation much easier.
@@ -775,7 +790,7 @@ This question can be relatively easily answered, since
 \begin_inset Formula $U$
 \end_inset
 
- formulations are very in fact very similar, and a 
+ formulations are in fact very similar, and a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -880,7 +895,7 @@ reference "diffs_comparision"
 \begin_inset Formula $U$
 \end_inset
 
-, but this means no difference as the output of modified 
+, but this makes no difference as the output of modified 
 \begin_inset Formula $\mathcal{A}_{w}$
 \end_inset
 
@@ -971,13 +986,13 @@ reference "sub:building_ode_solvers"
 \end_inset
 
 .
- Thous one can test performance of the same system, with using different
+ Thus one can test performance of the same system, with using different
  differentiation formulas or schemes.
  This means that for each of the versions of differentiation scheme described
- in section Section 
+ in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "diffs_comparision"
+reference "sub:Derivative-approximation-schemes"
 
 \end_inset
 
@@ -1333,7 +1348,7 @@ reference "eq:ODE_system"
 
 .
  Column element 
-\begin_inset Formula $i$
+\begin_inset Formula $j$
 \end_inset
 
  is the partial derivative of 
@@ -1433,7 +1448,7 @@ This pattern can be obtained by analyzing operators
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
- .
+.
  First the usage of approximated spatial derivatives, (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2093,8 +2108,8 @@ Example times needed to compute solution for a propagating fracture with
 \end_inset
 
 .
- The speed up obtained with pattern varies from a factor of two small systems,
- to a hundred and over for very large 
+ The speed up obtained with pattern varies from a factor of two for small
+ systems, to a hundred and over for very large 
 \begin_inset Formula $N$
 \end_inset
 

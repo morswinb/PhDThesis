@@ -84,7 +84,7 @@ The newly introduced
 \begin_inset Formula $\Omega$
 \end_inset
 
- variable was show to very beneficial in a number of specific cases.
+ variable was show to be very beneficial in a number of specific cases.
  However as it requires extra handling it was dropped from multifracturing
  formulation.
  Nevertheless some improvements tested on 
@@ -99,8 +99,7 @@ The newly introduced
 \begin_inset Formula $\Omega$
 \end_inset
 
- as well, and the multifracture formulation could be modified to use it
- as well.
+, and the multifracture formulation could be modified to use it as well.
  This could bring even further accuracy improvements.
 \end_layout
 
@@ -120,7 +119,7 @@ More physical properties could be included in the formulation such as rock
 
 \begin_layout Itemize
 A more dynamic approach to mesh sizes could be considered.
- Currently the mesh sizes are fixed, but each fracture could be given assigned
+ Currently the mesh sizes are fixed, but each fracture could be assigned
  a different number of grid points.
  This could increase local accuracy in a few crucial fractures, or improve
  overall performance by decreasing grid density in some less important areas.
@@ -128,8 +127,8 @@ A more dynamic approach to mesh sizes could be considered.
 
 \begin_layout Itemize
 So far only one dimensional leak off models were considered.
- Thou in the reality the fluid flow around the hydraulic fractures should
- me modeled independently by 2D or even 3D porous flow simulations.
+ In reality the fluid flow around the hydraulic fractures should be modeled
+ independently by 2D or even 3D porous flow simulations.
  This could be achieved by some coupling of Darcy law flow solutions with
  the developed multifracturing model.
 \end_layout
@@ -138,18 +137,19 @@ So far only one dimensional leak off models were considered.
 Proper testing on real life hydraulic fracturing data should be carried
  on.
  This would require access to actual drilling logs, including microcosmic
- data which would allow attempts to match theoretical model with real outputs.
+ data which would allow attempts to match the theoretical model with some
+ real outputs.
 \end_layout
 
 \begin_layout Itemize
 And finally a larger project should exploit the fact that, as observed from
- initial condition and multifracturing tests, all fractures converge to
- large time asymptotes.
+ initial condition and multifracturing tests, all fractures eventualy converge
+ to large time asymptotes.
  Furthermore the computations are rather very repetitive.
  Having computed a solution for a single fracture in a set of specific condition
 s, it would be reasonable to assume that this solution can be copied for
  other fractures developing in similar conditions.
- Thous for a multifracturing model it could be possible to create a precomputed
+ Thus for a multifracturing model it could be possible to create a precomputed
  table containing a range of sample solutions, for different 
 \begin_inset Formula $q_{0}$
 \end_inset

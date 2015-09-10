@@ -139,40 +139,40 @@ Where a number of physical constants is used:
 \begin_inset Formula $\phi_{r}$
 \end_inset
 
- - reservoir porosity 
+ - reservoir porosity,
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $C_{T}$
 \end_inset
 
- - total compressibility of reservoir 
+ - total compressibility of reservoir,
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $k_{r}$
 \end_inset
 
- - permeability of rock matrix 
+ - permeability of rock matrix,
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\mu_{r}$
 \end_inset
 
- - reservoir fluid viscosity in the porous media
+ - reservoir fluid viscosity in the porous media,
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\mu_{f}$
 \end_inset
 
- - filtrate fluid viscosity 
+ - filtrate fluid viscosity.
 \end_layout
 
 \begin_layout Standard
-The fracturing job was performed with ThermaFrac fluid designed for operations
- at significant depths and high temperatures 
+The fracturing job was performed with ThermaFrac fracturing fluid designed
+ for operations at significant depths and high temperatures 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "thermafrac1"
@@ -186,7 +186,7 @@ key "thermafrac1"
 \begin_inset Formula $100^{o}C$
 \end_inset
 
- , at these conditions the viscosity of reservoir fluids (natural gas) and
+, at these conditions the viscosity of reservoir fluids (natural gas) and
  filtrate fluids (sandstone filtrated ThermaFrac, witch is assumed to be
  water) were adjusted to account for the higher temperatures.
  To simplify calculations constant 
@@ -203,11 +203,7 @@ reference "ukraine_table"
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Standard
-Results of running these simulations are shown of figures: 
+ Results of running these simulations are shown on Figures: 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:well_1_plots"
@@ -284,7 +280,7 @@ reference "PKNprogram"
 
 \end_inset
 
-, is at least a cheaper alternative.
+, is at least a free alternative.
  
 \end_layout
 

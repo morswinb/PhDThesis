@@ -152,7 +152,7 @@ The procedure for obtaining these starts by assuming the following form
  of crack opening function: 
 \begin_inset Formula 
 \begin{equation}
-w(t,x)=A_{0}(1+t)^{\gamma}h(x),\quad A_{0}=\sqrt[3]{\frac{3}{2}(3\gamma+1)},\label{w_bench}
+w(t,x)=W_{0}(1+t)^{\gamma}h(x),\quad W_{0}=\sqrt[3]{\frac{3}{2}(3\gamma+1)},\label{w_bench}
 \end{equation}
 
 \end_inset
@@ -234,7 +234,7 @@ reference "new_speed"
  one obtains the remaining benchmark quantities: 
 \begin_inset Formula 
 \begin{equation}
-L(t)=(1+t)^{\frac{3\gamma+1}{2}},\quad V(t,x)=-A_{0}^{3}(1+t)^{\frac{3\gamma-1}{2}}h^{2}(x)\frac{\partial h}{\partial x}.\label{v_bench}
+L(t)=(1+t)^{\frac{3\gamma+1}{2}},\quad V(t,x)=-W_{0}^{3}(1+t)^{\frac{3\gamma-1}{2}}h^{2}(x)\frac{\partial h}{\partial x}.\label{v_bench}
 \end{equation}
 
 \end_inset
@@ -443,13 +443,6 @@ c
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "leak_offs_fig"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -477,6 +470,16 @@ Distributions of the leak-off functions
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "leak_offs_fig"
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -497,7 +500,7 @@ Note , that by manipulating the value of
 \end_inset
 
  results in constant crack propagation speed.
- For this work
+ For this work 
 \begin_inset Formula $\gamma=1/5$
 \end_inset
 
@@ -1092,7 +1095,7 @@ Note that the benchmark
  appears to be more difficult, than the original Carter's model as it contains
  additional singular terms of the leak-off function.
  These terms are absent in the normalized Carter's law as it follows from
- Appendix 
+ Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Carter-type-leak"
@@ -1206,7 +1209,7 @@ Which corresponds to
 This benchmark is particularly useful if testing without leak off function
  properly implemented.
  Since five terms are used it is in fact not necessary easier to compute
- than the three term general benchmark shown in the previous section 
+ than the three term general benchmark shown in the previous Appendix 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "sub:General-benchmark"
@@ -1222,15 +1225,11 @@ Large Time asymptotes
 \end_layout
 
 \begin_layout Standard
-The large time asymptote for Carter Law 
+The large time asymptote for Carter Law  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "carter"
 
-\end_inset
-
-
-\begin_inset Formula $^{(1)}$
 \end_inset
 
  was given by 
@@ -1254,7 +1253,7 @@ L(t)\approx\frac{2q_{0}}{\pi}\sqrt{t},\quad t\rightarrow\infty\label{eq:carter_l
 By assuming variable separable form, the large time asymptote for pressure
  proportional Carter Law 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "carter"
 
 \end_inset

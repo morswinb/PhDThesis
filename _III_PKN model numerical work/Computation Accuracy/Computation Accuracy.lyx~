@@ -126,7 +126,7 @@ reference "L3"
 
 \end_inset
 
-) .
+).
  The second approach takes into account the two terms of asymptotics as
  described in Section 
 \begin_inset CommandInset ref
@@ -135,7 +135,7 @@ reference "sec:Reformulation-of-the"
 
 \end_inset
 
- and 
+ and Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tip_strategy"
@@ -256,7 +256,7 @@ reference "table_UUU"
 \begin_inset Formula $N$
 \end_inset
 
- values or more leak-off dominant regime(
+ values or more leak-off dominant regime (
 \begin_inset Formula $Q_{l}/q_{0}\sim1$
 \end_inset
 
@@ -5188,10 +5188,10 @@ reference "sec:Benchmark-Solution"
 \end_inset
 
  were chosen.
+ 
 \end_layout
 
 \begin_layout Standard
-\noindent
 On Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7127,13 +7127,6 @@ status open
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "very_bad_bench"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -7151,6 +7144,16 @@ Accuracies for limiting (critical) variant of the benchmark solution (
 ) .
  The blanks represents cases when ODE15s could not complete the computations.
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "very_bad_bench"
 
 \end_inset
 

@@ -81,9 +81,9 @@ name "sec:Introduction-to-multifracturing"
 \end_layout
 
 \begin_layout Standard
-So far traditional models assumed single fractures.
- Although these worked fine for reservoir treatment planing for decades,
- and were verified through some simple experiments 
+So far the traditional models assumed existence of only one fracture.
+ Although this assumption worked fine in reservoir treatment planing for
+ decades, and were verified through some simple experiments 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "experimental,experimental2"
@@ -102,7 +102,7 @@ key "shelle_guy"
 
 , that under favorable circumstances could form a single dominant fracture.
  Meanwhile a number of other technologies were developed to aid and monitor
- treatments process.
+ treatment process.
  These included microcosmic mapping, detecting minor seismic activity associated
  with fracture front movement 
 \begin_inset CommandInset citation
@@ -126,11 +126,11 @@ key "Dusseault"
 \end_layout
 
 \begin_layout Standard
-One need to acknowledge that the uniform medium assumption not very accurate,
+One needs to acknowledge that the uniform medium assumption not very accurate,
  in fact the opposite should be expected for most reservoirs.
  In reality rock formations are far from being perfect fixed height two
- dimensional mediums, at a very least some defects should be included such
- as pre-existing natural fractures, that are of great interest in shale
+ dimensional mediums, at a very least some defects should be considered
+ such as pre-existing natural fractures, that are of great interest in shale
  rich formations 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -186,7 +186,7 @@ key "Adachi_2007"
 
 , to improve on these into a multifracture model is a much more complex
  challenge.
- The mathematical formulation must be extended to account for any fractures
+ The mathematical formulation must be extended to account for multiple fractures
  interactions, while the performance should not be drastically affected
  by multiplying the problem size.
  On top of that the effort required to handle and display data is much greater
@@ -198,7 +198,7 @@ key "Adachi_2007"
 \end_layout
 
 \begin_layout Standard
-To list a few example solutions, lets first begin with the model given by
+To list a few example solutions, lets first begin with a model given by
  Ghani 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -219,7 +219,7 @@ reference "ghani_model"
 .
  Other solutions however tend to put much stricter constrains on fracture
  path and shape.
- The influence of nearby fractures can result in shadowing 
+ The influence of nearby fractures can result in shadowing
 \begin_inset Foot
 status open
 
@@ -281,10 +281,10 @@ key "moje_bzdury"
 
 .
  Additionally the source code of these solutions is not publicly available,
- nor any free licenses.
+ nor any truly free licenses exist.
  These leaves an open space for new solutions which are thoroughly tested
- in terms of accuracy, are based on some reliable formulations, and are
- given away for freeware usage.
+ in terms of accuracy, based on some reliable formulations, and given away
+ for free and unrestricted usage.
 \end_layout
 
 \begin_layout Standard
@@ -456,7 +456,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Bunger
+Bunger 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Bunger_multi"
@@ -573,7 +573,7 @@ centering
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Cipolla
+Cipolla 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Cipolla"
@@ -611,10 +611,11 @@ name "cipola_model"
 \begin_layout Plain Layout
 
 \lang english
-Samples of various multifracturing solutions.
+Samples of various multifracturing solutions as a quick comparison of the
+ general trend.
  The original renderings of the solutions are shown 
 \lang american
-
+in 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Kresse1,Kresse2,Damjanac,Cipolla,ghani,Bunger_multi"
@@ -623,7 +624,7 @@ key "Kresse1,Kresse2,Damjanac,Cipolla,ghani,Bunger_multi"
 
 
 \lang english
-, as a quick comparison of the general trend.
+.
 \end_layout
 
 \end_inset

@@ -96,7 +96,7 @@ So far the basis for the multifracturing model was derived, that covers
  multiple types of connected edges and their interactions, now it should
  be combined into a single working model.
  The approach presented here is an evolution of previous single fracture
- solution 
+ solution shown in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Dynamic-systems-with"
@@ -149,7 +149,7 @@ collection of edges (cracks or pipes) connected with vertexes into a graph
 \begin_inset Formula $k,\ L,\ \epsilon,\ ,\ q_{l},...$
 \end_inset
 
-)
+).
 \end_layout
 
 \begin_layout Itemize
@@ -165,6 +165,10 @@ collection of edges (cracks or pipes) connected with vertexes into a graph
 In case of the one dimensional single fracture problem the solution was
  effectively a two dimensional array, the value of 
 \begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
 \end_inset
 
  for each considered 
@@ -185,7 +189,7 @@ In case of the one dimensional single fracture problem the solution was
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-multifracture\ solution=\left\{ \mathcal{M}_{0},\ \mathcal{M}_{1},\ \ldots\ ,\ \mathcal{M}_{t_{end}}\right\} 
+multifracture\ solution=\left\{ \mathcal{M}_{0},\ \mathcal{M}_{1},\ \ldots\ ,\ \mathcal{M}_{t_{end}}\right\} .
 \end{equation}
 
 \end_inset
@@ -198,9 +202,9 @@ It is a step away from the simple numerical value array solution interpretation.
  Moreover it means that the algorithm must be able to produce a more complex
  output, which size must be adjusted dynamically as it is impossible to
  predict the number of fractures.
- The total number of discretization points will change, the graph structure
- will be modified.
- If the solution is to remember all these events it must hold a stepparent
+ The total number of discretization points will change.
+ The underlying graph structure will be modified.
+ If the solution is to remember all these events it must hold a separate
  
 \begin_inset Formula $\mathcal{M}$
 \end_inset
@@ -370,8 +374,8 @@ A solution to the multifracturing problem should consist of model states
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
- at multiple times, to accurately represent the whole process dynamics.
- (red color indicates high pressure originating from pumping point) 
+ at multiple times, to accurately represent the whole process dynamics (red
+ color indicates high pressure originating from the pumping point).
 \end_layout
 
 \end_inset
@@ -406,7 +410,7 @@ As it should be possible to change the size of
 , all measurements of its size should be adjusted dynamically, rather than
  predefined at start.
  This calls for a well defined method for counting and indexing its components.
- The size can be measured by three different quantities
+ The size can be measured by three different quantities:
 \end_layout
 
 \begin_layout Itemize
@@ -436,7 +440,7 @@ Lets recall that PKN crack formulation used its own size
 \end_inset
 
  to define the number of grid points on the normalized one dimensional grid
- (see Section 
+ (see Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Grids"
@@ -499,7 +503,7 @@ PKN
 \end_inset
 
  is obtained via connected junction.
- Hence operator
+ Hence operator 
 \begin_inset Formula $\mathcal{A}_{crack}$
 \end_inset
 
@@ -521,7 +525,7 @@ reference "U_system_elast"
 \begin_inset Formula $x_{2},...,x_{N-1}$
 \end_inset
 
-, while
+, while 
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
@@ -593,7 +597,7 @@ reference "w_system_elast_pipe"
 
  comes from the two connected junction segments, meaning there are two more
  points than ODEs.
- However again the operator 
+ The operator 
 \begin_inset Formula $\mathcal{C}$
 \end_inset
 
@@ -620,7 +624,7 @@ So it is fairly easy to makes sure that:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-N_{ODE}=\sum_{j=1}^{N_{E}}N_{j}\label{eq:index_convert-1}
+N_{ODE}=\sum_{j=1}^{N_{E}}N_{j},\label{eq:index_convert-1}
 \end{equation}
 
 \end_inset
@@ -629,7 +633,7 @@ N_{ODE}=\sum_{j=1}^{N_{E}}N_{j}\label{eq:index_convert-1}
 \end_layout
 
 \begin_layout Standard
-Where 
+where 
 \begin_inset Formula $N_{j}$
 \end_inset
 
@@ -679,7 +683,7 @@ reference "sec:Method-for-elasticity"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i_{global}(i_{local}^{(j)})=\sum_{j=1}^{j-1}N_{j}+i_{local}^{(j)}\label{eq:index_convert}
+i_{global}(i_{local}^{(j)})=\sum_{j=1}^{j-1}N_{j}+i_{local}^{(j)},\label{eq:index_convert}
 \end{equation}
 
 \end_inset
@@ -688,7 +692,7 @@ i_{global}(i_{local}^{(j)})=\sum_{j=1}^{j-1}N_{j}+i_{local}^{(j)}\label{eq:index
 \end_layout
 
 \begin_layout Standard
-Here 
+here 
 \begin_inset Formula $i_{local}^{(j)}$
 \end_inset
 
@@ -734,7 +738,7 @@ Here
  in the second fracture.
  Note that this dynamic indexing allows for 
 \emph on
-unique mesh size for each edge.
+unique grid size for each edge.
  
 \end_layout
 
@@ -813,7 +817,7 @@ reference "eq:index_convert"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y_{0}=\mathcal{M}_{0}=\{\mathcal{F}_{1}^{*},\mathcal{F}{}_{2}^{*},...,\mathcal{F}_{N_{E}}{}^{*}\}\label{initial_value_large_ds}
+y_{0}=\mathcal{M}_{0}=\{\mathcal{F}_{1}^{*},\mathcal{F}{}_{2}^{*},...,\mathcal{F}_{N_{E}}{}^{*}\},\label{initial_value_large_ds}
 \end{equation}
 
 \end_inset
@@ -824,7 +828,7 @@ y_{0}=\mathcal{M}_{0}=\{\mathcal{F}_{1}^{*},\mathcal{F}{}_{2}^{*},...,\mathcal{F
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-y'(t,y)=\mathcal{M}'(t,\mathcal{M})=\{\mathcal{F}{}_{1}(t,\mathcal{M}),\mathcal{F}{}_{2}(t,\mathcal{M}),...\mathcal{F}{}_{N_{E}}(t,\mathcal{M})\}\label{derevative_large_ds}
+y'(t,y)=\mathcal{M}'(t,\mathcal{M})=\{\mathcal{F}{}_{1}(t,\mathcal{M}),\mathcal{F}{}_{2}(t,\mathcal{M}),...\mathcal{F}{}_{N_{E}}(t,\mathcal{M})\},\label{derevative_large_ds}
 \end{equation}
 
 \end_inset
@@ -833,7 +837,7 @@ y'(t,y)=\mathcal{M}'(t,\mathcal{M})=\{\mathcal{F}{}_{1}(t,\mathcal{M}),\mathcal{
 \end_layout
 
 \begin_layout Standard
-Where 
+where 
 \begin_inset Formula $\mathcal{F}{}_{j}^{*}$
 \end_inset
 
@@ -850,7 +854,7 @@ is the initial value, and
 \begin_inset Formula $\mathcal{A},\ \mathcal{B},\mathcal{\ C}$
 \end_inset
 
- in as given by: 
+ as given by: 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "w_DS"
@@ -892,8 +896,7 @@ reference "operator_leak"
 
 \end_inset
 
-.
- For example: 
+, for example: 
 \begin_inset Formula 
 \begin{equation}
 \mathcal{F}_{crack}=\{\mathcal{C},\mathcal{A}_{1},...,\mathcal{A}_{N-1},\mathbf{\mathcal{B}}\}\label{eq:F_crack}
@@ -967,7 +970,7 @@ solver
 solver
 \emph default
  is unaware of the whole formulation, it is merely a tool to perform numerical
- integration form initial time 
+ integration from initial time 
 \begin_inset Formula $t_{0}$
 \end_inset
 
@@ -1017,7 +1020,7 @@ a simple generic
 \uwave default
 \noun default
 \color inherit
- , though the inside of that function will perform a whole set of operations
+, though the inside of that function will perform a whole set of operations
  to calculate the whole 
 \begin_inset Formula $\mathcal{M}'(t,\mathcal{M})$
 \end_inset
@@ -1043,7 +1046,7 @@ reference "algo_ode"
 
 \end_inset
 
- 
+ and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "algo_multi"
@@ -1055,8 +1058,8 @@ reference "algo_multi"
 \begin_inset Formula $\mathcal{M}$
 \end_inset
 
-at each steps made by this upper algorithm is recorded.
- Any required re meshing is done separately from the encapsulated ODE 
+ at each steps made by this upper algorithm is recorded.
+ Any required re-meshing is done separately from the encapsulated ODE 
 \emph on
 solver, 
 \emph default
@@ -1075,10 +1078,10 @@ The integration, discretization, and fracture collisions are well divided
 \begin_layout Itemize
 The utilized integration code/ODE solver 
 \emph on
-can be changed at will 
+can be changed at will
 \emph default
 , switched to any other method of preference (a search for best solvers
- is presented in Section 
+ is presented in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Comparison-of-ODE"
@@ -3519,14 +3522,14 @@ name "sub:Jacobian-and-utility"
 \end_layout
 
 \begin_layout Standard
-Lets recall to the benefits that were achieved by properly utilizing Jacobian
+Lets recall the benefits that were achieved by properly utilizing Jacobian
  matrix pattern 
 \begin_inset Formula $J_{patter}$
 \end_inset
 
- shown in section 
+ shown in Subsection 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "sub:Jacobian-Matrix-patter"
 
 \end_inset
@@ -3539,14 +3542,14 @@ reference "sub:Jacobian-Matrix-patter"
 \begin_inset Formula $J_{patter}$
 \end_inset
 
- .
+.
  The sparseness pattern will however be now much more complex to derive.
  To deal with this problem, lets divide 
 \begin_inset Formula $J_{patter}$
 \end_inset
 
- into three matrices, each derived from a different source, all of then
- 
+ into three matrices, each introduced by a different part of this problem,
+ all of then 
 \begin_inset Formula $N_{ODE}$
 \end_inset
 
@@ -3554,7 +3557,7 @@ reference "sub:Jacobian-Matrix-patter"
 \begin_inset Formula $N_{ODE}$
 \end_inset
 
- in size that when added together form full 
+ in size that when added together form the full 
 \begin_inset Formula $J_{patter}$
 \end_inset
 
@@ -3592,7 +3595,7 @@ e.
 \end_inset
 
  will be of at least one order more than used 
-\begin_inset Formula $E$
+\begin_inset Formula $N_{E}$
 \end_inset
 
  edges, thous such would allow to save a lot of time by giving some possible
@@ -3690,7 +3693,7 @@ The first source of
 \begin_inset Formula $J_{patter}$
 \end_inset
 
- is the tri-diagonal like discretization.
+ is the tridiagonal like discretization.
  It is formed by operator 
 \begin_inset Formula $\mathcal{A}$
 \end_inset
@@ -3699,9 +3702,9 @@ The first source of
 \begin_inset Formula $\mathcal{B}$
 \end_inset
 
-, in a similar manner as described in Section 
+, in a similar manner as described in Subsection 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "sub:Jacobian-Matrix-patter"
 
 \end_inset
@@ -3718,7 +3721,7 @@ reference "disc_mat"
 
 .
  All 
-\begin_inset Formula $E$
+\begin_inset Formula $N_{E}$
 \end_inset
 
  edges in the problem form a piece of this diagonal pattern, and the indexes
@@ -3742,7 +3745,11 @@ while single
 \begin_inset Formula $\backslash$
 \end_inset
 
- stands for one PKN pipe element.
+ stands for a PKN 
+\emph on
+pipe
+\emph default
+ element.
  
 \end_layout
 
@@ -3804,7 +3811,7 @@ reference "sub:Asym-FD"
 \begin_inset Formula $L$
 \end_inset
 
- , close to tridiagonal in structure
+ , close to tridiagonal in structure.
 \end_layout
 
 \end_inset
@@ -3859,14 +3866,14 @@ The boundary condition at
 \begin_inset Formula $x=0$
 \end_inset
 
-, calculated by junction strategy 
+, calculated by junction strategy (Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"
 
 \end_inset
 
- adds dependence of each boundary point (
+) adds dependence of each boundary point (
 \begin_inset Formula $x_{2}$
 \end_inset
 
@@ -3882,13 +3889,13 @@ cracks
 \emph default
  and 
 \emph on
-pipes
+pipes 
 \emph default
- are 
+this points are local 
 \begin_inset Formula $x_{2}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $x_{3}$
 \end_inset
 
@@ -3904,7 +3911,7 @@ and
  Furthermore all interconnected concrete pipe segments share pressure, thus
  all other attached edges are connected by this pressure dependence.
  If an edge shares a junction with concrete pipe, then the edges connected
- to the other end of that pipe are also affected.
+ to the other end of that concrete pipe are also affected.
  To find these interactions a graph traversal must be done, to mark all
  clusters of junctions traversable by concrete pipe connections.
  The outcome of these operation is converted into a very sparse matrix,
@@ -4048,14 +4055,15 @@ reference "example_for_pattern"
 
 \end_inset
 
-, indicates which points are dependent on another by junction BC 
+, indicates which points are dependent on another by junction condition
+ (Section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Junction-Strategy"
 
 \end_inset
 
-
+).
 \end_layout
 
 \end_inset
@@ -4096,14 +4104,14 @@ name "sub:Visibility-Matrix"
 \end_layout
 
 \begin_layout Standard
-Finally the matrix formed by resolving edge visibility 
+Finally the matrix formed by resolving edge visibility (Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Resolving-edge-visibility"
 
 \end_inset
 
-.
+).
  It is a symmetric matrix, that has non-zero entries where two points are
  visible to each other, hence 
 \begin_inset Formula $\sigma_{l}$
@@ -4114,7 +4122,7 @@ reference "sub:Resolving-edge-visibility"
  in relation to each other.
  Furthermore while in case of a single fracture, or some other specific
  placement, this matrix will be empty, for some geometries this matrix might
- be full, or very close to being full dense matrix.
+ be full, or very close to being a full dense matrix.
  In fact comparing this to Discretization 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4125,7 +4133,7 @@ reference "sub:Discretization-Matrix"
  and Junction 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Junction-Strategy"
+reference "sub:Junction-Matrix"
 
 \end_inset
 
@@ -4133,7 +4141,7 @@ reference "sec:Junction-Strategy"
 \begin_inset Formula $\sigma_{l}$
 \end_inset
 
- increases the overall effort required to solve the multifracturing problem.
+ increases the overall effort required to solve a multifracturing problem.
 \end_layout
 
 \begin_layout Standard
@@ -4298,7 +4306,7 @@ Utilization of sparseness pattern
 A common feature for many ODE solver is that custom Jacobian function can
  be optionally supplemented.
  If not some naive dense approximation function is used.
- The dense approximation would however have very high computational cost,
+ The dense approximation would however have a very high computational cost,
  especially in this multifracturing scenario.
  To naively compute the Jacobian, one needs to compute 
 \begin_inset CommandInset ref
@@ -4368,7 +4376,7 @@ reference "derevative_large_ds"
 \end_inset
 
  requires in fact much more operations a than simple matrix reduction (as
- proven in Section 
+ proven in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Code-optimization-and"
@@ -4376,21 +4384,22 @@ reference "sub:Code-optimization-and"
 \end_inset
 
 ).
- On the other hand if simplified edge version visibility 
+ On the other hand if simplified edge to edge versions visibility (Figure
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "ellasticity_mat_edge"
 
 \end_inset
 
- and junction 
+) and junction (Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "junction_mat_edge"
 
 \end_inset
 
- are used, the function (
+) matrices are used, the function (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "derevative_large_ds"
@@ -4460,14 +4469,15 @@ reference "derevative_large_ds"
 \end_inset
 
 .
- It is impossible to make a good prediction of what average time complexity
+ It is impossible to make an accurate prediction of what average time complexity
  would be, but it is clear that for many geometries that result in much
  sparser 
 \begin_inset Formula $J_{patter}$
 \end_inset
 
  the improvement gained by taking problem sparseness into account can be
- of a time order, or greater (again computationally proven in Section 
+ of a time order, or greater (again computationally proven in Subsection
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Code-optimization-and"
@@ -4482,14 +4492,14 @@ reference "sub:Code-optimization-and"
 To conclude the above monologue, it will be very beneficial to exploit sparsenes
 s effects appearing in the multifracturing system.
  The computational ideas described here are best shown by the actual code
- in Appendix (
+ in Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Java-multifracturing-code"
 
 \end_inset
 
-) 
+.
 \end_layout
 
 \begin_layout Standard

@@ -73,7 +73,7 @@ General Summary
 \end_layout
 
 \begin_layout Standard
-There were two main goal in this work.
+There were two main goals in this work.
  The first goal was to study and improve the existing PKN model, the second
  was to develop a working multifracturing solution based on this model.
 \end_layout
@@ -81,7 +81,7 @@ There were two main goal in this work.
 \begin_layout Standard
 Using a mixture of recent improvements, forgotten computational techniques,
  and some own additions it was possible to construct and implement an improved
- formulation for these classical model.
+ formulation for this classical model.
  The overall accuracies were always of at least 
 \begin_inset Formula $10^{-3}$
 \end_inset
@@ -91,10 +91,10 @@ Using a mixture of recent improvements, forgotten computational techniques,
 \end_inset
 
  in some more specific cases.
- Additionally the computation time needed for these single fractures is
- always kept at reasonable low levels.
+ Additionally the computation time needed for these single fractures was
+ always kept at reasonably low levels.
  The two term asymptotics boundary condition proved to be especially beneficial
- in these single fracture formulation, as it not only allowed to adequately
+ in this single fracture formulation, as it not only allowed to adequately
  tackle degenerative PDE at the crack tip, but also gave accurately approximated
  first term, later used for fracture velocity, finite differences and integratio
 n.
@@ -118,7 +118,7 @@ The obtained procedure for single fracture was tested on a wide range of
 \begin_layout Standard
 The second task of building multifracturing model proved to be much more
  challenging.
- Although the PKN model neatly serves it purpose, it is, just like other
+ Although the PKN model neatly serves its purpose, it is, just like other
  theoretical fracturing models, very limited in its scope and grossly oversimpli
 fied.
  If a single fracture model is to be called a multiphisics formulation,
@@ -152,7 +152,7 @@ The final result of this work is a study that formulated theoretical and
  fracturing treatment scenarios.
  The task is by no means complete yet, but rather works as a prof of concept
  that using one dimensional formulation it is eventually possible to build
- comprehensive solution that could compete with its commercial counterparts.
+ a comprehensive solution that could compete with its commercial counterparts.
  A variety of mathematical techniques ranging from asymptotics analysis,
  through numerical integrations, and ending up on computer graphics and
  vision algorithms were utilized, making this thesis covering several fields,

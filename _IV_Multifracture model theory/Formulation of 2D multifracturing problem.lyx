@@ -84,6 +84,51 @@ Graph like structure
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename geometry_sample1.png
+	display false
+	width 100text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A sample 2D multifracturing geometry visualized
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Lets assume that the multifracturing model is a collection of some smaller
  constructs.
  It exists in some horizontal rock layer, that when viewed form the top
@@ -101,8 +146,12 @@ can be connected by an
 \emph on
 edge
 \emph default
-, consequently making the entire structure a graph.
- Edges and vertices are abstractions to various physical structures.
+, consequently making the entire structure a 
+\emph on
+graph
+\emph default
+.
+ Edges and vertices are abstractions of various physical structures.
 \end_layout
 
 \begin_layout Standard
@@ -151,7 +200,7 @@ Vertex
 junction
 \shape default
  connection points, distributes fluid among connected edges, can act as
- a pump in location (wellbore),
+ a pump in location (wellbore)
 \end_layout
 
 \begin_layout Itemize
@@ -187,7 +236,7 @@ each vertex can be located by its unique
 \begin_inset Formula $(x,y)$
 \end_inset
 
- coordinates (not to be confused with normalized 
+ coordinates (not to be confused with the normalized 
 \begin_inset Formula $\tilde{x}$
 \end_inset
 
@@ -296,8 +345,8 @@ key "network_hf"
 ).
  This representation allows to couple 1D formulation, into 2D problem, while
  still effectively using 1D to describe each fracture.
- The added dimension is dealt with at higher level, while large amounts
- of single fracture solution can be reused.
+ The added dimension is dealt with at a higher level, while the single fracture
+ solution is reused locally for each edge.
  Additionally several issues, such as fracture interactions, rendering or
  actual code quality, will be shown later to be elegantly addressed with
  such structure representation.
@@ -315,51 +364,6 @@ are connected by a
 \emph on
 edge this formulation is equivalent to standard half wing PKN model fracture.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement H
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Graphics
-	filename geometry_sample1.png
-	display false
-	width 100text%
-
-\end_inset
-
- 
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-A sample 2D multifracturing geometry visualized
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -380,8 +384,8 @@ key "Kresse1,BungerPeirce,Wong"
 
 \end_inset
 
- and , to simply split this experienced stress into two parallel components,
- this should be denoted in this work as 
+ to simply split this experienced stress into two parallel components, this
+ should be denoted in this work as 
 \begin_inset Formula $\sigma_{x}$
 \end_inset
 
@@ -395,8 +399,8 @@ key "Kresse1,BungerPeirce,Wong"
 \end_inset
 
  , acting in vertical direction, is ignored as has little influence on existing
- fractures.
- This assumes uniform stress experienced by the underground formation.
+ PKN like fractures.
+ This assumes uniform stress experienced all over the underground formation.
 \end_layout
 
 \begin_layout Standard
@@ -410,7 +414,7 @@ The following relation will be used to find
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\sigma_{0}=|\hat{n}\cdot\sigma_{x}|+|\hat{n}\cdot\sigma_{y}|\label{sigma_0}
+\sigma_{0}=|\hat{n}\cdot\sigma_{x}|+|\hat{n}\cdot\sigma_{y}|.\label{sigma_0}
 \end{equation}
 
 \end_inset
@@ -426,12 +430,12 @@ Where
  is unit normal to that edge.
  As it can be observed from 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "poiseulle_multi-1"
 
 \end_inset
 
-, if
+, if 
 \begin_inset Formula $\sigma_{0}$
 \end_inset
 
@@ -493,11 +497,11 @@ Edge normal
 \begin_inset Formula $\sigma_{x}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $\sigma_{y}$
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
@@ -554,7 +558,7 @@ reference "w_system"
 \begin_inset Formula 
 \begin{equation}
 \begin{split}\mathcal{A}_{crack}^{w}=\frac{\partial w}{\partial t}= & \frac{k}{ML^{2}}\left[\frac{1}{3}w_{0}^{3}x\frac{\partial w}{\partial x}+3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]\\
- & \frac{1}{ML^{2}}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}
+ & \frac{1}{ML^{2}}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l},
 \end{split}
 \label{w_system_elast}
 \end{equation}
@@ -616,7 +620,7 @@ w(0,t)=\frac{1}{k}\left[p_{fluid}^{(x=0)}-\sigma_{0}-\sigma_{l}(0,t)\right],\lab
 \end_layout
 
 \begin_layout Standard
-Where 
+where 
 \begin_inset Formula $p_{fluid}$
 \end_inset
 
@@ -628,7 +632,7 @@ junction
 \emph on
 crack
 \emph default
- propagates from.
+ propagates away from.
  This formulation does not affect 
 \begin_inset Formula $L$
 \end_inset
@@ -679,7 +683,7 @@ reference "U_DS"
 \end_inset
 
 ) is still available.
- The 
+ Although 
 \begin_inset Formula $\Omega$
 \end_inset
 
@@ -690,8 +694,8 @@ reference "Omega_DS"
 
 \end_inset
 
-) although could also used, carries an inherited problem with conversion
- form the width integral to actual width of the fracture.
+) could also be used, it carries an inherited problem with conversion form
+ the width integral to actual width of the fracture.
  While this could be managed, it would considerably increase the time needed
  to develop the whole model, thus it should be left for future development.
  
@@ -709,7 +713,7 @@ name "sub:PKN-pipe"
 \end_layout
 
 \begin_layout Standard
-Within the boundaries of PKN model, described in Section 
+Within the boundaries of PKN model, described in Subsection 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:PKN-crack"
@@ -745,7 +749,7 @@ and boundary conditions:
 \begin_inset Formula 
 \begin{eqnarray}
 w(0,t) & = & \frac{1}{k}\left[p_{fulid}^{(x=0)}-\sigma_{0}-\sigma_{l}(0,t)\right]\label{pipe_boundary}\\
-w(1,t) & = & \frac{1}{k}\left[p_{fulid}^{(x=1)}-\sigma_{0}-\sigma_{l}(1,t)\right]
+w(1,t) & = & \frac{1}{k}\left[p_{fulid}^{(x=1)}-\sigma_{0}-\sigma_{l}(1,t)\right],
 \end{eqnarray}
 
 \end_inset
@@ -774,7 +778,7 @@ where
 \begin_inset Formula $p_{fulid}^{(x=1)}$
 \end_inset
 
- refers to fluid pressure at connected
+ refers to fluid pressure at two connected
 \family default
 \series default
 \shape default
@@ -788,7 +792,7 @@ where
 \color inherit
  junctions
 \emph default
- .
+.
  This condition at 
 \begin_inset Formula $w(1,t)$
 \end_inset
@@ -809,15 +813,15 @@ reference "norm_boundary"
 \end_layout
 
 \begin_layout Standard
-The governing equation is similar to result obtained in normal PKN pipe
- (
+The governing equation is similar to result obtained in normal PKN crack
+ 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "w_system"
 
 \end_inset
 
-) with one significant difference; the propagation related terms are removed:
+ with one significant difference; the propagation related term is removed:
 \end_layout
 
 \begin_layout Standard
@@ -928,7 +932,7 @@ reference "w_system_elast"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathcal{A}_{pipe}^{U}=\frac{\partial U}{\partial t}=\frac{k}{3ML^{2}}\left[\left(\frac{\partial U}{\partial x}\right)^{2}+3U\frac{\partial^{2}U}{\partial x^{2}}\right]-3U^{\frac{2}{3}}q_{l}\label{pipe_reynolds_U}
+\mathcal{A}_{pipe}^{U}=\frac{\partial U}{\partial t}=\frac{k}{3ML^{2}}\left[\left(\frac{\partial U}{\partial x}\right)^{2}+3U\frac{\partial^{2}U}{\partial x^{2}}\right]-3U^{\frac{2}{3}}q_{l}.\label{pipe_reynolds_U}
 \end{equation}
 
 \end_inset
@@ -948,7 +952,7 @@ Finally when the effect of neighboring fractures
 \begin_inset Formula 
 \begin{equation}
 \begin{split}\mathcal{A}_{pipe}^{w}=\frac{\partial w}{\partial t}= & \frac{k}{ML^{2}(t)}\left[3w^{2}\left(\frac{\partial w}{\partial x}\right)^{2}+w^{3}\frac{\partial^{2}w}{\partial x^{2}}\right]\\
- & +\frac{1}{ML^{2}(t)}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}
+ & +\frac{1}{ML^{2}(t)}\left[3w^{2}\frac{\partial w}{\partial x}\frac{\partial\sigma_{l}}{\partial x}+w^{3}\frac{\partial^{2}\sigma_{l}}{\partial x^{2}}\right]-q_{l}.
 \end{split}
 \label{w_system_elast_pipe}
 \end{equation}
@@ -969,14 +973,14 @@ It is reasonable to assume that there might be some fixed flow channels,
 \shape italic
 solid pipe
 \shape default
- segments are assumed to have circular cross-section, direct application
- of Poiseuille's Law in the simplest form can be made:
+ segments are assumed to have circular cross-section.
+ Direct application of Poiseuille's Law in the simplest form can be made:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-Q=\frac{\Delta p_{fluid}\pi R^{4}}{8\mu L}\label{poiseuille law}
+Q=\frac{\Delta p_{fluid}\pi R^{4}}{8\mu L}.\label{poiseuille law}
 \end{equation}
 
 \end_inset
@@ -1010,7 +1014,7 @@ Where variable
 \begin_inset Formula $\Delta p_{fluid}$
 \end_inset
 
- is the difference between fluid pressure at two junctions this 
+ is the difference between fluid pressure at the two junctions this 
 \family default
 \series default
 \shape default
@@ -1025,7 +1029,7 @@ Where variable
 solid pipe 
 \emph default
 connects.
- thus the flow rate might take negative or positive values, depending on
+ Thus the flow rate might take negative or positive values, depending on
  the direction of the flow.
  This assumes laminar flow in these solid pipe connections, but the PKN
  model itself is based on a non turbulent flow assumption.
@@ -1041,14 +1045,14 @@ Closed cracks are preexisting fractures.
 \emph on
 closed cracks tips, 
 \emph default
-or if it was reached, but not opened by the fracturing fluid, , between
- a 
+or if it was reached, but not opened by the fracturing fluid, between a
+ 
 \emph on
 closed tip
 \emph default
- and a 
+ and a
 \emph on
-junction.
+ closed cracks tip.
  
 \end_layout
 
@@ -1068,7 +1072,7 @@ reference "elasticity_multi-1"
 \lang american
 \begin_inset Formula 
 \begin{equation}
-p_{fluid}\leqq\sigma_{o}+\sigma_{l}\label{opening_condition}
+p_{fluid}\leq\sigma_{o}+\sigma_{l}\label{opening_condition}
 \end{equation}
 
 \end_inset
@@ -1079,7 +1083,7 @@ p_{fluid}\leqq\sigma_{o}+\sigma_{l}\label{opening_condition}
 \begin_layout Standard
 
 \lang american
-Thou there can be a number of other factors that should be taken into account.
+There can be a number of other factors that should be taken into account.
  However ensuring that 
 \begin_inset Formula $p_{net}>0$
 \end_inset
